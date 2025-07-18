@@ -3,9 +3,8 @@ import { useState, useContext } from 'react'
 import { UserContext } from './UserProvider'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button'
-
-import Menu from "../assets/flecha.png"
 import { CONFIG_BACKEND } from '../config/config'
+import BackLink from './BackLink'
 
 function FormProfileEdit() {
     const { user, loadUser } = useContext(UserContext)
@@ -39,8 +38,6 @@ function FormProfileEdit() {
         }
         reader.readAsDataURL(file)
     }
-
-    const backHistory = ()=>{ history.back() }
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -109,9 +106,7 @@ function FormProfileEdit() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <div className={styles.backLink} id='backLink' onClick={backHistory}>
-                        <img src={Menu} alt='imgBackButton'/>
-                    </div>
+                    <BackLink />
                     <h1>Editar</h1>
                     <div className={styles.contFormInput}>
                         <label>

@@ -8,7 +8,7 @@ import { CONFIG_BACKEND } from '../config/config'
 function News() {
     const [publications, setPublications] = useState([])
     const [loading, setLoading] = useState(true)
-    const { id_noticias } = useParams()
+    const { id_news } = useParams()
 
     useEffect(() => {
         fetch(`${CONFIG_BACKEND.API_DIR}/news`, {

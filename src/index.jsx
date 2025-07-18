@@ -26,7 +26,7 @@ import NewsDetail from './App/pages/NewsDetail'
 const routes = [
   { path: "/",                        element: <Home/>,         },
   { path: "/noticias",                element: <News/>,         },
-  { path: "/noticias/:id_new",        element: <NewsDetail/>,   },
+  { path: "/noticias/:id_news",        element: <NewsDetail/>,   },
   { path: "/sobre-nosotros",          element: <AboutUs/>,      },
   { path: "/recursos",                element: <Resources/>,    },
   { path: "/donar",                   element: <Donate/>,       },

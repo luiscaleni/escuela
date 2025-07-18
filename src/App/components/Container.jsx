@@ -1,9 +1,9 @@
 import styles from "./css/Container.module.css"
 
-function Container({children}) {
+function Container({widthElm, children}) {
     return ( 
         <>
-            <div className={styles.container}>
+            <div className={widthElm === "max" ? styles.containerMax : styles.container}>
                 {children}
             </div>
         </>
