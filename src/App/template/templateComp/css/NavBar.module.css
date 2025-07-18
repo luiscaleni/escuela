@@ -1,0 +1,425 @@
+nav, .navbar{
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0; 
+    width: 100%;
+    height: 5.5em;
+    transition: all 0.3s ease;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.contNavbarContent{
+    width: auto;
+    height: 5.5em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbarContent{
+    position: relative;
+    
+    width: auto;
+    height: 4rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: var(--backdrop-filter);
+    background: var(--background);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbarContent > a{
+    width: auto;
+    height: 100%;
+}
+.navbarContent > a > .navbarLogo{
+    width: auto;
+    height: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.navbarContent > a > .navbarLogo > .logoImage{
+    width: auto;
+    height: 2.5em;
+    padding-left: 1.5em;
+}
+.navbarContent > a > .navbarLogo > h1{
+    font-size: 1.8em;
+    color:var(--color);
+}
+
+
+.navbarLinks {
+    width: auto;
+    height: 100%;
+    padding: 0 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.navbarLinks > a{
+    min-width: 6em;
+    height: 80%;
+    cursor: pointer;
+    color:#000;
+    text-decoration: none;
+    text-shadow: var(--text-shadow);
+    font-size: 1em;
+    border-radius: 2em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+.navbarLinks > a:hover{
+    background-color: #e2e2e2;
+}
+
+
+.menu{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    padding-top: 4rem;
+    overflow: hidden;
+    list-style: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    backdrop-filter: var(--backdrop-filter-2);
+
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.menu > li{
+    width: 100%;
+    height: 2.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu > li > a{
+    width: 100%;
+    height: 2.8rem;
+    padding: 0.5rem;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu > li > a:hover{
+    color: #000;
+    background-color: #e2e2e2;
+}
+.menu > form{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu > form > button{
+    cursor: pointer;
+}
+
+.langMenu{
+    background-color: red;
+}
+
+
+span{
+    padding-right: 0.2em;
+}
+.menuIcon{
+    margin-left: 0.2em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarMenu{
+    position: relative;
+    width: 5em;
+    height: 100%;
+    border: none;
+    border-radius: 5rem; /*0 5rem 5rem 0;*/
+    background-color: red;
+    transition: all ease-in-out .3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menuProfile{
+    position: relative;
+    width: 4em;
+    height: 4em;
+    margin-left: 1em;
+    border-radius: 2.5rem;
+    box-shadow: var(--box-shadow);
+    transition: all ease-in-out .1s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.menuProfile > .menuProfileButton{
+    width: 4rem;
+    height: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menuButton {
+    width: auto;
+    height: 100%;
+    z-index: 1;
+    font-size: 1em;
+    border: none;
+    transition: all ease-in-out 0.1s;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menuButton > .menuIconProfile{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 1em;
+    padding: 0.2em;
+    border-radius: var(--border-radius);
+    background-color: #ccc;
+}
+.menuButton > .contWellcome{
+    position: absolute;
+    width: 4rem;
+    height: 4rem;
+    transition: all ease-in-out .3s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.menuButton > .contWellcome > .wellcomeName{
+    width: 100%;
+    height: auto;
+    color:black;
+    font-size: 0rem;
+    padding-right: 0.5rem;
+    text-shadow: var(--text-shadow);
+    overflow: hidden;
+    transition: all ease-in-out .3s;
+    
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.menuButton:active{
+    color: #000;
+}
+
+.ulMenuProfile{
+    color: #fff;
+    border: var(--border);
+    border-radius: 2rem 2rem 1rem 1rem;
+    box-shadow: var(--box-shadow-inset), var(--box-shadow-strong);
+    backdrop-filter: var(--backdrop-filter);
+    background: var(--background);
+}
+.ulMenuProfile > li{
+    width: 100%;
+    height: 2.5rem;
+    padding: 1.4em 0em;
+    border-top: var(--border);
+    border-color: #cecece;
+    border-width: thin;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ulMenuProfile > li > a,
+.navbarLinksPanel > a{
+    width: 100%;
+    color: #000;
+    text-shadow: 0 0 1em #aecae0;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.ulMenuProfile > form,
+.navbarLinksPanel > form{
+    padding:0.2em 0 0.2em 0;
+    border-top: var(--border);
+    border-left: var(--border);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbarLinksPanel > form{
+    /*position: absolute;
+    bottom: 0;*/
+    width: 100%;
+    padding: 1em;
+}
+
+.navbarLinksPanel > a:hover{
+    color: #000;
+    background-color: #e2e2e2;
+}
+
+.panel{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: -40vw;
+    z-index: 20;
+    width: 40vw;
+    height: 100vh;
+    
+    backdrop-filter: var(--backdrop-filter-two);
+    background: var(--background-dark-2);
+    transition: all ease-in-out 1s;
+
+    display: none;
+}
+.buttonPanel{
+    z-index: 21;
+    width: 42vw;
+    height: 100%;
+    padding-right: 1.8rem;
+    border-radius: 1rem;
+    background-color: #292929;
+    transition: all ease-in-out .3s;
+    
+    display: none;
+    justify-content: flex-end;
+    align-items: center;
+}
+.buttonPanel > .imgMenuButtonPanel{
+    width: 2rem;
+    height: 2rem;
+}
+
+
+
+
+
+
+@media (max-width:1050px){
+    .navbarLinks,
+    .navbarMenu,
+    .menuProfile{
+        display: none;
+    }
+    
+    .panel,
+    .buttonPanel{
+        display: flex;
+    }
+
+    nav, .navbar{
+        height: 4em;
+        transition: all 0.3s ease;
+    }
+    .contNavbarContent{
+        width: 100%;
+        height: 100%;
+    }
+    .navbarContent{
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        backdrop-filter: var(--backdrop-filter-2);
+        background: var(--background-dark-2);
+    }
+    .menu{
+        padding-top: 0em;
+        transform: translateY(4em);
+        border-radius:0 0 1em 1em;
+    }
+    .menu > li > a{
+        color: black;
+    }
+    .langMenu{
+        background-color: white;
+    }
+    .navbarMenu{
+        border-radius: 0;
+        background: #292929;
+    }
+    .navbarLinksPanel {
+        width: 100%;
+        height: auto;
+        padding-top: 4rem;
+        overflow-y: auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+    .navbarLinksPanel > a{
+        padding: 1rem 0 1rem 2rem;
+        border-top: var(--border);
+        border-left: var(--border);
+        color: white;
+        text-shadow: none;
+    }
+    .menuProfile{
+        margin-left: 0;
+        padding:0em 4.5em 0em 0.5em;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: #292929;
+    }
+    .menuProfileButton{
+        width: 4em;
+        height: 4em;
+        padding: 0 0.5em 0 0.5em;
+    }
+    .menuButton > .contWellcome > .imgProfile{
+        width: 3.2em;
+        height: 3.2em;
+    }
+    .menuButton > .contWellcome > .wellcomeName{
+        color: white;
+        text-shadow: none;
+        padding-right: 0rem;
+    }
+
+    .ulMenuProfile{
+        position: absolute;
+        border-radius: 0 0 1.5em 1.5em;
+    }
+}

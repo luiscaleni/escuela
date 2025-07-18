@@ -1,0 +1,20 @@
+footer, .footer{
+    width: 100%;
+    height: auto;
+    padding: 2em;
+    color: black;
+    background-color: #ccc;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer > div > p {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

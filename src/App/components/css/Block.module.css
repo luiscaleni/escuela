@@ -1,0 +1,32 @@
+.block{
+    width: auto;
+    min-width: 20rem;
+    max-width: 30rem;
+    height: auto;
+    margin: 2rem 3rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.block > h2{
+    font-size: 3.5rem;
+    padding: 1rem;
+    color: var(--color-titles)
+}
+
+.block > p{
+    color: var(--color);
+}
+.block > img{
+    max-width: 20rem;
+    border-radius: 3rem;
+}
+
+@media (max-width: 840px){
+    .block > h2{
+        font-size: 3vh;
+    }
+}

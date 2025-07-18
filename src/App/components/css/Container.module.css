@@ -1,0 +1,19 @@
+.container{
+    position: relative;
+    overflow: hidden;
+    max-width: 52rem;
+    min-width: 22rem;
+    min-height: 32rem;
+    width: 80vw;
+    height: auto;
+    color: #000;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-strong);
+    backdrop-filter: var(--backdrop-filter);
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

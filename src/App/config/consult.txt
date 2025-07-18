@@ -1,0 +1,1 @@
+INSERT INTO `publications` (`id_pub`, `title_pub`, `text_pub`, `image_pub`, `descript_pub`, `date_pub`, `user_id_pub`) VALUES (NULL, 'Publicacion de prueba - 1', 'Esta es un texto de la publicacion de prueba 1. Tiene que ser algo extenso.', NULL, 'Esta es una breve descripcion de la publicacion de prueba 1', current_timestamp(), '25');

@@ -1,0 +1,169 @@
+.contForm {
+  width: auto;
+  height: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.contForm > form {
+  position: relative;
+  width: 30rem;
+  height: auto;
+  min-width: 20rem;
+  color: var(--color-dark);
+  padding: 1em 1.2em;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-inset), var(--box-shadow-strong);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: blur(--backdrop-filter);
+  background:var(--background);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contForm > form > a {
+  text-decoration: underline;
+  padding-top: 0.5em;
+  color: #333;
+}
+.contForm > form > .contFormInput {
+  width: 90%;
+  height: auto;
+  margin: 0.2rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+label{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+label > span{
+  width: 100%;
+  padding: 0.2rem 0.8rem;
+}
+.contForm > form > .contFormInput > label {
+  position: relative;
+  width: 100%;
+  height: auto;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.contForm > form > .contFormInput > label > .radio{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contForm > form > .contFormInput > label > .radio > label{
+  padding: 0 0.4rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.contForm > form > .contFormInput > label > .emailData{
+  max-width: 55rem;
+  width: 100%;
+  height: auto;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: black;
+  user-select: none;
+  border: 0.1rem solid #ccc;
+  border-radius: var(--border-radius);
+  background-color: rgb(226, 255, 203);
+}
+.contForm > form > .contFormInput > label > .emailData,
+.contForm > form > .contFormInput > label > .contImgProfilePreview{
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.contForm > form > .contFormInput > label > .contImgProfilePreview > img{
+  width: 5rem;
+  height: 5rem;
+}
+.contForm > .alert {
+  width: 100%;
+  height: auto;
+  margin: 0.5em 0;
+  border-radius: 0.5em;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contForm > form > .alertContainer{ /*.alertSuccess {*/
+  width: 75%;
+  margin-bottom: 0.5rem;
+  border-radius: 1.5rem;
+  text-align: center;
+  transition:all ease-in-out .3s;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+form > .backLink{
+    position: absolute;
+    cursor: pointer;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-inset), var(--box-shadow);
+    backdrop-filter: var(--backdrop-filter);
+    background: var(--background);
+    transition: all ease-in-out .8s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form > .backLink > img{
+    transform: rotateZ(90deg);
+    margin: 0.7rem;
+}
+form > .backLink:hover{
+    transition: all ease-in-out .8s;
+}
+form > .backLink:hover::after {
+    transition: all ease-in-out .8s;
+    content: " Volver";
+    margin-right: 1rem;
+    color: #333;
+}
+
+@media (max-width: 440px){
+  .contForm > form {
+    width: 90vw;
+  }
+  input[type=file]{
+    width: 14rem;
+  }
+}

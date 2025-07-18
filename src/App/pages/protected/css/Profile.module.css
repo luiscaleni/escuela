@@ -1,0 +1,179 @@
+.bannerProfile{
+  position: absolute;
+  overflow: hidden;
+  z-index: 2;
+  top: 0rem;
+  width: 90%;
+  height: 11rem;
+  max-height: 15rem;
+  min-height: 7rem;
+  margin-top: 2rem;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-inset), var(--box-shadow);
+  backdrop-filter: var(--backdrop-filter);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bannerProfile > a > .contImgEdit{
+  cursor: pointer;
+  position: absolute;
+  width: auto;
+  height: 1em;
+  padding: 0.8em 0.4em;
+  top: 0.5em;
+  right:0.7em;
+  color: #fff;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-inset), var(--box-shadow);
+  backdrop-filter: var(--backdrop-filter);
+  background: var(--background);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.bannerProfile > a > .contImgEdit > img{
+  margin-right: 0.2em;
+  width: 0.8rem;
+}
+.bannerProfile > a > .contImgEdit > p{
+  color: white;
+  font-size: 0.8rem;
+  text-shadow: var(--text-shadow-2);
+}
+.bannerProfile > .contTitleProfile{
+  width: 95%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.bannerProfile > .contTitleProfile > .contImgProfile{
+  max-width: 10rem;
+  max-height: 10rem;
+  min-width: 8rem;
+  min-height: 8rem;
+  width: 10vw;
+  height: auto;
+  margin-right: 1em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.bannerProfile > .contTitleProfile > .contTextProfile{
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  overflow-y: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.bannerProfile > .contTitleProfile > .contTextProfile > h2{
+  width: 90%;
+  height: auto;
+  font-size: 1em;
+  color: #fff;
+  text-shadow: var(--text-shadow-2);
+}
+.bannerProfile > .contTitleProfile > .contTextProfile > p{
+  width: 90%;
+  height: auto;
+  font-size: 0.7em;
+  color: #fff;
+  text-shadow: var(--text-shadow-2);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.dataProfile{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 11rem;
+  overflow-y:auto;
+  background: var(--background-linear-gradient);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.dataProfile > .contElm {
+  width: 80%;
+  height: auto;
+  margin: 0.3rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.dataProfile > .contElm > .titleElm {
+  max-width: 20%;
+  min-width: 7em;
+  margin-right: 0.5rem;
+  padding: 0.2em 0.5rem;
+  color: #000;
+  text-shadow: var(--text-shadow-2);
+}
+.dataProfile > .contElm > p{
+  width: 90%;
+  padding: 0.2rem;
+  text-shadow: var(--text-shadow-2);
+}
+
+
+@media (max-width:1050px){
+  .bannerProfile{
+    height: 8.5rem;
+  }
+  .bannerProfile > .contTitleProfile > .contTextProfile > p{
+    display: none;
+  }
+  .dataProfile{
+    padding-top:7rem;
+  }
+}
+
+@media (max-width:1024px){
+  .bannerProfile > .contTitleProfile > .contTextProfile{
+    font-size: 22px;
+  }
+  .bannerProfile > .contTitleProfile > .contTextProfile > h2{
+    font-size: 1em;
+  }
+  .bannerProfile > .contTitleProfile > .contTextProfile > p{
+    display: flex;
+  } 
+  .dataProfile{
+    padding-top:7.5rem;
+  }
+  .dataProfile > .contElm > p{
+    font-size: 0.9em;
+  }
+  .bannerProfile > a > .contImgEdit{
+    width: auto;
+    height: auto;
+    padding: 0.5em;
+    top: 0.5em;
+    right:0.4em;
+}
+  .bannerProfile > a > .contImgEdit > img{
+    width: 1em;
+    height: 1em;
+    margin-right: 0;
+  }
+  .bannerProfile > a > .contImgEdit > p{
+    display: none;
+  }
+}
