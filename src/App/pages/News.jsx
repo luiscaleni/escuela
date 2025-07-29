@@ -4,6 +4,7 @@ import Card from '../components/Card'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { CONFIG_BACKEND } from '../config/config'
+import Loader from '../components/Loader'
 
 function News() {
     const [publications, setPublications] = useState([])
@@ -27,7 +28,7 @@ function News() {
             .finally (() => setLoading(false))
     },[])
 
-    if (loading) return <p>Cargando ...</p>
+    if (loading) return <Loader />
     return ( 
         <>
             <Template>

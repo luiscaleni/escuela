@@ -26,6 +26,7 @@
   
   --text-shadow: 0 0 1rem #c1e4ff;
   --text-shadow-2: 0 0 0.2rem #7c7c7c;
+  --text-shadow-strong: 0 0 0.4rem #2b2b2b;
 
   --box-shadow-inset: inset 0 -0.3em 0.7em rgba(139, 139, 139, 0.2);
   --box-shadow-inset-2:  inset 0 -0.3em 0.7em #6f22ff;
@@ -43,8 +44,8 @@
   --background-color-btnHover: #0055c4;
   --background-linear-gradient: linear-gradient(15deg,rgb(97, 197, 255), #9077ff );
   --background-linear-gradient-2: linear-gradient(to bottom, #d8d8d8, #222222);
-  --background-linear-gradient-3: linear-gradient(to bottom, #2b92f1, #002556);
-  --background-linear-gradient-4: linear-gradient(15deg, #1856ff, #4400c2);
+  --background-linear-gradient-3: linear-gradient(to bottom, #00883B, #000000);
+  --background-linear-gradient-4: linear-gradient(15deg, #1856ff, #1c241f);
 
 
   --background-success:rgba(0, 255, 21, 0.5);

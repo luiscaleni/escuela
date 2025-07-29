@@ -5,7 +5,6 @@
     overflow: hidden;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow-inset), var(--box-shadow);
-    background: var(--background);
 
     display: flex;
     justify-content: center;
@@ -16,7 +15,7 @@
     position: relative;
     width: 100%;
     height: auto;
-    background: var(--background-linear-gradient-3);
+    background-color: #022e28;
 
     display: flex;
     justify-content: center;

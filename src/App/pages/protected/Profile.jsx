@@ -6,6 +6,9 @@ import Section from '../../components/Section'
 import Container from '../../components/Container'
 import { UserContext } from '../../components/UserProvider'
 import ImgProfile from '../../components/ImgProfile'
+import Loader from '../../components/Loader'
+import pencil from '/assets/images/utilities/pencil.png'
+import { CONFIG_PATHS } from '../../config/config'
 
 function Profile() {   
     const { user, loadUser } = useContext(UserContext);
@@ -21,9 +24,9 @@ function Profile() {
 
     if (!user){
         const fn = ()=>{
-            <p>Cargando...</p>
+            <Loader />
             setTimeout(() => {
-                navigate("/login", { state: { updated: true } })
+                navigate(CONFIG_PATHS.LOGIN_PATH, { state: { updated: true } })
             }, 2000)
         }
         return fn()
@@ -67,9 +70,9 @@ function Profile() {
                                     <p>Administrador</p>
                                 </div>
                             </div>
-                            <Link to="/perfil/editar" className={styles.contImgEdit} title='Editar Perfil'>
+                            <Link to={CONFIG_PATHS.PROFILE_EDIT_PATH} className={styles.contImgEdit} title='Editar Perfil'>
                                 <div className={styles.contImgEdit}>
-                                    <img src="/src/App/assets/public/lapiz.png" alt="edit" className={styles.imgEdit}/>
+                                    <img src={pencil} alt="edit" className={styles.imgEdit}/>
                                     <p>Editar</p>
                                 </div>
                             </Link>

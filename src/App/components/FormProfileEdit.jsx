@@ -3,8 +3,10 @@ import { useState, useContext } from 'react'
 import { UserContext } from './UserProvider'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button'
-import { CONFIG_BACKEND } from '../config/config'
 import BackLink from './BackLink'
+import Loader from './Loader'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import userDefault from '/assets/images/utilities/usuario_128.png'
 
 function FormProfileEdit() {
     const { user, loadUser } = useContext(UserContext)
@@ -41,11 +43,10 @@ function FormProfileEdit() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        setCargando(true)
         const alertContainer = document.getElementById('alertContainer')
 
-        setCargando(true)
         const formData = new FormData();
-        formData.append('id', user.id);
         formData.append('names', form.names);
         formData.append('lastNames', form.lastNames);
         formData.append('sex', form.sex);
@@ -56,7 +57,7 @@ function FormProfileEdit() {
         formData.append('aboutMe', form.aboutMe);
 
         alertContainer.style.padding="0.5rem"
-        console.log("Datos a enviar:", formData)
+
         try {
             const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/update`, {
                 method: 'POST',
@@ -67,38 +68,40 @@ function FormProfileEdit() {
                 throw new Error('Network response was not ok')
             }
             const data = await response.json()
+
             if(data.success){
                 alertContainer.innerHTML="✅ "+data.message
                 alertContainer.classList.add("success")
                 await loadUser()
-                navigate('/perfil', { state: { updated: true } })
-            }else if(data.success===false){
-                alertContainer.innerHTML="❌ "+data.message
+                navigate(CONFIG_PATHS.PROFILE_PATH)
+            }else{
+                alertContainer.innerHTML="❌ "+data.error
                 alertContainer.classList.add("error")
-                navigate("/login")
             }
         } catch (errorCatch) {
             console.error("❌ Error en api:", errorCatch)
             alertContainer.innerHTML="❌ "+errorCatch.error
             alertContainer.classList.add("error")
+        } finally{
+            setCargando(false)
+            await loadUser()
         }
+
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         })
-        setCargando(false)
-        await loadUser()
     }
     let imgResult
 
     if(preview){
         imgResult = preview
     }else if(!preview){
-        imgResult = "/src/App/assets/public/usuario_128.png"
+        imgResult = userDefault
     }
 
     if (!user){
-        return <p>Cargando datos del perfil...</p>
+        return <Loader />
     }
     
     return ( 
@@ -182,7 +185,7 @@ function FormProfileEdit() {
                             <span>Imagen de Perfil:</span>
                             <div className={styles.contImgProfilePreview}>
                                 <img src={imgResult} alt='Preview imagen de perfil' id='imgUserPreview' />
-                                <input type="file" name="imgProfile" alt='Imagen de perfil' accept="image/*" onChange={handleImageChange}/>
+                                <input type="file" name="imgProfile" alt='Boton de carga de imagen de perfil' accept="image/*" onChange={handleImageChange}/>
                             </div>
                         </label>
                     </div>

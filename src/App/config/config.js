@@ -8,9 +8,12 @@ export const CONFIG_DATA = {
     SUPERVISOR: "Francisco Lopez Paz",
     YEAR: '2025'
 }
-
+export const CONFIG_VALUES = {
+    APP_PRODUCTION_URL: 'https://dpisud-beta.infy.uk',
+    APP_LOCAL_URL: 'http://localhost'
+}
 export const CONFIG_APP = {
-    APP_URL: 'http://localhost',
+    APP_URL: CONFIG_VALUES.APP_LOCAL_URL,
     APP_NAME: CONFIG_DATA.NAME_ACRONYM,
     APP_VERSION: '1.0.0',
     APP_DESCRIPTION: 'Web del ' + CONFIG_DATA.NAME_FULL,
@@ -27,15 +30,16 @@ export const CONFIG_SOCIAL_NETW = {
 }
 
 export const CONFIG_BACKEND = {
-    API_DIR: import.meta.env.VITE_API_BASE_URL
+    API_DIR: import.meta.env.VITE_API_BASE_URL,
+    API_WEB: "https://dpisud-beta.infy.uk/api"
 }
 
 export const CONFIG_PATHS = {
-    ROOT_Path: "/DPISUD/",
-    HOME_PATH: "/DPISUD/",
+    ROOT_Path: "/",
+    HOME_PATH: "/",
     INDEX_PATH: "/index.php",
     NEWS_PATH: "/noticias",
-    ABOUT_PATH: "/acerca-de",
+    ABOUT_US_PATH: "/acerca-de",
     RESOURCES_PATH: "/recursos",
     DONATE_PATH: "/donar",
     CONTACT_PATH: "/contacto",
@@ -47,5 +51,8 @@ export const CONFIG_PATHS = {
     CONFIG_PASSW_PATH: "/passw",
     HELP_PATH: "/ayuda",
 
-    PROFILE_PATH: "/perfil"
+    YOUR_WELLCOME_PATH: "/bienvenida",
+    PROFILE_PATH: "/perfil",
+    PROFILE_EDIT_PATH: "/editar-perfil",
+    NEW_POST_PATH: "/nueva-publicacion"
 }

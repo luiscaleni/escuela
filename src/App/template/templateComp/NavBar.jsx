@@ -2,13 +2,13 @@ import {useState, useContext} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import styles from "./css/NavBar.module.css"
-import arrow from "../../assets/flecha.png"
-import Logo from "../../assets/public/isotipo.svg"
+import arrow from "../../assets/arrow.png"
+import Logo from "/isotipo.svg"
 import { CONFIG_PATHS } from '../../config/config'
 import Button from '../../components/Button'
 import ImgProfile from '../../components/ImgProfile'
-import menu from '/assets/responsive/menu.png'
-import close from '/assets/responsive/close.png'
+import menu from '/assets/images/responsive/menu.png'
+import close from '/assets/images/responsive/close.png'
 import { UserContext } from '../../components/UserProvider'
 
 function NavBar() {
@@ -42,11 +42,13 @@ function NavBar() {
         let wellcomeName = document.getElementById("wellcomeName")
         let contWellcome = document.getElementById("contWellcome")
         let menuProfileButton = document.getElementById("menuProfileButton")
+        let contContImgProfile = document.getElementById("contContImgProfile")
 
         if (menuProfileOpen) {
             menuProfile.style.width = "12rem"
             contWellcome.style.width = "10rem"
             contWellcome.style.paddingTop="0.5rem"
+            contContImgProfile.style.width = "3.5rem"
             menuProfileButton.style.width="10rem"
             ulMenuProfile.style.display = "flex"
             imgMenu.style.transform="rotateZ(180deg)"
@@ -58,6 +60,7 @@ function NavBar() {
         }else {
             contWellcome.style.width = "4rem"
             contWellcome.style.paddingTop="0rem"
+            contContImgProfile.style.width = "4rem"
             ulMenuProfile.style.display = "none"
             menuProfile.style.width = "4rem"
             imgMenu.style.transform="rotateZ(0deg)"
@@ -75,10 +78,10 @@ function NavBar() {
         setTogglePanel(!togglePanel)
         if(togglePanel){
             setImgMenuButtonPanel(menu)
-            panel.style.right="-42vw"
+            panel.style.right="-50vw"
         }else{
             setImgMenuButtonPanel(close)
-            panel.style.right="-2vw"
+            panel.style.right="0vw"
         }
     }
 
@@ -99,7 +102,6 @@ function NavBar() {
             const data = await response.json()
             if (data.logueado) {
                 setLogin(true)
-                console.log(data.logueado)
             }else{
                 navigate('/login')
             }
@@ -107,7 +109,6 @@ function NavBar() {
             // No mostrar detalles sensibles
             alert("Error al iniciar sesión. Intenta nuevamente.")
             setLogin(false)
-            console.log(error)
         } finally {
             setCargando(false)
             await loadUser()
@@ -125,14 +126,14 @@ function NavBar() {
                             </div>
                         </Link>
                         <div className={styles.navbarLinks} id='navbarLinks'>
-                            <Link to="/">Home</Link>
-                            <Link to="/noticias">Noticias</Link>
-                            <Link to="/sobre-nosotros">Nosotros</Link>
-                            <Link to="/recursos">Recursos</Link>
-                            <Link to="/contacto">Contacto</Link>
-                            <Link to="/donar">Donar</Link>
+                            <Link to={CONFIG_PATHS.HOME_PATH}>Home</Link>
+                            <Link to={CONFIG_PATHS.NEWS_PATH}>Noticias</Link>
+                            <Link to={CONFIG_PATHS.ABOUT_US_PATH}>Nosotros</Link>
+                            <Link to={CONFIG_PATHS.RESOURCES_PATH}>Recursos</Link>
+                            <Link to={CONFIG_PATHS.CONTACT_PATH}>Contacto</Link>
+                            <Link to={CONFIG_PATHS.DONATE_PATH}>Donar</Link>
                             {!user && (
-                                <Link to="/login">Login</Link>
+                                <Link to={CONFIG_PATHS.LOGIN_PATH}>Login</Link>
                             )}
                         </div>
                         <menu className={styles.navbarMenu} id='navbarMenu' onClick={() => toggleMenu()}>
@@ -151,13 +152,18 @@ function NavBar() {
                         </div>
                         <div className={styles.panel} id='panel'>
                             <div className={styles.navbarLinksPanel}>
-                                <Link to="/">Home</Link>
-                                <Link to="/noticias">Noticias</Link>
-                                <Link to="/sobre-nosotros">Nosotros</Link>
-                                <Link to="/recursos">Recursos</Link>
-                                <Link to="/contacto">Contacto</Link>
-                                <Link to="/donar">Donar</Link>
-
+                                <Link to={CONFIG_PATHS.HOME_PATH}>Home</Link>
+                                <Link to={CONFIG_PATHS.NEWS_PATH}>Noticias</Link>
+                                <Link to={CONFIG_PATHS.ABOUT_US_PATH}>Nosotros</Link>
+                                <Link to={CONFIG_PATHS.RESOURCES_PATH}>Recursos</Link>
+                                <Link to={CONFIG_PATHS.CONTACT_PATH}>Contacto</Link>
+                                <Link to={CONFIG_PATHS.DONATE_PATH}>Donar</Link>
+                                {!user && (
+                                    <Link to={CONFIG_PATHS.LOGIN_PATH}>Login</Link>
+                                )}
+                                 {user && (
+                                    <>
+                                    <Link to={CONFIG_PATHS.NEW_POST_PATH}>Publicar</Link>
                                     <Link to={CONFIG_PATHS.PROFILE_PATH}>Perfil</Link>
                                     <Link to={CONFIG_PATHS.CONFIG_PATH}>Configuración</Link>
                                     <Link to={CONFIG_PATHS.HELP_PATH}>Ayuda</Link>
@@ -170,6 +176,8 @@ function NavBar() {
                                             disabled={cargando}
                                         >Cerrar sesión</Button>
                                     </form>
+                                    </>
+                                 )}
                             </div>
                         </div>
                     </div>
@@ -178,11 +186,14 @@ function NavBar() {
                             <div className={`${styles.menuButton} ${styles.menuProfileButton}`} id="menuProfileButton" onClick={() => toggleMenuProfile()}>
                                 <div className={styles.contWellcome} id="contWellcome">
                                     <p className={styles.wellcomeName} id="wellcomeName">{user.names}</p>
-                                    <ImgProfile />
+                                    <div className={styles.contContImgProfile} id="contContImgProfile">
+                                        <ImgProfile id="imgProfile"/>
+                                    </div>
                                 </div>
                                 <img src={arrow} alt="arrowMenu" id="imgMenu" className={`${styles.menuIcon} ${styles.menuIconProfile}`} />
                             </div>
                             <ul className={`${styles.menu} ${styles.ulMenuProfile}`} id="ulMenuProfile">
+                                <li><Link to={CONFIG_PATHS.NEW_POST_PATH}>Publicar</Link></li>
                                 <li><Link to={CONFIG_PATHS.PROFILE_PATH}>Perfil</Link></li>
                                 <li><Link to={CONFIG_PATHS.CONFIG_PATH}>Configuración</Link></li>
                                 <li><Link to={CONFIG_PATHS.HELP_PATH}>Ayuda</Link></li>

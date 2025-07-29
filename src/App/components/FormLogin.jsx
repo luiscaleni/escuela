@@ -4,6 +4,7 @@ import { useState } from "react"
 import Button from "./Button"
 import { useContext } from "react"
 import { UserContext } from "./UserProvider"
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 
 function FormLogin() {
     const { loadUser } = useContext(UserContext)
@@ -23,15 +24,14 @@ function FormLogin() {
         setCargando(true)
 
         try {
-            const apiUrl = import.meta.env.VITE_API_BASE_URL
-            const response = await fetch(`${apiUrl}/user/login`, {
+            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/login`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: JSON.stringify(form)
+                body: JSON.stringify(form),
             })
             if (!response.ok) {
                 throw new Error('Network response was not ok')
@@ -40,9 +40,8 @@ function FormLogin() {
             if (data.success) {
                 await loadUser()
                 setForm({ email: '', passw: '' })
-                navigate("/bienvenida")
+                navigate(CONFIG_PATHS.YOUR_WELLCOME_PATH)
             } else {
-                console.log(data)
                 alert("Credenciales incorrectas. Intenta nuevamente.")
             }
         } catch (error) {

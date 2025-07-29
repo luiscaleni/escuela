@@ -23,6 +23,7 @@
 }
 .loadingContainer::after{
     padding-top: 1em;
+    color: black;
     content: 'Cargando';
 }
 

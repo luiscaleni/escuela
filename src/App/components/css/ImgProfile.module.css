@@ -1,12 +1,25 @@
-.imgProfile {
-    width: auto;
+.contImgProfile{
+  width: 100%;
+  height: auto;
+  min-width: 3rem;
+  min-height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contImgProfile > .imgProfile {
+    width: 100%;
     height: 100%;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 8rem;
+    max-height: 8rem;
     min-width: 3rem;
     min-height: 3rem;
     border-radius: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: all ease-in-out .3s;
 
     display: flex;
@@ -16,8 +29,7 @@
 
 @media (max-width:1024px){
     .contImgProfile > .imgProfile {
-        width: 3em;
-        height: 3em;
+        padding: 0.5rem;
         min-width: 2.5em;
         min-height: 2.5em;
     }

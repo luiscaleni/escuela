@@ -5,8 +5,11 @@ export default defineConfig(({ mode, command }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    base: mode === 'production' ? '/web/' : '/',
+    base: './',
     plugins: [react()],
+    define: {
+      global: 'window',
+    },
     server: {
       proxy: {
         '/api': {

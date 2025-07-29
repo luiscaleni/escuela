@@ -1,13 +1,12 @@
 import Template from '../template/Template'
 import Block from '../components/Block'
-import aboutUsBanner from '../assets/public/banners/aboutUs.jpg'
 import Publication from '../components/Publication'
 
 function AboutUs() {
   return (
     <>
       <Template>
-        <Publication titlePub="Acerca de nosotros" imgPub={aboutUsBanner}>
+        <Publication titlePub="Acerca de nosotros" imgPub="aboutUs.jpg">
           <Block>
             <h2>Iglesia de Dios de la Profecía</h2>
             <p>

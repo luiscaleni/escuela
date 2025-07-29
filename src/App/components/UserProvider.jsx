@@ -1,17 +1,16 @@
-// UserProvider.jsx
-import React, { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
+import { CONFIG_BACKEND } from '../config/config'
 
 export const UserContext = createContext()
 
 export function UserProvider({ children }) {
-  const apiUrl = import.meta.env.VITE_API_BASE_URL
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
 
   const loadUser = async () => {
     setLoading(true)
     try {
-      const res = await fetch(`${apiUrl}/user/session`, {
+      const res = await fetch(`${CONFIG_BACKEND.API_DIR}/user/session`, {
         method: 'POST',
         credentials: 'include'
       })

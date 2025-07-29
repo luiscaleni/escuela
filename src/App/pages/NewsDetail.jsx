@@ -6,6 +6,7 @@ import Template from '../template/Template'
 import Publication from '../components/Publication'
 import BackLink from '../components/BackLink'
 import Container from '../components/Container'
+import Loader from '../components/Loader'
 
 function NewsDetail() {
     const {id_news} = useParams()
@@ -16,7 +17,7 @@ function NewsDetail() {
     useEffect(()=>{
         if (!id_news) return
 
-        fetch(`${CONFIG_BACKEND.API_DIR}/new/detail?id=${id_news}`)
+        fetch(`${CONFIG_BACKEND.API_DIR}/news/detail?id=${id_news}`)
          .then(async res => {
             const text = await res.text()
             try {
@@ -33,17 +34,17 @@ function NewsDetail() {
         }).finally(()=> setLoading(false))
     },[id_news])
     
-    if(loading) return <p>Cargando ...</p>
+    if(loading) return <Loader />
     if(error) return <p>Error: {error}</p>
 
-    const parrafos = news.text_pub
-    .split(/\n+/)
-    .filter(p => p.trim() !== '');
+    const parrafos = typeof news?.text_pub === 'string'
+    ? news.text_pub.split(/\n+/).filter(p => p.trim() !== '')
+    : [];
 
     return ( 
         <>
             <Template>
-                <Publication titlePub={news.title_pub}>
+                <Publication titlePub={news.title_pub} imgPub={news.img_pub} location='publications'>
                     <Container widthElm="max">
                         <BackLink typeElm="expand"/>
                         <div className={styles.separator}></div>

@@ -27,6 +27,14 @@
   flex-direction: column;
 }
 
+.contForm > .formPost{
+  width: 50vw;
+}
+
+.textareaPost{
+  height: 25rem;
+}
+
 .contForm > form > a {
   text-decoration: underline;
   padding-top: 0.5em;

@@ -17,7 +17,8 @@ section, .section > p{
     overflow: hidden;
     width: 100%;
     min-height: 30rem;
-    background: var(--background-linear-gradient-3);
+    height: auto;
+    background-color: #333;
 
     display: flex;
     align-items: center;
@@ -31,7 +32,7 @@ section, .section > p{
     font-size:5.5vh;
     color: white;
     text-align: center;
-    text-shadow: var(--text-shadow-2);
+    text-shadow: var(--text-shadow-strong);
     z-index: 2;
 
     display: flex;
@@ -43,6 +44,10 @@ section, .section > p{
     width: 100vw;
     height: auto;
     top: 0;
+}
+
+.bgBlack{
+    background-color: black;
 }
 
 .sectionXtreme{

@@ -3,7 +3,7 @@ import styles from './Template.module.css'
 import NavBar from './templateComp/NavBar'
 import Main from './templateComp/Main'
 import Footer from './templateComp/Footer'
-import Loader from './templateComp/Loader'
+import Loader from '../components/Loader'
 
 function Template({children, separator=false}) {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,6 +14,7 @@ function Template({children, separator=false}) {
       setIsLoading(false)
     }
   }, [])
+
     return ( 
       <>
         {isLoading ? (
