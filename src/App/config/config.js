@@ -2,7 +2,7 @@
 // This file contains constants that are used throughout the application
 
 export const CONFIG_VALUES = {
-    APP_PRODUCTION_URL: 'https://dpisud-beta.infy.uk',
+    APP_PRODUCTION_URL: 'https://dpisud-beta.kesug.com',
     APP_LOCAL_URL: 'http://localhost'
 }
 
@@ -16,7 +16,7 @@ export const CONFIG_SOCIAL_NETW = {
 
 export const CONFIG_BACKEND = {
     API_DIR: import.meta.env.VITE_API_BASE_URL,
-    API_WEB: "https://dpisud-beta.infy.uk/api"
+    API_WEB: "https://dpisud-beta.kesug.com/api"
 }
 
 export const CONFIG_PATHS = {
