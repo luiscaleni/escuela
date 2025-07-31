@@ -130,7 +130,6 @@ function NavBar() {
                             <Link to={CONFIG_PATHS.NEWS_PATH}>Noticias</Link>
                             <Link to={CONFIG_PATHS.ABOUT_US_PATH}>Nosotros</Link>
                             <Link to={CONFIG_PATHS.RESOURCES_PATH}>Recursos</Link>
-                            <Link to={CONFIG_PATHS.CONTACT_PATH}>Contacto</Link>
                             <Link to={CONFIG_PATHS.DONATE_PATH}>Donar</Link>
                             {!user && (
                                 <Link to={CONFIG_PATHS.LOGIN_PATH}>Login</Link>
@@ -156,7 +155,6 @@ function NavBar() {
                                 <Link to={CONFIG_PATHS.NEWS_PATH}>Noticias</Link>
                                 <Link to={CONFIG_PATHS.ABOUT_US_PATH}>Nosotros</Link>
                                 <Link to={CONFIG_PATHS.RESOURCES_PATH}>Recursos</Link>
-                                <Link to={CONFIG_PATHS.CONTACT_PATH}>Contacto</Link>
                                 <Link to={CONFIG_PATHS.DONATE_PATH}>Donar</Link>
                                 {!user && (
                                     <Link to={CONFIG_PATHS.LOGIN_PATH}>Login</Link>

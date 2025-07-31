@@ -44,7 +44,7 @@
   --background-color-btnHover: #0055c4;
   --background-linear-gradient: linear-gradient(15deg,rgb(97, 197, 255), #9077ff );
   --background-linear-gradient-2: linear-gradient(to bottom, #d8d8d8, #222222);
-  --background-linear-gradient-3: linear-gradient(to bottom, #00883B, #000000);
+  --background-linear-gradient-3: linear-gradient(to bottom, #0473BD, #000D33);
   --background-linear-gradient-4: linear-gradient(15deg, #1856ff, #1c241f);
 
 
@@ -101,13 +101,14 @@ p{
 
 
 input[type=text],
+input[type=number],
 input[type=password],
 input[type=email],
 input[type=date],
 select,
 textarea,
 div > label > div{
-  max-width: 55rem;
+  max-width: 60rem;
   width: 100%;
   height: auto;
   padding: 0.8rem;

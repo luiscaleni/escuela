@@ -2,7 +2,7 @@
 .containerMax{
     position: relative;
     overflow: hidden;
-    max-width: 52rem;
+    max-width: 75rem;
     min-width: 22rem;
     min-height: 32rem;
     width: 80vw;

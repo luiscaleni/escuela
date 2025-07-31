@@ -1,7 +1,7 @@
 section, .section{
     position: relative;
     width: 100%;
-    min-height: 40rem;
+    min-height: 10rem;
 
     display: flex;
     align-items: center;
@@ -43,7 +43,7 @@ section, .section > p{
     position: absolute;
     width: 100vw;
     height: auto;
-    top: 0;
+    top: 0rem;
 }
 
 .bgBlack{
@@ -60,7 +60,6 @@ section, .section > p{
     background-color: #fff;
     transform: translateY(-2.5rem);
     
-
     display: flex;
     justify-content: center;
     align-items: center;

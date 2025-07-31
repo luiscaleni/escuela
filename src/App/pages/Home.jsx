@@ -1,13 +1,24 @@
 import Template from '../template/Template'
 import Section from '../components/Section'
 import Video from '../components/Video'
-import { CONFIG_DATA } from '../config/config'
+import { useEffect, useState } from 'react'
+import LoadConfigData from '../components/LoadConfigData'
 
 function Home() {
+  const [configData, setConfigData]  = useState(null)
+  const [cargando, setCargando] = useState(false)
+  const loadConfigData = LoadConfigData(setCargando, setConfigData)
+  useEffect(() => {
+      loadConfigData()
+  }, [])
+
   return (
     <Template>
-      <Section typeElm="banner" titleElm={CONFIG_DATA.NAME_FULL}>
+      <Section typeElm="banner" titleElm={configData?.dptoNameConfig}>
         <Video nameVideo="bg" />
+      </Section>
+      <Section titleElm="Bienvenido a mi sitio web">
+          {configData?.contentConfig}
       </Section>
       <Section typeElm="maps">
         <iframe

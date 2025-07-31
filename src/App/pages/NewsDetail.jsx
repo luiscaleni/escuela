@@ -44,7 +44,7 @@ function NewsDetail() {
     return ( 
         <>
             <Template>
-                <Publication titlePub={news.title_pub} imgPub={news.img_pub} location='publications'>
+                <Publication titlePub={news.title_pub} imgPub={news.img_pub} locationPub='publications'>
                     <Container widthElm="max">
                         <BackLink typeElm="expand"/>
                         <div className={styles.separator}></div>

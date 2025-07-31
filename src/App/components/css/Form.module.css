@@ -9,7 +9,7 @@
 }
 .contForm > form {
   position: relative;
-  width: 30rem;
+  width: 35rem;
   height: auto;
   min-width: 20rem;
   color: var(--color-dark);
@@ -86,10 +86,10 @@ label > span{
   align-items: center;
   flex-direction: row;
 }
-.contForm > form > .contFormInput > label > .emailData{
+.contForm > form > .contFormInput > label > .showData{
   max-width: 55rem;
   width: 100%;
-  height: auto;
+  height: 3rem;
   padding: 0.8rem;
   font-size: 1rem;
   color: black;
@@ -98,7 +98,7 @@ label > span{
   border-radius: var(--border-radius);
   background-color: rgb(226, 255, 203);
 }
-.contForm > form > .contFormInput > label > .emailData,
+.contForm > form > .contFormInput > label > .showData,
 .contForm > form > .contFormInput > label > .contImgProfilePreview{
   width: 100%;
 

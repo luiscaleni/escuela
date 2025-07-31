@@ -8,11 +8,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .block > h2{
-    font-size: 3.5rem;
+    font-size: 3rem;
     padding: 1rem;
     color: var(--color-titles)
 }
@@ -21,7 +21,7 @@
     color: var(--color);
 }
 .block > img{
-    max-width: 20rem;
+    max-width: 30rem;
     border-radius: 3rem;
 }
 

@@ -126,7 +126,7 @@ function FormProfileEdit() {
                     <div className={styles.contFormInput}>
                         <label>
                             <span>Email:</span>
-                            <p className={styles.emailData} title='No se puede cambiar este valor'>{user.email}</p>
+                            <p className={styles.showData} title='No se puede cambiar este valor'>{user.email}</p>
                         </label>
                     </div>
                     <div className={styles.contFormInput}>

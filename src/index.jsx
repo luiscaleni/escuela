@@ -9,7 +9,6 @@ import News            from './App/pages/News'
 import AboutUs         from './App/pages/AboutUs'
 import Resources       from './App/pages/Resources'
 import Donate          from './App/pages/Donate'
-import Contact         from './App/pages/Contact'
 
 import Register        from './App/pages/Register'
 import Login           from './App/pages/Login'
@@ -32,7 +31,6 @@ const routes = [
   { path: CONFIG_PATHS.ABOUT_US_PATH,          element: <AboutUs/>,      },
   { path: CONFIG_PATHS.RESOURCES_PATH,         element: <Resources/>,    },
   { path: CONFIG_PATHS.DONATE_PATH,            element: <Donate/>,       },
-  { path: CONFIG_PATHS.CONTACT_PATH,           element: <Contact/>,      },
   { path: CONFIG_PATHS.REGISTER_PATH,          element: <PublicRoute>    <Register/>      </PublicRoute>    },
   { path: CONFIG_PATHS.LOGIN_PATH,             element: <PublicRoute>    <Login/>         </PublicRoute>    },
   //Protected

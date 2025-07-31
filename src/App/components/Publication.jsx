@@ -2,16 +2,14 @@ import Section from '../components/Section'
 import styles from './css/Publication.module.css'
 import { CONFIG_BACKEND } from '../config/config'
 
-function Publication({titlePub, imgPub="", location="", children}) {
+function Publication({titlePub, imgPub="", locationPub="", children}) {
   let imgSrc
   let nameImg = imgPub
 
-  if(imgPub){
-    imgSrc = <img src={`${CONFIG_BACKEND.API_DIR}/src/assets/${location}/${nameImg}`} alt="Imagen de la publicación" />
-  }
-
-  if(imgPub && !location){
-    imgSrc = <img src={`${CONFIG_BACKEND.API_DIR}/src/assets/public/images/${nameImg}`} alt="Imagen de la publicación" />
+  if(imgPub && locationPub){
+    imgSrc = <img src={`${CONFIG_BACKEND.API_DIR}/src/assets/${locationPub}/${nameImg}`} alt="Imagen de la publicación" />
+  }else if(imgPub && !locationPub){
+    imgSrc = <img src={`${CONFIG_BACKEND.API_DIR}/src/public/assets/images/${nameImg}`} alt="Imagen de la publicación" />
   }
 
   return (
