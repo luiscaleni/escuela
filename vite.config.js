@@ -1,8 +1,9 @@
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
-import { CONFIG_BACKEND } from './src/App/config/config'
 
-export default defineConfig(() => {
-
+export default defineConfig(({ mode, command }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+  
   return {
     base: './',
     plugins: [react()],
@@ -12,7 +13,7 @@ export default defineConfig(() => {
     server: {
       proxy: {
         '/api': {
-          target: CONFIG_BACKEND.API_DIR,
+          target: env.VITE_API_BASE_URL,
           changeOrigin: true,
           secure: false,
           rewrite: path => path.replace(/^\/api/, '')
