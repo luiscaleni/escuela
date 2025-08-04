@@ -13,7 +13,6 @@ section, .section > p{
     color: #000;
 }
 .sectionBanner{
-    /*position: relative;*/
     position: fixed;
     overflow: hidden;
     width: 100%;
