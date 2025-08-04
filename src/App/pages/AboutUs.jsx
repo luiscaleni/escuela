@@ -4,12 +4,21 @@ import Publication from '../components/Publication'
 import Container from '../components/Container'
 import Section from '../components/Section'
 import ElmSelection from '../components/ElmSelection'
+import { useState, useEffect } from 'react'
+import LoadConfigData from '../components/LoadConfigData'
 
 function AboutUs() {
+  const [configData, setConfigData]  = useState(null)
+  const [cargando, setCargando] = useState(false)
+  const loadConfigData = LoadConfigData(setCargando, setConfigData)
+  useEffect(() => {
+      loadConfigData()
+  }, [])
+
   return (
     <>
       <Template>
-        <Publication titlePub="Acerca de nosotros" imgPub="aboutUs.jpg">
+        <Publication titlePub="Acerca de nosotros" typeElm='img' nameAsset="about-us.jpg">
           <Section>
             <Container>
               <Block>
@@ -32,7 +41,7 @@ function AboutUs() {
               <ElmSelection>
                 <p>
                   <span>Email:</span> 
-                  idpsudamerica@gmail.com
+                  {configData?.emailConfig}
                 </p>
               </ElmSelection>
             </Block>

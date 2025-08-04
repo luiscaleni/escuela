@@ -32,7 +32,7 @@ function News() {
     return ( 
         <>
             <Template>
-                <Publication titlePub="Noticias">
+                <Publication titlePub="Noticias" typeElm='img' nameAsset="banner-news.jpg">
                     {publications.map(pub => (
                         <Card key={pub.id_pub}
                             link={`/noticias/${pub.id_pub}`}

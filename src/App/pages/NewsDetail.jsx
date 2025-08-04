@@ -1,7 +1,7 @@
 import styles from '../components/css/Section.module.css'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { CONFIG_BACKEND } from '../config/config'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Template from '../template/Template'
 import Publication from '../components/Publication'
 import BackLink from '../components/BackLink'
@@ -24,7 +24,7 @@ function NewsDetail() {
                 const json = JSON.parse(text)
                 setNews(json)
             } catch (error) {
-                console.error("Respuesta no es JSON válido:", text)
+                console.error("Respuesta no es JSON válido:", error)
             }
         })
         .catch(error => {
@@ -44,9 +44,9 @@ function NewsDetail() {
     return ( 
         <>
             <Template>
-                <Publication titlePub={news.title_pub} imgPub={news.img_pub} locationPub='publications'>
+                <Publication titlePub={news.title_pub} nameAsset={news.img_pub} locationPub='publications'>
                     <Container widthElm="max">
-                        <BackLink typeElm="expand"/>
+                        <BackLink typeElm="expand" text="Volver" locationElm={CONFIG_PATHS.NEWS_PATH}/>
                         <div className={styles.separator}></div>
                         {parrafos.map((p, i)=>(
                             <p className={styles.paragraph} key={i}>{p}</p>

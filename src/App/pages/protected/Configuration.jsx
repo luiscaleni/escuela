@@ -1,7 +1,6 @@
-import styles from './css/Configuration.module.css'
 import Template from '../../template/Template'
 import Section from '../../components/Section'
-import FormConfigEdit from '../../components/FormConfigEdit'
+import ShowConfigData from '../../components/ShowConfigData'
 
 function Configuration() {
 
@@ -9,7 +8,7 @@ function Configuration() {
         <>
         <Template separator={true}>
             <Section>
-                <FormConfigEdit />
+                <ShowConfigData />
             </Section>
         </Template>
         </>

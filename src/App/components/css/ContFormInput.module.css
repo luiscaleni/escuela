@@ -1,0 +1,36 @@
+.contFormInput {
+  max-width: 60rem;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0.4rem;
+  font-size: 1rem;
+  color: black;
+  border-radius: var(--border-radius);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.contFormInput > label {
+  position: relative;
+  width: 100%;
+  height: auto;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.contFormInput > label > div > label{
+  margin: 0 2rem;
+}
+.contFormInput > label > .radio > label{
+  padding: 0 0.4rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}

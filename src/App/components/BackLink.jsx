@@ -1,26 +1,23 @@
+import ButtonTop from "./ButtonTop"
 import arrow from "../assets/arrow.png"
-import styles from "./css/BackLink.module.css"
+import styles from './css/BackLink.module.css'
+import { Link } from "react-router-dom"
 
-function BackLink({typeElm}) {
-    const backHistory = ()=>{ history.back() }
-    let content
-    let typeStyle
-
-    if(typeElm === "expand"){
-        typeStyle = "backLinkExpand"
-        content = " Volver"
-    }else{
-        typeStyle = "backLink"
-    }
-
+function BackLink({text, locationElm=""}) {
+    
     return ( 
         <>
-            <div className={styles[typeStyle]} id='backLink' onClick={backHistory}>
-                <img src={arrow} alt='imgBackButton'/>
-                {content ? content : null}
-            </div>
+        <div className={styles.contBackLink}>
+            <Link to={locationElm}>
+                <ButtonTop
+                    imgElm={arrow}
+                    textElm={text}
+                    alt='imgBackButton'
+                />
+            </Link>
+        </div>
         </>
      );
 }
 
-export default BackLink;
+export default BackLink

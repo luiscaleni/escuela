@@ -1,0 +1,24 @@
+.showData{
+  max-width: 55rem;
+  min-width: 30rem;
+  min-height: 3rem;
+  width: 100%;
+  height: auto;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: black;
+  user-select: none;
+  border: 0.1rem solid #ccc;
+  border-radius: var(--border-radius);
+  background-color: rgb(226, 255, 203);
+}
+
+.showData,
+.contImgProfilePreview{
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

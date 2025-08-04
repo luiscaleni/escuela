@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import styles from "./css/NavBar.module.css"
 import arrow from "../../assets/arrow.png"
 import Logo from "/isotipo.svg"
-import { CONFIG_PATHS } from '../../config/config'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../../config/config'
 import Button from '../../components/Button'
 import ImgProfile from '../../components/ImgProfile'
 import menu from '/assets/images/responsive/menu.png'
@@ -20,7 +20,7 @@ function NavBar() {
     const [togglePanel, setTogglePanel] = useState(false)
     const navigate = useNavigate()        
     
-    const apiUrl = import.meta.env.VITE_API_BASE_URL
+    const apiUrl = CONFIG_BACKEND.API_DIR
     const [imgMenuButtonPanel, setImgMenuButtonPanel] = useState(menu)
 
     function toggleMenu() {

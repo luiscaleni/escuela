@@ -5,7 +5,7 @@ export default function LoadConfigData(setCargando,setConfigData) {
         setCargando(true)
         try{
             const res = await fetch(`${CONFIG_BACKEND.API_DIR}/config/consultData`, {
-                method: 'POST',
+                method: 'GET',
                 credentials: 'include'
             })
             const d = await res.json()

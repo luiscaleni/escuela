@@ -17,35 +17,7 @@
   justify-content: center;
   align-items: center;
 }
-.bannerProfile > a > .contImgEdit{
-  cursor: pointer;
-  position: absolute;
-  width: auto;
-  height: 1em;
-  padding: 0.8em 0.4em;
-  top: 0.5em;
-  right:0.7em;
-  color: #fff;
-  border: var(--border);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-inset), var(--box-shadow);
-  backdrop-filter: var(--backdrop-filter);
-  background: var(--background);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-.bannerProfile > a > .contImgEdit > img{
-  margin-right: 0.2em;
-  width: 0.8rem;
-}
-.bannerProfile > a > .contImgEdit > p{
-  color: white;
-  font-size: 0.8rem;
-  text-shadow: var(--text-shadow-2);
-}
 .bannerProfile > .contTitleProfile{
   width: 95%;
   height: 100%;

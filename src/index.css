@@ -20,7 +20,7 @@
   --color-dark: black;
   --color-light: #f0f0f0;
 
-  --border: 0.1rem solid rgba(239, 247, 255, 0.2);
+  --border: 0.1rem solid #a8a8a8;
   --border-radius: 2rem;
   --border-radius-sm: 1.5rem;
   
@@ -44,8 +44,8 @@
   --background-color-btnHover: #0055c4;
   --background-linear-gradient: linear-gradient(15deg,rgb(97, 197, 255), #9077ff );
   --background-linear-gradient-2: linear-gradient(to bottom, #d8d8d8, #222222);
-  --background-linear-gradient-3: linear-gradient(to bottom, #0473BD, #000D33);
-  --background-linear-gradient-4: linear-gradient(15deg, #1856ff, #1c241f);
+  --background-linear-gradient-3: linear-gradient(to bottom, #333333, #111111);
+  --background-linear-gradient-4: linear-gradient(15deg, #005256, #02A042);
 
 
   --background-success:rgba(0, 255, 21, 0.5);
@@ -106,15 +106,14 @@ input[type=password],
 input[type=email],
 input[type=date],
 select,
-textarea,
-div > label > div{
+textarea{
   max-width: 60rem;
   width: 100%;
   height: auto;
   padding: 0.8rem;
   font-size: 1rem;
   color: black;
-  border: 0.1rem solid #a8a8a8;
+  border: var(--border);
   border-radius: var(--border-radius);
   background-color: #e1e1e1;
 }
@@ -141,5 +140,18 @@ input[type=radio]{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
+}
+
+.contButtonsTop{
+  position: absolute;
+  top: 1.2rem;
+  z-index: 100;
+  width: 95%;
+  height: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: row;
 }

@@ -40,16 +40,6 @@
   padding-top: 0.5em;
   color: #333;
 }
-.contForm > form > .contFormInput {
-  width: 90%;
-  height: auto;
-  margin: 0.2rem 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
 label{
   display: flex;
   justify-content: center;
@@ -60,57 +50,7 @@ label > span{
   width: 100%;
   padding: 0.2rem 0.8rem;
 }
-.contForm > form > .contFormInput > label {
-  position: relative;
-  width: 100%;
-  height: auto;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.contForm > form > .contFormInput > label > .radio{
-  width: 100%;
-  height: 100%;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.contForm > form > .contFormInput > label > .radio > label{
-  padding: 0 0.4rem;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-.contForm > form > .contFormInput > label > .showData{
-  max-width: 55rem;
-  width: 100%;
-  height: 3rem;
-  padding: 0.8rem;
-  font-size: 1rem;
-  color: black;
-  user-select: none;
-  border: 0.1rem solid #ccc;
-  border-radius: var(--border-radius);
-  background-color: rgb(226, 255, 203);
-}
-.contForm > form > .contFormInput > label > .showData,
-.contForm > form > .contFormInput > label > .contImgProfilePreview{
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.contForm > form > .contFormInput > label > .contImgProfilePreview > img{
-  width: 5rem;
-  height: 5rem;
-}
 .contForm > .alert {
   width: 100%;
   height: auto;
@@ -133,7 +73,32 @@ label > span{
   justify-content: center;
   align-items: center;
 }
+.radio{
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: #E1E1E1;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.contImgProfilePreview{
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: #E1E1E1;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 @media (max-width: 440px){
   .contForm > form {

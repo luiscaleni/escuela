@@ -21,67 +21,7 @@ function FormContact() {
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
-    /*
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        const tagForm = document.getElementById("formRegister")
-        const alertContainer = document.getElementById('alertContainer')
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-        if (!emailRegex.test(form.email)) {
-                alert("Email inválido")
-                return
-        }
-        if (form.passw.length < 6) {
-                alert("La contraseña debe tener al menos 8 caracteres")
-                return
-        }
-
-        const userData = {
-                names: event.target.names.value,
-                email: event.target.email.value,
-                country: event.target.country.value,
-                province: event.target.province.value,
-                message: event.target.message.value
-        }
-        alertContainer.style.padding="0.5em"
-        try {
-                const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/save`, {
-                        method: 'POST',
-                        headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
-                        },
-                        body: JSON.stringify(userData)
-                })
-                const data = await response.json()
-                
-                if(data.error==="Faltan datos"){
-                        alertContainer.style.backgroundColor="#f00"
-                        alertContainer.innerHTML="❌ "+data.error
-                        tagForm.reset()
-                        setTimeout(() => {
-                                alertContainer.innerHTML=""
-                                alertContainer.style.padding=""
-                        }, 3000)
-                }else if(data.success === true){
-                        alertContainer.style.backgroundColor="#059c38"
-                        alertContainer.innerHTML="✅ "+data.message
-                        setCargando(true)
-                        setTimeout(() => {
-                                navigate('/login')
-                        }, 3000)
-                }
-        } catch (errorCatch) {
-                console.error("❌ Error en api:", errorCatch)//
-                alertContainer.innerHTML="❌ "+errorCatch.error
-                alertContainer.style.backgroundColor="#f00"
-                setTimeout(() => {
-                        tagForm.reset()
-                }, 2000)
-        }
-    }
-    */
 
     return (
         <>

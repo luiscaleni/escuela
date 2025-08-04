@@ -1,7 +1,7 @@
 import Template from '../template/Template'
 import Publication from '../components/Publication'
 
-function Home() {
+function Donate() {
   return (
     <>
       <Template>
@@ -12,4 +12,4 @@ function Home() {
   )
 }
 
-export default Home
+export default Donate

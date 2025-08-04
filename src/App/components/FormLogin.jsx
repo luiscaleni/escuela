@@ -5,6 +5,7 @@ import Button from "./Button"
 import { useContext } from "react"
 import { UserContext } from "./UserProvider"
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import ContFormInput from "./ContFormInput"
 
 function FormLogin() {
     const { loadUser } = useContext(UserContext)
@@ -63,35 +64,29 @@ function FormLogin() {
                     onSubmit={handleSubmit}
                 >
                     <h2>Iniciar Sesión</h2>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Email:</span>
-                            <input
-                                type="email"
-                                placeholder='Email'
-                                value={form.email}
-                                name='email'
-                                id='email'
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Contraseña:</span>
-                            <input
-                                type="password"
-                                placeholder='Contraseña'
-                                value={form.passw}
-                                name='passw'
-                                id='passwordLogin'
-                                onChange={handleChange}
-                                required
-                            />
-                        </label>
-                    </div>
-                    <div className={`${styles.contFormInput} ${styles.btn}`}>
+                    <ContFormInput nameElm="Email:">
+                        <input
+                            type="email"
+                            placeholder='Email'
+                            value={form.email}
+                            name='email'
+                            id='email'
+                            onChange={handleChange}
+                            required
+                        />
+                    </ContFormInput>
+                    <ContFormInput nameElm="Contraseña:">
+                        <input
+                            type="password"
+                            placeholder='Contraseña'
+                            value={form.passw}
+                            name='passw'
+                            id='passwordLogin'
+                            onChange={handleChange}
+                            required
+                        />
+                    </ContFormInput>
+                    <ContFormInput className={styles.btn}>
                         <Button
                             typeBtn='submit'
                             altName='IniciarSesion'
@@ -100,7 +95,7 @@ function FormLogin() {
                         >
                             {cargando ? "Cargando..." : "Iniciar Sesión"}
                         </Button>
-                    </div>
+                    </ContFormInput>
                     <Link to='/Registro'>Registrarme</Link>
                 </form>
             </div>

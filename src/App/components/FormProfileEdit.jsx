@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import Button from './Button'
 import BackLink from './BackLink'
 import Loader from './Loader'
+import ContFormInput from './ContFormInput'
+import ShowData from './ShowData'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '/assets/images/utilities/usuario_128.png'
 
@@ -109,86 +111,68 @@ function FormProfileEdit() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <BackLink />
+                    <BackLink typeElm='expand' text="Volver" locationElm={CONFIG_PATHS.PROFILE_PATH}/>
                     <h1>Editar</h1>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Nombres:</span>
-                            <input type="text" name="names" placeholder={user.names} onChange={handleChange}/>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Apellidos:</span>
-                            <input type="text" name="lastNames" placeholder={user.lastNames} id="apellidos" onChange={handleChange}/>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Email:</span>
-                            <p className={styles.showData} title='No se puede cambiar este valor'>{user.email}</p>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Sexo:</span>
-                            <div className={styles.radio}>
-                                <label>
-                                    <input type="radio" name="sex" value='M' id="masculino" onChange={handleChange}/>
-                                    Masculino
-                                </label>
+                    <ContFormInput nameElm="Nombres:">
+                        <input type="text" name="names" value={form.names} placeholder={user.names} onChange={handleChange}/>
+                    </ContFormInput>
 
-                                <label>
-                                    <input type="radio" name="sex" value='F' id="femenino" onChange={handleChange}/>
-                                    Femenino
-                                </label>
-                            </div>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>F. de nac.:</span>
-                            <input type="date" name="birthday" id="birthday" onChange={handleChange}/>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>País:</span>
-                            <select className={styles.select} name='country' onChange={handleChange}>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Bolivia">Bolivia</option>
-                                <option value="Brasil">Brasil</option>
-                                <option value="Chile">Chile</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="Ecuador">Ecuador</option>
-                                <option value="Paraguay">Paraguay</option>
-                                <option value="Perú">Perú</option>
-                                <option value="Uruguay">Uruguay</option>
-                                <option value="Venezuela">Venezuela</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Provincia:</span>
-                            <input type="text" name="province" placeholder={user.province} id="province" onChange={handleChange}/>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Acerca de mí:</span>
-                            <textarea id="aboutMe" name="aboutMe" placeholder={user.aboutMe} onChange={handleChange}></textarea>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Imagen de Perfil:</span>
-                            <div className={styles.contImgProfilePreview}>
-                                <img src={imgResult} alt='Preview imagen de perfil' id='imgUserPreview' />
-                                <input type="file" name="imgProfile" alt='Boton de carga de imagen de perfil' accept="image/*" onChange={handleImageChange}/>
-                            </div>
-                        </label>
-                    </div>
+                    <ContFormInput nameElm="Apellidos:">
+                        <input type="text" name="lastNames" value={form.lastNames} placeholder={user.lastNames} id="apellidos" onChange={handleChange}/>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Email:">
+                        <ShowData>{user.email}</ShowData>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Sexo:">
+                        <div className={styles.radio}>
+                            <label>
+                                <input type="radio" name="sex" value='M' id="masculino" onChange={handleChange}/>
+                                Masculino
+                            </label>
+
+                            <label>
+                                <input type="radio" name="sex" value='F' id="femenino" onChange={handleChange}/>
+                                Femenino
+                            </label>
+                        </div>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="F. de nac.:">
+                        <input type="date" name="birthday" value={form.birthday} id="birthday" onChange={handleChange}/>
+                    </ContFormInput>
+                    
+                    <ContFormInput nameElm="País:">
+                        <select className={styles.select} name='country' value={form.country} onChange={handleChange}>
+                            <option value="Argentina" selected>Argentina</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Brasil">Brasil</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Perú">Perú</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Venezuela">Venezuela</option>
+                        </select>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Provincia:">
+                        <input type="text" name="province" value={form.province} placeholder={user.province} id="province" onChange={handleChange}/>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Acerca de mí:">
+                        <textarea id="aboutMe" name="aboutMe" value={form.aboutMe} placeholder={user.aboutMe} onChange={handleChange}></textarea>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Imagen de Perfil:">
+                        <div className={styles.contImgProfilePreview}>
+                            <img src={imgResult} alt='Preview imagen de perfil' id='imgUserPreview' />
+                            <input type="file" name="imgProfile" alt='Boton de carga de imagen de perfil' accept="image/*" onChange={handleImageChange}/>
+                        </div>
+                    </ContFormInput>
+                    
                     <Button
                         typeBtn="submit"
                         altName="Guardar cambios"

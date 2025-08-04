@@ -280,7 +280,8 @@ span{
 .navbarLinksPanel > a{
     width: 100%;
     color: #000;
-    text-shadow: 0 0 1em #aecae0;
+    padding-left: 1.2rem;
+    text-shadow: 0 0 1rem #aecae0;
 
     display: flex;
     justify-content: flex-start;
@@ -288,7 +289,7 @@ span{
 }
 .ulMenuProfile > form,
 .navbarLinksPanel > form{
-    padding:0.2em 0 0.2em 0;
+    padding:0.5rem;
     border-top: var(--border);
     border-left: var(--border);
 

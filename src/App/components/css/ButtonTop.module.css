@@ -1,0 +1,59 @@
+.buttonTop,
+.buttonTopExpand{
+    cursor: pointer;
+    top: 1rem;
+    left: 1rem;
+    width: auto;
+    height: auto;
+    color: black;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-inset), var(--box-shadow);
+    backdrop-filter: var(--backdrop-filter);
+    background: var(--background);
+    transition: all ease-in-out .8s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonTopExpand{
+    width: auto;
+    height: auto;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    color: #333;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.buttonTop > img,
+.buttonTopExpand > img{
+    transform: rotateZ(0deg);
+    margin: 0.7rem;
+}
+.buttonTopExpand:hover{
+    transition: all ease-in-out .4s;
+}
+.buttonTopExpand:hover{
+    color: white;
+    background-color: #6d6d6d;
+}
+.buttonTop::after {
+    transition: all ease-in-out .8s;
+    content: attr(textElm);
+    margin-right: 1rem;
+    color: #333;
+}
+
+.topLeft{
+    position: absolute;
+    top: 1rem;
+    left: 0.5rem;
+}
+.topRight{
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem;
+}

@@ -9,6 +9,7 @@ import ImgProfile from '../../components/ImgProfile'
 import Loader from '../../components/Loader'
 import pencil from '/assets/images/utilities/pencil.png'
 import { CONFIG_PATHS } from '../../config/config'
+import EditContButton from '../../components/EditContButton'
 
 function Profile() {   
     const { user, loadUser } = useContext(UserContext);
@@ -70,12 +71,7 @@ function Profile() {
                                     <p>Administrador</p>
                                 </div>
                             </div>
-                            <Link to={CONFIG_PATHS.PROFILE_EDIT_PATH} className={styles.contImgEdit} title='Editar Perfil'>
-                                <div className={styles.contImgEdit}>
-                                    <img src={pencil} alt="edit" className={styles.imgEdit}/>
-                                    <p>Editar</p>
-                                </div>
-                            </Link>
+                            <EditContButton typeElm='expand' text="Editar" locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH}/>
                         </div>
                     </Container>
                 </Section>

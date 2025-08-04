@@ -3,8 +3,8 @@ import { useState, useContext } from 'react'
 import { UserContext } from './UserProvider'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button'
-import BackLink from './BackLink'
 import Loader from './Loader'
+import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '/assets/images/utilities/usuario_128.png'
 
@@ -102,35 +102,26 @@ function FormPost() {
             <div className={styles.contForm}>
                 <form className={styles.formPost} id='formPost' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <BackLink />
-                    <h1>Post</h1>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Titulo:</span>
-                            <input type="text" name="titlePub" placeholder="Título" onChange={handleChange}/>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Contenido:</span>
-                            <textarea id="textPub" className={styles.textareaPost} name="textPub" placeholder="Contenido de publicación" onChange={handleChange}></textarea>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Descripción:</span>
-                            <input type="text" name="descriptPub" placeholder="Descripción de la publicación" onChange={handleChange}/>
-                        </label>
-                    </div>
-                    <div className={styles.contFormInput}>
-                        <label>
-                            <span>Banner de Publicación:</span>
-                            <div className={styles.contImgProfilePreview}>
-                                <img src={imgResult} alt='Banner de publicación' id='imgPub' />
-                                <input type="file" name="imgPub" alt='Boton de carga de banner de publicación' accept="image/*" onChange={handleImageChange}/>
-                            </div>
-                        </label>
-                    </div>
+                    <h1>Nueva Noticia</h1>
+                    <ContFormInput nameElm="Titulo:">
+                        <input type="text" name="titlePub" placeholder="Título" onChange={handleChange}/>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Contenido:">
+                        <textarea id="textPub" className={styles.textareaPost} name="textPub" placeholder="Contenido de publicación" onChange={handleChange}></textarea>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Descripción:">
+                        <input type="text" name="descriptPub" placeholder="Descripción de la publicación" onChange={handleChange}/>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Banner de Publicación:">
+                        <div className={styles.contImgProfilePreview}>
+                            <img src={imgResult} alt='Banner de publicación' id='imgPub' />
+                            <input type="file" name="imgPub" alt='Boton de carga de banner de publicación' accept="image/*" onChange={handleImageChange}/>
+                        </div>
+                    </ContFormInput>
+
                     <Button
                         typeBtn="submit"
                         altName="Guardar cambios"

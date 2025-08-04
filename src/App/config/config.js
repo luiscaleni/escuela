@@ -15,8 +15,8 @@ export const CONFIG_SOCIAL_NETW = {
 }
 
 export const CONFIG_BACKEND = {
-    API_DIR: import.meta.env.VITE_API_BASE_URL,
-    API_WEB: "https://dpisud-beta.infy.uk/api"
+    API_DIR: "http://localhost/api", /*https://dpisud-beta.infy.uk */
+    /*API_IMPORT_URL: import.meta.env.VITE_API_BASE_URL*/
 }
 
 export const CONFIG_PATHS = {
@@ -33,6 +33,7 @@ export const CONFIG_PATHS = {
     LOGIN_PATH: "/login",
     LOGOUT_PATH: "/logout",
     CONFIG_PATH: "/configuracion",
+    CONFIG_EDIT_PATH: "/editar-configuracion",
     CONFIG_PASSW_PATH: "/passw",
     HELP_PATH: "/ayuda",
 

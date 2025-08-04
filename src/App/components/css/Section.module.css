@@ -13,12 +13,13 @@ section, .section > p{
     color: #000;
 }
 .sectionBanner{
-    position: relative;
+    /*position: relative;*/
+    position: fixed;
     overflow: hidden;
     width: 100%;
     min-height: 30rem;
     height: auto;
-    background-color: #333;
+    background: var(--background-linear-gradient-3);
 
     display: flex;
     align-items: center;
@@ -53,6 +54,7 @@ section, .section > p{
 .sectionXtreme{
     width: 100vw;
     height: auto;
+    margin-top: 30rem; /**/
     min-width: 23.4rem;
     min-height: 40rem;
     padding: 3rem 1rem;
