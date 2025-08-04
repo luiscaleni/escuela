@@ -1,5 +1,5 @@
 import styles from './css/Profile.module.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
 import Template from '../../template/Template'
 import Section from '../../components/Section'
@@ -7,9 +7,8 @@ import Container from '../../components/Container'
 import { UserContext } from '../../components/UserProvider'
 import ImgProfile from '../../components/ImgProfile'
 import Loader from '../../components/Loader'
-import pencil from '/assets/images/utilities/pencil.png'
-import { CONFIG_PATHS } from '../../config/config'
 import EditContButton from '../../components/EditContButton'
+import { CONFIG_PATHS } from '../../config/config'
 
 function Profile() {   
     const { user, loadUser } = useContext(UserContext);
@@ -71,7 +70,7 @@ function Profile() {
                                     <p>Administrador</p>
                                 </div>
                             </div>
-                            <EditContButton typeElm='expand' text="Editar" locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH}/>
+                            <EditContButton text="Editar" locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH}/>
                         </div>
                     </Container>
                 </Section>

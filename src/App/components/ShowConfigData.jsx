@@ -19,7 +19,7 @@ function ShowConfigData() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate'>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <EditContButton typeElm='expand' text="Editar" locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH}/>
+                    <EditContButton text="Editar" locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH}/>
                     <div className="contButtonsTop">
                     </div>
                     <h1>Configuración</h1>
