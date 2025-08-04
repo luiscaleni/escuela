@@ -15,7 +15,7 @@ export const CONFIG_SOCIAL_NETW = {
 }
 
 export const CONFIG_BACKEND = {
-    API_DIR: "http://localhost/api", /*https://dpisud-beta.infy.uk */
+    API_DIR: "http://localhost/api", /*https://dpisud-beta.infy.uk */ 
     /*API_IMPORT_URL: import.meta.env.VITE_API_BASE_URL*/
 }
 
