@@ -15,7 +15,7 @@ export const CONFIG_SOCIAL_NETW = {
 }
 
 export const CONFIG_BACKEND = {
-    API_DIR: "import.meta.env.VITE_API_BASE_URL",/*"http://localhost/api" */
+    API_DIR: import.meta.env.VITE_API_BASE_URL/*"http://localhost/api" */
     /*API_IMPORT_URL: import.meta.env.VITE_API_BASE_URL*/
 }
 
