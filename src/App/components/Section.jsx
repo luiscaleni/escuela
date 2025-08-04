@@ -9,6 +9,7 @@ function Section({typeElm="", children, titleElm=""}) {
     }else{
         nameStyles = styles.section
     }
+    
     return ( 
         <>
             <section className={nameStyles}>
