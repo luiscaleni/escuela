@@ -6,13 +6,13 @@ function ConfigurationEdit() {
 
     return ( 
         <>
-        <Template separator={true}>
-            <Section>
-                <FormConfigEdit />
-            </Section>
-        </Template>
+            <Template separator={true}>
+                <Section>
+                    <FormConfigEdit />
+                </Section>
+            </Template>
         </>
-     );
+     )
 }
 
 export default ConfigurationEdit

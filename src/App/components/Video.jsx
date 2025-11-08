@@ -1,12 +1,12 @@
 import styles from './css/Video.module.css'
+import bg from '../assets/videos/bg.mp4'
 
-function Video({nameVideo}) {
+function Video() {
 
     return ( 
         <>
-            <div className={styles.opacityVideo}></div>
             <video className={styles.headerVideo} autoPlay muted loop>
-                <source src={`/assets/videos/${nameVideo}.mp4`} type="video/mp4" />
+                <source src={bg} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </>

@@ -15,11 +15,13 @@ function Section({typeElm="", children, titleElm=""}) {
             <section className={nameStyles}>
                 {typeElm === "banner" || typeElm === "xtreme" ? (
                     <>
-                        <h1>{titleElm}</h1>
+                        {typeElm === "xtreme" ? <div className={styles.topXtreme}></div> : null}
+                        {titleElm ? <h1>{titleElm}</h1> : null}
                         {children}
                     </>
                 ) : (
                     <div className={styles.sectionContent}>
+                        {titleElm ? <h3>{titleElm}</h3>: ""}
                         {children}
                     </div>
                 )}

@@ -7,3 +7,94 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.dataCountry,
+.dataChurch,
+.dataPlanters{
+  width: 100%;
+  height: 100%;
+  font-size: 3rem;
+  padding: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dataCountry > p,
+.dataChurch > p,
+.dataPlanters > p{
+  color: white;
+}
+
+.dataCountry{
+  background-color: #0F6BBF;
+}
+.dataChurch{
+  background-color: #BF0F0F;
+}
+.dataPlanters{
+  background-color: #2b924a;
+}
+
+.marqueeContainer{
+  width: auto;
+  padding: 2rem 0rem 2rem 0rem;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.marqueeContainer > h2{
+  width: 90%;
+  font-size: 3.5rem;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.marqueeContainer > .marquee > .one,
+.marqueeContainer > .marquee > .two,
+.marqueeContainer > .marquee > .three{
+    width: auto;
+    overflow: hidden;
+    font-size: 8rem;
+    color: #023059;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    white-space: nowrap;
+    user-select: none;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.marqueeContainer > .marquee > .one{
+  animation: scroll 180s linear infinite;
+}
+.marqueeContainer > .marquee > .two{
+  color: #0F6BBF;
+  animation: scrollReverse 180s linear infinite;
+}
+.marqueeContainer > .marquee > .three{
+  animation: scroll 300s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+} 
+
+@keyframes scrollReverse {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+} 

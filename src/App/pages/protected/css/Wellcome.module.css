@@ -1,14 +1,10 @@
 .wellcome{
     width: 100%;
-    height: auto;
+    height: 35rem;
     min-width: 10rem;
-    min-height: 40em;
-    padding: 2em;
-    border: var(--border);
+    padding: 2rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-inset), var(--box-shadow-strong);
-    backdrop-filter: var(--backdrop-filter);
-    background: var(--background-linear-gradient);
+    background: #dce7ff;
 
     display: flex;
     justify-content: center;
@@ -17,19 +13,27 @@
 }
 
 .wellcome > h1{
-    width: 80%;
-    color: white;
-    font-size: 3em;
-    text-shadow: var(--box-shadow);
+    width: 100%;
+    color: var(--color-text);
+    font-size:3rem;
+    padding: 2rem;
     text-align: center;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.wellcome > p{
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+:global(body.dark) .wellcome > p{
+    color: #000;
+}
 
 .wellcome > .contLinks{
-    width: 100%;
+    width: 80%;
     height: auto;
 
     display: flex;
@@ -60,5 +64,11 @@
     align-items: center;
 }
 .buttonLink:hover{
-    background-color: var(--background-color-btnHover);
+    background-color: var(--background-color-btn-hover);
+}
+
+@media (max-width:900px){
+    .wellcome > h1{
+        font-size: 2.5rem;
+    }
 }

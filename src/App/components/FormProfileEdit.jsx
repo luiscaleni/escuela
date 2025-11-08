@@ -3,12 +3,12 @@ import { useState, useContext } from 'react'
 import { UserContext } from './UserProvider'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button'
-import BackLink from './BackLink'
+import LeftTopButton from './LeftTopButton'
 import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import ShowData from './ShowData'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
-import userDefault from '/assets/images/utilities/usuario_128.png'
+import userDefault from '../assets/icons/utilities/user_128.png'
 
 function FormProfileEdit() {
     const { user, loadUser } = useContext(UserContext)
@@ -111,17 +111,17 @@ function FormProfileEdit() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <BackLink typeElm='expand' text="Volver" locationElm={CONFIG_PATHS.PROFILE_PATH}/>
+                    <LeftTopButton typeElm='expand' text="Pefil" locationElm={CONFIG_PATHS.PROFILE_PATH}/>
                     <h1>Editar</h1>
                     <ContFormInput nameElm="Nombres:">
-                        <input type="text" name="names" value={form.names} placeholder={user.names} onChange={handleChange}/>
+                        <input type="text" name="names" placeholder={user.names} onChange={handleChange}/>
                     </ContFormInput>
 
                     <ContFormInput nameElm="Apellidos:">
-                        <input type="text" name="lastNames" value={form.lastNames} placeholder={user.lastNames} id="apellidos" onChange={handleChange}/>
+                        <input type="text" name="lastNames" placeholder={user.lastNames} id="apellidos" onChange={handleChange}/>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="Email:">
+                    <ContFormInput nameElm="Email:" iconElm="?" titleElm='No se puede cambiar este valor'>
                         <ShowData>{user.email}</ShowData>
                     </ContFormInput>
 
@@ -140,12 +140,12 @@ function FormProfileEdit() {
                     </ContFormInput>
 
                     <ContFormInput nameElm="F. de nac.:">
-                        <input type="date" name="birthday" value={form.birthday} id="birthday" onChange={handleChange}/>
+                        <input type="date" name="birthday" placeholder={form.birthday} id="birthday" onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm="País:">
+                    <ContFormInput nameElm="País de residencia:">
                         <select className={styles.select} name='country' value={form.country} onChange={handleChange}>
-                            <option value="Argentina" selected>Argentina</option>
+                            <option value="Argentina">Argentina</option>
                             <option value="Bolivia">Bolivia</option>
                             <option value="Brasil">Brasil</option>
                             <option value="Chile">Chile</option>
@@ -159,15 +159,15 @@ function FormProfileEdit() {
                     </ContFormInput>
 
                     <ContFormInput nameElm="Provincia:">
-                        <input type="text" name="province" value={form.province} placeholder={user.province} id="province" onChange={handleChange}/>
+                        <input type="text" name="province" placeholder={user.province} id="province" onChange={handleChange}/>
                     </ContFormInput>
 
                     <ContFormInput nameElm="Acerca de mí:">
-                        <textarea id="aboutMe" name="aboutMe" value={form.aboutMe} placeholder={user.aboutMe} onChange={handleChange}></textarea>
+                        <textarea id="aboutMe" name="aboutMe" placeholder={user.aboutMe} onChange={handleChange}></textarea>
                     </ContFormInput>
 
                     <ContFormInput nameElm="Imagen de Perfil:">
-                        <div className={styles.contImgProfilePreview}>
+                        <div className={styles.contImgUpPreview}>
                             <img src={imgResult} alt='Preview imagen de perfil' id='imgUserPreview' />
                             <input type="file" name="imgProfile" alt='Boton de carga de imagen de perfil' accept="image/*" onChange={handleImageChange}/>
                         </div>
@@ -180,7 +180,7 @@ function FormProfileEdit() {
                         id="guadarCambios"
                         disabled={cargando}
                     >
-                        {cargando ? "Cargando..." : "Guardar Cambios"}
+                        {cargando ? <Loader mini={true}/> : "Guardar Cambios"}
                     </Button>
                 </form>
             </div>

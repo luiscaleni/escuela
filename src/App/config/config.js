@@ -1,21 +1,21 @@
 // Configuration file for the application
 // This file contains constants that are used throughout the application
 
-export const CONFIG_VALUES = {
-    APP_PRODUCTION_URL: 'https://dpisud-beta.infy.uk',
-    APP_LOCAL_URL: 'http://localhost'
+export const CONFIG_PRODUCTION_DATA = {
+    APP_URL: 'https://dpisud-beta.infy.uk'
 }
 
-export const CONFIG_SOCIAL_NETW = {
-    FB: 'https://www.facebook.com/IDP',
-    TW: 'https://twitter.com/IDP',
-    IG: 'https://www.instagram.com/IDP',
-    YT: 'https://www.youtube.com/IDP',
-    IN: 'https://www.linkedin.com/company/IDP'
+export const CONFIG_SOCIAL_NETWORK = {
+    FB: 'https://www.facebook.com/',
+    TW: 'https://x.com/?lang=es',
+    IG: 'https://www.instagram.com/',
+    YT: 'https://www.youtube.com/',
+    EMAIL: 'mailto:luis.caleni@gmail.com'
 }
 
 export const CONFIG_BACKEND = {
-    API_DIR: import.meta.env.VITE_API_BASE_URL/*"http://localhost/api" */
+    /*API_DIR: import.meta.env.VITE_API_BASE_URL*/
+    API_DIR: "http://localhost/api"
     /*API_IMPORT_URL: import.meta.env.VITE_API_BASE_URL*/
 }
 
@@ -28,9 +28,12 @@ export const CONFIG_PATHS = {
     RESOURCES_PATH: "/recursos",
     DONATE_PATH: "/donar",
     CONTACT_PATH: "/contacto",
+    PLANTATIONS: "/plantaciones",
 
     REGISTER_PATH: "/registro",
     LOGIN_PATH: "/login",
+    FORGET_PASSW_PATH:"/ForgetPassw",
+    RESET_PASSW:"/ResetPassw",
     LOGOUT_PATH: "/logout",
     CONFIG_PATH: "/configuracion",
     CONFIG_EDIT_PATH: "/editar-configuracion",
@@ -40,5 +43,14 @@ export const CONFIG_PATHS = {
     YOUR_WELLCOME_PATH: "/bienvenida",
     PROFILE_PATH: "/perfil",
     PROFILE_EDIT_PATH: "/editar-perfil",
-    NEW_POST_PATH: "/nueva-publicacion"
+    NEW_POST_PATH: "/nueva-publicacion",
+    EDIT_POST_PATH: "/editar-publicacion",
+    SUCCESS_PATH: "/registro-exitoso"
 }
+
+export const CONFIG_NAMES_COUNTRYS = [
+    "Argentina", "Brasil", "Venezuela", "Colombia", "Paraguay",
+    "Uruguay", "Perú", "Ecuador", "Bolivia", "Chile"
+]
+
+export const CONFIG_ALERT_MESSAGE = "Estamos trabajando en ello, disculpe las molestias."

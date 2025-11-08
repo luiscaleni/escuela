@@ -1,7 +1,6 @@
 import styles from "./css/ButtonTop.module.css"
 
-function ButtonTop({imgElm, textElm, positionElm, typeElm=""}) {
-    let cont = textElm ? textElm : null
+function ButtonTop({imgElm, onClick ,textElm="", typeElm=""}) {
     let typeStyle
 
     if(typeElm === "expand"){
@@ -10,15 +9,11 @@ function ButtonTop({imgElm, textElm, positionElm, typeElm=""}) {
         typeStyle = "buttonTop"
     }
 
-    if(positionElm){
-        typeStyle = styles[positionElm]
-    }
-
     return ( 
         <>
-            <button className={`${styles[typeStyle]} ${styles[positionElm]}`}>
+            <button className={styles[typeStyle]} onClick={onClick} title={textElm}>
                 {imgElm ? <img src={imgElm}/> : null}
-                {cont}
+                <p className={styles.textButton}>{textElm}</p>
             </button>
         </>
      );

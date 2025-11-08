@@ -1,24 +1,25 @@
 .contForm {
-  width: auto;
+  width: 100%;
   height: auto;
+  overflow-x: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.contForm > form {
+.form > h2{
+  font-size: 1.8rem;
+}
+.contForm > .form {
   position: relative;
   width: 35rem;
   height: auto;
   min-width: 20rem;
   color: var(--color-dark);
-  padding: 1em 1.2em;
+  padding: 0.8rem 1.2em;
   border: var(--border);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-inset), var(--box-shadow-strong);
-  backdrop-filter: var(--backdrop-filter);
-  -webkit-backdrop-filter: blur(--backdrop-filter);
   background:var(--background);
 
   display: flex;
@@ -27,19 +28,36 @@
   flex-direction: column;
 }
 
-.contForm > .formPost{
-  width: 50vw;
+:global(body.dark) .contForm > .form {
+  background-color: #2b2b2b;
+  border: var(--border-dark);
+  color: white;
 }
 
-.textareaPost{
-  height: 25rem;
-}
+.contForm > .form > .smallText{
+  width: 100%;
+  font-size: 0.8rem;
+  color: #707070;
+  padding-top: 0.5rem;
 
-.contForm > form > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contForm > .form > .smallText > a {
+  font-size: 100%;
+  padding: 0 0.5rem 0 0.5rem;
   text-decoration: underline;
-  padding-top: 0.5em;
-  color: #333;
+  color: #006eff;
 }
+
+.contForm > .form > h1{
+  font-size: 2.5rem;
+}
+.textareaPost{
+  height: 10rem;
+}
+
 label{
   display: flex;
   justify-content: center;
@@ -57,16 +75,19 @@ label > span{
   margin: 0.5em 0;
   border-radius: 0.5em;
   color: #fff;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.contForm > form > .alertContainer{ /*.alertSuccess {*/
-  width: 75%;
-  margin-bottom: 0.5rem;
-  border-radius: 1.5rem;
+.contForm > .form > .alertContainer{ /*.alertSuccess {*/
+  width: 100%;
+  font-size: 1rem;
   text-align: center;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 1.5rem;
   transition:all ease-in-out .3s;
 
   display: flex;
@@ -86,10 +107,10 @@ label > span{
   align-items: center;
   flex-direction: row;
 }
-.contImgProfilePreview{
+.contImgUpPreview{
   width: 100%;
   height: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   border: var(--border);
   border-radius: var(--border-radius);
   background-color: #E1E1E1;
@@ -99,9 +120,29 @@ label > span{
   align-items: center;
   flex-direction: column;
 }
+.contImgUpPreview > img{
+  max-width: 100%;
+  height: auto;
+}
+.contImgUpPreview > input{
+  width: 100%;
+  margin-top: 1rem;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background-color: #ccc;
 
-@media (max-width: 440px){
-  .contForm > form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 650px){
+  .form > h2{
+    font-size: 1.5rem;
+  }
+  .contForm > .form,
+  .contForm > .formPost {
     width: 90vw;
   }
   input[type=file]{

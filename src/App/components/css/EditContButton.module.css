@@ -1,7 +1,7 @@
 .contImgEdit{
   cursor: pointer;
   position: absolute;
-  z-index: 1000;
+  z-index: 10;
   width: auto;
   height: 1em;
   padding: 1rem;
@@ -10,8 +10,6 @@
   color: #fff;
   border: var(--border);
   border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow-inset), var(--box-shadow);
-  backdrop-filter: var(--backdrop-filter);
   background: var(--background);
 
   display: flex;

@@ -4,8 +4,9 @@ import { useState } from "react"
 import Button from "./Button"
 import { useContext } from "react"
 import { UserContext } from "./UserProvider"
-import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import ContFormInput from "./ContFormInput"
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import Loader from "./Loader"
 
 function FormLogin() {
     const { loadUser } = useContext(UserContext)
@@ -55,12 +56,11 @@ function FormLogin() {
 
     return (
         <>
-            <div className="spaceTop"></div>
             <div className={styles.contForm}>
                 <form
                     autoComplete="off"
-                    className='form'
                     id='formLogin'
+                    className={styles.form}
                     onSubmit={handleSubmit}
                 >
                     <h2>Iniciar Sesión</h2>
@@ -93,10 +93,15 @@ function FormLogin() {
                             title='IniciarSesion'
                             disabled={cargando}
                         >
-                            {cargando ? "Cargando..." : "Iniciar Sesión"}
+                            {cargando ? <Loader mini={true}/> : "Iniciar Sesión"}
                         </Button>
                     </ContFormInput>
-                    <Link to='/Registro'>Registrarme</Link>
+                    <p className={styles.smallText}>
+                        <Link to='/ForgetPassw' title="Olvidé mi contraseña">Olvidé mi contraseña</Link>
+                        |
+                        <Link to='/Registro' title="Me quiero registrar">Me quiero registrar</Link>
+                    </p>
+                    
                 </form>
             </div>
         </>

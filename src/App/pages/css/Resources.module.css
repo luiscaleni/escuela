@@ -1,0 +1,79 @@
+.titleResource{
+    width: 90%;
+    height: auto;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconResource{
+    user-select: none;
+    width: 6rem;
+    height: auto;
+}
+.descriptionResource{
+    width: 90%;
+    height: 3.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.8rem;
+    background-color: #e7e7e7;
+}
+:global(body.dark) .descriptionResource{
+    background-color: #3b3b3b;
+    color: #fff;
+}
+.groupData{
+    width: 90%;
+    height: auto;
+    padding: 1rem 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.groupData > .dataSize,
+.groupData > .dataDate{
+    width: auto;
+    color: #000;
+    margin: 0 0.5rem;
+}
+:global(body.dark) .groupData > .dataSize,
+:global(body.dark) .groupData > .dataDate{
+    color: #fff;
+}
+.contPushButton{
+    width: 100%;
+    padding-bottom: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panelFloat{
+    position: absolute;
+    z-index: 13;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.panelFloat > .content{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background-color: white;
+}

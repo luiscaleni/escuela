@@ -5,7 +5,7 @@ function Donate() {
   return (
     <>
       <Template>
-        <Publication titlePub="Donar">
+        <Publication titlePub="Donar" typeElm='img' nameAsset="banner_donate.jpg">
         </Publication>
       </Template>
     </>

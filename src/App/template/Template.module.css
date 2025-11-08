@@ -1,4 +1,10 @@
 .separator{
     width: 100vw;
-    height: 8em;
+    height: 5rem;
+}
+
+@media (max-width: 1024px){
+    .separator{
+        height: 4rem;
+    }
 }

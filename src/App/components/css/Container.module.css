@@ -2,17 +2,13 @@
 .containerMax{
     position: relative;
     overflow: hidden;
-    max-width: 75rem;
+    max-width: 65rem;
     min-width: 22rem;
-    min-height: 32rem;
-    width: 80vw;
-    height: auto;
-    padding: 1rem;
+    min-height: 35rem;
+    width: 85vw;
     color: #000;
     border: var(--border);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-strong);
-    backdrop-filter: var(--backdrop-filter);
     background-color: white;
 
     display: flex;
@@ -20,7 +16,26 @@
     align-items: flex-start;
     flex-wrap: wrap;
 }
+.containerMax{padding: 1.5rem 0;}
 
-.containerMax{
-    max-width: 80rem;
+:global(body.dark) .container,
+:global(body.dark) .containerMax {
+    border: var(--border-dark);
+    background-color: #1d1d1d;
+    color: #fff;
+}
+
+.hiddenStyle{
+    border: none;
+    border-radius: none;
+    box-shadow: none;
+    backdrop-filter: none;
+
+    display: flex;
+
+}
+@media (max-width:650px){
+    .container{
+        width: 95vw;
+    }
 }

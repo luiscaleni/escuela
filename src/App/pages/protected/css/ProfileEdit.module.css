@@ -7,8 +7,6 @@ form > .backLink{
     height: auto;
     border: var(--border);
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow-inset), var(--box-shadow);
-    backdrop-filter: var(--backdrop-filter);
     background: var(--background);
     transition: all ease-in-out .8s;
 

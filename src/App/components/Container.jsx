@@ -1,13 +1,16 @@
 import styles from "./css/Container.module.css"
 
-function Container({widthElm, children}) {
+function Container({widthElm, hiddenStyle = false, children}) {
+    let styleContainer = (widthElm === "max") ? styles.containerMax : styles.container;
+    let hiddenStyleContainer = hiddenStyle ? styles.hiddenStyle : "";
+
     return ( 
         <>
-            <div className={widthElm === "max" ? styles.containerMax : styles.container}>
+            <div className={`${styleContainer} ${hiddenStyleContainer}`}>
                 {children}
             </div>
         </>
-     )
+     );
 }
 
 export default Container

@@ -1,11 +1,18 @@
 import styles from './css/ContFormInput.module.css'
 
-function ContFormInput({nameElm, children}) {
+function ContFormInput({nameElm, titleElm="", iconElm="", children}) {
+    const iconAlert = iconElm ? iconElm : null
+
     return ( 
         <>
-            <div className={styles.contFormInput}>
+            <div className={styles.contFormInput} title={titleElm ? titleElm : ""}>
                 <label>
-                    <span>{nameElm}</span>
+                    <p className={styles.nameElm}>
+                        {nameElm}
+                        {iconAlert && (
+                            <span>{iconAlert}</span>
+                        )}   
+                    </p>
                     {children}
                 </label>
             </div>

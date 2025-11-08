@@ -1,8 +1,7 @@
 import styles from'./css/Form.module.css'
-import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import Button from "./Button"
-import { CONFIG_BACKEND } from '../config/config'
+import Loader from './Loader'
 
 function FormContact() {
     const [form, setForm] = useState({
@@ -14,7 +13,6 @@ function FormContact() {
         birthday: "",
         hash: ""
     })
-    const navigate = useNavigate()
 
     const [cargando, setCargando] = useState(false)
     
@@ -77,7 +75,7 @@ function FormContact() {
                                         title='Enviar'
                                         disabled={cargando}
                                 >
-                                        {cargando ? "Cargando..." : "Enviar"}
+                                        {cargando ? <Loader mini={true}/> : "Enviar"}
                                 </Button>
                         </div>
                 </form>

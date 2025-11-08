@@ -1,15 +1,17 @@
 import styles from './css/Form.module.css'
 import { useState, useEffect } from 'react'
-import LoadConfigData from './LoadConfigData'
-import { CONFIG_PATHS } from '../config/config'
+import LoadData from './LoadData'
+import { CONFIG_PATHS, CONFIG_BACKEND } from '../config/config'
 import ShowData from './ShowData'
-import EditContButton from './EditContButton'
+import pencil from '../assets/icons/utilities/pencil.png'
 import ContFormInput from './ContFormInput'
+import RightTopButton from './RightTopButton'
 
 function ShowConfigData() {
     const [configData, setConfigData]  = useState(null)
-    const [cargando, setCargando] = useState(false)
-    const loadConfigData = LoadConfigData(setCargando, setConfigData)
+    const [cargando, setLoading] = useState(false)
+    const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+    const loadConfigData = LoadData(setLoading, setConfigData, 'GET', ROUTE)
     useEffect(() => {
         loadConfigData()
     }, [])
@@ -19,9 +21,7 @@ function ShowConfigData() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate'>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <EditContButton text="Editar" locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH}/>
-                    <div className="contButtonsTop">
-                    </div>
+                    <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text="Editar" img={pencil}/>
                     <h1>Configuración</h1>
                     <ContFormInput nameElm="Nombre completo del dpto:">
                         <ShowData>{configData?.dptoNameConfig}</ShowData>

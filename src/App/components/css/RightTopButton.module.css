@@ -1,0 +1,26 @@
+.contRightTopButton,
+.contRightTopButtonM{
+    position: absolute;
+    z-index: 13;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+.contRightTopButtonM{
+    margin-right: 2rem;
+}
+:global(body.dark) .contRightTopButton,
+:global(body.dark) .contRightTopButtonM{
+    filter: invert(100%);
+}
+
+.RightTopButton::after {
+    transition: all ease-in-out .8s;
+    margin-right: 1rem;
+    color: #333;
+}
+
+@media (max-width:800px){
+    .contRightTopButtonM{
+        margin-left: 1rem;
+    }
+}

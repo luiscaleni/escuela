@@ -4,7 +4,7 @@ import Section from '../components/Section'
 
 function Login() {
     return ( 
-        <Template>
+        <Template separator={true}>
             <Section>
                 <FormLogin/>
             </Section>

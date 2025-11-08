@@ -1,21 +1,24 @@
 .loadingContainer{
     position: absolute;
-    z-index: 100;
+    z-index: 20;
     width: 100vw;
     height: 100vh;
+    background-color: white;
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
+:global(body.dark) .loadingContainer{
+    background-color: #121212;
+}
 .loadingContainer > .loader{
-    width: 6em;
-    height: 6em;
+    width: 6rem;
+    height: 6rem;
     border-radius: 100%;
-    border: 1.5em solid;
-    border-top: 1.5em solid #005256;
+    border: 1.5em solid #e2e2e2;
+    border-top: 1.5em solid #0055c4;
     animation-name: spin;
     animation-duration: 3s;
     animation-iteration-count: infinite;
@@ -25,6 +28,28 @@
     padding-top: 1em;
     color: black;
     content: 'Cargando';
+}
+
+
+.loadingContainerMini{
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loadingContainerMini > .loaderMini{
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 0.5em solid;
+    border-top: 0.5em solid #0055c4;
+    border-radius: 100%;
+    animation-name: spin;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .delayLoader{

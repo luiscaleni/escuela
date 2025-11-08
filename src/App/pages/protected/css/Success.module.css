@@ -1,0 +1,14 @@
+.titleSuccess{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #2791ff;
+    padding: 1rem;
+}
+.textMessage{
+    width: 100%;
+    height: auto;
+    font-size: 1rem;
+    text-align: center;
+    margin: 1rem;
+}

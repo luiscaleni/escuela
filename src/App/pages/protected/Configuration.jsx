@@ -12,7 +12,7 @@ function Configuration() {
             </Section>
         </Template>
         </>
-     );
+     )
 }
 
 export default Configuration

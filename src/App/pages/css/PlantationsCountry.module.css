@@ -1,0 +1,129 @@
+.contContTable{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contContTable > .contTable{
+    width: 70%;
+    margin: 2rem 0 1rem 0;
+    max-height: 40rem;
+    overflow-y: auto;
+    overflow-x: visible;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.contContTable > .contTable > .headerList{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    width: auto;
+    color: #fff;
+    border-radius: var(--border-radius);
+    background-color: #555555;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contContTable > .contTable > .table{
+    width: 100%;
+    margin-top: 0.8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.smallSpace{
+    width: 7rem;
+    padding: 0.5rem 0.3rem;
+    text-align: center;
+}
+.mediumSpace{
+    width: 10rem;
+    padding: 0.1rem;
+    text-align: center;
+}
+.largeSpace{
+    width: 18rem;
+    padding: 0.1rem;
+    text-align: center;
+}
+
+.contContTable > .contTable > .table > .firstResult{
+    border-top-left-radius: 1.8rem;
+    border-top-right-radius: 1.8rem;
+}
+
+.contContTable > .contTable > .table > .resultW{
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.contContTable > .contTable > .table > .resultG{
+    background-color: rgb(204, 204, 204);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+@media (max-width:1582px){
+    .contContTable{
+        width: 90%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
+    .contContTable > .contTable{
+        width: 100%;
+    }
+    .contContTable > .contTable > .table {
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+    }
+    .contContTable > .contTable > .headerList{
+        left: 0;
+
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+@media (max-width:1230px){
+    .contContTable{
+        width: 95%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
+}
+@media (max-width:1080px){
+    .contContTable{
+        width: 90%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
+    .contContTable > .contTable{
+        width: 100%;
+    }
+    .contContTable > .contTable > .table {
+        display: flex;
+        justify-content: flex-start;
+        align-content: flex-start;
+    }
+}

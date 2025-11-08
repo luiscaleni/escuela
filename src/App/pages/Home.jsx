@@ -1,26 +1,99 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import styles from './css/Home.module.css'
 import Template from '../template/Template'
 import Section from '../components/Section'
 import Publication from '../components/Publication'
-import { useEffect, useState } from 'react'
-import LoadConfigData from '../components/LoadConfigData'
+import Elementor from '../components/Elementor'
+import LoadData from '../components/LoadData'
+import stylesButton from '../components/css/Button.module.css'
+import { CONFIG_BACKEND, CONFIG_NAMES_COUNTRYS, CONFIG_PATHS } from '../config/config'
 
 function Home() {
   const [configData, setConfigData]  = useState(null)
   const [cargando, setCargando] = useState(false)
-  const loadConfigData = LoadConfigData(setCargando, setConfigData)
+  const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+  const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
+  const [dbPlantations, setDbPlantations] = useState()
+  const [leadersPlant, setLeadersPlant] = useState()
+
   useEffect(() => {
-      loadConfigData()
+    loadConfigData()
+    fetchAll()
   }, [])
+
+  const fetchAll = async () => {
+    try {
+      const [plantsRes, leadersRes] = await Promise.all([
+      fetch(`${CONFIG_BACKEND.API_DIR}/plantations`, {
+          method: 'GET'
+      }),
+      fetch(`${CONFIG_BACKEND.API_DIR}/leadersPlants`, {
+          method: 'GET'
+      })])
+      
+      const [plantsData, leadersData] = await Promise.all([
+        plantsRes.json(),
+        leadersRes.json()
+      ])
+
+      if (plantsData.success) {
+        setDbPlantations(plantsData.result.length)
+      }else{
+          console.error('Error: ', plantsData.message)
+      }
+
+      if (leadersData.success) {
+        setLeadersPlant(leadersData.result.length)
+      }else{
+          console.error('Error: ', leadersData.message)
+      }
+
+    }catch (error){
+      console.error('Error en API: ', error)
+    }
+  }
+  
+  const namesCountrys = CONFIG_NAMES_COUNTRYS.join(" • ") + " • "
+  const namesCountrysTwo = CONFIG_NAMES_COUNTRYS.slice().reverse().join(" • ") + " • "
+  const namesCountrysThree = CONFIG_NAMES_COUNTRYS.slice().sort(() => Math.random() - 0.5).join(" • ") + " • "
 
   return (
     <Template>
       <Publication
         titlePub={configData?.dptoNameConfig}
-        typeElm="video"
-        nameAsset="bg">
-        <Section titleElm="Bienvenido a mi sitio web">
-          {configData?.contentConfig}
+        typeElm="img"
+        nameAsset="banner_home.jpg">
+        <Section>
+          <h4>{configData?.contentConfig}</h4>
         </Section>
+        <Section>
+          <div className={styles.marqueeContainer}>
+            <h2>Plantaciones en Sudamérica</h2>
+            <div className={styles.marquee}>
+              <h3 className={styles.one}>{namesCountrys}</h3>
+            </div>
+            <div className={styles.marquee}>
+              <h3 className={styles.two}>{namesCountrysTwo}</h3>
+            </div>
+            <div className={styles.marquee}>
+              <h3 className={styles.three}>{namesCountrysThree}</h3>
+            </div>
+            <Link to={CONFIG_PATHS.PLANTATIONS} className={stylesButton.button}>Ver plantaciones</Link>
+          </div>
+        </Section>
+        <Section>
+          <Elementor>
+            <div className={styles.dataCountry}><p>10</p><p>Paises</p></div>
+          </Elementor>
+          <Elementor>
+            <div className={styles.dataChurch}><p>{dbPlantations}</p><p>Plantaciones</p></div>
+          </Elementor>
+          <Elementor>
+            <div className={styles.dataPlanters}><p>{leadersPlant}</p><p>Plantadores</p></div>
+          </Elementor>
+        </Section>
+        
         <Section typeElm="maps">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d256.1527077294531!2d-58.445179678764134!3d-34.65031875185828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d-34.6502313198327!2d-58.445158221092!5e1!3m2!1ses!2sar!4v1749513947818!5m2!1ses!2sar"
@@ -28,7 +101,6 @@ function Home() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Google Maps"
-            style={{ border: 0, width: '100%', height: '400px' }}
           ></iframe>
         </Section>
       </Publication>

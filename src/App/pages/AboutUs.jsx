@@ -1,16 +1,20 @@
 import Template from '../template/Template'
+import { useState, useEffect } from 'react'
+import { CONFIG_BACKEND } from '../config/config'
 import Block from '../components/Block'
 import Publication from '../components/Publication'
 import Container from '../components/Container'
 import Section from '../components/Section'
 import ElmSelection from '../components/ElmSelection'
-import { useState, useEffect } from 'react'
-import LoadConfigData from '../components/LoadConfigData'
+import LoadData from '../components/LoadData'
+import whoWeAre from '../assets/images/about_us.png'
 
 function AboutUs() {
   const [configData, setConfigData]  = useState(null)
   const [cargando, setCargando] = useState(false)
-  const loadConfigData = LoadConfigData(setCargando, setConfigData)
+  const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+  const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
+
   useEffect(() => {
       loadConfigData()
   }, [])
@@ -18,11 +22,15 @@ function AboutUs() {
   return (
     <>
       <Template>
-        <Publication titlePub="Acerca de nosotros" typeElm='img' nameAsset="about-us.jpg">
+        <Publication titlePub="Acerca de nosotros" typeElm='img' nameAsset="banner_about_us.jpg">
           <Section>
             <Container>
               <Block>
-                <h2>Iglesia de Dios de la Profecía</h2>
+                  <h2>
+                    <span>Quien es la</span>
+                    Iglesia de Dios de la Profecía
+                  </h2>
+
                 <p>
                   La Iglesia de Dios de la Profecía es un movimiento cristiano vibrante, arraigado en las Escrituras, firme en la fe y resuelto en su pasión por la gente. Es un cuerpo mundial de creyentes, unidos en la adoración, que trabajan juntos para compartir el amor de Dios y un mensaje de esperanza a los que sufren.
                   <br/><br/>
@@ -33,18 +41,17 @@ function AboutUs() {
               </Block>
 
               <Block>
-                <img src="https://cogop.org/wp-content/uploads/2025/03/Who-We-Are.png"/>
+                <img src={whoWeAre}/>
               </Block>
             </Container>
-          
-            <Block>
+          </Section>
+          <Section>
               <ElmSelection>
                 <p>
                   <span>Email:</span> 
                   {configData?.emailConfig}
                 </p>
               </ElmSelection>
-            </Block>
           </Section>
         </Publication>
       </Template>

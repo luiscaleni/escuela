@@ -6,21 +6,16 @@ import Button from './Button'
 import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
-import userDefault from '/assets/images/utilities/usuario_128.png'
+import userDefault from '../assets/icons/utilities/user_128.png'
 
 function FormPost() {
     const { user, loadUser } = useContext(UserContext)
     const [preview, setPreview] = useState(null)
     const [selectedImage, setSelectedImage] = useState(null)
-
+    const [cargando, setCargando] = useState(false)
+    const [form, setForm] = useState({})
     const navigate = useNavigate()
 
-    const [cargando, setCargando] = useState(false)
-    const [form, setForm] = useState({
-        titlePub: user?.titlePub || '',
-        textPub:  user?.textPub || '',
-        descriptPub:  user?.descriptPub || '',
-    })
     
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -41,13 +36,12 @@ function FormPost() {
         event.preventDefault()
         setCargando(true)
         const alertContainer = document.getElementById('alertContainer')
-        const formPost = document.getElementById("formPost")
 
-        const formData = new FormData();
-        formData.append('titlePub', form.titlePub);
-        formData.append('textPub', form.textPub);
-        formData.append('descriptPub', form.descriptPub);
-        formData.append('imgPub', selectedImage);        
+        const formData = new FormData()
+        formData.append('titlePub', form.titlePub)
+        formData.append('textPub', form.textPub)
+        formData.append('descriptPub', form.descriptPub)
+        formData.append('imgPub', selectedImage)        
 
         alertContainer.style.padding="0.5rem"
 
@@ -66,7 +60,7 @@ function FormPost() {
                 alertContainer.innerHTML="✅ "+data.message
                 alertContainer.classList.add("success")
                 await loadUser()
-                navigate(CONFIG_PATHS.NEWS_PATH, { state: { updated: true } })
+                navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Registro exitoso" } })
             }else{
                 alertContainer.innerHTML="❌ "+data.error
                 alertContainer.classList.add("error")
@@ -100,7 +94,7 @@ function FormPost() {
     return ( 
         <>
             <div className={styles.contForm}>
-                <form className={styles.formPost} id='formPost' onSubmit={handleSubmit}>
+                <form className={styles.form} id='formPost' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
                     <h1>Nueva Noticia</h1>
                     <ContFormInput nameElm="Titulo:">
@@ -116,7 +110,7 @@ function FormPost() {
                     </ContFormInput>
 
                     <ContFormInput nameElm="Banner de Publicación:">
-                        <div className={styles.contImgProfilePreview}>
+                        <div className={styles.contImgUpPreview}>
                             <img src={imgResult} alt='Banner de publicación' id='imgPub' />
                             <input type="file" name="imgPub" alt='Boton de carga de banner de publicación' accept="image/*" onChange={handleImageChange}/>
                         </div>
@@ -129,12 +123,12 @@ function FormPost() {
                         id="guadarCambios"
                         disabled={cargando}
                     >
-                        {cargando ? "Cargando..." : "Guardar Cambios"}
+                        {cargando ? <Loader mini={true}/> : "Guardar Cambios"}
                     </Button>
                 </form>
             </div>
         </>
-     );
+     )
 }
 
 export default FormPost

@@ -1,14 +1,19 @@
 import styles from '../components/css/Section.module.css'
 import { useParams } from 'react-router-dom'
+import { useContext } from 'react'
 import { useEffect, useState } from 'react'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Template from '../template/Template'
 import Publication from '../components/Publication'
-import BackLink from '../components/BackLink'
+import LeftTopButton from '../components/LeftTopButton'
 import Container from '../components/Container'
 import Loader from '../components/Loader'
+import pencil from '../assets/icons/utilities/pencil.png'
+import RightTopButton from '../components/RightTopButton'
+import { UserContext } from '../../App/components/UserProvider'
 
 function NewsDetail() {
+    const { user } = useContext(UserContext)
     const {id_news} = useParams()
     const [news, setNews] = useState(null)
     const [loading, setLoading] = useState(true)
@@ -16,42 +21,48 @@ function NewsDetail() {
 
     useEffect(()=>{
         if (!id_news) return
+        loadNew()
+    },[id_news])
 
-        fetch(`${CONFIG_BACKEND.API_DIR}/news/detail?id=${id_news}`)
-         .then(async res => {
-            const text = await res.text()
-            try {
-                const json = JSON.parse(text)
-                setNews(json)
-            } catch (error) {
-                console.error("Respuesta no es JSON válido:", error)
+    const loadNew = async ()=>{
+        try {
+            const res = await fetch(`${CONFIG_BACKEND.API_DIR}/news/detail?id=${id_news}`)
+            const data = await res.json()
+            if(data.success){
+                setNews(data.result)
             }
-        })
-        .catch(error => {
+        } catch (error) {
             setError(error.message)
             setLoading(false)
             setNews(null)
-        }).finally(()=> setLoading(false))
-    },[id_news])
+            console.error('Error en API: ', error)
+        }finally{
+            setLoading(false)
+        }
+    }
+    
     
     if(loading) return <Loader />
     if(error) return <p>Error: {error}</p>
 
-    const parrafos = typeof news?.text_pub === 'string'
-    ? news.text_pub.split(/\n+/).filter(p => p.trim() !== '')
+    const parrafos = typeof news?.textPub === 'string'
+    ? news.textPub.split(/\n+/).filter(p => p.trim() !== '')
     : [];
 
     return ( 
         <>
             <Template>
-                <Publication titlePub={news.title_pub} nameAsset={news.img_pub} locationPub='publications'>
-                    <Container widthElm="max">
-                        <BackLink typeElm="expand" text="Volver" locationElm={CONFIG_PATHS.NEWS_PATH}/>
-                        <div className={styles.separator}></div>
+                <Publication titlePub={news.titlePub} nameAsset={news.imgPub ? news.imgPub : null}  typeElm="img" locationPub='publications'>
+                    <LeftTopButton locationElm={CONFIG_PATHS.NEWS_PATH} typeElm='expand' text="Noticias" marginLeft={true}/>
+                    {user && user.rolId === 1 && (
+                        <RightTopButton locationElm={CONFIG_PATHS.EDIT_POST_PATH+'/'+news.idPub} typeElm='expand' text="Editar" marginRight={true} img={pencil}/>
+                    )}
+                    <Container widthElm="max" hiddenStyle={true}>
                         {parrafos.map((p, i)=>(
                             <p className={styles.paragraph} key={i}>{p}</p>
                         ))}
                     </Container>
+                    
                 </Publication>
                 
             </Template>

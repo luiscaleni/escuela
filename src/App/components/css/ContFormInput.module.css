@@ -1,12 +1,11 @@
 .contFormInput {
-  max-width: 60rem;
+  min-width: 22rem;
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0.4rem;
   font-size: 1rem;
   color: black;
-  border-radius: var(--border-radius);
 
   display: flex;
   justify-content: center;
@@ -23,8 +22,28 @@
   align-items: center;
   flex-direction: column;
 }
+.contFormInput > label > .nameElm{
+  width: 95%;
+  padding: 0.2rem 0;
+  text-align: left;
+  display: flex;
+  justify-content: flex-start;
+}
+.contFormInput > label > .nameElm > span{
+  cursor: pointer;
+  margin-left: 0.2rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 100%;
+  color: white;
+  font-size: 0.8rem;
+  transform: translateY(-0.1rem);
+  background: var(--background-color-btn);
+}
 .contFormInput > label > div > label{
   margin: 0 2rem;
+  
+  display: flex;
+  flex-direction: row;
 }
 .contFormInput > label > .radio > label{
   padding: 0 0.4rem;
@@ -33,4 +52,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
+}
+.contFormInput > label > input[type="file"]{
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+  margin: 0.4rem;
+  font-size: 1.2rem;
+  color: black;
+  border: 0.1rem solid rgb(107, 107, 107);
+  border-radius: 0.3rem;
+  background-color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

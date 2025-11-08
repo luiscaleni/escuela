@@ -1,0 +1,173 @@
+import styles from './css/Form.module.css'
+import { useState, useEffect } from 'react'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import { useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import Loader from './Loader'
+import ShowData from './ShowData'
+import ContFormInput from './ContFormInput'
+import { UserContext } from '../../App/components/UserProvider'
+import Button from './Button'
+import LeftTopButton from './LeftTopButton'
+
+function FormPostEdit() {
+    const { user, loadUser } = useContext(UserContext)
+    const {id_news} = useParams()
+    const [post, setPost] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
+    const [selectedImage, setSelectedImage] = useState(null)
+    const [preview, setPreview] = useState(null)
+    const [dataUpdate, setDataUpdate] = useState([])
+    const imgD = CONFIG_BACKEND.API_DIR+'/src/assets/publications/'+post?.imgPub
+
+    useEffect(()=>{
+        if (!id_news) return
+        loadNew()
+    },[id_news])
+
+    const loadNew = async ()=>{
+        try {
+            const res = await fetch(`${CONFIG_BACKEND.API_DIR}/news/detail?id=${id_news}`)
+            const data = await res.json()
+            if(data.success){
+                setPost(data.result)
+            }
+        } catch (error) {
+            setError(error.message)
+            setLoading(false)
+            setPost(null)
+            console.error('Error en API: ', error)
+        }finally{
+            setLoading(false)
+        }
+    }   
+
+    const handleImageChange = (e) =>{
+        const file = e.target.files[0]
+        setSelectedImage(file)
+
+        const reader = new FileReader()
+        reader.onloadend = ()=>{
+            setPreview(reader.result)
+        }
+        reader.readAsDataURL(file)
+    }
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
+
+    const [form, setForm] = useState({
+        titlePub:  post?.titlePub || '',
+        textPub: post?.textPub || '',
+        descriptPub:  post?.descriptPub || ''
+    })
+
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        setLoading(true)
+        const alertContainer = document.getElementById('alertContainer')
+
+        const formData = new FormData();
+        formData.append('idPub', post.idPub);
+        formData.append('titlePub', form.titlePub);
+        formData.append('textPub', form.textPub);
+        formData.append('descriptPub', form.descriptPub);
+        formData.append('imgPub', selectedImage);
+
+        alertContainer.style.padding="0.5rem"
+
+        try {
+            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/postUpdate`, {
+                method: 'POST',
+                credentials: 'include',
+                body: formData
+            })
+            if (!response.ok) {
+                throw new Error('Network response was not ok')
+            }
+            const data = await response.json()
+
+            if(data.success){
+                alertContainer.innerHTML="✅ "+data.message
+                alertContainer.classList.add("success")
+            }else{
+                alertContainer.innerHTML="❌ "+data.error
+                alertContainer.classList.add("error")
+            }
+        } catch (errorCatch) {
+            console.error("❌ Error en api:", errorCatch)
+            alertContainer.innerHTML="❌ "+errorCatch.error
+            alertContainer.classList.add("error")
+        } finally{
+            setLoading(false)
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
+
+    let imgResult
+
+    if(preview){
+        imgResult = preview
+    }else if(!preview){
+        imgResult = imgD
+    }
+    
+    if(loading) return <Loader />
+    if(error) return <p>Error: {error}</p>
+
+    const parrafos = typeof (post?.textPub === 'string') || (dataUpdate.textPub === 'string') 
+    ? post.textPub.split(/\n+/).filter(p => p.trim() !== '')
+    : []
+    
+    return ( 
+        <>
+            <div className={styles.contForm}>
+                <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
+                    <div className={styles.alertContainer} id="alertContainer"></div>
+                    <LeftTopButton locationElm={`${CONFIG_PATHS.NEWS_PATH}/${id_news}`} typeElm='expand' text="Volver"/>
+                    
+                    <h1>Editar</h1>
+                    <ContFormInput nameElm="Título:">
+                        <input type="text" name="titlePub" id="titlePub" placeholder={dataUpdate.titlePub??post.titlePub} onChange={handleChange}/>
+                    </ContFormInput>
+                    
+                    <ContFormInput nameElm="Texto:">
+                        <textarea name="textPub" id="textPub" className={styles.textareaPost} placeholder={dataUpdate.textPub??parrafos}onChange={handleChange}></textarea>
+                    </ContFormInput>
+                    
+                    <ContFormInput nameElm="Descripción:">
+                        <input type="text" name="descriptPub" id="descriptPub"placeholder={dataUpdate.titlePub??post.descriptPub} onChange={handleChange}/>
+                    </ContFormInput>
+
+                    <ContFormInput nameElm="Portada:">
+                        <div className={styles.contImgUpPreview}>
+                            <img src={imgResult} alt='Preview imagen' id='imgPreview' />
+                            <input type="file" name="imgPub" alt='Boton de carga de imagen' accept="image/*" onChange={handleImageChange}/>
+                        </div>
+                    </ContFormInput>
+                    
+                    <ContFormInput nameElm="Fecha: Se cambiará automáticamente">
+                        <ShowData>{dataUpdate.titlePub??post.datePub}</ShowData>
+                    </ContFormInput>
+                    <Button
+                        typeBtn="submit"
+                        altName="Guardar cambios"
+                        title="Guardar cambios"
+                        id="guadarCambios"
+                        disabled={loading}
+                    >
+                        {loading ? <Loader mini={true}/> : "Guardar Cambios"}
+                    </Button>
+                </form>
+            </div>
+        </>
+     )
+}
+
+export default FormPostEdit
