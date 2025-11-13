@@ -20,24 +20,73 @@ nav, .navbar{
     justify-content: space-between;
     align-items: flex-end;
 }
-.navbarContent{
+.contNavbarContent > .navbarContent{
     position: relative;
     width: auto;
     height: 100%;
-    border: 0.1rem solid #ccc;
+    border: var(--border);
     border-radius: var(--border-radius);
     backdrop-filter: var(--backdrop-filter);
-    background: var(--background-2);
+    background: var(--background);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.navbarContent > a{
+:global(body.dark) .contNavbarContent > .navbarContent{
+    background: var(--background-dark);
+    border: var(--border-2);
+}
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
+    display: none;
+}
+.contNavbarContent > .navbarContent > .navbarLinks,
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
+    margin-right: 0.5rem;
+}
+.navbarContent > .navbarLinks{
     width: auto;
     height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
 }
-.navbarContent > a > .navbarLogo{
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
+    width: 100%;
+}
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > div{
+    padding-bottom: 1rem;
+}
+.contNavbarContent > .navbarContent > .navbarLinks > a,
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a,
+.contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
+    min-width: 6rem;
+    height: 80%;
+    cursor: pointer;
+    color:#000;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 0 0.8rem;
+    border-radius: 2em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+:global(body.dark) .navbarContent > .navbarLinks > a {
+    color: white;
+}
+
+.navbarContent > .navbarLinks > a:hover,
+.navbarContent > .navbarLinks > .elmPanel > a:hover{
+    color: #fff;
+    background-color: var(--background-color-btn);
+}
+
+.navbarContent > .navbarLinks > a > .navbarLogo{
     width: auto;
     height: 100%;
 
@@ -45,51 +94,21 @@ nav, .navbar{
     justify-content: flex-start;
     align-items: center;
 }
-.navbarContent > a > .navbarLogo > .logoImage{
+.navbarContent > .navbarLinks > a > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
-    padding-left: 1.5em;
 }
-.navbarContent > p{
-    display: none;
+.navbarContent > .navbarLinks > a > p{
+    padding-left: 0.5rem;
 }
-.navbarContent > p > a{
+.navbarContent > .navbarLinks > p > a{
     width: 100%;
     height: 100%;
     color: black;
 }
-
-
-.navbarLinks {
-    width: auto;
-    height: 100%;
-    padding: 0 1em;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-}
-.navbarLinks > a{
-    min-width: 6rem;
-    height: 80%;
-    cursor: pointer;
-    color:#000;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 0 1rem;
-    border-radius: 2em;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-}
-.navbarLinks > a:hover{
+.navbarContent > .navbarLinks > .navbarLogoLink:hover{
     color: #fff;
-    background-color: var(--background-color-btn);
-}
-:global(body.dark) .navbarLinksPanel > .link:hover img{
-    filter: invert(100%);
+    background-color: transparent;
 }
 
 
@@ -131,14 +150,15 @@ nav, .navbar{
 
 
 
-.navbarMenu{
+.navbarMenu,
+.navbarMenuMobile{
     position: relative;
     width: 5em;
     height: 100%;
     border: none;
     border-radius: 5rem; /*0 5rem 5rem 0;*/
     transition: all ease-in-out .3s;
-    background-color: #f00;
+    background-color: #006eff;
 
     display: flex;
     justify-content: center;
@@ -151,14 +171,35 @@ nav, .navbar{
 .langMenu{
     z-index: -1;
     border: var(--border);
-    background-color: rgb(214, 0, 0);
+    background-color: #004196;
+}
+:global(body.dark) .langMenu{
+    background-color: #333;
 }
 .langMenu > li > a{
     color: white;
+    border-bottom: var(--border-2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .langMenu > li > a:hover{
     color: #000;
     background-color: white;
+}
+.langMenu > li > button{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.langMenu > li > button > img{
+    margin-right: 0.3rem;
 }
 
 
@@ -171,17 +212,21 @@ span{
     color: #000;
 }
 .menuIcon{
-    width: 1rem;
+    width: 1.1rem;
     height: auto;
     margin-left: 0.2em;
-    filter: invert(1);
+    padding: 0.2rem;
+    border-radius: var(--border-radius);
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
-:global(body.dark) .menuIcon{
-    filter: invert(0%);
+.menuIconLang{
+    background-color: white;
+}
+:global(body.dark) .menuIconLang{
+    padding: 0;
 }
 
 .menuButton {
@@ -199,12 +244,11 @@ span{
 }
 .menuButton > .menuIconProfile{
     position: absolute;
-    right: 0;
+    right: 0.2rem;
     bottom: 0;
     width: 1em;
-    padding: 0.2em;
     border-radius: var(--border-radius);
-    background-color: #ccc;
+    background-color: white;
 }
 .menuButton > .contWellcome{
     position: absolute;
@@ -301,20 +345,15 @@ span{
 :global(body.dark) .ulMenuProfile > li{
     border-color: #3a3a3a;
 }
-.navbarLinksPanel > form{
-    width: 100%;
-}
+
 .ulMenuProfile > li > a,
-.ulMenuProfile > li > div,
-.navbarLinksPanel > .link,
-.navbarLinksPanel > form > .link{
+.ulMenuProfile > li > div{
     position: relative;
     width: 100%;
     height: 2.5rem;
-    padding: 1.5rem 0em;
+    padding: 1.5rem 0em 1.5rem 0.9rem;
     color: #000;
     cursor: pointer;
-    padding-left: 1.2rem;
     border: none;
 
     display: flex;
@@ -324,50 +363,15 @@ span{
 :global(body.dark) .ulMenuProfile > li > a{
     color: #fff;
 }
-.navbarLinksPanel > form > .link{
-    width: 100%;
-    padding-left: 2rem;
-    background-color: white;
-}
-.navbarLinksPanel > form > .link:hover{
-    color: #000;
-    background-color: #e2e2e2;
-}
 
-:global(body.dark) .navbarLinksPanel > .link{
-    color: #fff;
-}
 
-:global(body.dark) .navbarLinksPanel > .link:hover{
-    color: #000;
-    background-color: #e2e2e2;
-}
-:global(body.dark) .navbarLinksPanel > form > .link{
-    color: #fff;
-    background-color: #1d1d1d;
-}
-:global(body.dark) .navbarLinksPanel > form > .link:hover{
-    color: #000;
-    background-color: white;
-}
-:global(body.dark) .navbarLinksPanel > form > .link:hover img{
-    filter: invert(100%);
-}
-
-.navbarLinksPanel > .link > img,
-.navbarLinksPanel > form > .link > img{
-    width: 1.2rem;
-    height: 1.2rem;
-    margin-right: 0.5rem;
-}
 
 .ulMenuProfile > li > a:hover{
     color: #fff;
     background-color: #006eff;
 }
 
-.ulMenuProfile > form,
-.navbarLinksPanel > form{
+.ulMenuProfile > form{
     width: 100%;
     height: auto;
     padding:0.5rem;
@@ -381,47 +385,6 @@ span{
     cursor: pointer;
 }
 
-.navbarLinksPanel > form{
-    width: 100%;
-    padding: 1em;
-}
-
-.navbarLinksPanel > .link:hover{
-    color: #000;
-    background-color: #e2e2e2;
-}
-
-.panel{
-    position: absolute;
-    top: 0;
-    right: -16rem;
-    z-index: 15;
-    width: 16rem;
-    height: 100vh;
-    background: white;
-    transition: all ease-in-out 0.4s;
-
-    display: none;
-}
-.buttonPanel{
-    z-index: 16;
-    width:auto;
-    height: 100%;
-    padding:0 1.8rem 0 0.5rem;
-    transition: all ease-in-out .3s;
-    
-    
-    display: none;
-    justify-content: flex-end;
-    align-items: center;
-}
-.buttonPanel > .imgMenuButtonPanel{
-    width: 2rem;
-    height: 2rem;
-}
-
-
-
 .logoImageLink{
     width: 1.5rem;
     height: 1.5rem;
@@ -431,102 +394,259 @@ span{
     filter: invert(0%);
 }
 
-.navbarLinksPanel > form{
+
+.contMobile{
+    display: none;
+}
+.contMobile > .navbarLogoLinkMobile{
     width: auto;
-    padding: 0;
-    background-color: white;
+    height: 100%;
+    padding: 0 0em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contMobile > .navbarLogoLinkMobile > .navbarLogo{
+    width: auto;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contMobile > .navbarLogoLinkMobile > .navbarLogo > .logoImage{
+    width: auto;
+    height: 2.5em;
+}
+.contMobile > p{
+    user-select: none;
+}
+.contMobile > .buttonPanel{
+    filter: invert(100%);
+}
+:global(body.dark) .contMobile > .buttonPanel{
+    filter: invert(0%);
+}
+.contMobile > .buttonPanel > img{
+    width: 1.5em;
+    height: 1.5em;
+}
+.contLinksUser{
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.contLinksUser,
+.imgProfilePanel,
+.imgMobile{
+    display: none;
 }
 
+.langMenuMobile{
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.langMenuMobile > div{
+    width: auto;
+    margin: 0.2rem;
+    padding: 0.5rem 0.7rem;
+    border-radius: var(--border-radius);
+    background-color: #333;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.langMenuMobile > div > button{
+    border: none;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.langMenuMobile > div > button > img {
+    padding-right: 0.5rem;
+}
+.langMenuMobile > div > a{
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.langMenuMobile > div > a > img{
+    padding-right: 0.5rem;
+}
+
+.contNavbarContent > .navbarContent > .navbarLinks > a > img{
+    filter: invert(100%);
+}
+
+.contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
+    display: none;
+}
 
 @media (max-width:1280px){
+    .imgMobile{
+        padding-right: 0.5rem;
+        display: flex;
+    }
+    .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel,
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel,
+    .contNavbarContent > .navbarContent > .navbarLinks > .langMenuMobile,
+    .navbarMenuMobile,
+    .contLinksUser,
+    .imgProfilePanel{
+        display: flex;
+    }
+    .navbarMenu,
+    .contNavbarContent > .navbarContent > .navbarLinks > .navbarLogoLink,
+    .contNavbarContent > .menuProfile{
+        display: none;
+    }
+    .navbarContent > .navbarLinks > a:hover,
+    .navbarContent > .navbarLinks > .elmPanel > a:hover{
+        border-radius: 0;
+    }
+    .navbarContent > .navbarLinks > .elmPanel > form{
+        width: 100%;
+        height: auto;
+        padding: 0.5rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     nav, .navbar{
-        z-index: 14;
         height: 4em;
         border-bottom: var(--border);
         transition: all 0.3s ease;
+        backdrop-filter: var(--backdrop-filter);
+        background: var(--background-2);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     :global(body.dark) nav, 
     :global(body.dark) .navbar{
-        border-bottom: 0.1rem solid rgb(36, 36, 36)
+        backdrop-filter: var(--backdrop-filter);
+        background: var(--background-dark-2) ;
+        border-bottom: 0.1rem solid rgb(36, 36, 36);
     }
-    .navbarLinks,
-    .navbarMenu,
-    .menuProfile{
-        display: none;
-    }
-    .panel,
-    .buttonPanel{
-        display: flex;
-    }
+    .contMobile{
+        width: 94%;
+        height: 100%;
 
-    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     .contNavbarContent{
-        width: 100%;
-        height: 100%;
-    }
-    .navbarContent{
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 0;
-
-    }
-    .navbarContent > p{
-        display: flex;
-    }
-    .menu{
-        padding-top: 0em;
-        transform: translateY(4em);
-        border-radius:0 0 1em 1em;
-    }
-    .menu > li > a{
-        color: black;
-    }
-    .langMenu{
+        position: absolute;
+        z-index: 12;
+        width: 20rem;
+        height: 100vh;
+        top: 3rem;
+        right: -20rem;
+        border-left:var(--border);
         background-color: white;
+        transition: all ease-in-out .3s;
+
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+        flex-direction: column;
     }
-    .navbarMenu{
-        border-radius: 0;
-        background: #292929;
+    :global(body.dark) .contNavbarContent{
+        border-left:var(--border-2);
+        background:#000;
     }
-    .navbarLinksPanel {
+    .contNavbarContent > .navbarContent{
         width: 100%;
         height: auto;
-        padding-top: 4rem;
-        overflow-y: auto;
-        border-left: var(--border);
+        padding: 0;
+        border: none;
+        padding-top: 1rem;
+        background: white;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+    }
+    :global(body.dark) .contNavbarContent > .navbarContent{
+        border: none;
+    }
+    
+    .contNavbarContent > .navbarContent > a{
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+    }
+    .contNavbarContent > .navbarContent > .navbarLinks > a,
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
+        color: white;
+    }
+    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > a > img{
+        filter: invert(0%);
+    }
+    .contNavbarContent > .navbarContent > .navbarLinks > div{
+        margin-bottom: 1rem;
+    }
+    .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
+        margin: 0.5rem;
+    }
+    .contNavbarContent > .navbarContent > .navbarLinks > .langMenuMobile{
+        margin: 0.5rem 0.5rem 0 0.5rem;
+    }
+    .contNavbarContent > .navbarContent,
+    .contNavbarContent > .navbarContent > .navbarLinks,
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
+        width: 100%;
+        border: none;
+        border-radius: 0;
 
         display: flex;
         flex-direction: column;
     }
-    .navbarLinksPanel > .link{
-        padding: 1rem 0 1rem 2rem;
-        color: black;
-    }
-
-    .menuProfile{
-        margin-left: 0;
-        padding: 0em 4.5em 0em 0.5em;
-        border: none;
-        border-radius: 0;
-        background: #292929;
-    }
-    .menuProfileButton{
-        width: 4em;
-        height: 4em;
-        padding: 0 0.5em 0 0.5em;
-    }
-    .menuButton > .contWellcome > .imgProfile{
-        width: 3.2em;
-        height: 3.2em;
-    }
-    .menuButton > .contWellcome > .wellcomeName{
+    :global(body.dark) .contNavbarContent > .navbarContent > .navbarMenu > .menuButton > span{
         color: white;
-        padding-right: 0rem;
     }
+    .contNavbarContent > .navbarContent > .navbarLinks > a,
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
+        width: 100%;
+        padding: 0.6rem 0 0.6rem 1.5rem;
+    }
+    .contNavbarContent > .menuProfile{
+        display: none;
+    }
+    .contNavbarContent > .navbarContent > .navbarMenuMobile{
+        width: 100%;
 
-    .ulMenuProfile{
-        position: absolute;
-        border-radius: 0 0 1.5em 1.5em;
+        border-radius: 0;
+        background-color: transparent;
+
+        display: flex;
+        flex-direction: column;
     }
 }

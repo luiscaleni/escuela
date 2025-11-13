@@ -1,9 +1,16 @@
 .loadingContainer{
-    position: absolute;
-    z-index: 20;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color, #fff);
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+    opacity: 1;
 
     display: flex;
     justify-content: center;
@@ -13,22 +20,19 @@
 :global(body.dark) .loadingContainer{
     background-color: #121212;
 }
-.loadingContainer > .loader{
-    width: 6rem;
-    height: 6rem;
-    border-radius: 100%;
-    border: 1.5em solid #e2e2e2;
-    border-top: 1.5em solid #0055c4;
-    animation-name: spin;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+.loadingContainer.hide {
+    opacity: 0;
+    pointer-events: none;
 }
-.loadingContainer::after{
-    padding-top: 1em;
-    color: black;
-    content: 'Cargando';
+.loader{
+    border: 6px solid #ccc;
+    border-top: 6px solid var(--primary-color, #007bff);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
 }
+
 
 
 .loadingContainerMini{
@@ -40,7 +44,7 @@
     justify-content: center;
     align-items: center;
 }
-.loadingContainerMini > .loaderMini{
+.loaderMini{
     width: 1.2rem;
     height: 1.2rem;
     border: 0.5em solid;

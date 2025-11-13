@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import styles from "./css/NavBar.module.css"
@@ -22,11 +22,14 @@ import imgNews from '../../assets/icons/links/news.png'
 import imgPlantations from '../../assets/icons/links/plantations.png'
 import imgAboutUs from '../../assets/icons/links/about_us.png'
 import imgPublication from '../../assets/icons/links/publication.png'
-import imgLogout from '../../assets/icons/links/logout.png'
+import flagSpain from '../../assets/icons/flags/espania.png'
+import flagBrazil from '../../assets/icons/flags/brasil.png'
+import flagParaguay from '../../assets/icons/flags/paraguay.png'
+import flagEstadosUnidos from '../../assets/icons/flags/estadosunidos.png'
 
 import { UserContext } from '../../components/UserProvider'
-import { useTheme } from '../../components/ThemeContext'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../../config/config'
+import { useTranslation } from 'react-i18next'
 
 function NavBar() {
     const { user, loadUser } = useContext(UserContext)
@@ -35,7 +38,8 @@ function NavBar() {
     const [cargando, setCargando] = useState(false)
     const [login, setLogin] = useState(false)
     const [togglePanel, setTogglePanel] = useState(false)
-    const navigate = useNavigate()        
+    const navigate = useNavigate()
+    const [t, i18n] = useTranslation()
     
     const apiUrl = CONFIG_BACKEND.API_DIR
     const [imgMenuButtonPanel, setImgMenuButtonPanel] = useState(menu)
@@ -93,15 +97,15 @@ function NavBar() {
     }
 
     function toggleMenuPanel(){
-        const panel = document.getElementById('panel')
+        const contNavbarContent = document.getElementById('contNavbarContent')
 
         setTogglePanel(!togglePanel)
         if(togglePanel){
             setImgMenuButtonPanel(menu)
-            panel.style.right="-16rem"
+            contNavbarContent.style.right="-20rem"
         }else{
             setImgMenuButtonPanel(close)
-            panel.style.right="-1vw"
+            contNavbarContent.style.right="-1vw"
         }
     }
 
@@ -133,111 +137,146 @@ function NavBar() {
         }
     }
 
-    const {dark} = useTheme()
-    
+    /*traduccion */
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
+    const changeLang = (lang)=>{
+        i18n.changeLanguage(lang)
+        localStorage.setItem('lang',lang)
+    }  
+
     return ( 
         <>
             <div className={styles.navbar} id='navbar'>
-                <div className={styles.contNavbarContent}>
+                <div className={styles.contMobile}>
+                    <Link to='/' className={styles.navbarLogoLinkMobile}>
+                        <div className={styles.navbarLogo}>
+                            <img src={isotipo} alt="Logo" className={styles.logoImage} />
+                        </div>
+                    </Link>
+                    <p>DPISUD</p>
+                    <div className={styles.buttonPanel} alt='buttonPanel' onClick={toggleMenuPanel}>
+                        <img src={imgMenuButtonPanel} className={styles.imgMenuButtonPanel}/>
+                    </div>
+                </div>
+                <div className={styles.contNavbarContent} id="contNavbarContent">
                     <nav className={styles.navbarContent} id="navbarContent">
-                        <Link to='/' className={styles.navbarLogoLink}>
-                            <div className={styles.navbarLogo}>
-                                <img src={isotipo} alt="Logo" className={styles.logoImage} />
-                            </div>
-                        </Link>
-                        <p>DPISUD</p>
                         <div className={styles.navbarLinks} id='navbarLinks'>
-                            <Link to={CONFIG_PATHS.HOME_PATH}>Home</Link>
-                            <Link to={CONFIG_PATHS.NEWS_PATH}>Noticias</Link>
-                            <Link to={CONFIG_PATHS.ABOUT_US_PATH}>Nosotros</Link>
-                            <Link to={CONFIG_PATHS.RESOURCES_PATH}>Recursos</Link>
-                            <Link to={CONFIG_PATHS.PLANTATIONS}>Plantaciones</Link>
-                            <Link to={CONFIG_PATHS.DONATE_PATH}>Donar</Link>
-                            {!user && (
-                                <Link to={CONFIG_PATHS.LOGIN_PATH}>Login</Link>
+                            {user && (
+                                <div className={styles.imgProfilePanel}>
+                                    <ImgProfile/>
+                                </div>
                             )}
+                            <Link to='/' className={styles.navbarLogoLink}>
+                                <div className={styles.navbarLogo}>
+                                    <img src={isotipo} alt="Logo" className={styles.logoImage} />
+                                </div>
+                                <p>DPISUD</p>
+                            </Link>
+                            <Link to={CONFIG_PATHS.HOME_PATH}>
+                                <img src={imgHome} className={styles.imgMobile}/>
+                                {t('navbar.home')}
+                            </Link>
+                            <Link to={CONFIG_PATHS.NEWS_PATH}>
+                                <img src={imgNews} className={styles.imgMobile}/>
+                                {t('navbar.news')}
+                            </Link>
+                            <Link to={CONFIG_PATHS.ABOUT_US_PATH}>
+                                <img src={imgAboutUs} className={styles.imgMobile}/>
+                                {t('navbar.aboutUs')}
+                            </Link>
+                            <Link to={CONFIG_PATHS.RESOURCES_PATH}>
+                                <img src={imgResources} className={styles.imgMobile}/>
+                                {t('navbar.resources')}
+                            </Link>
+                            <Link to={CONFIG_PATHS.PLANTATIONS}>
+                                <img src={imgPlantations} className={styles.imgMobile}/>
+                                {t('navbar.plantations')}
+                            </Link>
+                            <Link to={CONFIG_PATHS.DONATE_PATH}>
+                                <img src={imgDonate} className={styles.imgMobile}/>
+                                {t('navbar.donate')}
+                            </Link>
+                            {!user ? (
+                                <>
+                                <Link to={CONFIG_PATHS.LOGIN_PATH}>
+                                    <img src={imgProfileMen} className={styles.imgMobile}/>
+                                    {t('navbar.login')}
+                                </Link>
+                                <DarkMode />
+                                </>
+                            ) : (
+                                <>
+                                <div className={styles.elmPanel}>
+                                    <Link to={CONFIG_PATHS.PROFILE_PATH}>
+                                        <img src={imgProfileMen} className={styles.imgMobile}/>
+                                        {t('navbar.profile')}
+                                    </Link>
+                                        {(user.rolId === 1) && (
+                                            <>
+                                            <Link to={CONFIG_PATHS.NEW_POST_PATH}>
+                                                <img src={imgPublication} className={styles.imgMobile}/>
+                                                {t('navbar.publication')}
+                                            </Link>
+                                            <Link to={CONFIG_PATHS.CONFIG_PATH}>
+                                                <img src={imgConfiguration} className={styles.imgMobile}/>
+                                                {t('navbar.configuration')}
+                                            </Link>
+                                            </>
+                                        )}
+                                    <Link to={CONFIG_PATHS.HELP_PATH}>
+                                        <img src={imgHelp} className={styles.imgMobile}/>
+                                        {t('navbar.help')}
+                                    </Link>
+                                    <div className={styles.langMenuMobile}>
+                                        <div>
+                                            <button onClick={() => i18n.changeLanguage('es')}><img src={flagSpain}/>ES</button>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => i18n.changeLanguage('en')}><img src={flagBrazil}/>PT</button>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => i18n.changeLanguage('py')}><img src={flagParaguay}/>PY</button>
+                                        </div>
+                                        <div>
+                                            <button onClick={() => i18n.changeLanguage('en')}><img src={flagEstadosUnidos}/>EN</button>
+                                        </div>
+                                    </div>
+                                    <DarkMode />
+                                    <form onSubmit={handleSubmit}>
+                                        <Button
+                                            typeBtn="submit"
+                                            altNameBtn="logout"
+                                            titleBtn="Cerrar Sesión"
+                                            disabled={cargando}
+                                        >{t('navbar.logout')}</Button>
+                                    </form>
+                                </div>
+                                </>
+                                )}
                         </div>
                         
                         <menu className={styles.navbarMenu} id='navbarMenu' onClick={() => toggleMenu()}>
                             <div className={styles.menuButton} id="menu">
                                 <span>Es</span>
-                                <img src={arrowBottom} alt="arrowMenu" className={styles.menuIcon} />
+                                <img src={arrowBottom} alt="arrowMenu" className={`${styles.menuIcon} ${styles.menuIconLang}`} />
                             </div>
                             <ul className={`${styles.menu} ${styles.langMenu}`} id="langMenu">
-                                <li><Link to="/">EN</Link></li>
-                                <li><Link to="/">FR</Link></li>
+                                <li>
+                                    <button onClick={() => i18n.changeLanguage('es')}><img src={flagSpain}/>ES</button>
+                                </li>
+                                <li>
+                                    <button onClick={() => i18n.changeLanguage('pt')}><img src={flagBrazil}/>ES</button>
+                                </li>
+                                <li>
+                                    <button onClick={() => i18n.changeLanguage('py')}><img src={flagParaguay}/>PY</button>
+                                </li>
+                                <li>
+                                    <button onClick={() => i18n.changeLanguage('en')}><img src={flagEstadosUnidos}/>EN</button>
+                                </li>
                             </ul>
-                        </menu>
-
-                        <div className={styles.buttonPanel} id='buttonPanel' alt='buttonPanel' onClick={()=>toggleMenuPanel()}>
-                            <img src={imgMenuButtonPanel} id="imgMenuButtonPanel" className={styles.imgMenuButtonPanel}/>
-                        </div>
-                        <menu className={dark ? `${styles.panel} ${styles.dark}` : styles.panel} id='panel'>
-                            <div className={styles.navbarLinksPanel}>
-                                <Link to={CONFIG_PATHS.HOME_PATH} className={styles.link}>
-                                    <img src={imgHome} alt="Logo" className={styles.logoImageLink}/>
-                                    Home
-                                </Link>
-                                <Link to={CONFIG_PATHS.NEWS_PATH} className={styles.link}>
-                                    <img src={imgNews} alt="Logo" className={styles.logoImageLink}/>
-                                    Noticias
-                                </Link>
-                                <Link to={CONFIG_PATHS.ABOUT_US_PATH} className={styles.link}>
-                                    <img src={imgAboutUs} alt="Logo" className={styles.logoImageLink}/>
-                                    Nosotros
-                                </Link>
-                                <Link to={CONFIG_PATHS.RESOURCES_PATH} className={styles.link}>
-                                    <img src={imgResources} alt="Logo" className={styles.logoImageLink}/>
-                                    Recursos
-                                </Link>
-                                <Link to={CONFIG_PATHS.PLANTATIONS} className={styles.link}>
-                                    <img src={imgPlantations} alt="Logo" className={styles.logoImageLink}/>
-                                    Plantaciones
-                                </Link>
-                                <Link to={CONFIG_PATHS.DONATE_PATH} className={styles.link}>
-                                    <img src={imgDonate} alt="Logo" className={styles.logoImageLink}/>
-                                    Donar
-                                </Link>
-                                {!user && (
-                                    <>
-                                    <Link to={CONFIG_PATHS.LOGIN_PATH} className={styles.link}>
-                                        <img src={imgProfileMen} alt="Logo" className={styles.logoImageLink}/>
-                                        Login
-                                    </Link>
-                                    </>
-                                )}
-                                 {user && (
-                                    <>
-                                    {(user.rolId === 1) && (
-                                        <Link to={CONFIG_PATHS.NEW_POST_PATH} className={styles.link}>
-                                            <img src={imgPublication} alt="Logo" className={styles.logoImageLink}/>
-                                            Publicar
-                                        </Link>
-                                    )}
-                                    <Link to={CONFIG_PATHS.PROFILE_PATH} className={styles.link}>
-                                        <img src={imgProfileMen} alt="Logo" className={styles.logoImageLink}/>
-                                        Perfil
-                                    </Link>
-                                    {(user.rolId === 1) && (
-                                        <Link to={CONFIG_PATHS.CONFIG_PATH} className={styles.link}>
-                                            <img src={imgConfiguration} alt="Logo" className={styles.logoImageLink}/>
-                                            Configuración
-                                        </Link>
-                                    )}
-                                    <Link to={CONFIG_PATHS.HELP_PATH} className={styles.link}>
-                                        <img src={imgHelp} alt="Logo" className={styles.logoImageLink}/>
-                                        Ayuda
-                                    </Link>
-                                    <form onSubmit={handleSubmit}>
-                                        <button type="submit" className={styles.link} alt="logout" title="Cerrar Sesión" disabled={cargando}>
-                                            <img src={imgLogout} alt="Logo" className={styles.logoImageLink}/>
-                                            Cerrar sesión
-                                        </button>
-                                    </form>
-                                    </>
-                                 )}
-                                 <DarkMode />
-                            </div>
                         </menu>
                     </nav>
                     {user && (
@@ -252,30 +291,36 @@ function NavBar() {
                                 <img src={arrowBottom} alt="arrowMenu" id="imgMenu" className={`${styles.menuIcon} ${styles.menuIconProfile}`} />
                             </div>
                             <ul className={`${styles.menu} ${styles.ulMenuProfile}`} id="ulMenuProfile">
-                                <li><Link to={CONFIG_PATHS.PROFILE_PATH}>Perfil</Link></li>
+                                <li>
+                                    <Link to={CONFIG_PATHS.PROFILE_PATH}>Perfil</Link>
+                                </li>
                                 {(user.rolId === 1) && (
                                     <>
-                                        <li><Link to={CONFIG_PATHS.NEW_POST_PATH}>Publicar</Link></li>
-                                        <li><Link to={CONFIG_PATHS.CONFIG_PATH}>Configuración</Link></li>
+                                    <li>
+                                        <Link to={CONFIG_PATHS.NEW_POST_PATH}>{t('navbar.publication')}</Link>
+                                    </li>
+                                    <li>
+                                        <Link to={CONFIG_PATHS.CONFIG_PATH}>{t('navbar.configuration')}</Link>
+                                    </li>
                                     </>
                                 )}
-                                <li><Link to={CONFIG_PATHS.HELP_PATH}>Ayuda</Link></li>
-                                <li><DarkMode /></li>
-                                
-                                    <form onSubmit={handleSubmit}>
-                                        <Button
-                                            typeBtn="submit"
-                                            altNameBtn="logout"
-                                            titleBtn="Cerrar Sesión"
-                                            disabled={cargando}
-                                        >Cerrar sesión</Button>
-                                    </form>
-                                
+                                <li>
+                                    <Link to={CONFIG_PATHS.HELP_PATH}>{t('navbar.help')}</Link>
+                                </li>
+                                <li>
+                                    <DarkMode />
+                                </li>
+                                <form onSubmit={handleSubmit}>
+                                    <Button
+                                        typeBtn="submit"
+                                        altNameBtn="logout"
+                                        titleBtn="Cerrar Sesión"
+                                        disabled={cargando}
+                                    >{t('navbar.logout')}</Button>
+                                </form>
                             </ul>
                         </menu>
                     )}
-
-
                 </div>
             </div>
         </>

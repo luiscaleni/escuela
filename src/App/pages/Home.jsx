@@ -8,6 +8,7 @@ import Elementor from '../components/Elementor'
 import LoadData from '../components/LoadData'
 import stylesButton from '../components/css/Button.module.css'
 import { CONFIG_BACKEND, CONFIG_NAMES_COUNTRYS, CONFIG_PATHS } from '../config/config'
+import { useTranslation } from 'react-i18next'
 
 function Home() {
   const [configData, setConfigData]  = useState(null)
@@ -16,6 +17,7 @@ function Home() {
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
   const [dbPlantations, setDbPlantations] = useState()
   const [leadersPlant, setLeadersPlant] = useState()
+  const [t, i18n] = useTranslation()
 
   useEffect(() => {
     loadConfigData()
@@ -69,7 +71,7 @@ function Home() {
         </Section>
         <Section>
           <div className={styles.marqueeContainer}>
-            <h2>Plantaciones en Sudamérica</h2>
+            <h2>{t('home.sectPlantTitle')}</h2>
             <div className={styles.marquee}>
               <h3 className={styles.one}>{namesCountrys}</h3>
             </div>
@@ -79,18 +81,18 @@ function Home() {
             <div className={styles.marquee}>
               <h3 className={styles.three}>{namesCountrysThree}</h3>
             </div>
-            <Link to={CONFIG_PATHS.PLANTATIONS} className={stylesButton.button}>Ver plantaciones</Link>
+            <Link to={CONFIG_PATHS.PLANTATIONS} className={stylesButton.button}>{t('home.seePlantations')}</Link>
           </div>
         </Section>
         <Section>
           <Elementor>
-            <div className={styles.dataCountry}><p>10</p><p>Paises</p></div>
+            <div className={styles.dataCountry}><p>10</p><p>{t('home.countries')}</p></div>
           </Elementor>
           <Elementor>
-            <div className={styles.dataChurch}><p>{dbPlantations}</p><p>Plantaciones</p></div>
+            <div className={styles.dataChurch}><p>{dbPlantations}</p><p>{t('home.plantations')}</p></div>
           </Elementor>
           <Elementor>
-            <div className={styles.dataPlanters}><p>{leadersPlant}</p><p>Plantadores</p></div>
+            <div className={styles.dataPlanters}><p>{leadersPlant}</p><p>{t('home.planters')}</p></div>
           </Elementor>
         </Section>
         

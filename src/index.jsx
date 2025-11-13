@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { UserProvider } from './App/components/UserProvider'
 import './index.css'
+import './App/i18n'
 
 import Home               from './App/pages/Home'
 import News               from './App/pages/News'

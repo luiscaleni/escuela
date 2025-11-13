@@ -31,7 +31,7 @@ function FormForgetPassw() {
         }
 
         try {
-            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/ForgetPassw`, {
+            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/forgetPassw`, {
                 method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

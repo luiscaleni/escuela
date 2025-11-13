@@ -1,0 +1,36 @@
+{
+  "navbar":{
+    "home": "Home",
+    "news": "News",
+    "aboutUs": "About us",
+    "resources": "Resources",
+    "plantations": "Plantations",
+    "donate": "Donate",
+    "login": "Login",
+    "profile": "Profile",
+    "publication": "Publication",
+    "configuration": "Configuration",
+    "help": "Help",
+    "logout": "Logout"
+  },
+  "home":{
+    "header": "South American Church Planting Department",
+    "presentation": "We are the Church Planting Department in South America belonging to the Church of God of Prophecy.",
+    "sectPlantTitle": "Plantations in South America",
+    "seePlantations" : "See plantations",
+    "countries": "Countries",
+    "plantations": "Plantations",
+    "planters": "Planters"
+  },
+  "footer":{
+    "headquarters" : "Headquarters",
+    "connectWithUs" : "Connect with us",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and conditions",
+    "collaborators" : "Our collaborators",
+    "vision" : "Our vision",
+    "aboutUs" : "About us",
+    "contact" : "Contact",
+    "copyright" : "All rights reserved."
+  }
+}

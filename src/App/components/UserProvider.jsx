@@ -6,9 +6,9 @@ export const UserContext = createContext()
 export function UserProvider({ children }) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [initialized, setInitialized] = useState(false)
 
   const loadUser = async () => {
-    setLoading(true)
     try {
       const res = await fetch(`${CONFIG_BACKEND.API_DIR}/user/session`, {
         method: 'POST',
@@ -20,6 +20,7 @@ export function UserProvider({ children }) {
       setUser(null)
     } finally {
       setLoading(false)
+      setInitialized(true)
     }
   }
 
@@ -28,7 +29,7 @@ export function UserProvider({ children }) {
   }, [])
 
   return (
-    <UserContext.Provider value={{ user, loading, loadUser }}>
+    <UserContext.Provider value={{ user, loading, initialized, loadUser }}>
       {children}
     </UserContext.Provider>
   )

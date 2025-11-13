@@ -6,51 +6,50 @@ import { CONFIG_BACKEND } from '../config/config'
 import Loader from './Loader'
 
 function ImgProfile() {
-    const { user, loadUser } = useContext(UserContext)
+    const { user, loadUser, loading, initialized } = useContext(UserContext)
     const location = useLocation()
     const navigate = useNavigate()
     const [imgSrc, setImgSrc] = useState(null)
-    const [triedToLoadUser, setTriedToLoadUser] = useState(false)
 
     useEffect(() => {
-        if (location.state?.updated) {
-        loadUser()
-        }
+        if (location.state?.updated) loadUser()
     }, [location.state, loadUser])
 
+    const [showLoader, setShowLoader] = useState(true)
 
     useEffect(() => {
-        if (user === null && triedToLoadUser) {
+        if (!loading && initialized) {
+            const t = setTimeout(() => setShowLoader(false), 400)
+            return () => clearTimeout(t)
+        }
+    }, [loading, initialized])
+
+    useEffect(() => {
+        if (!loading && initialized && !user) {
             const timeoutId = setTimeout(() => {
                 navigate('/login', { state: { updated: true } })
-            }, 2000)
+            }, 1000)
             return () => clearTimeout(timeoutId)
-        }else if (user !== null){
-            setTriedToLoadUser(true)
         }
-    }, [user, navigate, triedToLoadUser])
+    }, [user, loading, initialized, navigate])
 
     // 3) Calcula la URL de la imagen solo cuando cambie user.imgProfile o user.id
-    let defaultImg = `${CONFIG_BACKEND.API_DIR}/src/assets/user_default.png`;
     useEffect(() => {
-        if (user && user.id !== undefined) {
-            const img = user?.imgProfile
-            ? setImgSrc(`${CONFIG_BACKEND.API_DIR}/src/assets/users/${user.id}/profile/${user.imgProfile}?v=${new Date(user.imgUpdatedAt).getTime()}`)
-            : setImgSrc(defaultImg);
+        if (user && user.id) {
+            const src = user?.imgProfile
+                ? `${CONFIG_BACKEND.API_DIR}/src/assets/users/${user.id}/profile/${user.imgProfile}?v=${new Date(user.imgUpdatedAt).getTime()}`
+                :`${CONFIG_BACKEND.API_DIR}/src/assets/user_default.png`
+                setImgSrc(src);
         }
-    }, [user?.imgProfile, user?.id, user?.imgUpdatedAt]);
+    }, [user])
 
     // 4) Rendering
-    if (user === null || imgSrc === null) {
-        return <Loader />
-    }
+    if (showLoader) return <Loader visible={loading} />
 
     return ( 
-        <>
-            <div className={styles.contImgProfile}>
-                <img src={imgSrc} alt="imgProfile" className={styles.imgProfile} />
-            </div>
-        </>
+        <div className={styles.contImgProfile}>
+            <img src={imgSrc} alt="imgProfile" className={styles.imgProfile} />
+        </div>
      )
 }
 

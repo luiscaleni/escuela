@@ -27,7 +27,8 @@
   --color-light: #f0f0f0;
   --color-text: #292929;
 
-  --border: 1px solid rgb(124, 124, 124);
+  --border: 0.1rem solid rgb(187, 187, 187);
+  --border-2: 0.1rem solid #494949;
   --border-radius: 2rem;
   --border-radius-slim: 1rem;
   
@@ -46,7 +47,7 @@
   --background: rgba(255, 255, 255, 0.6);
   --background-2: rgba(255, 255, 255, 0.8);
   --background-dark: rgba(0, 0, 0, 0.6);;
-  --background-dark-2: rgb(0, 0, 0);
+  --background-dark-2: rgba(0, 0, 0, 0.8);
   --background-color: rgba(255, 255, 255, 1);
   --background-color-btn: #006eff;
   --background-color-btn-hover: #004bad;

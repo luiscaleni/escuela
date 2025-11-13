@@ -1,14 +1,16 @@
-import styles from "./css/Footer.module.css"
+import styles from './css/Footer.module.css'
 import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link } from 'react-router-dom'
 import LoadData from '../../components/LoadData'
-import { CONFIG_BACKEND, CONFIG_SOCIAL_NETWORK } from "../../config/config"
+import { CONFIG_BACKEND, CONFIG_SOCIAL_NETWORK } from '../../config/config'
+import { useTranslation } from 'react-i18next'
 
 function Footer() {
     const [configData, setConfigData]  = useState(null)
     const [cargando, setCargando] = useState(false)
     const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
     const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
+    const [t, i18n] = useTranslation()
     
     useEffect(() => {
         loadConfigData()
@@ -19,7 +21,7 @@ function Footer() {
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
                     <div className={styles.group}>
-                        <p>Sedes:</p>
+                        <p>{t('footer.headquarters')}:</p>
                             <ul>
                                 <li><Link to="#">Buenos aires</Link></li>
                                 <li><Link to="#">Tucuman</Link></li>
@@ -29,25 +31,22 @@ function Footer() {
                     </div>
 
                     <div className={styles.group}>
-                        <p>Conéctate con nosotros:</p>
+                        <p>{t('footer.connectWithUs')}:</p>
                         <ul>
-                            <li><Link to="#">Política de privacidad</Link></li>
-                            <li><Link to="#">Términos y condiciones</Link></li>
-                            <li><Link to="#">Servicios para empresas</Link></li>
+                            <li><Link to="#">{t('footer.privacy')}</Link></li>
                         </ul>
                     </div>
 
                     <div className={styles.group}>
-                        <p>Acerca de:</p>
+                        <p>{t('footer.aboutUs')}:</p>
                         <ul>
-                            <li><Link to="#">¿Qué es DPISUD?</Link></li>
-                            <li><Link to="#">Nuestros colaboradores</Link></li>
-                            <li><Link to="#">Nuestra visión</Link></li>
+                            <li><Link to="#">{t('footer.collaborators')}</Link></li>
+                            <li><Link to="#">{t('footer.vision')}</Link></li>
                         </ul>
                     </div>
 
                     <div className={styles.group}>
-                        <p>Contacto:</p>
+                        <p>{t('footer.contact')}:</p>
                         <ul>
                             <li>
                                 <Link to={CONFIG_SOCIAL_NETWORK.EMAIL}>
@@ -73,7 +72,7 @@ function Footer() {
                     </div>
                 </div>
                 <p className={styles.copyright}>
-                    {configData ? `©${configData.yearConfig} ${configData.acrDptoNameConfig}. Todos los derechos reservados.` : "DPISUD"}
+                    {configData ? `© ${configData.yearConfig} ${configData.acrDptoNameConfig}. ${t('footer.copyright')}` : "DPISUD"}
                 </p>
             </footer>
         </>

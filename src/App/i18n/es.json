@@ -1,0 +1,36 @@
+{
+  "navbar":{
+    "home": "Inicio",
+    "news": "Noticias",
+    "aboutUs": "Nosotros",
+    "resources": "Recursos",
+    "plantations": "Plantaciones",
+    "donate": "Donar",
+    "login": "Login",
+    "profile": "Perfil",
+    "publication": "Publicar",
+    "configuration": "Configuracion",
+    "help": "Ayuda",
+    "logout": "Cerrar sesión"
+  },
+  "home":{
+    "header": "Departamento de Plantación de Iglesias en Sudamérica",
+    "presentation": "Somos el Departamento de Plantación de Iglesia en Sudamérica que pertenece a la la Iglesia de Dios de la Profecía.",
+    "sectPlantTitle": "Plantaciones en Sudamérica",
+    "seePlantations" : "Ver plantaciones",
+    "countries": "Paises",
+    "plantations": "Plantaciones",
+    "planters": "Plantadores"
+  },
+  "footer":{
+    "headquarters" : "Sedes",
+    "connectWithUs" : "Conéctate con nosotros",
+    "privacy": "Política de privacidad",
+    "terms": "Términos y condiciones",
+    "collaborators" : "Nuestros colaboradores",
+    "vision" : "Nuestra visión",
+    "aboutUs" : "Nosotros",
+    "contact" : "Contacto",
+    "copyright" : "Todos los derechos reservados."
+  }
+}

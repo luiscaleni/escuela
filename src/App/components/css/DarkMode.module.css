@@ -4,7 +4,6 @@
 }
 
 .buttonMode{
-  position: absolute;
   z-index: 19;
   width: 100%;
   bottom: 0;
@@ -12,7 +11,7 @@
   height: 4rem;
   cursor: pointer;
   color: #000;
-  margin-left: 1rem;
+
 
   display: flex;
   justify-content: center;
@@ -90,6 +89,6 @@
 .buttonMode > .colorText{
     color: #000;
 }
-.colorText_dark{
-    color: #fff;
+:global(body.dark) .buttonMode > .colorText{
+  color: white;
 }
