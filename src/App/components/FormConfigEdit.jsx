@@ -9,6 +9,8 @@ import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import { UserContext } from './UserProvider'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
+import TopButtons from './TopButtons'
+import TopButtonNone from './TopButtonNone'
 
 function FormConfigEdit() {
     const { user } = useContext(UserContext)
@@ -58,8 +60,6 @@ function FormConfigEdit() {
         if (form.emailConfig) formData.append('emailConfig', form.emailConfig)     
         if (form.supvNameConfig) formData.append('supvNameConfig', form.supvNameConfig)
         if (form.contentConfig) formData.append('contentConfig', form.contentConfig)
-
-        alertContainer.style.padding="0.5rem"
 
         if (user.rolId === 1) {
             try {
@@ -130,8 +130,11 @@ function FormConfigEdit() {
         <>
         <div className={styles.contForm}>
             <form className={styles.form} id='formConfigUpdate' onSubmit={handleSubmit}>
-                <div className={styles.alertContainer} id="alertContainer">{message}</div>
-                <LeftTopButton text={t('buttons.configuration')} locationElm={CONFIG_PATHS.CONFIG_PATH} typeElm='expand'/>
+                <TopButtons>
+                    <LeftTopButton text={t('buttons.configuration')} locationElm={CONFIG_PATHS.CONFIG_PATH} typeElm='expand'/>
+                    <div className={styles.alertContainer} id="alertContainer">{message}</div>
+                    <TopButtonNone />
+                </TopButtons>
                 <div className={styles.contElmsForm}>
                     <h1>{t('buttons.edit')}</h1>
                     <ContFormInput nameElm={t('showCongiData.fullNameDpto')+" :"}>

@@ -7,6 +7,7 @@ import pencil from '../assets/icons/utilities/pencil.png'
 import ContFormInput from './ContFormInput'
 import RightTopButton from './RightTopButton'
 import { useTranslation } from 'react-i18next'
+import TopButtons from './TopButtons'
 
 function ShowConfigData() {
     const [configData, setConfigData]  = useState(null)
@@ -28,8 +29,10 @@ function ShowConfigData() {
         <>
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate'>
-                    <div className={styles.alertContainer} id="alertContainer"></div>
-                    <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                    <TopButtons>
+                        <div className={styles.alertContainer} id="alertContainer"></div>
+                        <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                    </TopButtons>
                     <div className={styles.contElmsForm}>
                         <h1>{t('showCongiData.title')}</h1>
                         <ContFormInput nameElm={t('showCongiData.fullNameDpto')+" :"}>

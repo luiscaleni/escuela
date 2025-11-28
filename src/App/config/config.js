@@ -53,4 +53,4 @@ export const CONFIG_NAMES_COUNTRYS = [
     "Uruguay", "Perú", "Ecuador", "Bolivia", "Chile"
 ]
 
-export const ENABLE_TRANSLATION = true
+export const ENABLE_TRANSLATION = false

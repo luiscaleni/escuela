@@ -94,17 +94,17 @@ function FormPost() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formPost' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <h1>Nueva Noticia</h1>
+                    <h1>{t('form.newPub.title')}</h1>
                     <ContFormInput nameElm="Titulo:">
-                        <input type="text" name="titlePub" placeholder="Título" onChange={handleChange}/>
+                        <input type="text" name="titlePub" placeholder="Título" onChange={handleChange} required/>
                     </ContFormInput>
 
                     <ContFormInput nameElm="Contenido:">
-                        <textarea id="textPub" className={styles.textareaPost} name="textPub" placeholder="Contenido de publicación" onChange={handleChange}></textarea>
+                        <textarea id="textPub" className={styles.textareaPost} name="textPub" placeholder="Contenido de publicación" onChange={handleChange} required></textarea>
                     </ContFormInput>
 
                     <ContFormInput nameElm="Descripción:">
-                        <input type="text" name="descriptPub" placeholder="Descripción de la publicación" onChange={handleChange}/>
+                        <input type="text" name="descriptPub" placeholder="Descripción de la publicación" onChange={handleChange} required/>
                     </ContFormInput>
 
                     <ContFormInput nameElm="Banner de Publicación:">
@@ -134,12 +134,12 @@ function FormPost() {
 
                     <Button
                         typeBtn="submit"
-                        altName="Guardar cambios"
-                        title="Guardar cambios"
+                        altName={t('buttons.saveChanges')}
+                        title={t('buttons.saveChanges')}
                         id="guadarCambios"
                         disabled={cargando}
                     >
-                        {cargando ? <Loader mini={true}/> : "Guardar Cambios"}
+                        {cargando ? <Loader mini={true}/> : t('buttons.saveChanges')}
                     </Button>
                 </form>
             </div>

@@ -11,6 +11,8 @@ import pencil from '../../assets/icons/utilities/pencil.png'
 import { CONFIG_PATHS } from '../../config/config'
 import RightTopButton from '../../components/RightTopButton'
 import { useTranslation } from 'react-i18next'
+import TopButtons from '../../components/TopButtons'
+import TopButtonNone from '../../components/TopButtonNone'
 
 function Profile() {   
     const { user, loadUser } = useContext(UserContext)
@@ -53,7 +55,10 @@ function Profile() {
                     <Container>
                         <div className={styles.bg}>
                             <div className={styles.bannerProfile}>
-                                <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                                <TopButtons>
+                                    <TopButtonNone />
+                                    <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                                </TopButtons>
                                 <div className={styles.contTitleProfile}>
                                     <div className={styles.contImgProfile}>
                                         <ImgProfile />

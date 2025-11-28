@@ -97,16 +97,6 @@
     flex-direction: row;
 }
 
-.topButtons{
-    position: relative;
-    width: 100%;
-    height: 3.2rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 @media (max-width:1582px){
     .contContTable{

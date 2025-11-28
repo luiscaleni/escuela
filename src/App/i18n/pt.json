@@ -126,12 +126,21 @@
       "start":"Início do trabalho"
     },
     "newPub":{
+      "title":"Novas notícias",
       "lang": {
         "title":"Linguagem",
         "es":"Espanhol",
         "pt":"Português",
         "en":"Inglês"
       }
+    },
+    "postEdit":{
+      "title":"Editar",
+      "titlePost": "Título da revista",
+      "text":"Text",
+      "descript":"Descrição",
+      "frontPage":"Primeira página",
+      "date":"Data: Será alterada automaticamente"
     },
     "resource":{
       "title":"Carregar um arquivo",
@@ -154,7 +163,7 @@
     "seeMore":"veja mais...",
     "modalMsg":"Formatos suportados",
     "public":"Publicar",
-    "goUp":"Subir",
+    "goUp":"Carregar",
 
     "wellcome":"Bem-vindo",
     "someLinks":"Alguns links de interesse",

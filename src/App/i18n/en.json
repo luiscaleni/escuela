@@ -126,12 +126,21 @@
       "start":"Start of work plant"
     },
     "newPub":{
+      "title":"New post",
       "lang": {
         "title":"Language",
         "es":"Spanish",
         "pt":"Portuguese",
         "en":"English"
       }
+    },
+    "postEdit":{
+      "title":"Edit",
+      "titlePost": "Title",
+      "text":"Text",
+      "descript":"Description",
+      "frontPage":"Front page",
+      "date":"Date: Will change automatically"
     },
     "resource":{
       "title":"Upload a file",

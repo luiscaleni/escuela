@@ -9,6 +9,9 @@ import ContFormInput from './ContFormInput'
 import { UserContext } from '../../App/components/UserProvider'
 import Button from './Button'
 import LeftTopButton from './LeftTopButton'
+import TopButtons from './TopButtons'
+import TopButtonNone from './TopButtonNone'
+import { useTranslation } from 'react-i18next'
 
 function FormPostEdit() {
     const { user, loadUser } = useContext(UserContext)
@@ -19,6 +22,7 @@ function FormPostEdit() {
     const [selectedImage, setSelectedImage] = useState(null)
     const [preview, setPreview] = useState(null)
     const [dataUpdate, setDataUpdate] = useState([])
+     const [t, i18n] = useTranslation()
     const imgD = CONFIG_BACKEND.API_DIR+'/src/assets/publications/'+post?.imgPub
 
     useEffect(()=>{
@@ -76,34 +80,35 @@ function FormPostEdit() {
         formData.append('descriptPub', form.descriptPub)
         formData.append('imgPub', selectedImage)
 
-        alertContainer.style.padding="0.5rem"
+        if (user.rolId === 1) {
+            try {
+                const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/postUpdate`, {
+                    method: 'POST',
+                    credentials: 'include',
+                    body: formData
+                })
+                if (!response.ok) {
+                    throw new Error('Network response was not ok')
+                }
+                const data = await response.json()
 
-        try {
-            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/postUpdate`, {
-                method: 'POST',
-                credentials: 'include',
-                body: formData
-            })
-            if (!response.ok) {
-                throw new Error('Network response was not ok')
-            }
-            const data = await response.json()
-
-            if(data.success){
-                alertContainer.innerHTML="✅ "+data.message
-                alertContainer.classList.add("success")
-            }else{
-                alertContainer.innerHTML="❌ "+data.error
+                if(data.success){
+                    alertContainer.innerHTML="✅ "+data.message
+                    alertContainer.classList.add("success")
+                }else{
+                    alertContainer.innerHTML="❌ "+data.error
+                    alertContainer.classList.add("error")
+                }
+            } catch (errorCatch) {
+                if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch)}
+                alertContainer.innerHTML="❌ "+errorCatch.error
                 alertContainer.classList.add("error")
+            } finally{
+                setLoading(false)
             }
-        } catch (errorCatch) {
-            if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch)}
-            alertContainer.innerHTML="❌ "+errorCatch.error
-            alertContainer.classList.add("error")
-        } finally{
-            setLoading(false)
+        }else{
+            location(CONFIG_PATHS.HOME_PATH)
         }
-
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -129,41 +134,45 @@ function FormPostEdit() {
         <>
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
-                    <div className={styles.alertContainer} id="alertContainer"></div>
-                    <LeftTopButton locationElm={`${CONFIG_PATHS.NEWS_PATH}/${id_news}`} typeElm='expand' text="Volver"/>
-                    
-                    <h1>Editar</h1>
-                    <ContFormInput nameElm="Título:">
-                        <input type="text" name="titlePub" id="titlePub" placeholder={dataUpdate.titlePub??post.titlePub} onChange={handleChange}/>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Texto:">
-                        <textarea name="textPub" id="textPub" className={styles.textareaPost} placeholder={dataUpdate.textPub??parrafos}onChange={handleChange}></textarea>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Descripción:">
-                        <input type="text" name="descriptPub" id="descriptPub"placeholder={dataUpdate.titlePub??post.descriptPub} onChange={handleChange}/>
-                    </ContFormInput>
+                    <TopButtons>
+                        <LeftTopButton locationElm={`${CONFIG_PATHS.NEWS_PATH}/${id_news}`} typeElm='expand' text={t('buttons.back')}/>
+                        <div className={styles.alertContainer} id="alertContainer"></div>
+                        <TopButtonNone />
+                    </TopButtons>
+                    <div className={styles.contElmsForm}>
+                        <h1>{t('buttons.edit')}</h1>
+                        <ContFormInput nameElm={t('form.postEdit.titlePost')+" :"}>
+                            <input type="text" name="titlePub" id="titlePub" placeholder={(dataUpdate.titlePub??post.titlePub)!==undefined??''} onChange={handleChange}/>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('form.postEdit.text')+" :"}>
+                            <textarea name="textPub" id="textPub" className={styles.textareaPost} placeholder={(dataUpdate.textPub??parrafos)!==undefined??''}onChange={handleChange}></textarea>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('form.postEdit.descript')+" :"}>
+                            <input type="text" name="descriptPub" id="descriptPub"placeholder={(dataUpdate.titlePub??post.descriptPub)!==undefined??''} onChange={handleChange}/>
+                        </ContFormInput>
 
-                    <ContFormInput nameElm="Portada:">
-                        <div className={styles.contImgUpPreview}>
-                            <img src={imgResult} alt='Preview imagen' id='imgPreview' />
-                            <input type="file" name="imgPub" alt='Boton de carga de imagen' accept="image/*" onChange={handleImageChange}/>
-                        </div>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Fecha: Se cambiará automáticamente">
-                        <ShowData>{dataUpdate.titlePub??post.datePub}</ShowData>
-                    </ContFormInput>
-                    <Button
-                        typeBtn="submit"
-                        altName="Guardar cambios"
-                        title="Guardar cambios"
-                        id="guadarCambios"
-                        disabled={loading}
-                    >
-                        {loading ? <Loader mini={true}/> : "Guardar Cambios"}
-                    </Button>
+                        <ContFormInput nameElm={t('form.postEdit.frontPage')+" :"}>
+                            <div className={styles.contImgUpPreview}>
+                                <img src={imgResult} alt='Preview imagen' id='imgPreview' />
+                                <input type="file" name="imgPub" alt='Boton de carga de imagen' accept="image/*" onChange={handleImageChange}/>
+                            </div>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('form.postEdit.date')+" :"}>
+                            <ShowData>{dataUpdate.titlePub??post.datePub}</ShowData>
+                        </ContFormInput>
+                        <Button
+                            typeBtn="submit"
+                            altName={t('buttons.saveChanges')}
+                            title={t('buttons.saveChanges')}
+                            id="guadarCambios"
+                            disabled={loading}
+                        >
+                            {loading ? <Loader mini={true}/> : t('buttons.saveChanges')}
+                        </Button>
+                    </div>
                 </form>
             </div>
         </>

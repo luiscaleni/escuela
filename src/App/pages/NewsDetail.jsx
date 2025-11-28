@@ -13,6 +13,7 @@ import RightTopButton from '../components/RightTopButton'
 import { UserContext } from '../../App/components/UserProvider'
 import TranslationNotice from "../components/TranslationNotice"
 import { useTranslation } from 'react-i18next'
+import TopButtons from '../components/TopButtons'
 
 function NewsDetail() {
     const { user } = useContext(UserContext)
@@ -166,12 +167,11 @@ function NewsDetail() {
                         typeElm="img"
                         locationPub='publications'
                     >
-                        <div className={stylesNews.topContButtons}>
+                        <TopButtons>
                             <LeftTopButton
                                 locationElm={CONFIG_PATHS.NEWS_PATH}
                                 typeElm='expand'
                                 text={t('buttons.news')}
-                                marginLeft={true}
                             />
 
                             {news.langPub !== i18n.language && translatedBody && (
@@ -186,11 +186,10 @@ function NewsDetail() {
                                     locationElm={CONFIG_PATHS.EDIT_POST_PATH + '/' + news.idPub}
                                     typeElm='expand'
                                     text={t('buttons.edit')}
-                                    marginRight={true}
                                     imgElm={pencil}
                                 />
                             )}
-                        </div>
+                        </TopButtons>
 
                         <Container widthElm="max" hiddenStyle={true}>
                             {/* Mientras traduce, mostrar un loader */}

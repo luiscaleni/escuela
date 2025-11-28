@@ -1,14 +1,8 @@
-.contRightTopButton,
-.contRightTopButtonM{
-    position: absolute;
-    z-index: 25;
+.contRightTopButton{
+    z-index: 26;
     top: 0.5rem;
     right: 0.5rem;
 }
-.contRightTopButtonM{
-    margin-right: 2rem;
-}
-
 .RightTopButton::after {
     transition: all ease-in-out .8s;
     margin-right: 1rem;
@@ -16,8 +10,7 @@
 }
 
 @media (max-width:1280px){
-    .contRightTopButton,
-    .contRightTopButtonM{
+    .contRightTopButton{
         margin-left: 1rem;
         z-index: 15;
     }

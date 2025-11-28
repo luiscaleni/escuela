@@ -5,6 +5,8 @@ import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND } from '../config/config'
 import { useTranslation } from 'react-i18next'
+import TopButtons from './TopButtons'
+import TopButtonNone from './TopButtonNone'
 
 function FormResources({onSuccess}) {
     const [cargando, setCargando] = useState(false)
@@ -90,42 +92,51 @@ function FormResources({onSuccess}) {
         <>
         <div className={styles.contForm}>
             <form className={styles.form} id='formPushResource' onSubmit={handleSubmit}>
-                <div className={styles.alertContainer} id="alertContainer"></div>
-                <ContFormInput nameElm={t('form.resource.name')}>
-                    <input 
-                        type="text" 
-                        alt="titleResource" 
-                        name="titleResource" 
-                        placeholder= {t('form.resource.name')+' ...'}
-                        onChange={handleChange}
-                    />
-                </ContFormInput>
-                <ContFormInput nameElm={t('form.resource.descript')}>
-                    <textarea 
-                        alt="descriptionResource" 
-                        name="descriptionResource" 
-                        placeholder={t('form.resource.descript')+' ...'}
-                        onChange={handleChange}
-                    ></textarea>
-                </ContFormInput>
-                <ContFormInput>
-                    <input 
-                        type="file" 
-                        alt="fileResource" 
-                        name="fileResource"
-                        onChange={handleFileChange}
-                    />
-                </ContFormInput>
-                
-                <Button
-                    typeBtn="submit"
-                    altName={t('buttons.goUp')}
-                    title={t('buttons.goUp')}
-                    id="subirArchivo"
-                    disabled={cargando}
-                >
-                    {cargando ? <Loader mini={true}/> : t('buttons.goUp')}
-                </Button>
+                <TopButtons>
+                    <TopButtonNone />
+                    <div className={styles.alertContainer} id="alertContainer"></div>
+                    <TopButtonNone />
+                </TopButtons>
+                <div className={styles.contElmsForm}>
+                    <ContFormInput nameElm={t('form.resource.name')}>
+                        <input 
+                            type="text" 
+                            alt="titleResource" 
+                            name="titleResource" 
+                            placeholder= {t('form.resource.name')+' ...'}
+                            onChange={handleChange}
+                            required
+                        />
+                    </ContFormInput>
+                    <ContFormInput nameElm={t('form.resource.descript')}>
+                        <textarea 
+                            alt="descriptionResource" 
+                            name="descriptionResource" 
+                            placeholder={t('form.resource.descript')+' ...'}
+                            onChange={handleChange}
+                            required
+                        ></textarea>
+                    </ContFormInput>
+                    <ContFormInput>
+                        <input 
+                            type="file" 
+                            alt="fileResource" 
+                            name="fileResource"
+                            onChange={handleFileChange}
+                            required
+                        />
+                    </ContFormInput>
+                    
+                    <Button
+                        typeBtn="submit"
+                        altName={t('buttons.goUp')}
+                        title={t('buttons.goUp')}
+                        id="subirArchivo"
+                        disabled={cargando}
+                    >
+                        {cargando ? <Loader mini={true}/> : t('buttons.goUp')}
+                    </Button>
+                </div>
             </form>
         </div>
         </>

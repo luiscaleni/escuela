@@ -86,9 +86,10 @@ nav, .navbar{
     cursor: pointer;
     color:#000;
     text-decoration: none;
-    font-size: 1em;
-    padding: 0 0.4rem;
-    border-radius: 2em;
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    margin: 0 0.3rem;
+    border-radius: 2rem;
 
     display: flex;
     justify-content: center;

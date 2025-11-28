@@ -17,6 +17,7 @@ import ChartPie from "../components/ChartPie"
 import FormPlantation from '../components/FormPlantation'
 import { UserContext } from '../components/UserProvider'
 import DownloadChartAsImage from '../utils/DownloadChartAsImage'
+import TopButtons from "../components/TopButtons"
 
 function PlantationsCountry() {
     const [plantations, setPlantations] = useState([])
@@ -109,14 +110,14 @@ function PlantationsCountry() {
                     locationAlt="coverCountrys"
                     nameAsset={`${country}.jpg`}
                 >
-                    <div className={styles.topButtons}>
+                    <TopButtons>
                         <LeftTopButton 
                             typeElm='expand' 
                             text={t('buttons.plantations')} 
                             marginLeft={true}
                             locationElm={CONFIG_PATHS.PLANTATIONS} 
                         />
-                        {user && plantations.length > 0 &&(
+                        {plantations.length > 0 &&(
                             <ButtonTop 
                                 id="seeGraphic"
                                 textElm={t('buttons.graphic')} 
@@ -134,8 +135,7 @@ function PlantationsCountry() {
                                 onClick={() => {fnShowContainerForm()}} 
                             />
                         )}
-                        
-                    </div>
+                    </TopButtons>
                         {plantations.length > 0 ? (
                             <div className={styles.contContTable}>
                                 <div className={styles.contTable}>

@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next'
 import Modal from "../components/Modal"
 import { UserContext } from '../components/UserProvider'
 import FormPlantEdit from "../components/FormPlantEdit"
+import TopButtons from "../components/TopButtons"
 
 function PlantationDetail() {
     const [plantation, setPlantation] = useState([])
@@ -85,10 +86,12 @@ function PlantationDetail() {
                     locationPub={filePlant !== 'banner_home.jpg' ? ("plants/"+ country) : undefined}
                     nameAsset={filePlant}
                 >
-                    <LeftTopButton locationElm={`${CONFIG_PATHS.PLANTATIONS}/${countryDb}`} typeElm='expand' text={t('buttons.back')} marginLeft={true}/>
-                    {user && (plantation.leader_push_plant === user.id || user.id === 1) &&(
-                        <RightTopButton onClick={() => {fnShowContainer()}} typeElm='expand' text={t('buttons.edit')} marginRight={true} imgElm={pencil}/>
-                    )}
+                    <TopButtons>
+                        <LeftTopButton locationElm={`${CONFIG_PATHS.PLANTATIONS}/${countryDb}`} typeElm='expand' text={t('buttons.back')} marginLeft={true}/>
+                        {user && (plantation.leader_push_plant === user.id || user.id === 1) &&(
+                            <RightTopButton onClick={() => {fnShowContainer()}} typeElm='expand' text={t('buttons.edit')} marginRight={true} imgElm={pencil}/>
+                        )}
+                    </TopButtons>
 
                     <div className={styles.plantation}>
                        <p>País: {countryDb}</p>

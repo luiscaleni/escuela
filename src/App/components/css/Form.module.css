@@ -94,15 +94,13 @@ label > span{
   align-items: center;
 }
 
-.contForm > .form > .alertContainer{ /*.alertSuccess {*/
-  position: absolute;
-  top: 0.5rem;
+.contForm > .form > div > .alertContainer{ /*.alertSuccess {*/
   min-width: 2.7rem;
-  height: 2.7rem;
+  height: 2.6rem;
   font-size: 1rem;
   text-align: center;
-  padding: 0.3rem;
-  border-radius: 2.7rem;
+  padding: 0 0.5rem;
+  border-radius: 3rem;
   transition: all ease-in-out .3s;
 
   display: flex;

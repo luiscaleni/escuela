@@ -126,12 +126,21 @@
       "start":"Inicio de la obra"
     },
     "newPub":{
+      "title":"Nueva noticia",
       "lang": {
         "title":"Idioma",
         "es":"Español",
         "pt":"Portugues",
         "en":"Ingles"
       }
+    },
+    "postEdit":{
+      "title":"Editar",
+      "titlePost": "Título",
+      "text":"Texto",
+      "descript":"Descripción",
+      "frontPage":"Portada",
+      "date":"Fecha: Se cambiará automáticamente"
     },
     "resource":{
       "title":"Sube un archivo",
