@@ -6,12 +6,20 @@ import ShowData from './ShowData'
 import pencil from '../assets/icons/utilities/pencil.png'
 import ContFormInput from './ContFormInput'
 import RightTopButton from './RightTopButton'
+import { useTranslation } from 'react-i18next'
 
 function ShowConfigData() {
     const [configData, setConfigData]  = useState(null)
     const [cargando, setLoading] = useState(false)
     const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
     const loadConfigData = LoadData(setLoading, setConfigData, 'GET', ROUTE)
+    const [t, i18n] = useTranslation()
+  
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
+
     useEffect(() => {
         loadConfigData()
     }, [])
@@ -21,43 +29,45 @@ function ShowConfigData() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate'>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text="Editar" img={pencil}/>
-                    <h1>Configuración</h1>
-                    <ContFormInput nameElm="Nombre completo del dpto:">
-                        <ShowData>{configData?.dptoNameConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Acrónimo del nombre del dpto:">
-                        <ShowData>{configData?.acrDptoNameConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Nombre de la iglesia:">
-                        <ShowData>{configData?.nameChurchConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Acrónimo del nombre de la iglesia:">
-                        <ShowData>{configData?.acrNameChurchConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Copyright del sitio web:">
-                        <ShowData>{configData?.yearConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Email:">
-                        <ShowData>{configData?.emailConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Nombre del supervisor:">
-                        <ShowData>{configData?.supvNameConfig}</ShowData>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="Texto de presentación:">
-                        <ShowData>{configData?.contentConfig}</ShowData>
-                    </ContFormInput>
+                    <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                    <div className={styles.contElmsForm}>
+                        <h1>{t('showCongiData.title')}</h1>
+                        <ContFormInput nameElm={t('showCongiData.fullNameDpto')+" :"}>
+                            <ShowData>{configData?.dptoNameConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('showCongiData.acronymNameDpto')+" :"}>
+                            <ShowData>{configData?.acrDptoNameConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('showCongiData.nameChurch')+" :"}>
+                            <ShowData>{configData?.nameChurchConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('showCongiData.acronymChurch')+" :"}>
+                            <ShowData>{configData?.acrNameChurchConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('showCongiData.copyright')+" :"}>
+                            <ShowData>{configData?.yearConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm="Email:">
+                            <ShowData>{configData?.emailConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('showCongiData.supervisorName')+" :"}>
+                            <ShowData>{configData?.supvNameConfig}</ShowData>
+                        </ContFormInput>
+                        
+                        <ContFormInput nameElm={t('showCongiData.introText')+" :"}>
+                            <ShowData>{configData?.contentConfig}</ShowData>
+                        </ContFormInput>
+                    </div>
                 </form>
             </div>
         </>
-     );
+     )
 }
 
-export default ShowConfigData;
+export default ShowConfigData

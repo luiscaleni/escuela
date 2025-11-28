@@ -1,0 +1,6 @@
+.contCenterTopButton{
+    position: absolute;
+    z-index: 13;
+    top: 0.5rem;
+    left: 45%;
+}

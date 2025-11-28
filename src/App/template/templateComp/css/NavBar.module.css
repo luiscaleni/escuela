@@ -2,7 +2,7 @@ nav, .navbar{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 15;
+    z-index: 25;
     width: 100%;
     height: auto;
     transition: all 0.3s ease;
@@ -37,6 +37,16 @@ nav, .navbar{
     background: var(--background-dark);
     border: var(--border-2);
 }
+.contNavbarContent > .navbarContent > .contNavbarMenu{
+    width: 4rem;
+    height: 4rem;
+    border-radius: var(--border-radius);
+    background-color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     display: none;
 }
@@ -44,39 +54,63 @@ nav, .navbar{
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     margin-right: 0.5rem;
 }
+.contNavbarContent > .navbarContent,
+.contNavbarContent > .navbarContent > .navbarLinks,
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
+    height: auto;
+}
+ 
 .navbarContent > .navbarLinks{
     width: auto;
     height: 100%;
-    overflow: hidden;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
+.navbarContent > .navbarLinks > div {
+    height: 3rem;
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+}
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     width: 100%;
 }
-.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > div{
-    padding-bottom: 1rem;
-}
 .contNavbarContent > .navbarContent > .navbarLinks > a,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a,
-.contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
+.contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel{
     min-width: 6rem;
-    height: 80%;
+    height: 3rem;
     cursor: pointer;
     color:#000;
     text-decoration: none;
     font-size: 1em;
-    padding: 0 0.8rem;
+    padding: 0 0.4rem;
     border-radius: 2em;
 
     display: flex;
     justify-content: center;
     align-items: center;   
 }
-:global(body.dark) .navbarContent > .navbarLinks > a {
+
+.contNavbarContent > .navbarContent > .navbarLinks > .linkCont{
+    width: 100%;
+    height: 4rem;
+    padding-left: 0.7rem;
+    display: flex;
+    justify-content: flex-start;
+}
+.contNavbarContent > .navbarContent > .navbarLinks > .linkCont{
+    display: none;
+}
+.contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel > p{
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+}
+:global(body.dark) .navbarContent > .navbarLinks > a,
+:global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel > p {
     color: white;
 }
 
@@ -153,7 +187,7 @@ nav, .navbar{
 .navbarMenu,
 .navbarMenuMobile{
     position: relative;
-    width: 5em;
+    width: 4rem;
     height: 100%;
     border: none;
     border-radius: 5rem; /*0 5rem 5rem 0;*/
@@ -169,6 +203,7 @@ nav, .navbar{
 }
 
 .langMenu{
+    height: 15rem;
     z-index: -1;
     border: var(--border);
     background-color: #004196;
@@ -176,7 +211,7 @@ nav, .navbar{
 :global(body.dark) .langMenu{
     background-color: #333;
 }
-.langMenu > li > a{
+.langMenu > option{
     color: white;
     border-bottom: var(--border-2);
 
@@ -184,7 +219,7 @@ nav, .navbar{
     justify-content: center;
     align-items: center;
 }
-.langMenu > li > a:hover{
+.langMenu > option:hover{
     color: #000;
     background-color: white;
 }
@@ -265,13 +300,13 @@ span{
     width: 100%;
     height: auto;
     color:black;
-    font-size: 0rem;
-    padding-right: 0.5rem;
+    font-size: 0.95rem;
+    padding-left: 0.5rem;
     overflow: hidden;
     transition: all ease-in-out .3s;
     
     display: none;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
@@ -280,8 +315,8 @@ span{
     color: #fff;
 }
 .menuButton > .contWellcome > .contContImgProfile{
-    max-width: 4rem;
-    max-height: 4rem;
+    max-width: 3.5rem;
+    max-height: 3.5rem;
     min-width: 3rem;
     min-height: 3rem;
     border-radius: 50%;
@@ -303,7 +338,6 @@ span{
     height: 4em;
     margin-left: 1em;
     border-radius: 2.5rem;
-    border: var(--border);
     transition: all ease-in-out .1s;
 
     display: flex;
@@ -457,7 +491,7 @@ span{
     align-items: center;
     flex-wrap: wrap;
 }
-.langMenuMobile > div{
+.langMenuMobile > select{
     width: auto;
     margin: 0.2rem;
     padding: 0.5rem 0.7rem;
@@ -489,26 +523,69 @@ span{
     padding-right: 0.5rem;
 }
 
-.contNavbarContent > .navbarContent > .navbarLinks > a > img{
+.contNavbarContent > .navbarContent > .navbarLinks > a > img,
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
     filter: invert(100%);
 }
 
 .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
     display: none;
 }
+.contNavbarMenuPanel{
+    position: relative;
+    z-index: 99999;
+    display: none;
+}
 
 @media (max-width:1280px){
+    .contNavbarContent > .navbarContent > .contNavbarMenu{
+        display: none;
+    }
+    .contNavbarMenuPanel{
+        width: 100%;
+        height: 3rem;
+        border-radius: 0;
+        padding: 1rem 0 1rem 1.5rem;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .contNavbarMenuPanel::after{
+        content: 'Idioma';
+        color: #000;
+        padding-left: 0.5rem;
+    }
+    :global(body.dark) .contNavbarMenuPanel::after{
+        color: white;
+    }
+    .contNavbarContent > .navbarContent > .contNavbarMenu::after{
+        content: 'Idioma';
+        padding-left: 0.5rem;
+    }
+    :global(body.dark) .contNavbarContent > .navbarContent > .contNavbarMenu{
+        background-color: #000;
+    }
     .imgMobile{
         padding-right: 0.5rem;
         display: flex;
     }
-    .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel,
+    .contNavbarContent > .navbarContent > .navbarLinks > .linkCont,
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel,
     .contNavbarContent > .navbarContent > .navbarLinks > .langMenuMobile,
+    .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel,
+    .navbarContent > .navbarLinks > div,
     .navbarMenuMobile,
-    .contLinksUser,
-    .imgProfilePanel{
+    .contLinksUser{
+        width: 100%;
+        height: 3rem;
+        padding: 0.2rem;
+
         display: flex;
+        justify-content: flex-start;
+    }
+    .navbarContent > .navbarLinks > div{
+        padding:0.5rem 0 0.5rem 1.5rem;
     }
     .navbarMenu,
     .contNavbarContent > .navbarContent > .navbarLinks > .navbarLogoLink,
@@ -607,7 +684,8 @@ span{
     :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
         color: white;
     }
-    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > a > img{
+    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > a > img,
+    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
         filter: invert(0%);
     }
     .contNavbarContent > .navbarContent > .navbarLinks > div{
@@ -627,7 +705,11 @@ span{
         border-radius: 0;
 
         display: flex;
+        justify-content: flex-start;
         flex-direction: column;
+    }
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
+        width: 100%;
     }
     :global(body.dark) .contNavbarContent > .navbarContent > .navbarMenu > .menuButton > span{
         color: white;
@@ -649,4 +731,53 @@ span{
         display: flex;
         flex-direction: column;
     }
+}
+
+
+
+
+
+
+
+/* --- Comportamiento por defecto (desktop) --- */
+/* Mostrar selector en navbar */
+.contNavbarContent > .navbarContent > .contNavbarMenu {
+  display: flex !important;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Ocultar selector del panel por defecto en desktop */
+.contNavbarContent > .navbarContent > .contNavbarMenuPanel {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* --- Móvil / Tablet --- */
+@media (max-width: 1280px) {
+
+  /* Ocultar el selector del navbar en mobile */
+  .contNavbarContent > .navbarContent > .contNavbarMenu {
+    display: none !important;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  /* Mostrar el selector DENTRO del panel */
+  .contNavbarContent > .navbarContent > .contNavbarMenuPanel {
+    display: flex !important;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Asegurate que el panel no esté fuera de pantalla cuando está abierto.
+     Usamos una clase `.open` para controlar el estado (ver sección JS abajo) */
+  .contNavbarContent {
+    right: -20rem; /* estado cerrado */
+    transition: right .3s ease-in-out;
+  }
+  .contNavbarContent.open {
+    right: 0 !important; /* estado abierto: panel visible */
+  }
 }

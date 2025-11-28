@@ -16,7 +16,7 @@ function ButtonTop({imgElm, onClick ,textElm="", typeElm=""}) {
                 <p className={styles.textButton}>{textElm}</p>
             </button>
         </>
-     );
+     )
 }
 
 export default ButtonTop

@@ -5,7 +5,7 @@ function ShowData({children}) {
         <>
             <p className={styles.showData}>{children}</p>
         </>
-     );
+     )
 }
 
-export default ShowData;
+export default ShowData

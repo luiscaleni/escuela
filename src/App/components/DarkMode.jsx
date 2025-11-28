@@ -1,42 +1,30 @@
+import { useTranslation } from 'react-i18next'
 import { CONFIG_BACKEND } from '../config/config'
 import styles from './css/DarkMode.module.css'
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { UserContext } from './UserProvider'
+import { useTheme } from './ThemeContext'
 
 function DarkMode() {
     const { user } = useContext(UserContext)
-    const getInitialDark = () => {
-        const saved = localStorage.getItem('dark')
-        if (saved !== null) {
-            return saved === '1'
-        } else {
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-            localStorage.setItem('dark', prefersDark ? '1' : '0')
-            return prefersDark
-        }
-    }
+    const { dark, setDark } = useTheme()
+    const [t, i18n] = useTranslation()  
 
-    const [dark, setDark] = useState(getInitialDark)
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
 
-    useEffect(() => {
-        document.body.classList.toggle('dark', dark)
-        localStorage.setItem('dark', dark ? '1' : '0')
-    }, [dark])
-    
     useEffect(()=>{
         if (user && user.darkMode !== undefined && user.darkMode !== null) {
-            const userMode = user.darkMode === 1 || user.dakMode === true
+            const userMode = user.darkMode === 1 || user.darkMode === '1' || user.darkMode === true
             setDark(userMode)
-            localStorage.setItem('dark', userMode ? '1' : '0')
-            document.body.classList.toggle('dark', userMode)
         }
-    },[user])
+    },[user, setDark])
     
     const toggleDarkMode = async () => {
         const newDark = !dark
         setDark(newDark)
-        localStorage.setItem('dark', newDark ? '1' : '0')
-        document.body.classList.toggle('dark', newDark)
         
         if (user) {
             const formData = new FormData()
@@ -51,7 +39,7 @@ function DarkMode() {
                 if (!response.ok) throw new Error('Network response was not ok')
                 await response.json()
             } catch (error) {
-                console.warn(error)
+                if (import.meta.env.DEV) { console.warn(error)}
             }
         }
     }
@@ -60,7 +48,7 @@ function DarkMode() {
   
     return (
         <div className={styles.buttonMode}>
-            <p className={colorClass}>Modo oscuro</p>
+            <p className={colorClass}>{t('navbar.darkMode')}</p>
             <label className={styles.switch}>
                 <button type='button' className={`${styles.slider} ${dark ? styles.right : styles.left}`} onClick={toggleDarkMode} name='check' aria-pressed={dark}></button>
                 <span className={styles.on}>ON</span>

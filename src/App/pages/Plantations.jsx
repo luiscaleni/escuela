@@ -3,14 +3,22 @@ import Publication from "../components/Publication"
 import styles from './css/Plantations.module.css'
 import { CONFIG_NAMES_COUNTRYS, CONFIG_BACKEND } from "../config/config"
 import { Link } from "react-router-dom"
+import { useTranslation } from 'react-i18next'
+import { useEffect } from "react"
 
 function Plantations() {
+    const [t, i18n] = useTranslation()
+
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
 
     return ( 
         <>
             <Template>
                 <Publication
-                    titlePub="Plantaciones en Sudamérica"
+                    titlePub={t('plantations.title')}
                     typeElm="img"
                     nameAsset="banner_plantations.jpg"
                 >

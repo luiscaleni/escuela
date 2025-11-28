@@ -1,0 +1,19 @@
+.optionRow {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.flag {
+  width: 1.625rem;
+  height: 1.125rem;
+  object-fit: cover;
+  border-radius: 0.188rem;
+}
+
+.flagSingle {
+  width: 1,75rem;
+  height: 1,75rem;
+  object-fit: cover;
+  border-radius: 50%;
+}

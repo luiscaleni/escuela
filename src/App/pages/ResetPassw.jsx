@@ -1,138 +1,118 @@
+import { useSearchParams, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import stylesForm from '../components/css/Form.module.css'
 import styles from '../components/css/Form.module.css'
-import { useNavigate, useParams } from "react-router-dom"
-import { useState, useEffect, useContext } from "react"
-import { UserContext } from "../components/UserProvider"
-import Button from "../components/Button"
+import Template from "../template/Template"
+import Section from "../components/Section"
 import ContFormInput from "../components/ContFormInput"
-import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import Button from "../components/Button"
 import Loader from "../components/Loader"
-import Template from '../template/Template'
-import Section from '../components/Section'
+import { CONFIG_BACKEND, CONFIG_PATHS } from "../config/config"
 
-function ResetPassw() {
-    const { loadUser } = useContext(UserContext)
-    const {id_token} = useParams()
-    const [email, setEmail] = useState(null)
-    const [loading, setLoading] = useState(false)
-    const [form, setForm] = useState({ passwOne: '', passwTwo: '' })
-    const navigate = useNavigate()
+export default function ResetPassword() {
+  const [searchParams] = useSearchParams()
+  const token = searchParams.get("token")
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate()
 
+  const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [message, setMessage] = useState("")
+  console.log('token:'+token)
 
-    useEffect(()=>{
-        if (!id_token) return
-        loadEmail()
-    },[id_token])
-
-    const encoded = encodeURIComponent(id_token);
-    const loadEmail = async ()=>{
-        try {
-            const res = await fetch(`${CONFIG_BACKEND.API_DIR}/consultToken?id_token=${encoded}`)
-            const data = await res.json()
-            if(data.success){
-                setEmail(data.result)
-            }else{
-                console.error(data.message)
-            }
-        } catch (error) {
-            console.error('Error en API: ', error)
-        }finally{
-            setLoading(false)
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    const alertContainer = document.getElementById('alertContainer')
+    if (password !== confirmPassword) {
+      alertContainer.classList.add("error")
+      setTimeout(() => {
+        alertContainer.style.transition=""
+        alertContainer.style.display="none"
+        alertContainer.classList.add("none")
+      }, 3000)
+      setMessage("Las contraseñas no coinciden, intente nuevamente.")
+      setLoading(false)
+      setPassword("")
+      setConfirmPassword("")
+      return
     }
-
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
+    
+console.log('passw:'+password)
+    try {
+      const res = await fetch(`${CONFIG_BACKEND.API_DIR}/resetPassw`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, password })
+      })
+      const data = await res.json()
+      if (data.success) {
+        setMessage(data.message)
+        setLoading(false)
+        navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Se actualizó correctamente", path: CONFIG_PATHS.LOGIN_PATH } })
+      }else{
+        alertContainer.classList.add("error")
+        setMessage("❌ "+data.message)
+      }
+    } catch (error) {
+      alertContainer.classList.add("error")
+      setMessage("❌ Error de conexión con el servidor")
+    }finally{
+      setTimeout(() => {
+        alertContainer.classList.add("none")
+      }, 3000)
     }
+  }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault()
-        setLoading(true)
+  return (
+    <>
+    <Template separator={true}>
+      <Section>
+        <div className={styles.contForm}>
+          <form
+              autoComplete="off"
+              id='formReset'
+              className={styles.form}
+              onSubmit={handleSubmit}
+          >
+            <div className={stylesForm.alertContainer} id="alertContainer">{message}</div>
+            <h2>Reestablecer contraseña</h2>
+              
+            <ContFormInput nameElm="Contraseña:">
+              <input
+                type="password"
+                placeholder="Nueva contraseña"
+                name='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </ContFormInput>
 
-        if (form.passwOne === form.passwTwo) {  
-            const formData = new FormData()
-            formData.append('passwOne', form.passwOne)
-            formData.append('email', email.email_token)
+            <ContFormInput nameElm="Confirmar contraseña:">
+              <input
+                  type="password"
+                  placeholder='Confirmar contraseña'
+                  value={confirmPassword}
+                  name='password'
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+              />
+            </ContFormInput>
 
-            try {
-                const response = await fetch(`${CONFIG_BACKEND.API_DIR}/updatePassw`, {
-                    method: 'POST',
-                    body: formData,
-                })
-                if (!response.ok) {
-                    throw new Error('Network response was not ok')
-                }
-                const data = await response.json()
-
-                if (data.success) {
-                    await loadUser()
-                    setForm({ passwOne: '', passwTwo: '' })
-                    navigate(CONFIG_PATHS.YOUR_WELLCOME_PATH)
-                } else {
-                    console.log(data.message)
-                }
-            } catch (err) {
-                alert("Error al iniciar sesión. Intenta nuevamente.")
-                console.error(err)
-            } finally {
-                setLoading(false)
-            }
-        }else{
-            alert("Las contraseñas no coinciden")
-        }
-    }
-
-    return (
-        <>
-            <Template separator={true}>
-                <Section>
-                    <div className={styles.contForm}>
-                        <form
-                            autoComplete="off"
-                            id='formReset'
-                            className={styles.form}
-                            onSubmit={handleSubmit}
-                        >
-                            <h2>Reestablecer contraseña</h2>
-                            
-                            <ContFormInput nameElm="Contraseña:">
-                                <input
-                                    type="password"
-                                    placeholder='Contraseña'
-                                    value={form.passwOne}
-                                    name='passwOne'
-                                    id='passwordResetOne'
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </ContFormInput>
-
-                            <ContFormInput nameElm="Confirmar contraseña:">
-                                <input
-                                    type="password"
-                                    placeholder='Confirmar contraseña'
-                                    value={form.passwTwo}
-                                    name='passwTwo'
-                                    id='passwordResetTwo'
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </ContFormInput>
-                            <ContFormInput className={styles.btn}>
-                                <Button
-                                    typeBtn='submit'
-                                    altName='Guardar cambios'
-                                    title='Guardar cambios'
-                                    disabled={loading}
-                                >
-                                    {loading ? <Loader mini={true}/> : "Guardar cambios"}
-                                </Button>
-                            </ContFormInput>                    
-                        </form>
-                    </div>
-                </Section>
-            </Template>
-        </>
-    )
+            <ContFormInput className={styles.btn}>
+              <Button
+                  typeBtn='submit'
+                  altName='Guardar cambios'
+                  title='Guardar cambios'
+                  disabled={loading}
+              >
+                  {loading ? <Loader mini={true}/> : "Guardar cambios"}
+              </Button>
+            </ContFormInput>                    
+          </form>
+        </div>
+      </Section>
+    </Template>
+    </>
+  )
 }
-
-export default ResetPassw

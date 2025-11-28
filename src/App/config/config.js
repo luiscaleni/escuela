@@ -14,8 +14,8 @@ export const CONFIG_SOCIAL_NETWORK = {
 }
 
 export const CONFIG_BACKEND = {
-    /*API_DIR: import.meta.env.VITE_API_BASE_URL*/
     API_DIR: "http://localhost/api"
+    /*API_DIR: import.meta.env.VITE_API_BASE_URL*/
     /*API_IMPORT_URL: import.meta.env.VITE_API_BASE_URL*/
 }
 
@@ -53,4 +53,4 @@ export const CONFIG_NAMES_COUNTRYS = [
     "Uruguay", "Perú", "Ecuador", "Bolivia", "Chile"
 ]
 
-export const CONFIG_ALERT_MESSAGE = "Estamos trabajando en ello, disculpe las molestias."
+export const ENABLE_TRANSLATION = true

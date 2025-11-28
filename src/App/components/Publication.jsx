@@ -2,9 +2,18 @@ import Section from '../components/Section'
 import styles from './css/Publication.module.css'
 import Video from '../components/Video'
 import bannerDefault from '../assets/images/banner_default.jpg'
-import { CONFIG_BACKEND, CONFIG_ALERT_MESSAGE } from '../config/config'
+import { CONFIG_BACKEND } from '../config/config'
+import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 
 function Publication({titlePub, nameAsset="", typeElm="", locationPub="", locationAlt= "", children}) {
+  const [t, i18n] = useTranslation()
+  
+  useEffect(()=>{
+      const lang = localStorage.getItem('lang') || 'es'
+      i18n.changeLanguage(lang)
+  },[i18n])
+
   let mediaSrc
 
   if (typeElm === "img") {
@@ -34,7 +43,7 @@ function Publication({titlePub, nameAsset="", typeElm="", locationPub="", locati
           ) : null}
         </Section>
         <Section typeElm='xtreme'>
-            {children ? children : <p>{CONFIG_ALERT_MESSAGE}</p>}
+            {children ? children : <p>{t('alerts.WeAreW')}</p>}
         </Section>
       </div>
     </>

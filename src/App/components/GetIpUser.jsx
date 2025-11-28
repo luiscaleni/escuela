@@ -9,9 +9,9 @@ function GetIpUser() {
                 const response = await fetch("https://api.ipify.org?format=json")
                 const data = await response.json()
                 setIpAddress(data.ip)
-                console.log("IP Address:", data.ip)
+                if (import.meta.env.DEV) { console.log("IP Address:", data.ip) }
             } catch (error) {
-                console.error("Error fetching IP address:", error)
+                if (import.meta.env.DEV) { console.error("Error fetching IP address:", error) }
             }
         }
 

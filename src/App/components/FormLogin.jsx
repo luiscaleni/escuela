@@ -1,12 +1,13 @@
 import { useNavigate, Link } from "react-router-dom"
 import styles from './css/Form.module.css'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Button from "./Button"
 import { useContext } from "react"
 import { UserContext } from "./UserProvider"
 import ContFormInput from "./ContFormInput"
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Loader from "./Loader"
+import { useTranslation } from 'react-i18next'
 
 function FormLogin() {
     const { loadUser } = useContext(UserContext)
@@ -16,6 +17,12 @@ function FormLogin() {
         email: '',
         passw: ''
     })
+    const [t, i18n] = useTranslation()  
+
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -48,7 +55,7 @@ function FormLogin() {
             }
         } catch (error) {
             alert("Error al iniciar sesión. Intenta nuevamente.")
-            console.error(error)
+            if (import.meta.env.DEV) {console.error(error)}
         } finally {
             setCargando(false)
         }
@@ -63,11 +70,11 @@ function FormLogin() {
                     className={styles.form}
                     onSubmit={handleSubmit}
                 >
-                    <h2>Iniciar Sesión</h2>
-                    <ContFormInput nameElm="Email:">
+                    <h2>{t('buttons.login')}</h2>
+                    <ContFormInput nameElm={t('form.login.email')+" :"}>
                         <input
                             type="email"
-                            placeholder='Email'
+                            placeholder={t('form.login.email')}
                             value={form.email}
                             name='email'
                             id='email'
@@ -75,10 +82,10 @@ function FormLogin() {
                             required
                         />
                     </ContFormInput>
-                    <ContFormInput nameElm="Contraseña:">
+                    <ContFormInput nameElm={t('form.login.passw')+" :"}>
                         <input
                             type="password"
-                            placeholder='Contraseña'
+                            placeholder={t('form.login.passw')}
                             value={form.passw}
                             name='passw'
                             id='passwordLogin'
@@ -90,16 +97,16 @@ function FormLogin() {
                         <Button
                             typeBtn='submit'
                             altName='IniciarSesion'
-                            title='IniciarSesion'
+                            title={t('buttons.login')}
                             disabled={cargando}
                         >
-                            {cargando ? <Loader mini={true}/> : "Iniciar Sesión"}
+                            {cargando ? <Loader mini={true}/> : t('buttons.login')}
                         </Button>
                     </ContFormInput>
                     <p className={styles.smallText}>
-                        <Link to='/ForgetPassw' title="Olvidé mi contraseña">Olvidé mi contraseña</Link>
+                        <Link to='/ForgetPassw' title="Olvidé mi contraseña">{t('buttons.fPassw')}</Link>
                         |
-                        <Link to='/Registro' title="Me quiero registrar">Me quiero registrar</Link>
+                        <Link to='/Registro' title="Me quiero registrar">{t('buttons.iWantR')}</Link>
                     </p>
                     
                 </form>

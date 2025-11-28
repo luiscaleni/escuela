@@ -1,0 +1,33 @@
+.contTotalTranslate{
+    padding:0 0.5rem;
+    background: #dfdfdf;
+    border: var(--border);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contTotalTranslate > .contTranslate{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.contTotalTranslate > .contTranslate > .text{
+    height: 3.5rem;
+    color:#000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contTotalTranslate > .contTranslate > .contButton{
+    width: 8rem;
+    height: 3.5rem;
+    padding-left: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

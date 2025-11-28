@@ -16,6 +16,7 @@ function Home() {
   const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
   const [dbPlantations, setDbPlantations] = useState()
+  const [message, setMessage] = useState("")
   const [leadersPlant, setLeadersPlant] = useState()
   const [t, i18n] = useTranslation()
 
@@ -40,19 +41,16 @@ function Home() {
       ])
 
       if (plantsData.success) {
-        setDbPlantations(plantsData.result.length)
+        setDbPlantations(plantsData.result)
       }else{
-          console.error('Error: ', plantsData.message)
+          setMessage('Error: ', "❌ "+plantsData.message)
       }
 
       if (leadersData.success) {
         setLeadersPlant(leadersData.result.length)
-      }else{
-          console.error('Error: ', leadersData.message)
       }
-
     }catch (error){
-      console.error('Error en API: ', error)
+      return
     }
   }
   
@@ -81,7 +79,7 @@ function Home() {
             <div className={styles.marquee}>
               <h3 className={styles.three}>{namesCountrysThree}</h3>
             </div>
-            <Link to={CONFIG_PATHS.PLANTATIONS} className={stylesButton.button}>{t('home.seePlantations')}</Link>
+            <Link to={CONFIG_PATHS.PLANTATIONS} className={stylesButton.button}>{t('buttons.seePlantations')}</Link>
           </div>
         </Section>
         <Section>

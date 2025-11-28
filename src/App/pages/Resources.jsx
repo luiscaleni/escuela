@@ -9,13 +9,21 @@ import styles from './css/Resources.module.css'
 import stylesButton from '../components/css/Button.module.css'
 import Modal from '../components/Modal'
 import FormResources from '../components/FormResources'
+import imgUpload from '../assets/icons/links/upload.png'
 import { UserContext } from '../components/UserProvider'
+import { useTranslation } from 'react-i18next'
 
 function Resources() {
     const [resources, setResources] = useState([])
     const [showContainer, setShowContainer] = useState(false)
-    const { user, loadUser } = useContext(UserContext)
-
+    const { user } = useContext(UserContext)
+    const [t, i18n] = useTranslation()    
+    
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
+    
     useEffect(() => {
         fetch(`${CONFIG_BACKEND.API_DIR}/showResources`, {
             method: 'GET'
@@ -24,22 +32,16 @@ function Resources() {
             .then(data=>{
                 if (data.success) {
                     setResources(data.result)
-                    load()
-                }else{
-                    console.error('Error: ', data.error)
-                }
-                
+                }                
             })
-            .catch (error => console.error('Error en API: ', error))
+            .catch (error => import.meta.env.DEV ?? console.error('Error en API: ', error))
     },[])
 
     function handleAddResource(newResource) {
         setResources(prev => [newResource, ...prev])
         setShowContainer(false)
     }
-    const load = async ()=>{
-        await loadUser()
-    }
+
     
     const fnCloseContainer = () => setShowContainer(false)
     const fnShowContainer = () => {
@@ -55,9 +57,9 @@ function Resources() {
             {showContainer && (
                 <Modal
                     id="containerFloat"
-                    titleElm="Sube un archivo" 
-                    textElm='* Los formatos soportados son: jpg, jpeg, png, webp, pdf, docx, xlsx, pptx, mp4, mp3'
-                    onClick={fnCloseContainer}
+                    titleElm={t('form.resource.title')} 
+                    textElm={`* ${t('form.resource.title')} : jpg, jpeg, png, webp, pdf, docx, xlsx, pptx, mp4, mp3.`}
+                    onClickElm={fnCloseContainer}
                 >
                 <FormResources 
                     onSuccess={handleAddResource}
@@ -66,7 +68,7 @@ function Resources() {
             )}
             <Template>
                 <Publication 
-                    titlePub="Recursos" 
+                    titlePub={t('resources.title')} 
                     typeElm='img' 
                     nameAsset="banner_resources.jpg"
                 >
@@ -74,40 +76,41 @@ function Resources() {
                         <div className={styles.contPushButton}>
                             <ButtonTop 
                                 id="pushFile"
-                                textElm='Sube un archivo' 
+                                textElm={t('buttons.upload')} 
                                 typeElm='expand'
+                                imgElm={imgUpload}
                                 onClick={() => {fnShowContainer()}}
                             />
                         </div>
                     )}
-                    {resources.length>0 ? (
+                    {resources.length > 0 ? (
                         resources.map(resource => (
-                            <Elementor key={resource.id_resource}>
-                                <p className={styles.titleResource}>{resource.title_resource}</p>
-                                <img src={`src/App/assets/icons/files/${resource.ext_resource}.png`} alt={resource.ext_resource} className={styles.iconResource} />
-                                <p className={styles.descriptionResource}>{resource.description_resource}</p>
+                            <Elementor key={resource.idResource}>
+                                <p className={styles.titleResource}>{resource.titleResource}</p>
+                                <img src={`src/App/assets/icons/files/${resource.extResource ?? resource.ext_resource}.png`} alt={resource.extResource} className={styles.iconResource} />
+                                <p className={styles.descriptionResource}>{resource.descriptionResource}</p>
                                 <div className={styles.groupData}>
                                     <p className={styles.dataSize}>
-                                        Peso: {resource.size_resource} MB
+                                        {t('buttons.wheight')}: {resource.sizeResource??resource.size_resource} MB
                                     </p>
                                     <p className={styles.dataDate}>
-                                        Fecha: {resource.date_resource}
+                                        {t('buttons.date')}: {resource.dateResource??resource.date_resource}
                                     </p>
                                 </div>
                                 <Link 
                                     className={stylesButton.button} 
-                                    to={CONFIG_BACKEND.API_DIR+"/src/assets/resources/"+resource.file_resource}
-                                    id={resource.id_resource}
-                                    download={`${resource.id_resource}.${resource.ext_resource}`}
+                                    to={CONFIG_BACKEND.API_DIR+"/src/assets/resources/"+(resource.fileResource??resource.file_resource)}
+                                    id={resource.idResource}
+                                    download={`${resource.idResource}.${resource.extResource}`}
                                     target='_blank'
-                                    title="Descargar"
+                                    title={t('buttons.download')}
                                 >
-                                    Descargar
+                                    {t('buttons.download')}
                                 </Link>
                             </Elementor> 
                         ))
                     ):(
-                        <p>No hay recursos subidos por el momento.</p>
+                        <p>{t('alerts.noneRes')}</p>
                     )}
                 </Publication>
             </Template>

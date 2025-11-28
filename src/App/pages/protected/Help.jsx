@@ -1,13 +1,21 @@
 import Template from '../../template/Template'
 import Section from '../../components/Section'
-import { CONFIG_ALERT_MESSAGE } from '../../config/config'
+import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
 
 function Help() {
+  const [t, i18n] = useTranslation()
+  
+  useEffect(()=>{
+      const lang = localStorage.getItem('lang') || 'es'
+      i18n.changeLanguage(lang)
+  },[i18n])
+
   return (
     <>
       <Template separator={true}>
         <Section>
-          <p>{CONFIG_ALERT_MESSAGE}</p>
+          <p>{t('alerts.WeAreW')}</p>
         </Section>
       </Template>
     </>

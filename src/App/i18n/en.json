@@ -11,26 +11,179 @@
     "publication": "Publication",
     "configuration": "Configuration",
     "help": "Help",
+    "darkMode": "Dark mode",
     "logout": "Logout"
   },
   "home":{
     "header": "South American Church Planting Department",
     "presentation": "We are the Church Planting Department in South America belonging to the Church of God of Prophecy.",
     "sectPlantTitle": "Plantations in South America",
-    "seePlantations" : "See plantations",
     "countries": "Countries",
     "plantations": "Plantations",
     "planters": "Planters"
   },
+  "news":{
+    "title":"News"
+  },
+  "aboutUs":{
+    "title":"About us",
+    "whoWeAreOne":"Who is the",
+    "whoWeAreTwo":"Church of God of Prophecy?",
+    "textOne":"The Church of God of Prophecy is a vibrant Christian movement, rooted in Scripture, firm in faith, and resolute in its passion for people. It is a worldwide body of believers, united in worship, working together to share God's love and a message of hope with those who suffer.",
+    "textTwo":"The impact of the Church of God of Prophecy is profound. It is estimated that every 24 hours, around the world, 300 people receive salvation, nearly 100 are baptized, and more than 14,000 preaching locations actively proclaim the gospel. At least one new church opens its doors every day to impact a local community thanks to the efforts of this movement.",
+    "textThree":"The Church is ethnically and culturally diverse, and 90% of its members reside outside of North America. Currently, the Church ministers in 133 countries, with over 1,400 new members each month. An estimated 14,000 men and women are authorized to preach the gospel in pastoral and evangelistic roles."
+  },
+  "resources":{
+    "title":"Resources"
+  },
+  "plantations":{
+    "title":"Plantations in South America",
+    "titleCountry":"Plantations in ",
+    "country":"Country",
+    "province":"Province",
+    "match":"Match",
+    "street":"Street",
+    "members":"Members",
+    "planter":"Planter",
+    "start":"Start",
+    "info":"Info"
+  },
+  "donate":{
+    "title":"Donate"
+  },
+  "showCongiData":{
+    "title":"Configuration",
+    "fullNameDpto":"Full name of the department",
+    "acronymNameDpto":"Acronym of the department name",
+    "nameChurch":"Name of the church",
+    "acronymChurch":"Acronym of the church's name",
+    "copyright":"Website copyright",
+    "supervisorName":"Supervisor's name",
+    "introText":"Introduction text"
+  },
+  "configEdit":{
+    "title":"Edit"
+  },
+  "profile":{
+    "country":"Country",
+    "province":"Province",
+    "ministry":"Ministry",
+    "about":"About"
+  },
+  "profileEdit":{
+    "title":"Edit",
+    "names":"Names",
+    "lastName":"Last name",
+    "sex":"Sex",
+    "male":"Male",
+    "female":"Female",
+    "birthdate":"Birthdate",
+    "countryOfResidence":"Country of residence",
+    "province":"province",
+    "aboutMe":"about me",
+    "profilePicture":"Profile Picture",
+    "preview":"Profile picture preview",
+    "buttonUpload":"Profile picture upload button"
+  },
   "footer":{
     "headquarters" : "Headquarters",
-    "connectWithUs" : "Connect with us",
     "privacy": "Privacy Policy",
-    "terms": "Terms and conditions",
-    "collaborators" : "Our collaborators",
+    "mission" : "Our mission",
     "vision" : "Our vision",
     "aboutUs" : "About us",
     "contact" : "Contact",
-    "copyright" : "All rights reserved."
+    "copyright" : "All rights reserved.",
+    "start":"Start of work"
+  },
+  "form":{
+    "login":{
+      "email":"E-mail",
+      "passw":"Password"
+    },
+    "register":{
+      "names":"Names",
+      "lastName":"Last name",
+      "sex":"Sex",
+      "male":"Macho",
+      "female":"Fêmea",
+      "birthday":"Birthday",
+      "code":"Registration code"
+    },
+    "rPassw":{
+      "title":"Recover my password"
+    },
+    "plantation":{
+      "province":"Province",
+      "provinceH":"Name of province",
+      "match":"Match",
+      "matchH":"Plantation match",
+      "street":"Street",
+      "streetH":"Plantation street",
+      "members":"Members",
+      "membersH":"Number of members",
+      "leader":"Leader",
+      "leaderH":"Plantation leader",
+      "start":"Start of work plant"
+    },
+    "newPub":{
+      "lang": {
+        "title":"Language",
+        "es":"Spanish",
+        "pt":"Portuguese",
+        "en":"English"
+      }
+    },
+    "resource":{
+      "title":"Upload a file",
+      "name":"Resource name (optional)",
+      "descript":"Description (optional)"
+    }
+  },
+  "buttons":{
+    "seePlantations":"See plantations",
+    "news":"News",
+    "edit": "Edit",
+    "graphic":"See graphic",
+    "upload":"Upload a file",
+    "suppFormats":"Supported formats",
+    "newPlantation":"New plantation",
+    "download":"Download",
+    "wheight":"Wheight",
+    "date":"Date",
+    "plantations":"Plantations",
+    "seeMore":"see more...",
+    "modalMsg":"Supported formats",
+    "public":"Public",
+    "goUp":"Go up",
+
+    "wellcome":"Wellcome",
+    "someLinks":"Some links of interest",
+    "profile":"Profile",
+    "editMyData":"Edit my data",
+    "configuration":"Configuration",
+    "saveChanges":"Save changes",
+
+    "back":"Back",
+    "top":"Go up",
+
+    "register":"Register",
+    "login":"Login",
+    "youAccount":"Do you already have an account?, ",
+    "fPassw":"I forgot my password",
+    "iWantR":"I want to register",
+    "recovery":"Recovery",
+    "seeTrad":"See translation",
+    "seeOriginal":"See original"
+  },
+  "alerts":{
+    "WeAreW": "We are working on it, sorry for the inconvenience.",
+    "translateTxt":"This content has been automatically translated.",
+    "noneRes":"There are no resources uploaded at the moment.",
+    "noneNews":"There is no news to show at the moment.",
+    "nonePlant":"There are no plantations to show."
+  },
+  "rol":{
+    "admin":"Administrator",
+    "planter":"Planter"
   }
 }

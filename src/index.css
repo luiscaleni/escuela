@@ -13,6 +13,12 @@
 
 :root {
   font-family: "Parkinsans", Verdana, Geneva, Tahoma, sans-serif;
+  --color-bg: #fff;
+  --color-bg-alt: #f2f2f2;
+  --color-text: #222;
+  --color-primary: #1e90ff;
+  --color-primary-text: #fff;
+  --color-border: #ccc;
 
   color-scheme: light dark;
   --color: #005256;
@@ -36,8 +42,9 @@
   --text-shadow-2: 0 0 0.2rem #7c7c7c;
   --text-shadow-strong: 0 0 0.5rem #000000;
 
-  --box-shadow-inset:  inset 0 -0.3em 0.7em rgba(65, 65, 65, 0.2);
-  --box-shadow-inset-hover: inset 0 -0.3em 0.7em rgba(65, 65, 65, 0.4);
+  --box-shadow-inset:  inset 0 -0.3em 0.7em rgba(65, 65, 65, 0.4);
+  --box-shadow-inset-hover: inset 0 -0.3em 0.7em rgba(65, 65, 65, 0.6);
+  --box-shadow-inset-hover-dark: inset 0 -0.3em 0.7em rgba(39, 39, 39, 0.9);
   --box-shadow: 0 0.2rem 0.4rem rgb(46, 46, 46);
   --box-shadow-light: 0 0.1rem 0.7rem rgba(182, 182, 182, 0.3);
   --box-shadow-strong: 0 0.5rem 1rem rgba(27, 27, 27, 0.4);
@@ -64,6 +71,11 @@
   --color-titles: #0973B3;
 }
 
+.success,
+.error{
+  display: flex;
+  transition: all ease-in-out .3s;
+}
 
 .success{
   background: var(--background-success);
@@ -71,8 +83,19 @@
 .error{
   background: var(--background-error);
 }
+.none{
+  display: none;
+}
 
 /*dark*/
+body.dark{
+  --color-bg: #fff;
+    --color-bg-alt: #2a2a2a;
+    --color-text: #f1f1f1;
+    --color-primary: #1e90ff;
+    --color-primary-text: #fff;
+    --color-border: #444;
+}
 body.dark body,
 body.dark #root,
 body.dark main,

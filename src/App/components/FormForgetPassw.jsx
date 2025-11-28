@@ -1,23 +1,33 @@
-import { Link } from "react-router-dom"
 import styles from './css/Form.module.css'
-import { useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 import Button from "./Button"
 import ContFormInput from "./ContFormInput"
-import { CONFIG_BACKEND } from '../config/config'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Loader from "./Loader"
+import { useTranslation } from 'react-i18next'
+
 
 function FormForgetPassw() {
     const [loading, setLoading] = useState(false)
     const [form, setForm] = useState({ email: '' })
-    const alertContainer = document.getElementById('alertContainer')
+    const [message, setMessage] = useState("")
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
+    const [t, i18n] = useTranslation()  
+    
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
         setLoading(true)
+        const alertContainer = document.getElementById('alertContainer')
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -44,19 +54,17 @@ function FormForgetPassw() {
             }
             const data = await response.json()
             if (data.success) {
-                alertContainer.style.backgroundColor = "rgba(40, 196, 79, 1)"
-                alertContainer.innerHTML = "✅ " + data.message
                 setLoading(true)
                 setTimeout(() => {
                     setForm({ email: ''})
-                    alertContainer.style.backgroundColor= "rgb(255 255 255)"
-                    alertContainer.innerHTML=""
                 }, 2000)
+                navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Si esta registrado se le enviará un email", path: CONFIG_PATHS.LOGIN_PATH } })
             } else {
-				console.error(data.message)
+                alertContainer.innerHTML="❌ "+data.message
+                alertContainer.classList.add("error")
 			}
         } catch (errorCatch) {
-            console.error(errorCatch.message)
+            if (import.meta.env.DEV) { console.error(errorCatch.message) }
         } finally {
             setLoading(false)
         }
@@ -72,11 +80,11 @@ function FormForgetPassw() {
                     onSubmit={handleSubmit}
                 >
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <h2>Recuperar contraseña</h2>
-                    <ContFormInput nameElm="Email:">
+                    <h2>{t('buttons.iWantR')}</h2>
+                    <ContFormInput nameElm={t('form.login.email')+" :"}>
                         <input
                             type="email"
-                            placeholder='Email'
+                            placeholder={t('form.login.email')}
                             value={form.email}
                             name='email'
                             id='email'
@@ -89,13 +97,13 @@ function FormForgetPassw() {
                         <Button
                             typeBtn='submit'
                             altName='Recuperar'
-                            title='Recuperar'
+                            title={t('buttons.recovery')}
                             disabled={loading}
                         >
-                            {loading ? <Loader mini={true}/> : "Recuperar"}
+                            {loading ? <Loader mini={true}/> : t('buttons.recovery')}
                         </Button>
                     </ContFormInput>
-                    <p className={styles.smallText}>¿Ya tienes una cuenta?, <Link to='/login'>Inicia Sesión</Link></p>
+                    <p className={styles.smallText}>{t('buttons.youAccount')}<Link to='/login'>{t('buttons.login')}</Link></p>
                 </form>
             </div>
         </>

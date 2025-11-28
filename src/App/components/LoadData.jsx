@@ -18,7 +18,7 @@ export default function LoadData(setLoading, setData, setMethod, setRoute) {
                 setData(data.result)
             }
         }catch(error) {
-            console.error('Error en API: ', error)
+            if (import.meta.env.DEV) { console.error('Error en API: ', error)}
         }finally{
             setLoading(false)
         }

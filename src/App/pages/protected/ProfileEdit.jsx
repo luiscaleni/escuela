@@ -7,7 +7,7 @@ import { UserContext } from '../../components/UserProvider'
 import { CONFIG_PATHS } from '../../config/config'
 
 function Register() {
-    const { user } = useContext(UserContext);
+    const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
     if (!user){

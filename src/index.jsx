@@ -13,27 +13,28 @@ import Donate             from './App/pages/Donate'
 
 import Register           from './App/pages/Register'
 import Login              from './App/pages/Login'
+import Success            from './App/pages/Success'
+import NewsDetail         from './App/pages/NewsDetail'
+import ForgetPassw        from './App/pages/ForgetPassw'
+import ResetPassw         from './App/pages/ResetPassw'
+import Plantations        from './App/pages/Plantations'
+import PlantationsCountry from './App/pages/PlantationsCountry'
+import PlantationDetail   from './App/pages/PlantationDetail'
 
 /*Protected */
+import PublicRoute        from './App/components/PublicRoute'
+import ProtectedRoute     from './App/components/ProtectedRoute'
 import Profile            from './App/pages/protected/Profile'
 import ProfileEdit        from './App/pages/protected/ProfileEdit'
 import Wellcome           from './App/pages/protected/Wellcome'
 import Configuration      from './App/pages/protected/Configuration'
 import ConfigurationEdit  from './App/pages/protected/ConfigurationEdit'
-import PublicRoute        from './App/components/PublicRoute'
-import ProtectedRoute     from './App/components/ProtectedRoute'
-import NewsDetail         from './App/pages/NewsDetail'
+import PlantationEdit     from './App/pages/protected/PlantationEdit'
 import NewPost            from './App/pages/protected/NewPost'
 import PostEdit           from './App/pages/protected/PostEdit'
 import Help               from './App/pages/protected/Help'
-import Success            from './App/pages/protected/Success'
 import { CONFIG_PATHS }   from './App/config/config'
-import ForgetPassw        from './App/pages/ForgetPassw'
-import ResetPassw         from './App/pages/ResetPassw'
-import Plantations        from './App/pages/Plantations'
-import PlantationsCountry from './App/pages/PlantationsCountry'
-import PlantationDetail from './App/pages/PlantationDetail'
-import { ThemeProvider } from './App/components/ThemeContext'
+import { ThemeProvider }  from './App/components/ThemeContext'
 
 const routes = [
   { path: CONFIG_PATHS.HOME_PATH,                    element: <Home/>,                  },
@@ -46,7 +47,8 @@ const routes = [
   { path: CONFIG_PATHS.PLANTATIONS+"/:country",      element: <PlantationsCountry />,   },
   { path: CONFIG_PATHS.PLANTATIONS+"/:country/:id",  element: <PlantationDetail />,     },
   
-  { path: CONFIG_PATHS.RESET_PASSW+"/:id_token",     element: <ResetPassw/>,            },
+  { path: CONFIG_PATHS.RESET_PASSW,                  element: <ResetPassw />         },
+  { path: CONFIG_PATHS.SUCCESS_PATH,                 element: <Success />                },
   
   { path: CONFIG_PATHS.REGISTER_PATH,                element: <PublicRoute>     <Register/>           </PublicRoute>    },
   { path: CONFIG_PATHS.LOGIN_PATH,                   element: <PublicRoute>     <Login/>              </PublicRoute>    },
@@ -57,7 +59,6 @@ const routes = [
   { path: CONFIG_PATHS.PROFILE_PATH,                 element: <ProtectedRoute>  <Profile/>            </ProtectedRoute> },
   { path: CONFIG_PATHS.PROFILE_EDIT_PATH,            element: <ProtectedRoute>  <ProfileEdit/>        </ProtectedRoute> },
   { path: CONFIG_PATHS.HELP_PATH,                    element: <ProtectedRoute>  <Help/>               </ProtectedRoute> },
-  { path: CONFIG_PATHS.SUCCESS_PATH,                 element: <ProtectedRoute>  <Success/>            </ProtectedRoute> },
   
   //Protected - ROl 1
   { path: CONFIG_PATHS.NEW_POST_PATH,                element: <ProtectedRoute>  <NewPost/>            </ProtectedRoute> },
@@ -65,16 +66,16 @@ const routes = [
   { path: CONFIG_PATHS.CONFIG_PATH,                  element: <ProtectedRoute>  <Configuration/>      </ProtectedRoute> },
   { path: CONFIG_PATHS.CONFIG_EDIT_PATH,             element: <ProtectedRoute>  <ConfigurationEdit/>  </ProtectedRoute> },
   //
-  { path: "*",                                       element: <Home/>           }
+  { path: "*",                                       element: <Home/>                    }
 ]
 const router = createBrowserRouter(routes)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UserProvider>
-      <ThemeProvider>
+    <ThemeProvider>
+      <UserProvider>
         <RouterProvider router={router}/>
-      </ThemeProvider>
-    </UserProvider>
+      </UserProvider>
+    </ThemeProvider>
   </React.StrictMode>
 )

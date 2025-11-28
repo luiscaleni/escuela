@@ -34,10 +34,10 @@ function FormPostEdit() {
                 setPost(data.result)
             }
         } catch (error) {
-            setError(error.message)
+            setError("❌ "+error.message)
             setLoading(false)
             setPost(null)
-            console.error('Error en API: ', error)
+            if (import.meta.env.DEV) {console.error('Error en API: ', error)}
         }finally{
             setLoading(false)
         }
@@ -69,12 +69,12 @@ function FormPostEdit() {
         setLoading(true)
         const alertContainer = document.getElementById('alertContainer')
 
-        const formData = new FormData();
-        formData.append('idPub', post.idPub);
-        formData.append('titlePub', form.titlePub);
-        formData.append('textPub', form.textPub);
-        formData.append('descriptPub', form.descriptPub);
-        formData.append('imgPub', selectedImage);
+        const formData = new FormData()
+        formData.append('idPub', post.idPub)
+        formData.append('titlePub', form.titlePub)
+        formData.append('textPub', form.textPub)
+        formData.append('descriptPub', form.descriptPub)
+        formData.append('imgPub', selectedImage)
 
         alertContainer.style.padding="0.5rem"
 
@@ -97,7 +97,7 @@ function FormPostEdit() {
                 alertContainer.classList.add("error")
             }
         } catch (errorCatch) {
-            console.error("❌ Error en api:", errorCatch)
+            if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch)}
             alertContainer.innerHTML="❌ "+errorCatch.error
             alertContainer.classList.add("error")
         } finally{

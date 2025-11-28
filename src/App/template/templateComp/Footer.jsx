@@ -21,27 +21,17 @@ function Footer() {
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
                     <div className={styles.group}>
-                        <p>{t('footer.headquarters')}:</p>
-                            <ul>
-                                <li><Link to="#">Buenos aires</Link></li>
-                                <li><Link to="#">Tucuman</Link></li>
-                                <li><Link to="#">Mendoza</Link></li>
-                                <li><Link to="#">Córdoba</Link></li>
-                            </ul>
-                    </div>
-
-                    <div className={styles.group}>
-                        <p>{t('footer.connectWithUs')}:</p>
-                        <ul>
-                            <li><Link to="#">{t('footer.privacy')}</Link></li>
-                        </ul>
-                    </div>
-
-                    <div className={styles.group}>
                         <p>{t('footer.aboutUs')}:</p>
                         <ul>
-                            <li><Link to="#">{t('footer.collaborators')}</Link></li>
+                            <li><Link to="#">{t('footer.mission')}</Link></li>
                             <li><Link to="#">{t('footer.vision')}</Link></li>
+                        </ul>
+                    </div>
+                    
+                    <div className={styles.group}>
+                        <p>{t('footer.privacy')}:</p>
+                        <ul>
+                            <li><Link to="#">{t('footer.privacy')}</Link></li>
                         </ul>
                     </div>
 

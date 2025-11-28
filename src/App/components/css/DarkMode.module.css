@@ -12,7 +12,6 @@
   cursor: pointer;
   color: #000;
 
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +30,7 @@
   cursor: pointer;
   border: var(--border);
   border-radius: var(--border-radius);
-  background-color: #b3b3b3;
+  background-color: #5c5c5c;
   -webkit-transition: .4s;
   transition: .4s;
 
@@ -73,7 +72,7 @@
   padding: 0;
   font-size: 0.8em;
   font-weight: bold;
-  color: #000;
+  color: #fff;
 }
 .left{
   left: 0.2rem;

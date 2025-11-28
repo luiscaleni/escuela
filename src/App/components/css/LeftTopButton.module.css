@@ -1,27 +1,26 @@
 .contLeftTopButton,
 .contLeftTopButtonM{
     position: absolute;
-    z-index: 13;
+    z-index: 25;
     top: 0.5rem;
     left: 0.5rem;
 }
 .contLeftTopButtonM{
     margin-left: 2rem;
 }
-:global(body.dark) .contLeftTopButton,
-:global(body.dark) .contLeftTopButtonM{
-    filter: invert(100%);
-}
 
 .LeftTopButton::after {
     transition: all ease-in-out .8s;
     content: " Volver";
     margin-right: 1rem;
+    z-index: 15;
     color: #333;
 }
 
-@media (max-width:800px){
+@media (max-width:1280px){
+    .contLeftTopButton,
     .contLeftTopButtonM{
-        margin-left: 1rem;
+        margin-right: 1rem;
+        z-index: 15;
     }
 }

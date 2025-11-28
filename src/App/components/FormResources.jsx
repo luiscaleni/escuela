@@ -1,15 +1,22 @@
 import styles from './css/Form.module.css'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Button from './Button'
 import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND } from '../config/config'
+import { useTranslation } from 'react-i18next'
 
 function FormResources({onSuccess}) {
     const [cargando, setCargando] = useState(false)
     const [selectedResource, setSelectedResource] = useState(null)
     const [form, setForm] = useState({})
     const formRef = useRef(null)
+    const [t, i18n] = useTranslation()   
+
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -31,7 +38,6 @@ function FormResources({onSuccess}) {
         formData.append('descriptionResource', form.descriptionResource)
         formData.append('fileResource', selectedResource)
 
-
         try {
             const response = await fetch(`${CONFIG_BACKEND.API_DIR}/pushResources`, {
                 method: 'POST',
@@ -47,7 +53,6 @@ function FormResources({onSuccess}) {
             if(data.success){
                 alertContainer.innerHTML="✅ "+data.message
                 alertContainer.classList.add("success")
-                formRef.current.reset()
                 setTimeout(() => {
                     alertContainer.classList.remove("success")
                     if(onSuccess && data.newResource){
@@ -62,7 +67,7 @@ function FormResources({onSuccess}) {
                 }, 1000)
             }
         } catch (errorCatch) {
-            console.error("❌ Error en api:", errorCatch)
+            if (import.meta.env.DEV) { console.error("Error en api:", errorCatch)}
             alertContainer.innerHTML="❌ "+errorCatch.error
             alertContainer.classList.add("error")
             setTimeout(() => {
@@ -84,22 +89,22 @@ function FormResources({onSuccess}) {
     return ( 
         <>
         <div className={styles.contForm}>
-            <form className={styles.form} ref={formRef} id='formPushResource' onSubmit={handleSubmit}>
+            <form className={styles.form} id='formPushResource' onSubmit={handleSubmit}>
                 <div className={styles.alertContainer} id="alertContainer"></div>
-                <ContFormInput nameElm='Nombre del recurso (opcional)'>
+                <ContFormInput nameElm={t('form.resource.name')}>
                     <input 
                         type="text" 
                         alt="titleResource" 
                         name="titleResource" 
-                        placeholder= "Nombre del recurso (opcional)"
+                        placeholder= {t('form.resource.name')+' ...'}
                         onChange={handleChange}
                     />
                 </ContFormInput>
-                <ContFormInput nameElm='Descripcion (opcional)'>
+                <ContFormInput nameElm={t('form.resource.descript')}>
                     <textarea 
                         alt="descriptionResource" 
                         name="descriptionResource" 
-                        placeholder="Breve descripción ..."
+                        placeholder={t('form.resource.descript')+' ...'}
                         onChange={handleChange}
                     ></textarea>
                 </ContFormInput>
@@ -114,17 +119,17 @@ function FormResources({onSuccess}) {
                 
                 <Button
                     typeBtn="submit"
-                    altName="Subir archivo"
-                    title="Subir archivo"
+                    altName={t('buttons.goUp')}
+                    title={t('buttons.goUp')}
                     id="subirArchivo"
                     disabled={cargando}
                 >
-                    {cargando ? <Loader mini={true}/> : "Subir archivo"}
+                    {cargando ? <Loader mini={true}/> : t('buttons.goUp')}
                 </Button>
             </form>
         </div>
         </>
-     );
+     )
 }
 
 export default FormResources

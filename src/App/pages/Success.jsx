@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom"
-import Section from "../../components/Section"
-import Template from "../../template/Template"
+import Section from "../components/Section"
+import Template from "../template/Template"
 import styles from './css/Success.module.css'
-import success from "../../assets/icons/utilities/success.png"
-import CenterContainer from "../../components/CenterContainer"
-import { CONFIG_PATHS } from "../../config/config"
+import success from "../assets/icons/utilities/success.png"
+import CenterContainer from "../components/CenterContainer"
+import { CONFIG_PATHS } from "../config/config"
 import { useEffect } from "react"
 
 function Success({ valueSuccess = true }) {
@@ -15,8 +15,8 @@ function Success({ valueSuccess = true }) {
     useEffect(()=>{
         if (state) {
             setTimeout(() => {
-                navigate(CONFIG_PATHS.NEW_POST_PATH)
-            }, 3000)
+                navigate(state.path)
+            }, 5000)
         }
     },[])
 
@@ -29,7 +29,7 @@ function Success({ valueSuccess = true }) {
                         <CenterContainer>
                             <img src={success}/>
                         </CenterContainer>
-                        <p className={styles.textMessage}>Redirigiendo en 3 segundos ...</p>
+                        <p className={styles.textMessage}>Redirigiendo en 5 segundos</p>
                     </>
                 ) : (
                     navigate(CONFIG_PATHS.HOME_PATH)

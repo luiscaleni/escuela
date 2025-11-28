@@ -138,6 +138,19 @@ iframe{
     border-radius: var(--border-radius);
 }
 
+.editor{
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    color: black;
+
+    display: flex;
+    justify-content: flex-end;
+}
+:global(body.dark) .editor{
+    color: white;
+}
+
 @media (max-width: 1200px){
     .sectionBanner > img{
         width: auto;

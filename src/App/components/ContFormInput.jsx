@@ -17,7 +17,7 @@ function ContFormInput({nameElm, titleElm="", iconElm="", children}) {
                 </label>
             </div>
         </>
-     );
+     )
 }
 
-export default ContFormInput;
+export default ContFormInput

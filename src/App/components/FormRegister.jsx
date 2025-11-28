@@ -5,11 +5,18 @@ import Button from "./Button"
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Loader from './Loader'
+import { useTranslation } from 'react-i18next'
 
 function FormRegister() {
 	const [ipAddress, setIpAddress] = useState('')
 	const [cargando, setCargando] = useState(false)
 	const navigate = useNavigate()
+	const [t, i18n] = useTranslation()  
+
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
 
 	useEffect(() => {
 		const fetchIp = async () => {
@@ -18,7 +25,7 @@ function FormRegister() {
 				const data = await response.json()
 				setIpAddress(data.ip)
 			} catch (error) {
-				console.error("Error fetching IP address:", error)
+				if (import.meta.env.DEV) { console.error("Error fetching IP address:", error)}
 			}
 		}
 
@@ -99,7 +106,7 @@ function FormRegister() {
 				throw new Error(`❌ Respuesta no JSON: ${text}`)
 			}
 		} catch (errorCatch) {
-				console.error("❌ Error en api:", errorCatch)//
+				if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch) }
 				alertContainer.innerHTML="❌ "+errorCatch.error
 				alertContainer.style.backgroundColor="#f00"
 				setTimeout(() => {
@@ -113,56 +120,56 @@ function FormRegister() {
 		<div className={styles.contForm}>
 			<form className={styles.form} id='formRegister' onSubmit={handleSubmit}>
 				<div className={styles.alertContainer} id="alertContainer"></div>
-				<h2>Registro</h2>
-				<ContFormInput nameElm="Nombres:">
-					<input type='text' name='names' value={form.names} id='name' placeholder='Nombres' onChange={handleChange} required />
+				<h2>{t('buttons.register')}</h2>
+				<ContFormInput nameElm={t('form.register.names')+" :"}>
+					<input type='text' name='names' value={form.names} id='name' placeholder={t('form.register.names')} onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm="Apellidos:">
-					<input type='text' name='lastNames' value={form.lastNames} id='lastNames' placeholder='Apellidos' onChange={handleChange} required />
+				<ContFormInput nameElm={t('form.register.lastName')+" :"}>
+					<input type='text' name='lastNames' value={form.lastNames} id='lastNames' placeholder={t('form.register.lastName')} onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm="Email:">
-					<input type='text' name='email' value={form.email} id='email' placeholder='Email' onChange={handleChange} required />
+				<ContFormInput nameElm={t('form.login.email')+" :"}>
+					<input type='text' name='email' value={form.email} id='email' placeholder={t('form.login.email')} onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm="Contraseña:">
-					<input type='password' name='passw' value={form.passw} id='passwordRegister' placeholder='Contraseña' onChange={handleChange} required />
+				<ContFormInput nameElm={t('form.login.passw')+" :"}>
+					<input type='password' name='passw' value={form.passw} id='passwordRegister' placeholder={t('form.login.passw')} onChange={handleChange} required />
 				</ContFormInput>
 				
-				<ContFormInput nameElm="Sexo:">
+				<ContFormInput nameElm={t('form.register.sex')+" :"}>
 					<div className={styles.radio}>
 						<label>
 							<input type='radio' name='sex' value='M' id='masculino' onChange={handleChange} required />
-							Masculino
+							{t('form.register.male')}
 						</label>
 
 						<label>
 							<input type='radio' name='sex' value='F' id='femenino' onChange={handleChange} required />
-							Femenino
+							{t('form.register.female')}
 						</label>
 					</div>
 				</ContFormInput>
 
-				<ContFormInput nameElm="Fecha de Nacimiento:">
+				<ContFormInput nameElm={t('form.register.birthday')+" :"}>
 					<input type='date' name='birthday' value={form.birthday} id='birthday' onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm="Código de registro">
-					<input type='text' name='hash' value={form.hash} id='hash' placeholder='Código de registro' onChange={handleChange} autoComplete="off" required />
+				<ContFormInput nameElm={t('form.register.code')+" :"}>
+					<input type='password' name='hash' value={form.hash} id='hash' placeholder={t('form.register.code')} onChange={handleChange} autoComplete="off" required />
 				</ContFormInput>
 
 				<ContFormInput className={styles.btn}>
 					<Button
 						type='submit'
 						altName='Registrarme'
-						title='Registrarme'
+						title={t('buttons.register')}
 						disabled={cargando}
 					>
-						{cargando ? <Loader mini={true}/> : "Registrarme"}
+						{cargando ? <Loader mini={true}/> : t('buttons.register')}
 					</Button>
 				</ContFormInput>
-				<p className={styles.smallText}>¿Ya tienes una cuenta?, <Link to='/login'>Inicia Sesión</Link></p>
+				<p className={styles.smallText}><Link to='/login'>{t('buttons.youAccount')}{t('buttons.login')}</Link></p>
 			</form>
 		</div>
 		</>

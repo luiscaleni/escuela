@@ -36,11 +36,12 @@ function ImgProfile() {
     // 3) Calcula la URL de la imagen solo cuando cambie user.imgProfile o user.id
     useEffect(() => {
         if (user && user.id) {
-            const src = user?.imgProfile
+            const src = user.imgProfile
                 ? `${CONFIG_BACKEND.API_DIR}/src/assets/users/${user.id}/profile/${user.imgProfile}?v=${new Date(user.imgUpdatedAt).getTime()}`
                 :`${CONFIG_BACKEND.API_DIR}/src/assets/user_default.png`
-                setImgSrc(src);
+                setImgSrc(src)
         }
+        if (import.meta.env.DEV) { console.log(user.imgProfile)}
     }, [user])
 
     // 4) Rendering

@@ -7,7 +7,7 @@ function ElmSelection({children}) {
                 {children}
             </div>
         </>
-     );
+     )
 }
 
 export default ElmSelection

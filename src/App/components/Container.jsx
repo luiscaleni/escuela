@@ -1,8 +1,8 @@
 import styles from "./css/Container.module.css"
 
 function Container({widthElm, hiddenStyle = false, children}) {
-    let styleContainer = (widthElm === "max") ? styles.containerMax : styles.container;
-    let hiddenStyleContainer = hiddenStyle ? styles.hiddenStyle : "";
+    let styleContainer = (widthElm === "max") ? styles.containerMax : styles.container
+    let hiddenStyleContainer = hiddenStyle ? styles.hiddenStyle : ""
 
     return ( 
         <>
@@ -10,7 +10,7 @@ function Container({widthElm, hiddenStyle = false, children}) {
                 {children}
             </div>
         </>
-     );
+     )
 }
 
 export default Container

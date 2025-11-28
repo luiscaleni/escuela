@@ -7,7 +7,7 @@ function Block({children}) {
                 {children}
             </div>
         </>
-     );
+     )
 }
 
-export default Block;
+export default Block

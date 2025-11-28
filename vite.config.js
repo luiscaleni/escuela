@@ -10,6 +10,10 @@ export default defineConfig(({ mode, command }) => {
     define: {
       global: 'window',
     },
+    esbuild: {
+      drop: mode === 'production' ? ['console', 'debugger'] : [],
+      legalComments: 'none' 
+    },
     server: {
       proxy: {
         '/api': {

@@ -1,3 +1,13 @@
+.contGB{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .contContTable{
     width: 100%;
     height: auto;
@@ -31,6 +41,12 @@
     justify-content: center;
     align-items: center;
 }
+.contContTable > .contTable > .headerList > div{
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .contContTable > .contTable > .table{
     width: 100%;
     margin-top: 0.8rem;
@@ -42,7 +58,7 @@
 }
 
 .smallSpace{
-    width: 7rem;
+    width: 6rem;
     padding: 0.5rem 0.3rem;
     text-align: center;
 }
@@ -52,7 +68,7 @@
     text-align: center;
 }
 .largeSpace{
-    width: 18rem;
+    width: 16rem;
     padding: 0.1rem;
     text-align: center;
 }
@@ -63,6 +79,7 @@
 }
 
 .contContTable > .contTable > .table > .resultW{
+    padding: 0.2rem;
     background-color: white;
 
     display: flex;
@@ -71,6 +88,7 @@
     flex-direction: row;
 }
 .contContTable > .contTable > .table > .resultG{
+    padding: 0.2rem;
     background-color: rgb(204, 204, 204);
 
     display: flex;
@@ -78,6 +96,18 @@
     align-items: center;
     flex-direction: row;
 }
+
+.topButtons{
+    position: relative;
+    width: 100%;
+    height: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 @media (max-width:1582px){
     .contContTable{
         width: 90%;

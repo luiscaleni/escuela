@@ -1,0 +1,189 @@
+{
+  "navbar":{
+    "home": "Começar",
+    "news": "Notícias",
+    "aboutUs": "Nós",
+    "resources": "Recursos",
+    "plantations": "Plantações",
+    "donate": "Doar",
+    "login": "Conecte-se",
+    "profile": "Perfil",
+    "publication": "Publicar",
+    "configuration": "Configuração",
+    "help": "Ajuda",
+    "darkMode": "Modo escuro",
+    "logout": "Sair"
+  },
+  "home":{
+    "header": "Departamento de Implantação de Igrejas na América do Sul",
+    "presentation": "Somos o Departamento de Implantação de Igrejas na América do Sul, pertencente à Igreja de Deus da Profecia.",
+    "sectPlantTitle": "Plantações na América do Sul",
+    "countries": "Países",
+    "plantations": "Plantações",
+    "planters": "Jardineiras"
+  },
+  "news":{
+    "title":"Notícias"
+  },
+  "aboutUs":{
+    "title":"Sobre nós",
+    "whoWeAreOne":"Quem é a",
+    "whoWeAreTwo":"igreja de Deus da profecia?",
+    "textOne":"A Igreja de Deus da Profecia é um movimento cristão vibrante, enraizado nas Escrituras, firme na fé e resoluto em sua paixão pelas pessoas. É uma comunidade mundial de fiéis, unidos na adoração, trabalhando juntos para compartilhar o amor de Deus e uma mensagem de esperança com aqueles que sofrem.",
+    "textTwo":"O impacto da Igreja de Deus da Profecia é profundo. Estima-se que, a cada 24 horas, em todo o mundo, 300 pessoas recebem a salvação, quase 100 são batizadas e mais de 14.000 locais de pregação proclamam ativamente o evangelho. Pelo menos uma nova igreja abre suas portas todos os dias para impactar uma comunidade local graças aos esforços deste movimento.",
+    "textThree":"A Igreja é étnica e culturalmente diversa, e 90% de seus membros residem fora da América do Norte. Atualmente, a Igreja ministra em 133 países, com mais de 1.400 novos membros a cada mês. Estima-se que 14.000 homens e mulheres estejam autorizados a pregar o evangelho em funções pastorais e evangelísticas."
+  },
+  "resources":{
+    "title":"Recursos"
+  },
+  "plantations":{
+    "title":"Plantações na América do Sul",
+    "country":"País",
+    "titleCountry":"Plantações em ",
+    "province":"Província",
+    "match":"Distrito",
+    "street":"Rua",
+    "members":"Membros",
+    "planter":"Plantador",
+    "start":"Começar",
+    "info":"Informações"
+  },
+  "donate":{
+    "title":"Doar"
+  },
+  "showCongiData":{
+    "title":"Configuração",
+    "fullNameDpto":"Nome completo do departamento",
+    "acronymNameDpto":"Sigla do nome do departamento",
+    "nameChurch":"Nome da igreja",
+    "acronymChurch":"Acrônimo do nome da igreja",
+    "copyright":"Direitos autorais do site",
+    "supervisorName":"Nome do supervisor",
+    "introText":"Texto da apresentação"
+  },
+  "configEdit":{
+    "title":"Editar"
+  },
+  "profile":{
+    "country":"País",
+    "province":"Província",
+    "ministry":"Ministério",
+    "about":"Sobre mim"
+  },
+  "profileEdit":{
+    "title":"Editar",
+    "names":"Nomes",
+    "lastName":"Sobrenome",
+    "sex":"Sexo",
+    "male":"Macho",
+    "female":"Fêmea",
+    "birthdate":"Aniversário",
+    "countryOfResidence":"País de Residência",
+    "province":"Província",
+    "aboutMe":"Sobre mim",
+    "profilePicture":"Foto de perfil",
+    "preview":"Pré-visualização da foto de perfil",
+    "buttonUpload":"Botão para carregar foto de perfil"
+  },
+  "footer":{
+    "headquarters" : "Sede",
+    "privacy": "Política de Privacidade",
+    "mission" : "Nossa missão",
+    "vision" : "Nossa visão",
+    "aboutUs" : "Nós",
+    "contact" : "Contato",
+    "copyright" : "Todos os direitos reservados.",
+    "start":"Início do trabalho"
+  },
+  "form":{
+    "login":{
+      "email":"E-mail",
+      "passw":"Senha"
+    },
+    "register":{
+      "names":"Nomes",
+      "lastName":"Sobrenome",
+      "sex":"Sexo",
+      "male":"Macho",
+      "female":"Fêmea",
+      "birthday":"Aniversário",
+      "code":"Código de registro"
+    },
+    "rPassw":{
+      "title":"Recuperar minha senha"
+    },
+    "plantation":{
+      "province":"Província",
+      "provinceH":"Nome da província",
+      "match":"Plantação",
+      "matchH":"Área de plantação",
+      "street":"Rua",
+      "streetH":"Rua da plantação",
+      "members":"Membros",
+      "membersH":"Número de membros",
+      "leader":"Líder",
+      "leaderH":"Líder da Plantação",
+      "start":"Início do trabalho"
+    },
+    "newPub":{
+      "lang": {
+        "title":"Linguagem",
+        "es":"Espanhol",
+        "pt":"Português",
+        "en":"Inglês"
+      }
+    },
+    "resource":{
+      "title":"Carregar um arquivo",
+      "name":"Nome do recurso (opcional)",
+      "descript":"Descrição (opcional)"
+    }
+  },
+  "buttons":{
+    "seePlantations":"Veja plantações",
+    "news":"Notícias",
+    "edit": "Editar",
+    "graphic":"Veja o gráfico",
+    "upload":"Carregar um arquivo",
+    "suppFormats":"Formatos suportados",
+    "newPlantation":"Nova plantação",
+    "download":"Descarga",
+    "wheight":"Peso",
+    "date":"Data",
+    "plantations":"Plantações",
+    "seeMore":"veja mais...",
+    "modalMsg":"Formatos suportados",
+    "public":"Publicar",
+    "goUp":"Subir",
+
+    "wellcome":"Bem-vindo",
+    "someLinks":"Alguns links de interesse",
+    "profile":"Perfil",
+    "editMyData":"Editar meus dados",
+    "configuration":"Configuração",
+    "saveChanges":"Salvar alterações",
+
+    "back":"Retornar",
+    "top":"Aumentar",
+
+    "register":"Cadastre-se",
+    "login":"Conecte-se",
+    "youAccount":"Você já possui uma conta?, ",
+    "fPassw":"Esqueci minha senha",
+    "iWantR":"Quero me cadastrar",
+    "recovery":"Recuperar",
+    "seeTrad":"Ver tradução",
+    "seeOriginal":"Ver original"
+  },
+  "alerts":{
+    "WeAreW": "Estamos trabalhando nisso, pedimos desculpas pelo inconveniente.",
+    "translateTxt":"Este conteúdo foi traduzido automaticamente.",
+    "noneRes":"Não há recursos carregados no momento.",
+    "noneNews":"Não há notícias para mostrar no momento.",
+    "nonePlant":"Não há plantações para mostrar."
+  },
+  "rol":{
+    "admin":"Administrador",
+    "planter":"Plantador(a)"
+  }
+}

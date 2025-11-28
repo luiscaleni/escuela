@@ -7,6 +7,7 @@ import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '../assets/icons/utilities/user_128.png'
+import { useTranslation } from 'react-i18next'
 
 function FormPost() {
     const { user, loadUser } = useContext(UserContext)
@@ -15,8 +16,8 @@ function FormPost() {
     const [cargando, setCargando] = useState(false)
     const [form, setForm] = useState({})
     const navigate = useNavigate()
+    const [t, i18n] = useTranslation()
 
-    
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
@@ -41,9 +42,8 @@ function FormPost() {
         formData.append('titlePub', form.titlePub)
         formData.append('textPub', form.textPub)
         formData.append('descriptPub', form.descriptPub)
-        formData.append('imgPub', selectedImage)        
-
-        alertContainer.style.padding="0.5rem"
+        formData.append('imgPub', selectedImage)
+        formData.append('langPub', form.langPub)     
 
         try {
             const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/post`, {
@@ -57,16 +57,14 @@ function FormPost() {
             const data = await response.json()
 
             if(data.success){
-                alertContainer.innerHTML="✅ "+data.message
-                alertContainer.classList.add("success")
                 await loadUser()
-                navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Registro exitoso" } })
+                navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Se publicó exitosamente", path: CONFIG_PATHS.NEWS_PATH } })
             }else{
                 alertContainer.innerHTML="❌ "+data.error
                 alertContainer.classList.add("error")
             }
         } catch (errorCatch) {
-            console.error("❌ Error en api:", errorCatch)
+            if (import.meta.env.DEV) {console.error("Error en api:", errorCatch)}
             alertContainer.innerHTML="❌ "+errorCatch.error
             alertContainer.classList.add("error")
         } finally{
@@ -113,6 +111,24 @@ function FormPost() {
                         <div className={styles.contImgUpPreview}>
                             <img src={imgResult} alt='Banner de publicación' id='imgPub' />
                             <input type="file" name="imgPub" alt='Boton de carga de banner de publicación' accept="image/*" onChange={handleImageChange}/>
+                        </div>
+                    </ContFormInput>
+                    <ContFormInput nameElm={t('form.newPub.lang.title')+" :"}>
+                        <div className={styles.radio}>
+                            <label>
+                                <input type='radio' name='langPub' value='es' id='español' onChange={handleChange} required />
+                                {t('form.newPub.lang.es')}
+                            </label>
+
+                            <label>
+                                <input type='radio' name='langPub' value='pt' id='portugues' onChange={handleChange} required />
+                                {t('form.newPub.lang.pt')}
+                            </label>
+
+                            <label>
+                                <input type='radio' name='langPub' value='en' id='ingles' onChange={handleChange} required />
+                                {t('form.newPub.lang.en')}
+                            </label>
                         </div>
                     </ContFormInput>
 

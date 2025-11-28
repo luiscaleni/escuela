@@ -12,7 +12,7 @@ function PostEdit() {
                 </Section>
             </Template>
         </>
-     );
+     )
 }
 
 export default PostEdit

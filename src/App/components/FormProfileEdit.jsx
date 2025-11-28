@@ -1,5 +1,5 @@
 import styles from './css/Form.module.css'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './UserProvider'
 import { useNavigate } from 'react-router-dom'
 import Button from './Button'
@@ -9,14 +9,13 @@ import ContFormInput from './ContFormInput'
 import ShowData from './ShowData'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '../assets/icons/utilities/user_128.png'
+import { useTranslation } from 'react-i18next'
 
 function FormProfileEdit() {
     const { user, loadUser } = useContext(UserContext)
     const [preview, setPreview] = useState(null)
     const [selectedImage, setSelectedImage] = useState(null)
-
     const navigate = useNavigate()
-
     const [cargando, setCargando] = useState(false)
     const [form, setForm] = useState({
         names: user?.names || '',
@@ -27,6 +26,12 @@ function FormProfileEdit() {
         province:  user?.province || '',
         aboutMe:  user?.aboutMe || ''
     })
+    const [t, i18n] = useTranslation()
+          
+    useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
     
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -48,15 +53,15 @@ function FormProfileEdit() {
         setCargando(true)
         const alertContainer = document.getElementById('alertContainer')
 
-        const formData = new FormData();
-        formData.append('names', form.names);
-        formData.append('lastNames', form.lastNames);
-        formData.append('sex', form.sex);
-        formData.append('birthday', form.birthday);
-        formData.append('imgProfile', selectedImage);        
-        formData.append('country', form.country);
-        formData.append('province', form.province);
-        formData.append('aboutMe', form.aboutMe);
+        const formData = new FormData()
+        formData.append('names', form.names)
+        formData.append('lastNames', form.lastNames)
+        formData.append('sex', form.sex)
+        formData.append('birthday', form.birthday)
+        formData.append('imgProfile', selectedImage)        
+        formData.append('country', form.country)
+        formData.append('province', form.province)
+        formData.append('aboutMe', form.aboutMe)
 
         alertContainer.style.padding="0.5rem"
 
@@ -81,7 +86,7 @@ function FormProfileEdit() {
                 alertContainer.classList.add("error")
             }
         } catch (errorCatch) {
-            console.error("❌ Error en api:", errorCatch)
+            if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch)}
             alertContainer.innerHTML="❌ "+errorCatch.error
             alertContainer.classList.add("error")
         } finally{
@@ -111,13 +116,13 @@ function FormProfileEdit() {
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <LeftTopButton typeElm='expand' text="Pefil" locationElm={CONFIG_PATHS.PROFILE_PATH}/>
-                    <h1>Editar</h1>
-                    <ContFormInput nameElm="Nombres:">
+                    <LeftTopButton typeElm='expand' text={t('buttons.profile')} locationElm={CONFIG_PATHS.PROFILE_PATH}/>
+                    <h1>{t('profileEdit.title')+" :"}</h1>
+                    <ContFormInput nameElm={t('profileEdit.names')}>
                         <input type="text" name="names" placeholder={user.names} onChange={handleChange}/>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="Apellidos:">
+                    <ContFormInput nameElm={t('profileEdit.lastName')+" :"}>
                         <input type="text" name="lastNames" placeholder={user.lastNames} id="apellidos" onChange={handleChange}/>
                     </ContFormInput>
 
@@ -125,25 +130,25 @@ function FormProfileEdit() {
                         <ShowData>{user.email}</ShowData>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="Sexo:">
+                    <ContFormInput nameElm={t('profileEdit.sex')+" :"}>
                         <div className={styles.radio}>
                             <label>
                                 <input type="radio" name="sex" value='M' id="masculino" onChange={handleChange}/>
-                                Masculino
+                                {t('profileEdit.male')}
                             </label>
 
                             <label>
                                 <input type="radio" name="sex" value='F' id="femenino" onChange={handleChange}/>
-                                Femenino
+                                {t('profileEdit.female')}
                             </label>
                         </div>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="F. de nac.:">
+                    <ContFormInput nameElm={t('profileEdit.birthdate')+" :"}>
                         <input type="date" name="birthday" placeholder={form.birthday} id="birthday" onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm="País de residencia:">
+                    <ContFormInput nameElm={t('profileEdit.countryOfResidence')+" :"}>
                         <select className={styles.select} name='country' value={form.country} onChange={handleChange}>
                             <option value="Argentina">Argentina</option>
                             <option value="Bolivia">Bolivia</option>
@@ -158,34 +163,34 @@ function FormProfileEdit() {
                         </select>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="Provincia:">
+                    <ContFormInput nameElm={t('profileEdit.province')+" :"}>
                         <input type="text" name="province" placeholder={user.province} id="province" onChange={handleChange}/>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="Acerca de mí:">
+                    <ContFormInput nameElm={t('profileEdit.aboutMe')+" :"}>
                         <textarea id="aboutMe" name="aboutMe" placeholder={user.aboutMe} onChange={handleChange}></textarea>
                     </ContFormInput>
 
-                    <ContFormInput nameElm="Imagen de Perfil:">
+                    <ContFormInput nameElm={t('profileEdit.profilePicture')+" :"}>
                         <div className={styles.contImgUpPreview}>
-                            <img src={imgResult} alt='Preview imagen de perfil' id='imgUserPreview' />
-                            <input type="file" name="imgProfile" alt='Boton de carga de imagen de perfil' accept="image/*" onChange={handleImageChange}/>
+                            <img src={imgResult} alt={t('profileEdit.preview')} id='imgUserPreview' />
+                            <input type="file" name="imgProfile" alt={t('profileEdit.buttonUpload')} accept="image/*" onChange={handleImageChange}/>
                         </div>
                     </ContFormInput>
                     
                     <Button
                         typeBtn="submit"
-                        altName="Guardar cambios"
-                        title="Guardar cambios"
+                        altName={t('buttons.saveChanges')}
+                        title={t('buttons.saveChanges')}
                         id="guadarCambios"
                         disabled={cargando}
                     >
-                        {cargando ? <Loader mini={true}/> : "Guardar Cambios"}
+                        {cargando ? <Loader mini={true}/> : t('buttons.saveChanges')}
                     </Button>
                 </form>
             </div>
         </>
-     );
+     )
 }
 
 export default FormProfileEdit

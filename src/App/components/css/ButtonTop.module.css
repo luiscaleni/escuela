@@ -1,8 +1,6 @@
 .buttonTop,
 .buttonTopExpand{
     cursor: pointer;
-    top: 1rem;
-    left: 1rem;
     color: black;
     border: var(--border);
     border-radius: var(--border-radius);
@@ -12,13 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-:global(.dark) .buttonTop,
-:global(.dark) .buttonTopExpand{
-    background: #1d1d1d;
-    border: var(--border-dark);
-    color: white;
+:global(body.dark) .buttonTop,
+:global(body.dark) .buttonTopExpand{
+    background-color: white;
 }
 .buttonTopExpand{
     padding: 0.3rem;
@@ -30,16 +25,15 @@
 }
 .buttonTop > img,
 .buttonTopExpand > img{
+    padding-left: 0.3rem;
     filter: invert(100%);
-}
-:global(.dark) .buttonTop > img,
-:global(.dark) .buttonTopExpand > img{
-    filter: invert(0%);
-    background-color: #1d1d1d;
 }
 .buttonTopExpand:hover{
     transition: all ease-in-out .3s;
     box-shadow: var(--box-shadow-inset-hover);
+}
+:global(body.dark) .buttonTopExpand:hover{
+    box-shadow: var(--box-shadow-inset-hover-dark);
 }
 .buttonTop > .textButton,
 .buttonTopExpand > .textButton {
@@ -54,15 +48,12 @@
     justify-content: center;
     align-items: center;
 }
-:global(.dark) .buttonTop > .textButton,
-:global(.dark) .buttonTopExpand > .textButton {
-    filter: invert(100%);
-}
+
 
 @media (max-width: 950px){
     .buttonTop > img,
     .buttonTopExpand > img{
-        margin-left:0rem;
+        padding-left: 0rem;
         margin: 0.4rem;
     }
     .buttonTopExpand > .textButton{
@@ -75,14 +66,13 @@
     .buttonTopExpand > img{
         width: 1.2rem;
         height: 1.2rem;
-        margin-left:0rem;
-        margin: 0.2rem;
+        padding-left: 0rem;
     }
 }
 
 @media (max-width: 480px){
     .buttonTop,
     .buttonTopExpand{
-        padding: 0.5rem;
+        padding: 0.2rem;
     }
 }
