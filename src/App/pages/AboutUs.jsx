@@ -7,7 +7,7 @@ import Container from '../components/Container'
 import Section from '../components/Section'
 import ElmSelection from '../components/ElmSelection'
 import LoadData from '../components/LoadData'
-import whoWeAre from '../assets/images/about_us.png'
+import whoWeAre from '/images/about_us.png'
 import { useTranslation } from 'react-i18next'
 
 function AboutUs() {

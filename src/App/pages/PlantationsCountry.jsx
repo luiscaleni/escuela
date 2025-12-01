@@ -10,8 +10,8 @@ import Modal from '../components/Modal'
 import stylesButton from '../components/css/Button.module.css'
 import { useTranslation } from 'react-i18next'
 import RightTopButton from "../components/RightTopButton"
-import imgPlus from '../assets/icons/utilities/plus.png'
-import imgGraphic from '../assets/icons/utilities/graphic.png'
+import imgPlus from '/icons/utilities/plus.png'
+import imgGraphic from '/icons/utilities/graphic.png'
 import ButtonTop from "../components/ButtonTop"
 import ChartPie from "../components/ChartPie"
 import FormPlantation from '../components/FormPlantation'
@@ -87,7 +87,7 @@ function PlantationsCountry() {
                         <ChartPie country={country} />
                         
                         <button onClick={downloadImg} className={stylesB.button}>
-                            Descargar gráfico
+                            {t('buttons.download')}
                         </button>
                     </div>
                 </Modal>

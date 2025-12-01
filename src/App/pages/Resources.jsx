@@ -9,7 +9,7 @@ import styles from './css/Resources.module.css'
 import stylesButton from '../components/css/Button.module.css'
 import Modal from '../components/Modal'
 import FormResources from '../components/FormResources'
-import imgUpload from '../assets/icons/links/upload.png'
+import imgUpload from '/icons/links/upload.png'
 import { UserContext } from '../components/UserProvider'
 import { useTranslation } from 'react-i18next'
 

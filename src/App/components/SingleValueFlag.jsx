@@ -8,8 +8,8 @@ const SingleValueFlag = (props) => {
         src={data.flag}
         alt={data.label}
         style={{
-          width: "28px",
-          height: "28px",
+          width: "1.75rem",
+          height: "1.75rem",
           borderRadius: "50%",
           display: "block",
         }}

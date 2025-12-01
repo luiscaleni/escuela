@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import imgTop from '../assets/icons/utilities/up.png'
+import imgTop from '/icons/utilities/up.png'
 import styles from './css/GoTopButton.module.css'
 import { useTranslation } from 'react-i18next'
 

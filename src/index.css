@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Parkinsans';
-  src: url('./App/assets/tipography/Parkinsans-VariableFont_wght.ttf') format('truetype');
+  src: url('/tipography/Parkinsans-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -34,13 +34,13 @@
   --color-text: #292929;
 
   --border: 0.1rem solid rgb(187, 187, 187);
-  --border-2: 0.1rem solid #494949;
-  --border-radius: 2rem;
+  --border-dark: 0.1rem solid #494949;
+  --border-radius: 5rem;
   --border-radius-slim: 1rem;
   
   --text-shadow: 0 0 1rem #ffffff;
   --text-shadow-2: 0 0 0.2rem #7c7c7c;
-  --text-shadow-strong: 0 0 0.5rem #000000;
+  --text-shadow-strong: 0.1rem 0.1rem 0.3rem #000000;
 
   --box-shadow-inset:  inset 0 -0.3em 0.7em rgba(65, 65, 65, 0.4);
   --box-shadow-inset-hover: inset 0 -0.3em 0.7em rgba(65, 65, 65, 0.6);
@@ -145,7 +145,7 @@ body {
 a{
   text-decoration: none;
   color: #161616;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 #root {
   width: 100vw;

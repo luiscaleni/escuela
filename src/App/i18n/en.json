@@ -146,6 +146,9 @@
       "title":"Upload a file",
       "name":"Resource name (optional)",
       "descript":"Description (optional)"
+    },
+    "recoveryPassw":{
+      "title":"Recover password"
     }
   },
   "buttons":{

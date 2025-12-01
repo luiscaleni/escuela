@@ -35,7 +35,7 @@ nav, .navbar{
 }
 :global(body.dark) .contNavbarContent > .navbarContent{
     background: var(--background-dark);
-    border: var(--border-2);
+    border: var(--border-dark);
 }
 .contNavbarContent > .navbarContent > .contNavbarMenu{
     width: 4rem;
@@ -214,7 +214,7 @@ nav, .navbar{
 }
 .langMenu > option{
     color: white;
-    border-bottom: var(--border-2);
+    border-bottom: var(--border-dark);
 
     display: flex;
     justify-content: center;
@@ -648,7 +648,7 @@ span{
         flex-direction: column;
     }
     :global(body.dark) .contNavbarContent{
-        border-left:var(--border-2);
+        border-left:var(--border-dark);
         background:#000;
     }
     .contNavbarContent > .navbarContent{

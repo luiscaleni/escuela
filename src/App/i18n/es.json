@@ -146,6 +146,9 @@
       "title":"Sube un archivo",
       "name":"Nombre del recurso (opcional)",
       "descript":"Descripcion (opcional)"
+    },
+    "recoveryPassw":{
+      "title":"Recuperar contraseña"
     }
   },
   "buttons":{

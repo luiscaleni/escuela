@@ -169,7 +169,7 @@ function FormRegister() {
 						{cargando ? <Loader mini={true}/> : t('buttons.register')}
 					</Button>
 				</ContFormInput>
-				<p className={styles.smallText}><Link to='/login'>{t('buttons.youAccount')}{t('buttons.login')}</Link></p>
+				<p className={styles.smallText}>{t('buttons.youAccount')}<Link to='/login'>{t('buttons.login')}</Link></p>
 			</form>
 		</div>
 		</>

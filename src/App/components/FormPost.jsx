@@ -6,7 +6,7 @@ import Button from './Button'
 import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
-import userDefault from '../assets/icons/utilities/user_128.png'
+import userDefault from '/icons/utilities/user_128.png'
 import { useTranslation } from 'react-i18next'
 
 function FormPost() {

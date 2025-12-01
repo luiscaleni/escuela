@@ -8,7 +8,7 @@ import Publication from '../components/Publication'
 import LeftTopButton from '../components/LeftTopButton'
 import Container from '../components/Container'
 import Loader from '../components/Loader'
-import pencil from '../assets/icons/utilities/pencil.png'
+import pencil from '/icons/utilities/pencil.png'
 import RightTopButton from '../components/RightTopButton'
 import { UserContext } from '../../App/components/UserProvider'
 import TranslationNotice from "../components/TranslationNotice"

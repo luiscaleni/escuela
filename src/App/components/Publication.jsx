@@ -1,7 +1,7 @@
 import Section from '../components/Section'
 import styles from './css/Publication.module.css'
 import Video from '../components/Video'
-import bannerDefault from '../assets/images/banner_default.jpg'
+import bannerDefault from '/images/banner_default.jpg'
 import { CONFIG_BACKEND } from '../config/config'
 import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
@@ -23,7 +23,7 @@ function Publication({titlePub, nameAsset="", typeElm="", locationPub="", locati
     }else if(nameAsset && locationAlt){
       mediaSrc = `${CONFIG_BACKEND.API_DIR}/src/public/assets/images/${locationAlt}/${nameAsset}`
     }else if(nameAsset && !locationPub){
-      mediaSrc = `${CONFIG_BACKEND.API_DIR}/src/public/assets/images/${nameAsset}`
+      mediaSrc = `./images/${nameAsset}`
     }else if(!nameAsset && !locationPub || nameAsset === null){
       mediaSrc = bannerDefault
     }

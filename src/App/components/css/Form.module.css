@@ -18,7 +18,7 @@
   align-items: center;
   flex-wrap: wrap;
 }
-.form > .contElmsForm > h2{
+.form > h2{
   font-size: 1.8rem;
 }
 .contForm > .form {
@@ -44,20 +44,22 @@
   color: white;
 }
 
-.contForm > .form > .contElmsForm
-
-
-.contForm > .form > .contElmsForm > .smallText{
+.contForm > .form > .smallText{
   width: 100%;
+  min-height: 1rem;
   font-size: 0.8rem;
-  color: #707070;
+  color: #272727;
+  font-weight: bolder;
   padding-top: 0.5rem;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.contForm > .form > .contElmsForm > .smallText > a {
+:global(body.dark) .contForm > .form > .smallText {
+  color: #a3a3a3;
+}
+.contForm > .form > .smallText > a {
   font-size: 100%;
   padding: 0 0.5rem 0 0.5rem;
   text-decoration: underline;

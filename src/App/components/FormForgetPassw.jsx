@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next'
 function FormForgetPassw() {
     const [loading, setLoading] = useState(false)
     const [form, setForm] = useState({ email: '' })
-    const [message, setMessage] = useState("")
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -80,7 +79,7 @@ function FormForgetPassw() {
                     onSubmit={handleSubmit}
                 >
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <h2>{t('buttons.iWantR')}</h2>
+                    <h2>{t('form.recoveryPassw.title')}</h2>
                     <ContFormInput nameElm={t('form.login.email')+" :"}>
                         <input
                             type="email"

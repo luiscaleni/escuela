@@ -2,7 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom"
 import Section from "../components/Section"
 import Template from "../template/Template"
 import styles from './css/Success.module.css'
-import success from "../assets/icons/utilities/success.png"
+import success from "/icons/utilities/success.png"
 import CenterContainer from "../components/CenterContainer"
 import { CONFIG_PATHS } from "../config/config"
 import { useEffect } from "react"

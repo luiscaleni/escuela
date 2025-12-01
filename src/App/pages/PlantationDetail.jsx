@@ -4,7 +4,7 @@ import { CONFIG_BACKEND, CONFIG_PATHS } from "../config/config"
 import Publication from "../components/Publication"
 import styles from './css/Plantations.module.css'
 import { useParams } from "react-router-dom"
-import pencil from '../assets/icons/utilities/pencil.png'
+import pencil from '/icons/utilities/pencil.png'
 import Loader from "../components/Loader"
 import LeftTopButton from "../components/LeftTopButton"
 import RightTopButton from "../components/RightTopButton"

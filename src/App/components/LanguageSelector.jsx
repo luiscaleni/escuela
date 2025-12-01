@@ -7,9 +7,9 @@ import SingleValueFlag from "./SingleValueFlag"
 function LanguageSelector() {
 
   const options = [
-    { value: "es", label: "Español", flag: "/flags/es.png" },
-    { value: "pt", label: "Português", flag: "/flags/pt.png" },
-    { value: "en", label: "English", flag: "/flags/en.png" }
+    { value: "es", label: "Español", flag: "/icons/flagsLang/es.png" },
+    { value: "pt", label: "Português", flag: "/icons/flagsLang/pt.png" },
+    { value: "en", label: "English", flag: "/icons/flagsLang/en.png" }
   ]
 
   const current = options.find(

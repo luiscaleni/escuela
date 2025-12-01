@@ -1,7 +1,6 @@
 import styles from './css/Video.module.css'
-import bg from '../assets/videos/bg.mp4'
 
-function Video() {
+function Video({bg}) {
 
     return ( 
         <>

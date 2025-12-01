@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import styles from "./css/Card.module.css"
-import bannerDefaultCard from '../assets/images/banner_default_card.jpg'
+import bannerDefaultCard from '/images/banner_default_card.jpg'
 import { CONFIG_BACKEND } from "../config/config"
 
 function Card({link, cardTitle, descriptionCard, imgCard=""}) {

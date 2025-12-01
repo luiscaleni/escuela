@@ -1,7 +1,7 @@
 import styles from './css/LeftTopButton.module.css'
 import ButtonTop from "./ButtonTop"
 import { Link } from "react-router-dom"
-import arrowLeft from "../assets/icons/utilities/arrowLeft.png"
+import arrowLeft from "/icons/utilities/arrowLeft.png"
 
 function LeftTopButton({text, locationElm="", typeElm=""}) {
     return ( 

@@ -8,13 +8,13 @@ const OptionFlag = (props) => {
       <div style={{
         display: "flex",
         alignItems: "center",
-        gap: "8px",
+        gap: "0.5rem",
         color: "black",
       }}>
         <img 
           src={data.flag} 
           alt={data.label}
-          style={{ width: "24px", height: "24px" }} 
+          style={{ width: "1.5rem", height: "1.5rem" }} 
         />
         <span style={{ color: "black" }}>{data.label}</span>
       </div>

@@ -146,6 +146,9 @@
       "title":"Carregar um arquivo",
       "name":"Nome do recurso (opcional)",
       "descript":"Descrição (opcional)"
+    },
+    "recoveryPassw":{
+      "title":"Recuperar senha"
     }
   },
   "buttons":{
