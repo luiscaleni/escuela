@@ -21,9 +21,9 @@ function Publication({titlePub, nameAsset="", typeElm="", locationPub="", locati
     if(nameAsset && locationPub){
       mediaSrc = `${CONFIG_BACKEND.API_DIR}/src/assets/${locationPub}/${nameAsset}`
     }else if(nameAsset && locationAlt){
-      mediaSrc = `${CONFIG_BACKEND.API_DIR}/src/public/assets/images/${locationAlt}/${nameAsset}`
+      mediaSrc = `/images/${locationAlt}/${nameAsset}`
     }else if(nameAsset && !locationPub){
-      mediaSrc = `./images/${nameAsset}`
+      mediaSrc = `/images/${nameAsset}`
     }else if(!nameAsset && !locationPub || nameAsset === null){
       mediaSrc = bannerDefault
     }

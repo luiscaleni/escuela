@@ -81,12 +81,12 @@ nav, .navbar{
 .contNavbarContent > .navbarContent > .navbarLinks > a,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a,
 .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel{
-    min-width: 6rem;
+    min-width: 5rem;
     height: 3rem;
     cursor: pointer;
     color:#000;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 0 0.5rem;
     margin: 0 0.3rem;
     border-radius: 2rem;
@@ -176,6 +176,7 @@ nav, .navbar{
 .menu > li > a{
     width: 100%;
     height: 100%;
+    font-size: 0.9rem;
     color: #333;
 
     display: flex;
