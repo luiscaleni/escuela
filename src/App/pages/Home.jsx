@@ -16,7 +16,6 @@ function Home() {
   const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
   const [dbPlantations, setDbPlantations] = useState()
-  const [message, setMessage] = useState("")
   const [leadersPlant, setLeadersPlant] = useState()
   const [t, i18n] = useTranslation()
 
@@ -25,6 +24,11 @@ function Home() {
     fetchAll()
   }, [])
 
+  useEffect(()=>{
+        const lang = localStorage.getItem('lang') || 'es'
+        i18n.changeLanguage(lang)
+    },[i18n])
+  
   const fetchAll = async () => {
     try {
       const [plantsRes, leadersRes] = await Promise.all([
@@ -42,9 +46,7 @@ function Home() {
 
       if (plantsData.success) {
         setDbPlantations(plantsData.result)
-      }else{
-          setMessage('Error: ', "❌ "+plantsData.message)
-      }
+      }/**/
 
       if (leadersData.success) {
         setLeadersPlant(leadersData.result.length)
@@ -61,7 +63,7 @@ function Home() {
   return (
     <Template>
       <Publication
-        titlePub={configData?.dptoNameConfig}
+        titlePub={configData?.dptoNameConfig??'DPISUD'}
         typeElm="img"
         nameAsset="banner_home.jpg">
         <Section>
