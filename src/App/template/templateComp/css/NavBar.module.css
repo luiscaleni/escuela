@@ -538,8 +538,14 @@ span{
     z-index: 99999;
     display: none;
 }
+.contNavbarContent > .navbarContent > .navbarLinks > .linkHome{
+    display: none;
+}
 
 @media (max-width:1280px){
+    .contNavbarContent > .navbarContent > .navbarLinks > .linkHome{
+        display: flex;
+    }
     .contNavbarContent > .navbarContent > .contNavbarMenu{
         display: none;
     }

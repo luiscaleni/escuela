@@ -55,10 +55,6 @@ function Profile() {
                     <Container>
                         <div className={styles.bg}>
                             <div className={styles.bannerProfile}>
-                                <TopButtons>
-                                    <TopButtonNone />
-                                    <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
-                                </TopButtons>
                                 <div className={styles.contTitleProfile}>
                                     <div className={styles.contImgProfile}>
                                         <ImgProfile />
@@ -68,6 +64,8 @@ function Profile() {
                                         <p className={styles.nameRol}>{nameRol}</p>
                                     </div>
                                 </div>
+                                
+                                <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
                             </div>                        
                             <div className={styles.dataProfile}>
                                 <div className={styles.contElm}>

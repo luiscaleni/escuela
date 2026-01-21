@@ -110,6 +110,7 @@ function PlantationsCountry() {
                     locationAlt="coverCountrys"
                     nameAsset={`${country}.jpg`}
                 >
+                    <div style={{width:'96%'}}>
                     <TopButtons>
                         <LeftTopButton 
                             typeElm='expand' 
@@ -136,6 +137,7 @@ function PlantationsCountry() {
                             />
                         )}
                     </TopButtons>
+                    </div>
                         {plantations.length > 0 ? (
                             <div className={styles.contContTable}>
                                 <div className={styles.contTable}>

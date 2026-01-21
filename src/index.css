@@ -56,6 +56,7 @@
   --background-dark: rgba(0, 0, 0, 0.6);;
   --background-dark-2: rgba(0, 0, 0, 0.8);
   --background-color: rgba(255, 255, 255, 1);
+  --background-solid: rgb(245, 245, 245);
   --background-color-btn: #006eff;
   --background-color-btn-hover: #004bad;
   --background-linear-gradient: linear-gradient(15deg,rgb(174, 202, 243), #cec3ff );
@@ -73,6 +74,8 @@
 
 .success,
 .error{
+  height: 2.725rem;
+  margin-bottom: 0.5rem;
   display: flex;
   transition: all ease-in-out .3s;
 }

@@ -10,7 +10,6 @@ import { UserContext } from './UserProvider'
 import { useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 import TopButtons from './TopButtons'
-import TopButtonNone from './TopButtonNone'
 
 function FormConfigEdit() {
     const { user } = useContext(UserContext)
@@ -75,7 +74,7 @@ function FormConfigEdit() {
 
                 if(data.success){
                     alertContainer.classList.add("success")
-                    setMessage("✅")
+                    setMessage("✅ ¡"+data.message+"!")
                     setForm({ 
                         dptoNameConfig:  '',
                         acrDptoNameConfig: '',
@@ -92,7 +91,7 @@ function FormConfigEdit() {
                     }, 3000)
                 }else{
                     alertContainer.classList.add("error")
-                    setMessage("❌ "+data.error)
+                    setMessage("❌ ¡"+data.error+"!")
                     setTimeout(() => {
                         alertContainer.classList.remove("error")
                         setMessage("")
@@ -100,7 +99,7 @@ function FormConfigEdit() {
                 }
             } catch (errorCatch) {
                 alertContainer.classList.add("error")
-                setMessage("❌ "+errorCatch.error)
+                setMessage("❌ ¡"+errorCatch.error+"!")
                 setTimeout(() => {
                     alertContainer.classList.remove("error")
                     setMessage("")
@@ -130,10 +129,9 @@ function FormConfigEdit() {
         <>
         <div className={styles.contForm}>
             <form className={styles.form} id='formConfigUpdate' onSubmit={handleSubmit}>
+                <div className={styles.alertContainer} id="alertContainer">{message}</div>
                 <TopButtons>
                     <LeftTopButton text={t('buttons.configuration')} locationElm={CONFIG_PATHS.CONFIG_PATH} typeElm='expand'/>
-                    <div className={styles.alertContainer} id="alertContainer">{message}</div>
-                    <TopButtonNone />
                 </TopButtons>
                 <div className={styles.contElmsForm}>
                     <h1>{t('buttons.edit')}</h1>

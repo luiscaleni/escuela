@@ -152,7 +152,7 @@ function NavBar() {
                                 </div>
                                 <p>DPISUD</p>
                             </Link>
-                            <Link to={CONFIG_PATHS.HOME_PATH}>
+                            <Link to={CONFIG_PATHS.HOME_PATH} className={styles.linkHome}>
                                 <img src={imgHome} className={styles.imgMobile}/>
                                 {t('navbar.home')}
                             </Link>

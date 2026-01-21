@@ -19,6 +19,7 @@ function FormProfileEdit() {
     const [selectedImage, setSelectedImage] = useState(null)
     const navigate = useNavigate()
     const [cargando, setCargando] = useState(false)
+    const [message, setMessage] = useState("")
     const [form, setForm] = useState({
         names: user?.names || '',
         lastNames:  user?.lastNames || '',
@@ -79,18 +80,18 @@ function FormProfileEdit() {
             const data = await response.json()
 
             if(data.success){
-                alertContainer.innerHTML="✅ "+data.message
                 alertContainer.classList.add("success")
+                setMessage("✅ ¡"+data.message+"!")
                 await loadUser()
                 navigate(CONFIG_PATHS.PROFILE_PATH)
             }else{
-                alertContainer.innerHTML="❌ "+data.error
                 alertContainer.classList.add("error")
+                setMessage("❌ ¡"+data.error+"!")
             }
         } catch (errorCatch) {
             if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch)}
-            alertContainer.innerHTML="❌ "+errorCatch.error
             alertContainer.classList.add("error")
+            setMessage("❌ ¡"+errorCatch.error+"!")
         } finally{
             setCargando(false)
             await loadUser()
@@ -117,10 +118,9 @@ function FormProfileEdit() {
         <>
             <div className={styles.contForm}>
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
+                    <div className={styles.alertContainer} id="alertContainer">{message}</div>
                     <TopButtons>
                         <LeftTopButton typeElm='expand' text={t('buttons.profile')} locationElm={CONFIG_PATHS.PROFILE_PATH}/>
-                        <div className={styles.alertContainer} id="alertContainer"></div>
-                        <TopButtonNone />
                     </TopButtons>
                     
                     <div className={styles.contElmsForm}>

@@ -34,10 +34,10 @@ function AboutUs() {
           <Section>
             <Container>
               <Block>
-                  <h2>
-                    <span>{t('aboutUs.whoWeAreOne')}</span>
-                    {t('aboutUs.whoWeAreTwo')}
-                  </h2>
+                <h2>
+                  <span>{t('aboutUs.whoWeAreOne')}</span>
+                  {t('aboutUs.whoWeAreTwo')}
+                </h2>
 
                 <p>
                   {t('aboutUs.textOne')}

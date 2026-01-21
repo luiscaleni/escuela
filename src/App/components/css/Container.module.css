@@ -2,18 +2,18 @@
 .containerMax{
     position: relative;
     overflow: hidden;
-    max-width: 65rem;
+    max-width: 67rem;
     min-width: 22rem;
     min-height: 35rem;
     width: 85vw;
     color: #000;
     border: var(--border);
     border-radius: var(--border-radius);
-    background-color: white;
+    background-color: var(--background-solid);
 
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
 }
 .containerMax{padding: 1.5rem 0;}
@@ -21,7 +21,7 @@
 :global(body.dark) .container,
 :global(body.dark) .containerMax {
     border: var(--border-dark);
-    background-color: #1d1d1d;
+    background-color: #272727;
     color: #fff;
 }
 

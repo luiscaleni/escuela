@@ -41,7 +41,7 @@ function ImgProfile() {
                 :`${CONFIG_BACKEND.API_DIR}/src/assets/user_default.png`
                 setImgSrc(src)
         }
-        if (import.meta.env.DEV) { console.log(user.imgProfile)}
+        //if (import.meta.env.DEV) { console.log(user.imgProfile)}
     }, [user])
 
     // 4) Rendering

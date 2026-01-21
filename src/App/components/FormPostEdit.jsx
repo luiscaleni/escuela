@@ -47,6 +47,10 @@ function FormPostEdit() {
         }
     }   
 
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
+
     const handleImageChange = (e) =>{
         const file = e.target.files[0]
         setSelectedImage(file)
@@ -58,15 +62,21 @@ function FormPostEdit() {
         reader.readAsDataURL(file)
     }
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
-    }
-
     const [form, setForm] = useState({
         titlePub:  post?.titlePub || '',
         textPub: post?.textPub || '',
-        descriptPub:  post?.descriptPub || ''
+        descriptPub: post?.descriptPub || ''
     })
+
+    useEffect(() => {
+        if (post) {
+            setForm({
+                titlePub: post.titlePub ?? '',
+                textPub: post.textPub ?? '',
+                descriptPub: post.descriptPub ?? ''
+            })
+        }
+    }, [post])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -142,15 +152,15 @@ function FormPostEdit() {
                     <div className={styles.contElmsForm}>
                         <h1>{t('buttons.edit')}</h1>
                         <ContFormInput nameElm={t('form.postEdit.titlePost')+" :"}>
-                            <input type="text" name="titlePub" id="titlePub" placeholder={(dataUpdate.titlePub??post.titlePub)!==undefined??''} onChange={handleChange}/>
+                            <input type="text" name="titlePub" id="titlePub" value={dataUpdate.titlePub??post.titlePub} onChange={handleChange}/>
                         </ContFormInput>
                         
                         <ContFormInput nameElm={t('form.postEdit.text')+" :"}>
-                            <textarea name="textPub" id="textPub" className={styles.textareaPost} placeholder={(dataUpdate.textPub??parrafos)!==undefined??''}onChange={handleChange}></textarea>
+                            <textarea name="textPub" id="textPub" className={styles.textareaPost} value={dataUpdate.textPub??parrafos}onChange={handleChange}></textarea>
                         </ContFormInput>
                         
                         <ContFormInput nameElm={t('form.postEdit.descript')+" :"}>
-                            <input type="text" name="descriptPub" id="descriptPub"placeholder={(dataUpdate.titlePub??post.descriptPub)!==undefined??''} onChange={handleChange}/>
+                            <input type="text" name="descriptPub" id="descriptPub"value={dataUpdate.titlePub??post.descriptPub} onChange={handleChange}/>
                         </ContFormInput>
 
                         <ContFormInput nameElm={t('form.postEdit.frontPage')+" :"}>
