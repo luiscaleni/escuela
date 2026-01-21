@@ -1,56 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1077.76">
+<svg id="Capa_2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1080 1077.76">
+  <!-- Generator: Adobe Illustrator 29.8.3, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
   <defs>
     <style>
-      .cls-1 {
+      .st0 {
+        stroke-width: 75px;
+      }
+
+      .st0, .st1, .st2 {
+        stroke-linejoin: round;
+      }
+
+      .st0, .st1, .st2, .st3 {
+        stroke: #552cff;
+      }
+
+      .st0, .st2 {
+        fill: #fff;
+      }
+
+      .st1 {
         fill: none;
         stroke-width: 30px;
       }
 
-      .cls-1, .cls-2, .cls-3 {
-        stroke-linejoin: round;
-      }
-
-      .cls-1, .cls-2, .cls-3, .cls-4 {
-        stroke: #552cff;
-      }
-
-      .cls-1, .cls-3, .cls-4 {
+      .st1, .st2, .st3 {
         stroke-linecap: round;
       }
 
-      .cls-2 {
-        stroke-width: 80px;
-      }
-
-      .cls-2, .cls-3 {
-        fill: #fff;
-      }
-
-      .cls-3 {
+      .st2 {
         stroke-width: 50px;
       }
 
-      .cls-4 {
+      .st3 {
         fill: #552cff;
         stroke-miterlimit: 10;
         stroke-width: 60px;
       }
     </style>
   </defs>
-  <g id="Capa_3" data-name="Capa 3">
+  <g id="Capa_3">
     <g>
-      <ellipse class="cls-2" cx="540" cy="538.88" rx="500" ry="498.88"/>
+      <circle class="st0" cx="540" cy="538.88" r="500"/>
       <g>
-        <path class="cls-4" d="M540.18,865.34l16.83-506.75h154.76c8.2,0,8.23,0,8.23-8.18v-14.18c0-8.16.03-8.18-8.23-8.18h-154.76v-130.36q0-8.18-8.23-8.18h-19.11c-8.29,0-8.23-.02-8.23,8.18v130.36h-153.21c-8.18,0-8.23.02-8.23,8.18v14.18q0,8.18,8.23,8.18h153.21l18.74,505.57"/>
+        <path class="st3" d="M540.18,866.07l16.83-507.89h154.76c8.2,0,8.23,0,8.23-8.2v-14.21c0-8.18.03-8.2-8.23-8.2h-154.76v-130.65c0-5.47-2.74-8.2-8.23-8.2h-19.11c-8.29,0-8.23-.02-8.23,8.2v130.65h-153.21c-8.18,0-8.23.02-8.23,8.2v14.21c0,5.47,2.74,8.2,8.23,8.2h153.21l18.74,506.71"/>
         <g>
           <g>
-            <path class="cls-3" d="M913.9,586.49c0,148.55-144.19,347.13-373.9,347.13,0-192.8,125.7-347.13,373.9-347.13Z"/>
-            <path class="cls-1" d="M768.2,705.95c-35.62,102.57-159.99,190.07-228.2,201.69"/>
+            <path class="st2" d="M913.9,586.6c0,148.88-144.19,347.91-373.9,347.91,0-193.23,125.7-347.91,373.9-347.91Z"/>
+            <path class="st1" d="M768.2,706.33c-35.62,102.8-159.99,190.5-228.2,202.14"/>
           </g>
           <g>
-            <path class="cls-3" d="M166.09,584.98c0,160.67,154.19,348.64,373.9,348.64,0-192.8-125.7-348.64-373.9-348.64Z"/>
-            <path class="cls-1" d="M311.8,705.95c35.62,102.57,159.99,190.07,228.2,201.69"/>
+            <path class="st2" d="M166.09,585.08c0,161.03,154.19,349.42,373.9,349.42,0-193.23-125.7-349.42-373.9-349.42Z"/>
+            <path class="st1" d="M311.8,706.33c35.62,102.8,159.99,190.5,228.2,202.14"/>
           </g>
         </g>
       </g>
