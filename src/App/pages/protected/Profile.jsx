@@ -1,7 +1,6 @@
 import styles from './css/Profile.module.css'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useContext, useEffect } from 'react'
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import Container from '../../components/Container'
 import { UserContext } from '../../components/UserProvider'
@@ -50,49 +49,47 @@ function Profile() {
 
     return ( 
         <>
-            <Template separator={true}>
-                <Section>
-                    <Container>
-                        <div className={styles.bg}>
-                            <div className={styles.bannerProfile}>
-                                <div className={styles.contTitleProfile}>
-                                    <div className={styles.contImgProfile}>
-                                        <ImgProfile />
-                                    </div>
-                                    <div className={styles.contTextProfile}>
-                                        <h2>{user.names} {user.lastNames}</h2>
-                                        <p className={styles.nameRol}>{nameRol}</p>
-                                    </div>
+            <Section>
+                <Container>
+                    <div className={styles.bg}>
+                        <div className={styles.bannerProfile}>
+                            <div className={styles.contTitleProfile}>
+                                <div className={styles.contImgProfile}>
+                                    <ImgProfile />
                                 </div>
-                                
-                                <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
-                            </div>                        
-                            <div className={styles.dataProfile}>
-                                <div className={styles.contElm}>
-                                    <p className={styles.titleElm}>Email:</p>
-                                    <p className={styles.valueElm}>{user.email}</p>
-                                </div>
-                                <div className={styles.contElm}>
-                                    <p className={styles.titleElm}>{t('profile.country')+" :"}</p>
-                                    <p className={styles.valueElm}>{user.country}</p>
-                                </div>
-                                <div className={styles.contElm}>
-                                    <p className={styles.titleElm}>{t('profile.province')+" :"}</p>
-                                    <p className={styles.valueElm}>{user.province}</p>
-                                </div>
-                                <div className={styles.contElm}>
-                                    <p className={styles.titleElm}>{t('profile.ministry')+" :"}</p>
-                                    <p className={styles.valueElm}>{user.ministry}</p>
-                                </div>
-                                <div className={styles.contElm}>
-                                    <p className={styles.titleElm}>{t('profile.about')+" :"}</p>
-                                    <p className={styles.valueElm}>{user.aboutMe}</p>
+                                <div className={styles.contTextProfile}>
+                                    <h2>{user.names} {user.lastNames}</h2>
+                                    <p className={styles.nameRol}>{nameRol}</p>
                                 </div>
                             </div>
+                            
+                            <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                        </div>                        
+                        <div className={styles.dataProfile}>
+                            <div className={styles.contElm}>
+                                <p className={styles.titleElm}>Email:</p>
+                                <p className={styles.valueElm}>{user.email}</p>
+                            </div>
+                            <div className={styles.contElm}>
+                                <p className={styles.titleElm}>{t('profile.country')+" :"}</p>
+                                <p className={styles.valueElm}>{user.country}</p>
+                            </div>
+                            <div className={styles.contElm}>
+                                <p className={styles.titleElm}>{t('profile.province')+" :"}</p>
+                                <p className={styles.valueElm}>{user.province}</p>
+                            </div>
+                            <div className={styles.contElm}>
+                                <p className={styles.titleElm}>{t('profile.ministry')+" :"}</p>
+                                <p className={styles.valueElm}>{user.ministry}</p>
+                            </div>
+                            <div className={styles.contElm}>
+                                <p className={styles.titleElm}>{t('profile.about')+" :"}</p>
+                                <p className={styles.valueElm}>{user.aboutMe}</p>
+                            </div>
                         </div>
-                    </Container>
-                </Section>
-            </Template>
+                    </div>
+                </Container>
+            </Section>
         </>
      )
 }

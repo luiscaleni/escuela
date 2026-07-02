@@ -1,4 +1,3 @@
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import ShowConfigData from '../../components/ShowConfigData'
 import { useContext } from 'react'
@@ -16,13 +15,11 @@ function Configuration() {
 
     return ( 
         <>
-        <Template separator={true}>
             <Section>
                 {(user && (user.rolId === 1)) ? (
                     <ShowConfigData />
                 ): null}
             </Section>
-        </Template>
         </>
      )
 }

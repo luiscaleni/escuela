@@ -1,4 +1,3 @@
-import Template from '../template/Template'
 import Publication from '../components/Publication'
 import Elementor from '../components/Elementor'
 import { useState, useEffect, useContext } from 'react'
@@ -66,54 +65,52 @@ function Resources() {
                 />
             </Modal>
             )}
-            <Template>
-                <Publication 
-                    titlePub={t('resources.title')} 
-                    typeElm='img' 
-                    nameAsset="banner_resources.jpg"
-                >
-                    {user && user.rolId === 1 && (
-                        <div className={styles.contPushButton}>
-                            <ButtonTop 
-                                id="pushFile"
-                                textElm={t('buttons.upload')} 
-                                typeElm='expand'
-                                imgElm={imgUpload}
-                                onClick={() => {fnShowContainer()}}
-                            />
-                        </div>
-                    )}
-                    {resources.length > 0 ? (
-                        resources.map(resource => (
-                            <Elementor key={resource.idResource}>
-                                <p className={styles.titleResource}>{resource.titleResource}</p>
-                                <img src={`src/App/assets/icons/files/${resource.extResource ?? resource.ext_resource}.png`} alt={resource.extResource} className={styles.iconResource} />
-                                <p className={styles.descriptionResource}>{resource.descriptionResource}</p>
-                                <div className={styles.groupData}>
-                                    <p className={styles.dataSize}>
-                                        {t('buttons.wheight')}: {resource.sizeResource??resource.size_resource} MB
-                                    </p>
-                                    <p className={styles.dataDate}>
-                                        {t('buttons.date')}: {resource.dateResource??resource.date_resource}
-                                    </p>
-                                </div>
-                                <Link 
-                                    className={stylesButton.button} 
-                                    to={CONFIG_BACKEND.API_DIR+"/src/assets/resources/"+(resource.fileResource??resource.file_resource)}
-                                    id={resource.idResource}
-                                    download={`${resource.idResource}.${resource.extResource}`}
-                                    target='_blank'
-                                    title={t('buttons.download')}
-                                >
-                                    {t('buttons.download')}
-                                </Link>
-                            </Elementor> 
-                        ))
-                    ):(
-                        <p>{t('alerts.noneRes')}</p>
-                    )}
-                </Publication>
-            </Template>
+            <Publication 
+                titlePub={t('resources.title')} 
+                typeElm='img' 
+                nameAsset="banner_resources.jpg"
+            >
+                {user && user.rolId === 1 && (
+                    <div className={styles.contPushButton}>
+                        <ButtonTop 
+                            id="pushFile"
+                            textElm={t('buttons.upload')} 
+                            typeElm='expand'
+                            imgElm={imgUpload}
+                            onClick={() => {fnShowContainer()}}
+                        />
+                    </div>
+                )}
+                {resources.length > 0 ? (
+                    resources.map(resource => (
+                        <Elementor key={resource.idResource}>
+                            <p className={styles.titleResource}>{resource.titleResource}</p>
+                            <img src={`src/App/assets/icons/files/${resource.extResource ?? resource.ext_resource}.png`} alt={resource.extResource} className={styles.iconResource} />
+                            <p className={styles.descriptionResource}>{resource.descriptionResource}</p>
+                            <div className={styles.groupData}>
+                                <p className={styles.dataSize}>
+                                    {t('buttons.wheight')}: {resource.sizeResource??resource.size_resource} MB
+                                </p>
+                                <p className={styles.dataDate}>
+                                    {t('buttons.date')}: {resource.dateResource??resource.date_resource}
+                                </p>
+                            </div>
+                            <Link 
+                                className={stylesButton.button} 
+                                to={CONFIG_BACKEND.API_DIR+"/src/assets/resources/"+(resource.fileResource??resource.file_resource)}
+                                id={resource.idResource}
+                                download={`${resource.idResource}.${resource.extResource}`}
+                                target='_blank'
+                                title={t('buttons.download')}
+                            >
+                                {t('buttons.download')}
+                            </Link>
+                        </Elementor> 
+                    ))
+                ):(
+                    <p>{t('alerts.noneRes')}</p>
+                )}
+            </Publication>
         </>
      )
 

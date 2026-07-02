@@ -1,4 +1,3 @@
-import Template from "../template/Template"
 import { useState, useEffect, useContext } from "react"
 import { CONFIG_BACKEND, CONFIG_PATHS } from "../config/config"
 import Publication from "../components/Publication"
@@ -79,31 +78,29 @@ function PlantationDetail() {
                     <FormPlantEdit countryPlant={country} plantation={plantation} onSuccess={updatePlant}/>
                 </Modal>
             )}
-            <Template>
-                <Publication
-                    titlePub={`${t('plantations.titleCountry')} ${plantation.province_plant}`}
-                    typeElm="img"
-                    locationPub={filePlant !== 'banner_home.jpg' ? ("plants/"+ country) : undefined}
-                    nameAsset={filePlant}
-                >
-                    <TopButtons>
-                        <LeftTopButton locationElm={`${CONFIG_PATHS.PLANTATIONS}/${countryDb}`} typeElm='expand' text={t('buttons.back')} marginLeft={true}/>
-                        {user && (plantation.leader_push_plant === user.id || user.id === 1) &&(
-                            <RightTopButton onClick={() => {fnShowContainer()}} typeElm='expand' text={t('buttons.edit')} marginRight={true} imgElm={pencil}/>
-                        )}
-                    </TopButtons>
+            <Publication
+                titlePub={`${t('plantations.titleCountry')} ${plantation.province_plant}`}
+                typeElm="img"
+                locationPub={filePlant !== 'banner_home.jpg' ? ("plants/"+ country) : undefined}
+                nameAsset={filePlant}
+            >
+                <TopButtons>
+                    <LeftTopButton locationElm={`${CONFIG_PATHS.PLANTATIONS}/${countryDb}`} typeElm='expand' text={t('buttons.back')} marginLeft={true}/>
+                    {user && (plantation.leader_push_plant === user.id || user.id === 1) &&(
+                        <RightTopButton onClick={() => {fnShowContainer()}} typeElm='expand' text={t('buttons.edit')} marginRight={true} imgElm={pencil}/>
+                    )}
+                </TopButtons>
 
-                    <div className={styles.plantation}>
-                       <p>País: {countryDb}</p>
-                       <p>{t('plantations.province')+" :"} {plantation.province_plant}</p>
-                       <p>{t('plantations.match')+" :"} {plantation.match_plant}</p>
-                       <p>{t('plantations.street')+" :"} {plantation.street_plant}</p>
-                       <p>{t('plantations.planter')+" :"} {plantation.members_plant}</p>
-                       <p>{t('plantations.start')+" :"} {plantation.leader_plant}</p>
-                       <p>{t('plantations.info')+" :"} {plantation.start_of_work_plant}</p>
-                    </div>
-                </Publication>
-            </Template>
+                <div className={styles.plantation}>
+                    <p>País: {countryDb}</p>
+                    <p>{t('plantations.province')+" :"} {plantation.province_plant}</p>
+                    <p>{t('plantations.match')+" :"} {plantation.match_plant}</p>
+                    <p>{t('plantations.street')+" :"} {plantation.street_plant}</p>
+                    <p>{t('plantations.planter')+" :"} {plantation.members_plant}</p>
+                    <p>{t('plantations.start')+" :"} {plantation.leader_plant}</p>
+                    <p>{t('plantations.info')+" :"} {plantation.start_of_work_plant}</p>
+                </div>
+            </Publication>
         </>
      )
 }

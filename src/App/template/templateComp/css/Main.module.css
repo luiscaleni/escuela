@@ -9,10 +9,20 @@ main, .main{
 }
 .main > .mainContent{
     width: 100%;
-    height: auto;
+    min-height: calc(80vh - 4rem);
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.separator{
+    margin-top: 5rem;
+}
+
+@media (max-width: 1024px){
+    .separator{
+        height: 4rem;
+    }
 }

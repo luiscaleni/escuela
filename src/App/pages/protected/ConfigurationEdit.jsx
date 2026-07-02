@@ -1,4 +1,3 @@
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import FormConfigEdit from '../../components/FormConfigEdit'
 import { useContext } from 'react'
@@ -16,13 +15,11 @@ function ConfigurationEdit() {
 
     return ( 
         <>
-            <Template separator={true}>
-                <Section>
-                    {(user && (user.rolId === 1)) ? (
-                        <FormConfigEdit />
-                    ): null}
-                </Section>
-            </Template>
+            <Section>
+                {(user && (user.rolId === 1)) ? (
+                    <FormConfigEdit />
+                ): null}
+            </Section>
         </>
      )
 }

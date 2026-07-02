@@ -1,4 +1,3 @@
-import Template from '../template/Template'
 import Publication from '../components/Publication'
 import Card from '../components/Card'
 import { useState, useEffect } from 'react'
@@ -32,22 +31,20 @@ function News() {
     
     return ( 
         <>
-            <Template>
-                <Publication titlePub={t('news.title')} typeElm='img' nameAsset="banner_news.jpg">
-                    {publications && publications.length > 0 ? (
-                        publications.map(pub => (
-                            <Card key={pub.id_pub}
-                                link={`/noticias/${pub.id_pub}`}
-                                cardTitle={pub.title_pub} 
-                                descriptionCard={pub.descript_pub}
-                                imgCard={pub.img_pub}
-                            />
-                        ))
-                    ) : (
-                        <p>{t('alerts.noneNews')}</p>
-                    )}
-                </Publication>
-            </Template>
+            <Publication titlePub={t('news.title')} typeElm='img' nameAsset="banner_news.jpg">
+                {publications && publications.length > 0 ? (
+                    publications.map(pub => (
+                        <Card key={pub.id_pub}
+                            link={`/noticias/${pub.id_pub}`}
+                            cardTitle={pub.title_pub} 
+                            descriptionCard={pub.descript_pub}
+                            imgCard={pub.img_pub}
+                        />
+                    ))
+                ) : (
+                    <p>{t('alerts.noneNews')}</p>
+                )}
+            </Publication>
         </>
      )
 

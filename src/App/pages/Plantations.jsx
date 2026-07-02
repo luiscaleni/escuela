@@ -1,4 +1,3 @@
-import Template from "../template/Template"
 import Publication from "../components/Publication"
 import styles from './css/Plantations.module.css'
 import { CONFIG_NAMES_COUNTRYS } from "../config/config"
@@ -16,25 +15,23 @@ function Plantations() {
 
     return ( 
         <>
-            <Template>
-                <Publication
-                    titlePub={t('plantations.title')}
-                    typeElm="img"
-                    nameAsset="banner_plantations.jpg"
-                >
-                    {
-                        CONFIG_NAMES_COUNTRYS.map(country => (
-                            <div key={country} className={styles.contCountry}>
-                                <Link to={`/plantaciones/${country}`} className={styles.link} title={country}>
-                                    <p>{country}</p>
-                                    <img src={`/icons/flags/${country}.svg`} className={styles.flagCountry}/>
-                                </Link>
+            <Publication
+                titlePub={t('plantations.title')}
+                typeElm="img"
+                nameAsset="banner_plantations.jpg"
+            >
+                {
+                    CONFIG_NAMES_COUNTRYS.map(country => (
+                        <div key={country} className={styles.contCountry}>
+                            <Link to={`/plantaciones/${country}`} className={styles.link} title={country}>
                                 <p>{country}</p>
-                            </div>
-                        ))
-                    }
-                </Publication>
-            </Template>
+                                <img src={`/icons/flags/${country}.svg`} className={styles.flagCountry}/>
+                            </Link>
+                            <p>{country}</p>
+                        </div>
+                    ))
+                }
+            </Publication>
         </>
      )
 }

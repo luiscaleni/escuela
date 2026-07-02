@@ -1,4 +1,3 @@
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import FormPost from '../../components/FormPost'
 import { UserContext } from '../../components/UserProvider'
@@ -16,13 +15,11 @@ function NewPost() {
 
     return ( 
         <>
-            <Template separator={true}>
-                <Section>
-                    {(user && (user.rolId === 1)) ? (
-                        <FormPost />
-                    ) : null}
-                </Section>
-            </Template>
+            <Section>
+                {(user && (user.rolId === 1)) ? (
+                    <FormPost />
+                ) : null}
+            </Section>
         </>
      )
 }

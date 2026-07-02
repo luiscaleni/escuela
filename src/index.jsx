@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { UserProvider } from './App/components/UserProvider'
+import Template from './App/template/Template'
 import './index.css'
 import './App/i18n'
 
@@ -37,36 +38,47 @@ import { CONFIG_PATHS }   from './App/config/config'
 import { ThemeProvider }  from './App/components/ThemeContext'
 
 const routes = [
-  { path: CONFIG_PATHS.HOME_PATH,                    element: <Home/>,                  },
-  { path: CONFIG_PATHS.NEWS_PATH,                    element: <News/>,                  },
-  { path: CONFIG_PATHS.NEWS_PATH+"/:id_news",        element: <NewsDetail/>,            },
-  { path: CONFIG_PATHS.ABOUT_US_PATH,                element: <AboutUs/>,               },
-  { path: CONFIG_PATHS.RESOURCES_PATH,               element: <Resources/>,             },
-  { path: CONFIG_PATHS.DONATE_PATH,                  element: <Donate/>,                },
-  { path: CONFIG_PATHS.PLANTATIONS,                  element: <Plantations/>,           },
-  { path: CONFIG_PATHS.PLANTATIONS+"/:country",      element: <PlantationsCountry />,   },
-  { path: CONFIG_PATHS.PLANTATIONS+"/:country/:id",  element: <PlantationDetail />,     },
-  
-  { path: CONFIG_PATHS.RESET_PASSW,                  element: <ResetPassw />         },
-  { path: CONFIG_PATHS.SUCCESS_PATH,                 element: <Success />                },
-  
-  { path: CONFIG_PATHS.REGISTER_PATH,                element: <PublicRoute>     <Register/>           </PublicRoute>    },
-  { path: CONFIG_PATHS.LOGIN_PATH,                   element: <PublicRoute>     <Login/>              </PublicRoute>    },
-  { path: CONFIG_PATHS.FORGET_PASSW_PATH,            element: <PublicRoute>     <ForgetPassw/>        </PublicRoute>    },
+  {
+    path: "/",
+    element: <Template separator={false} />,
+    children: [
+      { path: CONFIG_PATHS.HOME_PATH,                    element: <Home/>,                  },
+      { path: CONFIG_PATHS.NEWS_PATH,                    element: <News/>,                  },
+      { path: CONFIG_PATHS.NEWS_PATH+"/:id_news",        element: <NewsDetail/>,            },
+      { path: CONFIG_PATHS.ABOUT_US_PATH,                element: <AboutUs/>,               },
+      { path: CONFIG_PATHS.RESOURCES_PATH,               element: <Resources/>,             },
+      { path: CONFIG_PATHS.DONATE_PATH,                  element: <Donate/>,                },
+      { path: CONFIG_PATHS.PLANTATIONS,                  element: <Plantations/>,           },
+      { path: CONFIG_PATHS.PLANTATIONS+"/:country",      element: <PlantationsCountry />,   },
+      { path: CONFIG_PATHS.PLANTATIONS+"/:country/:id",  element: <PlantationDetail />,     },
+      //
+      { path: "*",                                       element: <Home/>                    }
+    ]
+  },
+  {  
+    path: "/",
+    element: <Template separator={true} />,
+    children: [
+      { path: CONFIG_PATHS.RESET_PASSW,                  element: <ResetPassw />         },
+      { path: CONFIG_PATHS.SUCCESS_PATH,                 element: <Success />                },
+      
+      { path: CONFIG_PATHS.REGISTER_PATH,                element: <PublicRoute>     <Register/>           </PublicRoute>    },
+      { path: CONFIG_PATHS.LOGIN_PATH,                   element: <PublicRoute>     <Login/>              </PublicRoute>    },
+      { path: CONFIG_PATHS.FORGET_PASSW_PATH,            element: <PublicRoute>     <ForgetPassw/>        </PublicRoute>    },
 
-  //Protected - ROL 1 y 2
-  { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,           element: <ProtectedRoute>  <Wellcome/>           </ProtectedRoute> },
-  { path: CONFIG_PATHS.PROFILE_PATH,                 element: <ProtectedRoute>  <Profile/>            </ProtectedRoute> },
-  { path: CONFIG_PATHS.PROFILE_EDIT_PATH,            element: <ProtectedRoute>  <ProfileEdit/>        </ProtectedRoute> },
-  { path: CONFIG_PATHS.HELP_PATH,                    element: <ProtectedRoute>  <Help/>               </ProtectedRoute> },
-  
-  //Protected - ROl 1
-  { path: CONFIG_PATHS.NEW_POST_PATH,                element: <ProtectedRoute>  <NewPost/>            </ProtectedRoute> },
-  { path: CONFIG_PATHS.EDIT_POST_PATH+"/:id_news",   element: <ProtectedRoute>  <PostEdit/>           </ProtectedRoute> },
-  { path: CONFIG_PATHS.CONFIG_PATH,                  element: <ProtectedRoute>  <Configuration/>      </ProtectedRoute> },
-  { path: CONFIG_PATHS.CONFIG_EDIT_PATH,             element: <ProtectedRoute>  <ConfigurationEdit/>  </ProtectedRoute> },
-  //
-  { path: "*",                                       element: <Home/>                    }
+      //Protected - ROL 1 y 2
+      { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,           element: <ProtectedRoute>  <Wellcome/>           </ProtectedRoute> },
+      { path: CONFIG_PATHS.PROFILE_PATH,                 element: <ProtectedRoute>  <Profile/>            </ProtectedRoute> },
+      { path: CONFIG_PATHS.PROFILE_EDIT_PATH,            element: <ProtectedRoute>  <ProfileEdit/>        </ProtectedRoute> },
+      { path: CONFIG_PATHS.HELP_PATH,                    element: <ProtectedRoute>  <Help/>               </ProtectedRoute> },
+      
+      //Protected - ROl 1
+      { path: CONFIG_PATHS.NEW_POST_PATH,                element: <ProtectedRoute>  <NewPost/>            </ProtectedRoute> },
+      { path: CONFIG_PATHS.EDIT_POST_PATH+"/:id_news",   element: <ProtectedRoute>  <PostEdit/>           </ProtectedRoute> },
+      { path: CONFIG_PATHS.CONFIG_PATH,                  element: <ProtectedRoute>  <Configuration/>      </ProtectedRoute> },
+      { path: CONFIG_PATHS.CONFIG_EDIT_PATH,             element: <ProtectedRoute>  <ConfigurationEdit/>  </ProtectedRoute> },
+    ]
+  }
 ]
 const router = createBrowserRouter(routes)
 

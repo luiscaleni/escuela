@@ -1,4 +1,3 @@
-import Template from "../template/Template"
 import { useState, useEffect, useContext } from "react"
 import { Link, useParams } from 'react-router-dom'
 import { CONFIG_BACKEND, CONFIG_PATHS } from "../config/config"
@@ -103,88 +102,86 @@ function PlantationsCountry() {
                 </Modal>
             )}
             
-            <Template>
-                <Publication
-                    titlePub={t('plantations.titleCountry')+country}
-                    typeElm="img"
-                    locationAlt="coverCountrys"
-                    nameAsset={`${country}.jpg`}
-                >
-                    <div style={{width:'96%'}}>
-                    <TopButtons>
-                        <LeftTopButton 
-                            typeElm='expand' 
-                            text={t('buttons.plantations')} 
-                            marginLeft={true}
-                            locationElm={CONFIG_PATHS.PLANTATIONS} 
+            <Publication
+                titlePub={t('plantations.titleCountry')+country}
+                typeElm="img"
+                locationAlt="coverCountrys"
+                nameAsset={`${country}.jpg`}
+            >
+                <div style={{width:'96%'}}>
+                <TopButtons>
+                    <LeftTopButton 
+                        typeElm='expand' 
+                        text={t('buttons.plantations')} 
+                        marginLeft={true}
+                        locationElm={CONFIG_PATHS.PLANTATIONS} 
+                    />
+                    {plantations.length > 0 &&(
+                        <ButtonTop 
+                            id="seeGraphic"
+                            textElm={t('buttons.graphic')} 
+                            typeElm='expand'
+                            imgElm={imgGraphic}
+                            onClick={() => {fnShowContainer()}}
                         />
-                        {plantations.length > 0 &&(
-                            <ButtonTop 
-                                id="seeGraphic"
-                                textElm={t('buttons.graphic')} 
-                                typeElm='expand'
-                                imgElm={imgGraphic}
-                                onClick={() => {fnShowContainer()}}
-                            />
-                        )}
-                        {user && (user.rolId === 1 || user.rolId === 2) && (    
-                            <RightTopButton 
-                                typeElm='expand' 
-                                text={t('buttons.newPlantation')} 
-                                marginRight={true} 
-                                imgElm={imgPlus} 
-                                onClick={() => {fnShowContainerForm()}} 
-                            />
-                        )}
-                    </TopButtons>
-                    </div>
-                        {plantations.length > 0 ? (
-                            <div className={styles.contContTable}>
-                                <div className={styles.contTable}>
-                                    <div className={styles.headerList}>
-                                        <div className={styles.mediumSpace}>{t('plantations.province')}</div>
-                                        <div className={styles.mediumSpace}>{t('plantations.match')}</div>
-                                        <div className={styles.largeSpace}>{t('plantations.street')}</div>
-                                        <div className={styles.smallSpace}>{t('plantations.members')}</div>
-                                        <div className={styles.mediumSpace}>{t('plantations.planter')}</div>
-                                        <div className={styles.mediumSpace}>{t('plantations.start')}</div>
-                                        <div className={styles.mediumSpace}>{t('plantations.info')}</div>
-                                    </div>
-                                    <div className={styles.table}>
-                                        { plantations.length > 0 ? (
-                                            plantations.map((plant, index) => (
-                                                <div 
-                                                    key={plant.id_plant} 
-                                                    className={`
-                                                        ${(plant.id_plant % 2) === 0 ? styles.resultW : styles.resultG}
-                                                        ${index === 0 ? styles.firstResult: ''}
-                                                    `}
-                                                >
-                                                    <div className={styles.mediumSpace}>{plant.province_plant}</div>
-                                                    <div className={styles.mediumSpace}>{plant.match_plant}</div>
-                                                    <div className={styles.largeSpace}>{plant.street_plant}</div>
-                                                    <div className={styles.smallSpace}>{plant.members_plant}</div>
-                                                    <div className={styles.mediumSpace}>{plant.leader_plant}</div>
-                                                    <div className={styles.mediumSpace}>{plant.start_of_work_plant}</div>
-                                                    <div className={styles.mediumSpace}>
-                                                        <Link 
-                                                            to={`/plantaciones/${country}/${plant.id_plant}`}
-                                                            className={stylesButton.button}
-                                                        >
-                                                            {t('buttons.seeMore')}
-                                                        </Link>
-                                                    </div>
+                    )}
+                    {user && (user.rolId === 1 || user.rolId === 2) && (    
+                        <RightTopButton 
+                            typeElm='expand' 
+                            text={t('buttons.newPlantation')} 
+                            marginRight={true} 
+                            imgElm={imgPlus} 
+                            onClick={() => {fnShowContainerForm()}} 
+                        />
+                    )}
+                </TopButtons>
+                </div>
+                    {plantations.length > 0 ? (
+                        <div className={styles.contContTable}>
+                            <div className={styles.contTable}>
+                                <div className={styles.headerList}>
+                                    <div className={styles.mediumSpace}>{t('plantations.province')}</div>
+                                    <div className={styles.mediumSpace}>{t('plantations.match')}</div>
+                                    <div className={styles.largeSpace}>{t('plantations.street')}</div>
+                                    <div className={styles.smallSpace}>{t('plantations.members')}</div>
+                                    <div className={styles.mediumSpace}>{t('plantations.planter')}</div>
+                                    <div className={styles.mediumSpace}>{t('plantations.start')}</div>
+                                    <div className={styles.mediumSpace}>{t('plantations.info')}</div>
+                                </div>
+                                <div className={styles.table}>
+                                    { plantations.length > 0 ? (
+                                        plantations.map((plant, index) => (
+                                            <div 
+                                                key={plant.id_plant} 
+                                                className={`
+                                                    ${(plant.id_plant % 2) === 0 ? styles.resultW : styles.resultG}
+                                                    ${index === 0 ? styles.firstResult: ''}
+                                                `}
+                                            >
+                                                <div className={styles.mediumSpace}>{plant.province_plant}</div>
+                                                <div className={styles.mediumSpace}>{plant.match_plant}</div>
+                                                <div className={styles.largeSpace}>{plant.street_plant}</div>
+                                                <div className={styles.smallSpace}>{plant.members_plant}</div>
+                                                <div className={styles.mediumSpace}>{plant.leader_plant}</div>
+                                                <div className={styles.mediumSpace}>{plant.start_of_work_plant}</div>
+                                                <div className={styles.mediumSpace}>
+                                                    <Link 
+                                                        to={`/plantaciones/${country}/${plant.id_plant}`}
+                                                        className={stylesButton.button}
+                                                    >
+                                                        {t('buttons.seeMore')}
+                                                    </Link>
                                                 </div>
-                                            ))
-                                        ):( <br/>)}
-                                    </div>
+                                            </div>
+                                        ))
+                                    ):( <br/>)}
                                 </div>
                             </div>
-                        ):(
-                            <p>{t('alerts.nonePlant')}</p>
-                        )}
-                </Publication>
-            </Template>
+                        </div>
+                    ):(
+                        <p>{t('alerts.nonePlant')}</p>
+                    )}
+            </Publication>
         </>
      )
 }

@@ -2,7 +2,6 @@ import { useSearchParams, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import stylesForm from '../components/css/Form.module.css'
 import styles from '../components/css/Form.module.css'
-import Template from "../template/Template"
 import Section from "../components/Section"
 import ContFormInput from "../components/ContFormInput"
 import Button from "../components/Button"
@@ -66,7 +65,6 @@ console.log('passw:'+password)
 
   return (
     <>
-    <Template separator={true}>
       <Section>
         <div className={styles.contForm}>
           <form
@@ -112,7 +110,6 @@ console.log('passw:'+password)
           </form>
         </div>
       </Section>
-    </Template>
     </>
   )
 }

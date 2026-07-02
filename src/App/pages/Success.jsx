@@ -1,6 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom"
 import Section from "../components/Section"
-import Template from "../template/Template"
 import styles from './css/Success.module.css'
 import success from "/icons/utilities/success.png"
 import CenterContainer from "../components/CenterContainer"
@@ -21,7 +20,6 @@ function Success({ valueSuccess = true }) {
     },[])
 
     return (
-        <Template separator={true}>
             <Section>
                 {valueSuccess ? (
                     <>
@@ -35,7 +33,6 @@ function Success({ valueSuccess = true }) {
                     navigate(CONFIG_PATHS.HOME_PATH)
                 )}
             </Section>
-        </Template>
     )
 }
 

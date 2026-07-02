@@ -1,4 +1,3 @@
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
@@ -13,11 +12,9 @@ function Help() {
 
   return (
     <>
-      <Template separator={true}>
-        <Section>
-          <p>{t('alerts.WeAreW')}</p>
-        </Section>
-      </Template>
+      <Section>
+        <p>{t('alerts.WeAreW')}</p>
+      </Section>
     </>
   )
 }

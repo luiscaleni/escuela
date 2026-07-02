@@ -147,23 +147,27 @@ nav, .navbar{
 }
 
 
-.menu{
+/* ==========================================================================
+   MODIFICACIÓN: Estilos base de la lista desplegable del Menú
+   ========================================================================== */
+.menu {
     position: absolute;
-    width: 100%;
+    width: 100%;           /* Ancho fijo para que no se herede el estiramiento elástico */
     height: auto;
-    top: 0;
-    right: 0;
-    z-index: 0;
-    padding-top: 4rem;
-    overflow: hidden;
+    top: 4rem;            /* Desplazado hacia abajo para que quede justo debajo de la barra */
+    padding-top: 0.5rem;    /* Reducido el padding excesivo superior */
+    padding-bottom: 0.5rem;
     list-style: none;
-    border-radius: var(--border-radius);
-    backdrop-filter: var(--backdrop-filter-2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Sombra para despegarlo del fondo */
 
-    display: none;
+    display: none;          /* Oculto por defecto, se activa con .menuOpen */
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
+}
+.menu.menuOpen {
+    display: flex !important;
+    backdrop-filter: var(--backdrop-filter-2);
 }
 .menu > li{
     width: 100%;
@@ -178,9 +182,10 @@ nav, .navbar{
     height: 100%;
     font-size: 0.9rem;
     color: #333;
+    padding: 0 1.2rem;
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }/**/
 
@@ -288,24 +293,27 @@ span{
     background-color: white;
 }
 .menuButton > .contWellcome{
-    position: absolute;
+    position: relative;
     width: 4rem;
     height: 4rem;
-    transition: all ease-in-out .3s;
+    transition: width ease-in-out .3s, padding ease-in-out .3s;
 
     display: flex;
     justify-content: center;
     align-items: center;
     
 }
+.wellcomeActive {
+    width: 10rem !important;
+    padding-top: 0.5rem;
+}
 .menuButton > .contWellcome > .wellcomeName{
     width: 100%;
     height: auto;
     color:black;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     padding-left: 0.5rem;
     overflow: hidden;
-    transition: all ease-in-out .3s;
     
     display: none;
     justify-content: flex-start;
@@ -315,6 +323,15 @@ span{
 }
 :global(body.dark) .menuButton > .contWellcome > .wellcomeName{
     color: #fff;
+}
+.nameVisible {
+    font-size: 0.95rem !important;
+    transition: all ease-in-out .3s;
+    display: flex !important;
+}
+.rotateArrow {
+    transform: rotateZ(180deg);
+    transition: transform 0.3s ease;
 }
 .menuButton > .contWellcome > .contContImgProfile{
     max-width: 3.5rem;
@@ -333,36 +350,55 @@ span{
 }
 
 
-
+/* ==========================================================================
+   MODIFICACIÓN: El contenedor del Perfil y su estado Activo
+   ========================================================================== */
 .menuProfile{
     position: relative;
-    width: 4em;
-    height: 4em;
-    margin-left: 1em;
+    width: 4rem;
+    height: 4rem;
+    margin-left: 1rem;
     border-radius: 2.5rem;
-    transition: all ease-in-out .1s;
+    transition: width ease-in-out .3s, border-radius ease-in-out .3s;
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+.menuProfileActive {
+    width: 12rem !important;
+}
+:global(body.dark) .menuProfile {
+    background: var(--background-dark);
+}
+:global(body.dark) .menuProfileActive {
+    border-radius: 2rem 2rem 0 0;
+    background: var(--background-dark);
 }
 .menuProfile > .menuProfileButton{
-    width: 4rem;
-    height: 4rem;
+    width: 100%;
+    height: auto;
+    border-radius: 2.5rem;
+    backdrop-filter: var(--backdrop-filter-2);
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.menuProfileActive > .menuProfileButton{
+    border-radius: 2rem 2rem 0 0;
+}
 
+/* ==========================================================================
+   MODIFICACIÓN: Estilos específicos adaptados de .ulMenuProfile
+   ========================================================================== */
 .ulMenuProfile{
     cursor: pointer;
     color: #fff;
-    border: var(--border);
-    border-radius: 2rem 2rem 1rem 1rem;
-    background: var(--background);
+    border-radius: 0 0 1rem 1rem;
+    backdrop-filter: var(--backdrop-filter-2);
 }
 :global(body.dark) .ulMenuProfile{
     background: var(--background-dark);
@@ -387,7 +423,7 @@ span{
     position: relative;
     width: 100%;
     height: 2.5rem;
-    padding: 1.5rem 0em 1.5rem 0.9rem;
+    padding-left: 0.8rem;
     color: #000;
     cursor: pointer;
     border: none;
@@ -542,12 +578,14 @@ span{
     display: none;
 }
 
-@media (max-width:1280px){
+@media (max-width: 1280px){
     .contNavbarContent > .navbarContent > .navbarLinks > .linkHome{
         display: flex;
     }
     .contNavbarContent > .navbarContent > .contNavbarMenu{
-        display: none;
+        display: flex !important;
+        visibility: visible;
+        opacity: 1;
     }
     .contNavbarMenuPanel{
         width: 100%;
@@ -739,53 +777,44 @@ span{
         display: flex;
         flex-direction: column;
     }
+    /* Mostrar el selector DENTRO del panel */
+    .contNavbarContent > .navbarContent > .contNavbarMenuPanel {
+        display: flex !important;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .contNavbarContent {
+        position: absolute;
+        z-index: 12;
+        width: 20rem;
+        height: 100vh;
+        top: 3rem;
+        right: -20rem; /* Estado cerrado por defecto */
+        border-left: var(--border);
+        background-color: white;
+        transition: right ease-in-out .3s; /* Transición limpia del slide */
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        align-content: flex-start;
+        flex-direction: column;
+    }
+    .panelOpen {
+        right: -1vw !important; /* Desplaza el panel móvil hacia adentro */
+    }
+    .contNavbarContent > .navbarContent > .contNavbarMenu {
+        display: none !important;
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 
-
-
-
-
-
-
-/* --- Comportamiento por defecto (desktop) --- */
-/* Mostrar selector en navbar */
-.contNavbarContent > .navbarContent > .contNavbarMenu {
-  display: flex !important;
-  visibility: visible;
-  opacity: 1;
-}
 
 /* Ocultar selector del panel por defecto en desktop */
 .contNavbarContent > .navbarContent > .contNavbarMenuPanel {
   display: none !important;
   visibility: hidden;
   opacity: 0;
-}
-
-/* --- Móvil / Tablet --- */
-@media (max-width: 1280px) {
-
-  /* Ocultar el selector del navbar en mobile */
-  .contNavbarContent > .navbarContent > .contNavbarMenu {
-    display: none !important;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  /* Mostrar el selector DENTRO del panel */
-  .contNavbarContent > .navbarContent > .contNavbarMenuPanel {
-    display: flex !important;
-    visibility: visible;
-    opacity: 1;
-  }
-
-  /* Asegurate que el panel no esté fuera de pantalla cuando está abierto.
-     Usamos una clase `.open` para controlar el estado (ver sección JS abajo) */
-  .contNavbarContent {
-    right: -20rem; /* estado cerrado */
-    transition: right .3s ease-in-out;
-  }
-  .contNavbarContent.open {
-    right: 0 !important; /* estado abierto: panel visible */
-  }
 }

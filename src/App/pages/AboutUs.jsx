@@ -1,4 +1,3 @@
-import Template from '../template/Template'
 import { useState, useEffect } from 'react'
 import { CONFIG_BACKEND } from '../config/config'
 import Block from '../components/Block'
@@ -29,7 +28,6 @@ function AboutUs() {
 
   return (
     <>
-      <Template>
         <Publication titlePub={t('aboutUs.title')}typeElm='img' nameAsset="banner_about_us.jpg">
           <Section>
             <Container>
@@ -62,7 +60,6 @@ function AboutUs() {
               </ElmSelection>
           </Section>
         </Publication>
-      </Template>
     </>
   )
 }

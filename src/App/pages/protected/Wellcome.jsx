@@ -1,5 +1,4 @@
 import styles from './css/Wellcome.module.css'
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import Container from '../../components/Container'
 import { useEffect, useContext} from 'react'
@@ -21,7 +20,6 @@ function Wellcome() {
 
     return ( 
         <>
-        <Template separator={true}>
             <Section>
                 <Container>
                     <div className={styles.wellcome}>
@@ -35,7 +33,6 @@ function Wellcome() {
                     </div>
                 </Container>
             </Section>
-        </Template>
         </>
      )
 }

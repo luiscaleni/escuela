@@ -1,4 +1,3 @@
-import Template from '../template/Template'
 import Publication from '../components/Publication'
 import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
@@ -13,10 +12,8 @@ function Donate() {
 
   return (
     <>
-      <Template>
         <Publication titlePub={t('donate.title')} typeElm='img' nameAsset="banner_donate.jpg">
         </Publication>
-      </Template>
     </>
   )
 }

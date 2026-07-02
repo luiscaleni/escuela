@@ -3,7 +3,6 @@ import stylesNews from './css/News.module.css'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { CONFIG_BACKEND, CONFIG_PATHS, ENABLE_TRANSLATION } from '../config/config'
-import Template from '../template/Template'
 import Publication from '../components/Publication'
 import LeftTopButton from '../components/LeftTopButton'
 import Container from '../components/Container'
@@ -160,53 +159,51 @@ function NewsDetail() {
     return (
         <>
             {news && (
-                <Template>
-                    <Publication 
-                        titlePub={showTitle}
-                        nameAsset={news.imgPub ? news.imgPub : null}
-                        typeElm="img"
-                        locationPub='publications'
-                    >
-                        <TopButtons>
-                            <LeftTopButton
-                                locationElm={CONFIG_PATHS.NEWS_PATH}
-                                typeElm='expand'
-                                text={t('buttons.news')}
+                <Publication 
+                    titlePub={showTitle}
+                    nameAsset={news.imgPub ? news.imgPub : null}
+                    typeElm="img"
+                    locationPub='publications'
+                >
+                    <TopButtons>
+                        <LeftTopButton
+                            locationElm={CONFIG_PATHS.NEWS_PATH}
+                            typeElm='expand'
+                            text={t('buttons.news')}
+                        />
+
+                        {news.langPub !== i18n.language && translatedBody && (
+                            <TranslationNotice
+                                forceOriginal={forceOriginal}
+                                setForceOriginal={setForceOriginal}
                             />
+                        )}
 
-                            {news.langPub !== i18n.language && translatedBody && (
-                                <TranslationNotice
-                                    forceOriginal={forceOriginal}
-                                    setForceOriginal={setForceOriginal}
-                                />
-                            )}
+                        {user && user.rolId === 1 && (
+                            <RightTopButton
+                                locationElm={CONFIG_PATHS.EDIT_POST_PATH + '/' + news.idPub}
+                                typeElm='expand'
+                                text={t('buttons.edit')}
+                                imgElm={pencil}
+                            />
+                        )}
+                    </TopButtons>
 
-                            {user && user.rolId === 1 && (
-                                <RightTopButton
-                                    locationElm={CONFIG_PATHS.EDIT_POST_PATH + '/' + news.idPub}
-                                    typeElm='expand'
-                                    text={t('buttons.edit')}
-                                    imgElm={pencil}
-                                />
-                            )}
-                        </TopButtons>
-
-                        <Container widthElm="max" hiddenStyle={true}>
-                            {/* Mientras traduce, mostrar un loader */}
-                            {translating ? (
-                                <Loader />
-                            ) : (
-                                parrafos.map((p, i) => (
-                                    <p className={styles.paragraph} key={i}>
-                                        {p}
-                                    </p>
-                                ))
-                                
-                            )}
-                            <p className={styles.editor}>Editor: {news.nameUserPub}, {formateada}</p>
-                        </Container>
-                    </Publication>
-                </Template>
+                    <Container widthElm="max" hiddenStyle={true}>
+                        {/* Mientras traduce, mostrar un loader */}
+                        {translating ? (
+                            <Loader />
+                        ) : (
+                            parrafos.map((p, i) => (
+                                <p className={styles.paragraph} key={i}>
+                                    {p}
+                                </p>
+                            ))
+                            
+                        )}
+                        <p className={styles.editor}>Editor: {news.nameUserPub}, {formateada}</p>
+                    </Container>
+                </Publication>
             )}
         </>
     )

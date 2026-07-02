@@ -1,9 +1,9 @@
 import styles from "./css/Main.module.css"
 
-function Main({children}) {
+function Main({children, separator=false}) {
     return ( 
         <>
-            <main className={styles.main}>
+            <main className={`${styles.main} ${separator ? styles.separator : ''}`}>
                 <div className={styles.mainContent}>
                     {children}
                 </div>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './css/Home.module.css'
-import Template from '../template/Template'
 import Section from '../components/Section'
 import Publication from '../components/Publication'
 import Elementor from '../components/Elementor'
@@ -61,7 +60,6 @@ function Home() {
   const namesCountrysThree = CONFIG_NAMES_COUNTRYS.slice().sort(() => Math.random() - 0.5).join(" • ") + " • "
 
   return (
-    <Template>
       <Publication
         titlePub={configData?.dptoNameConfig??'DPISUD'}
         typeElm="img"
@@ -106,7 +104,6 @@ function Home() {
           ></iframe>
         </Section>
       </Publication>
-    </Template>
   )
 }
 

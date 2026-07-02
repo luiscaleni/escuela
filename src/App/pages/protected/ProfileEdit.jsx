@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Template from '../../template/Template'
 import Section from '../../components/Section'
 import FormProfileEdit from '../../components/FormProfileEdit'
 import { UserContext } from '../../components/UserProvider'
@@ -15,11 +14,9 @@ function Register() {
     }
 
     return ( 
-        <Template separator={true}>
-            <Section>
-                <FormProfileEdit/>
-            </Section>
-        </Template>
+        <Section>
+            <FormProfileEdit/>
+        </Section>
      )
 }
 
