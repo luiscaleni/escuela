@@ -13,7 +13,7 @@ nav, .navbar{
 }
 .contNavbarContent{
     width: 100dvw;
-    height: 4rem;
+    height: 5rem;
 
     display: flex;
     justify-content: center;
@@ -21,8 +21,10 @@ nav, .navbar{
 }
 .contNavbarContentVisible{
     transition: all 0.3s ease;
-    border-bottom: var(--border);
-    background-color: #fff;
+    border-bottom: 1px;
+    border-color: rgb(30 41 59 / 0.6);
+    background: var(--background);
+    backdrop-filter: var(--backdrop-filter-2);
 }
 :global(body.dark) .contNavbarContentVisible{
     border-bottom: var(--border-dark);
@@ -32,15 +34,15 @@ nav, .navbar{
 .contNavbarContent > .navbarContent{
     position: relative;
     width: 60%;
-    height: 4rem;
+    height: 5rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .contNavbarContent > .navbarContent > .contNavbarMenu{
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: var(--border-radius);
 
     display: flex;
@@ -85,7 +87,7 @@ nav, .navbar{
     min-width: 6rem;
     height: 3rem;
     cursor: pointer;
-    color:#fff;
+    color:rgb(209 213 219);
     text-decoration: none;
     font-size: 0.9rem;
     padding: 0 0.5rem;
@@ -632,7 +634,7 @@ span{
         border-bottom: var(--border);
         transition: all .3s ease;
         backdrop-filter: var(--backdrop-filter);
-        background: var(--background-2);
+        background: var(--background-solid);
 
         display: flex;
         justify-content: center;

@@ -4,7 +4,7 @@ import Video from '../components/Video'
 import bannerDefault from '/images/banner_default.jpg'
 import { CONFIG_BACKEND } from '../config/config'
 
-function Publication({titlePub, nameAsset="", type="", typeElm="", locationPub="", locationAlt= "", children}) {
+function Publication({home=false, titlePub, nameAsset="", type="", typeElm="", locationPub="", locationAlt= "", children}) {
   let mediaSrc
 
   if (typeElm === "img") {
@@ -26,8 +26,7 @@ function Publication({titlePub, nameAsset="", type="", typeElm="", locationPub="
   return (
     <>
       <div className={styles.publication}>
-        <Section typeElm={type === "xtreme2" ? "fullScreen" : "banner"} titleElm={titlePub} >
-          {type === "xtreme2" ? (<div className={styles.opacity}></div>) : null}
+        <Section home={home} typeElm={type === "xtreme2" ? "fullScreen" : "banner"} titleElm={titlePub} >
           {typeElm === "img" ? (
               <img src={mediaSrc} alt="Imagen de la publicación" loading='lazy'/>
             ) : typeElm === "video" ? (

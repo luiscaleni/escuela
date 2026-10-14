@@ -1,7 +1,7 @@
 main, .main{
     width: 100%;
     height: auto;
-    background-color: #333;
+    background-color: var(--background-solid);
 
     display: flex;
     justify-content: flex-start;

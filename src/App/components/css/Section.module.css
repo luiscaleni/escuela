@@ -1,4 +1,16 @@
+.contentLand{
+    width: 80rem;
+    height: auto;
+    z-index: 2;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content:space-between;
+    align-items: flex-start;
+}
+
 section, .section{
+    position: relative;
     width: 100%;
     min-height: 5rem;
     padding: 2rem 0;
@@ -10,7 +22,21 @@ section, .section{
     flex-wrap: wrap;
 }
 section, .section > p{
-    color: #000;
+    color: #b1b1b1;
+}
+section > .blurCircle,
+.section > .blurCircle{
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    transform: -50%;
+    z-index: 0;
+    top: 0;
+    left: 30%;
+    backdrop-filter: blur(120px);
+    filter: blur(120px);
+    border-radius: 9999px;
+    background-color: rgb(16 185 129 / 0.1);
 }
 .sectionBanner,
 .fullScreen{
@@ -20,7 +46,7 @@ section, .section > p{
     min-height: 35rem;
     margin: 0;
     z-index: 1;
-    background: #252525;
+    background-color: var(--background-solid);
 
     display: flex;
     align-items: center;
@@ -72,22 +98,6 @@ section, .section > p{
 .bgBlack{
     background-color: black;
 }
-.sectionXtreme,
-.sectionXtreme2{
-    position: relative;
-    width: 100vw;
-    height: auto;
-    z-index: 2;
-    margin-top: 35rem;
-    min-width: 23.4rem;
-    min-height: 30rem;
-    background-color:white;
-    
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-}
 .sectionXtreme >.topXtreme,
 .sectionXtreme2 >.topXtreme{
     position: absolute;
@@ -98,7 +108,7 @@ section, .section > p{
     border-radius: 3rem 3rem 0 0;
     z-index: 2;
     transform: translateY(-3rem);
-    background-color:white;
+    background-color:var(--background-solid-2);
 
     display: flex;
     justify-content: center;
@@ -110,11 +120,28 @@ section, .section > p{
 :global(body.dark) .sectionXtreme2 >.topXtreme{
     background-color: #1d1d1d;
 }
+.sectionXtreme,
+.sectionXtreme2{
+    position: relative;
+    width: 100vw;
+    height: auto;
+    z-index: 2;
+    margin-top: 35rem;
+    min-width: 23.4rem;
+    min-height: 30rem;
+    background-color:var(--background-solid-2);
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
 .sectionXtreme > h2{
     width: 86%;
     font-size: 4rem;
     margin: 1rem 1rem 0 1rem;
     padding: 0 1rem;
+    color: #fff;
 
     display: flex;
     justify-content: flex-start;
@@ -144,7 +171,7 @@ section, .section > p{
     position: relative;
     width: 90%;
     height: auto;
-    
+
     border-radius: var(--border-radius);
 
     display: flex;
@@ -178,11 +205,12 @@ section > .sectionContent > .sectionChildren,
 .section > .sectionContent > h2{
     font-size: 3.5rem;
     font-style: italic;
+    font-weight: lighter;
 }
 .section > .sectionContent > h4{
     width: 90%;
     font-size: 2rem;
-    font-weight: lighter;
+    font-weight:lighter;
 }
 .section > .sectionContent > div > img{
     width: auto;

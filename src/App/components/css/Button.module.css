@@ -1,22 +1,32 @@
-.button{
+.button,
+.button2{
     cursor: pointer;
     max-width: 16rem;
-    min-width: 3rem;
-    min-height: 2.5rem;
+    min-width: 4rem;
+    min-height: 3rem;
     padding: 0.6rem 1.5rem;
     text-align:c enter;
-    color: white;
+    color: #111A2B;
     font-weight: bold;
     text-decoration: none;
-    border: none;
-    border-radius: var(--border-radius);
-    background-color: var(--background-color-btn);
-    transition: background-color 0.2s;
+    border: 0.1rem solid #10B981;
+    border-radius: 0.5rem;
+    background-color: #10B981;
+    transition: ease-in-out all 0.2s;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .button:hover{
-    background-color: var(--background-color-btn-hover);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.5rem 0.5rem rgba(16, 185, 129, 0.6);
+}
+.button2:hover{
+    border: 0.1rem solid #10B981;
+}
+.button2{
+    color: #10B981;
+    border: 0.1rem solid #111A2B;
+    background-color: #111A2B;
 }

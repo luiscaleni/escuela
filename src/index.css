@@ -12,7 +12,7 @@
 }
 
 :root {
-  font-family: "Parkinsans", Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Inter, sans-serif;
   --color-bg: #fff;
   --color-bg-alt: #f2f2f2;
   --color-text: #222;
@@ -51,12 +51,12 @@
   --box-shadow-strong-top: 0 -0.1rem 1rem rgba(27, 27, 27, 0.4);
 
   
-  --background: rgba(240, 255, 255, 0.8);
-  --background-2: rgba(240, 255, 255, 0.9);
+  --background: rgba(19, 27, 46, 0.9);
+  --background-solid: #090D16;
+  --background-solid-2: #0d1424;
   --background-dark: rgba(51, 51, 51, 0.8);
   --background-dark-2: rgba(0, 0, 0, 0.8);
   --background-color: rgba(255, 255, 255, 1);
-  --background-solid: rgb(245, 245, 245);
   --background-color-btn: #006eff;
   --background-color-btn-hover: #004bad;
   --background-linear-gradient: linear-gradient(15deg,rgb(174, 202, 243), #cec3ff );
@@ -66,7 +66,7 @@
   --background-error:rgba(255, 0, 0, 0.5);
 
   --backdrop-filter: blur(0.8rem);
-  --backdrop-filter-2: blur(2rem);
+  --backdrop-filter-2: blur(1.5rem);
 
   --color: #023059;
   --color-titles: #0973B3;
@@ -88,6 +88,10 @@
 }
 .none{
   display: none;
+}
+
+body{
+  background-color: var(--background-solid);
 }
 
 /*dark*/

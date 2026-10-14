@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import styles from './css/Home.module.css'
 import Section from '../components/Section'
 import Publication from '../components/Publication'
 import Elementor from '../components/Elementor'
 import LoadData from '../components/LoadData'
-import stylesButton from '../components/css/Button.module.css'
 import { CONFIG_BACKEND, CONFIG_NAMES_COUNTRYS, CONFIG_PATHS } from '../config/config'
 
 function Home() {
@@ -53,11 +51,11 @@ function Home() {
   return (
       <Publication
         type="xtreme2"
-        typeElm="img"
         nameAsset="banner.webp"
+        home={true}
       >
         <Section>
-          <h4>{configData?.contentConfig}</h4>
+          <h2>{configData?.contentConfig}</h2>
         </Section>
         <Section>
           <Elementor>

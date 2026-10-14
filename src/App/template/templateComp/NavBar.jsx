@@ -1,4 +1,4 @@
-import {useState, useContext, useEffect} from 'react'
+import {useState, useContext} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import styles from "./css/NavBar.module.css"
@@ -19,13 +19,12 @@ import { UserContext } from '../../components/UserProvider'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../../config/config'
 
 function NavBar() {
-    const { user, loadUser, setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     const [menuProfileOpen, setMenuProfileOpen] = useState(false)
     const [togglePanel, setTogglePanel] = useState(false)
     const [cargando, setCargando] = useState(false)
     const navigate = useNavigate()
     const apiUrl = CONFIG_BACKEND.API_DIR
-    const [visible, setVisible] = useState(false)
 
     function toggleMenuProfile() {
         setMenuProfileOpen(!menuProfileOpen)
@@ -62,16 +61,6 @@ function NavBar() {
         }
     }
 
-    useEffect(()=>{
-        const handleVisibleNavbar = ()=>{
-            setVisible(window.scrollY > 20)
-        }
-        window.addEventListener('scroll', handleVisibleNavbar)
-        handleVisibleNavbar()
-        
-        return ()=> window.removeEventListener('scroll', handleVisibleNavbar)
-    },[])
-
     return ( 
         <>
             <div className={styles.navbar} id='navbar'>
@@ -86,7 +75,7 @@ function NavBar() {
                         <img src={togglePanel ? close : menu} className={styles.imgMenuButtonPanel} alt="Menu Toggle"/>
                     </div>
                 </div>
-                <div className={`${styles.contNavbarContent} ${visible && styles.contNavbarContentVisible} ${togglePanel && styles.panelOpen}`} id="contNavbarContent">
+                <div className={`${styles.contNavbarContent} ${styles.contNavbarContentVisible} ${togglePanel && styles.panelOpen}`} id="contNavbarContent">
                     <nav className={styles.navbarContent} id="navbarContent">
                         <div className={styles.navbarLinks} id='navbarLinks' >
                             {user && (
@@ -99,26 +88,26 @@ function NavBar() {
                             )}
                             <Link to='/' className={styles.navbarLogoLink}>
                                 <div className={styles.navbarLogo}>
-                                    <img src={isotipo} alt="Logo" className={`${styles.logoImage} ${visible && styles.imgInvert}`} />
+                                    <img src={isotipo} alt="Logo" className={`${styles.logoImage} ${styles.imgInvert}`} />
                                 </div>
-                                <p className={visible ? styles.blackText : styles.whiteText}>Escuela de Árbitros</p>
+                                <p>Escuela de Árbitros</p>
                             </Link>
                             <div className={styles.navbarLinksGroup}>
-                                <Link to={CONFIG_PATHS.HOME_PATH} className={`${styles.linkHome} ${visible && styles.blackText}`} onClick={toggleMenuPanel}>
+                                <Link to={CONFIG_PATHS.HOME_PATH} className={styles.linkHome} onClick={toggleMenuPanel}>
                                     <img src={imgHome} className={styles.imgMobile}/>
                                     Inicio
                                 </Link>
-                                <Link to={CONFIG_PATHS.SPORTS_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
+                                <Link to={CONFIG_PATHS.SPORTS_PATH} onClick={toggleMenuPanel}>
                                     <img src={imgNews} className={styles.imgMobile}/>
                                     Cursos
                                 </Link>
                                 {user ?(
-                                    <Link to={CONFIG_PATHS.CAMPUS_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
+                                    <Link to={CONFIG_PATHS.CAMPUS_PATH} onClick={toggleMenuPanel}>
                                         <img src={imgPublication} className={styles.imgMobile}/>
                                         Campus
                                     </Link>
                                 ):(
-                                    <Link to={CONFIG_PATHS.LOGIN_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
+                                    <Link to={CONFIG_PATHS.LOGIN_PATH} onClick={toggleMenuPanel}>
                                         <img src={imgProfileMen} className={styles.imgMobile}/>
                                         Login
                                     </Link>

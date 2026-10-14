@@ -1,0 +1,30 @@
+.contentTextLand{
+    width: 60%;
+}
+.contentTextLand > .titleTextLand{
+    width: 100%;
+    color: white;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.025em;
+}
+.contentTextLand > .titleTextLand > span{
+    width: 100%;
+    padding: 0 0.5rem;
+    font-weight: 900;
+    color: #2dd4bf;
+}
+
+.contentTextLand > .descript{
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    color: #ccc;
+}
+.contentTextLand > .contButton{
+    width:25rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,6 +1,8 @@
 import styles from './css/Section.module.css'
+import ContentPreviewLand from './ContentPreviewLand';
+import ContentTextLand from './ContentTextLand';
 
-function Section({typeElm="", children, titleElm=""}) {
+function Section({home=false, typeElm="", children, titleElm=""}) {
     let nameStyles=""
 
     if(typeElm === "banner"){
@@ -16,11 +18,19 @@ function Section({typeElm="", children, titleElm=""}) {
     }else{
         nameStyles = styles.section
     }
-
     
     return ( 
         <>
             <section className={nameStyles}>
+                {home && (
+                    <>
+                        <div className={styles.contentLand}>
+                            <ContentTextLand />
+                            <ContentPreviewLand/>
+                        </div>
+                        <div className={styles.blurCircle}></div>
+                    </>
+                )}
                 {typeElm === "banner" || typeElm === "xtreme" || typeElm === "fullScreen" ? (
                     <>
                         {typeElm === "xtreme" ? <div className={styles.topXtreme}></div> : null}

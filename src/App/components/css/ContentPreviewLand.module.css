@@ -1,0 +1,79 @@
+.contentPreviewLand{
+    width: 30rem;
+    height: 28rem;
+    color: white;
+    border-radius: var(--border-radius-slim);
+    background-color: var(--background-solid);
+}
+.contentPreviewLand > .contentElements{
+    position: relative;
+    padding: 2rem;
+}
+.contentPreviewLand > .contentElements > .cards{
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    width: 7rem;
+    height: 0;
+    transform: translateY(-1rem);
+
+    display: flex;
+    justify-content: center;
+}
+.contentPreviewLand > .contentElements > .cards > .cardYellow,
+.contentPreviewLand > .contentElements > .cards > .cardRed{
+    width: 1.8rem;
+    height: 2.5rem;
+    border-radius: 0.2rem;
+}
+.contentPreviewLand > .contentElements > .cards > .cardYellow{
+    transform: rotateZ(12deg);
+    z-index: 1;
+    background-color: #FACC15;
+}
+.contentPreviewLand > .contentElements > .cards > .cardRed{
+    transform: rotateZ(-10deg);
+    background-color: #EF4444;
+}
+
+
+
+
+.contentPreviewLand > .contentElements > .contentTitleElements{
+    width: 100%;
+    height: auto;
+}
+
+.contentPreviewLand > .contentElements > .contentVideo{
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-slim);
+    background-color: #000;
+}
+.contentPreviewLand > .contentElements > .contentVideo > video{
+    width: 100%;
+    height: 14rem;
+    display: block;
+}
+
+.contentPreviewLand > .contentElements > .descriptVideo{
+    width: 100%;
+    padding: 1rem 0;
+    color: rgb(209 213 219);
+}
+.contentPreviewLand > .contentElements > .contentFooter{
+    width: 100%;
+    height: auto;
+    padding-top: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contentPreviewLand > .contentElements > .contentFooter > span{
+    color: rgb(209 213 219);
+}
+.contentPreviewLand > .contentElements > .contentFooter > span > i{
+    padding-right:0.2rem;
+    color: rgb(16 185 129);
+}
