@@ -90,10 +90,6 @@
   display: none;
 }
 
-body{
-  background-color: var(--background-solid);
-}
-
 /*dark*/
 body.dark{
   --color-bg: #fff;
@@ -138,7 +134,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Evita desplazamiento lateral */
-  background-color: white;
+  background-color: var(--background-solid);
 
   display: flex;
   justify-content: center;
