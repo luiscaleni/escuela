@@ -53,7 +53,8 @@
 .contentPreviewLand > .contentElements > .contentVideo{
     width: 100%;
     height: auto;
-
+    background-color: #f00;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -108,5 +109,15 @@
     .contentPreviewLand > .contentElements > .contentVideo > video{
         width: 100%;
         min-height: 20rem;
+    }
+}
+@media (max-width: 415px){
+    .contentPreviewLand > .contentElements > .contentVideo{
+        width: auto;
+        height: auto;
+    }
+    .contentPreviewLand > .contentElements > .contentVideo > video{
+        height: 100%;
+        min-height: 5rem;
     }
 }
