@@ -1,0 +1,44 @@
+.contTitle{
+    padding: 3rem;
+}
+.contTitle > h2{
+    width: 100%;
+    text-align: center;
+    
+    display: flex;
+    justify-content: center;
+}
+.contTitle > p{
+    text-align: justify;
+}
+.contTitle > .contPrivacyDate{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.contTitle > .contPrivacyDate > .privacyDate{
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.3rem 0.6rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+@media (max-width:767.98px){
+    .contTitle{
+        padding: 1.8rem;
+    }
+}
+@media (max-width:464px){
+    .contTitle > h2{
+        font-size: 1.4rem;
+    }
+}
+@media (max-width:438px){
+    .contTitle > h2{
+        font-size: 1.2rem;
+    }
+}

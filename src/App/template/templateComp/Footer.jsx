@@ -28,7 +28,7 @@ function Footer() {
                     <div className={styles.group}>
                         <p>Privacidad:</p>
                         <ul>
-                            <li><Link to="#">Política de privacidad</Link></li>
+                            <li><Link to={CONFIG_PATHS.PRIVACY_PATH}>Política de privacidad</Link></li>
                         </ul>
                     </div>
 

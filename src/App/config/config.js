@@ -27,6 +27,7 @@ export const CONFIG_PATHS = {
     ABOUT_US_PATH: "/acerca-de",
     RESOURCES_PATH: "/recursos",
     CONTACT_PATH: "/contacto",
+    PRIVACY_PATH: "/politica-de-privacidad",
 
     REGISTER_PATH: "/registro",
     LOGIN_PATH: "/login",

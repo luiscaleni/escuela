@@ -26,6 +26,7 @@ import Configuration            from './App/pages/protected/Configuration'
 import ConfigurationEdit        from './App/pages/protected/ConfigurationEdit'
 import PostEdit                 from './App/pages/protected/PostEdit'
 import Help                     from './App/pages/protected/Help'
+import PrivacyPolitic     from './App/pages/PrivacyPolitic'
 
 import { CONFIG_PATHS }         from './App/config/config'
 import { ThemeProvider }        from './App/components/ThemeContext'
@@ -45,6 +46,7 @@ const routes = [
       { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                },
       { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <DisciplineDetail/>,      },
       { path: CONFIG_PATHS.ABOUT_US_PATH,                                   element: <AboutUs/>,               },
+      { path: CONFIG_PATHS.PRIVACY_PATH,                                    element: <PrivacyPolitic/>,           },
       //
       { path: "*",                                                          element: <Home/>                   }
     ]
