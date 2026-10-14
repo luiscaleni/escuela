@@ -1,12 +1,11 @@
 import { useNavigate, Link } from "react-router-dom"
-import styles from './css/Form.module.css'
-import { useState } from "react"
-import Button from "./Button"
-import { useContext } from "react"
+import { useState, useContext } from "react"
 import { UserContext } from "./UserProvider"
+import styles from './css/Form.module.css'
+import Button from "./Button"
 import ContFormInput from "./ContFormInput"
-import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Loader from "./Loader"
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 
 function FormLogin() {
     const { loadUser } = useContext(UserContext)
@@ -87,7 +86,7 @@ function FormLogin() {
                             required
                         />
                     </ContFormInput>
-                    <ContFormInput className={styles.btn}>
+                    <ContFormInput>
                         <Button
                             typeBtn='submit'
                             altName='IniciarSesion'

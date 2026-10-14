@@ -10,7 +10,6 @@ main, .main{
 }
 .main > .mainContent{
     width: 100%;
-    margin-top: 4rem;
     min-height: calc(70vh - 4rem);
     background-color: #fff;
 

@@ -41,7 +41,6 @@ function Template({separator=false}) {
         ):(
           <>
             <NavBar/>
-            {separator && <div className={styles.separator}></div>}
             <GoTopButton />
               <Main separator={separator}>
                 <Outlet />
