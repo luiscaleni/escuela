@@ -144,7 +144,6 @@ nav, .navbar{
 .navbarContent > .navbarLinks > a > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
-    filter: invert(1);
 }
 
 .navbarContent > .navbarLinks > a > .navbarLogo > .imgInvert{
@@ -497,6 +496,7 @@ span{
 .contMobile > .navbarLogoLinkMobile > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
+    filter: invert(1);
 }
 .contMobile > p{
     user-select: none;
@@ -527,7 +527,6 @@ span{
 .contNavbarContent > .navbarContent > .navbarLinks > a > img,
 .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a > img,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
-    
 }
 
 .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{

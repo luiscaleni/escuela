@@ -20,8 +20,7 @@
     align-items: center;
 }
 .button:hover{
-    transform: translateY(-0.5rem);
-    box-shadow: 0 0.5rem 0.5rem rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 0.6rem rgba(16, 185, 129, 0.6);
 }
 .button2:hover{
     border: 0.1rem solid #10B981;

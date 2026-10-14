@@ -11,7 +11,7 @@ main, .main{
 .main > .mainContent{
     width: 100%;
     min-height: calc(70vh - 4rem);
-    background-color: #fff;
+    background: var(--background-solid);
 
     display: flex;
     justify-content: center;

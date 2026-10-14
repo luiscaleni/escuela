@@ -3,8 +3,7 @@
     cursor: pointer;
     color: black;
     border: var(--border);
-    border-radius: var(--border-radius);
-    background: var(--background);
+    border-radius: var(--border-radius-slim);
     transition: all ease-in-out .3s;
 
     display: flex;
@@ -18,6 +17,7 @@
 .buttonTopExpand{
     padding: 0.3rem;
     box-shadow: var(--box-shadow-inset);
+    background: var(--background-solid-3);
 
     display: flex;
     justify-content: flex-start;

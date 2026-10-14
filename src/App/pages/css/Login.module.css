@@ -1,0 +1,19 @@
+.contRelative{
+    position: relative;
+    width: 100%;
+    min-height: 5rem;
+    padding: 2rem 0;
+}
+.contRelative > .blurCircle{
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    transform: -50%;
+    z-index: 0;
+    top: 0;
+    left: 30%;
+    backdrop-filter: blur(120px);
+    filter: blur(120px);
+    border-radius: 9999px;
+    background-color: rgb(16 185 129 / 0.1);
+}

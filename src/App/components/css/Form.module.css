@@ -19,6 +19,7 @@
 }
 .form > h2{
   font-size: 1.6rem;
+  color: #fff;
 }
 .contForm > .form {
   position: relative;
@@ -29,7 +30,7 @@
   padding: 0.8rem 1.6rem;
   border: var(--border);
   border-radius: var(--border-radius);
-  background:var(--background-solid);
+  background:var(--background-solid-2);
 
   display: flex;
   justify-content: center;
