@@ -20,21 +20,16 @@ function AboutUs() {
 
   return (
     <>
-        <Publication titlePub={t('aboutUs.title')}typeElm='img' nameAsset="banner_about_us.jpg">
+        <Publication titlePub="¿Quiénes somos?"typeElm='img' nameAsset="banner_about_us.jpg">
           <Section>
             <Container>
               <Block>
                 <h2>
-                  <span>{t('aboutUs.whoWeAreOne')}</span>
-                  {t('aboutUs.whoWeAreTwo')}
+                  <span>¿Quiénes somos?</span>
                 </h2>
 
                 <p>
-                  {t('aboutUs.textOne')}
-                  <br/><br/>
-                  {t('aboutUs.textTwo')}
-                  <br/><br/>
-                  {t('aboutUs.textThree')}
+                  
                 </p>
               </Block>
 
