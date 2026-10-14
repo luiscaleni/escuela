@@ -37,3 +37,20 @@
         font-size: 3rem;
     }
 }
+@media (max-width: 955px){
+    .contentTextLand > .titleTextLand {
+        font-size: 2rem;
+    }
+    .contentTextLand > .descript{
+        font-size: 1rem;
+        padding: 1rem 0;
+        color: #ccc;
+    }
+    .contentTextLand > .contButton{
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

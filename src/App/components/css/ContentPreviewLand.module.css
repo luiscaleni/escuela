@@ -97,7 +97,7 @@
         padding: 1rem;
     }
     .contentPreviewLand > .contentElements > .contentVideo > video{
-        width: 40rem;
+        width: 80%;
         height: 20rem;
     }
     .contentPreviewLand > .contentElements > .contentFooter{
@@ -106,7 +106,7 @@
 }
 @media (max-width: 955px){
     .contentPreviewLand > .contentElements > .contentVideo > video{
-        width: 32rem;
-        height: 16rem;
+        width: 100%;
+        min-height: 20rem;
     }
 }
