@@ -146,9 +146,7 @@ nav, .navbar{
     height: 2.5em;
     filter: invert(1);
 }
-:global(body.dark) .navbarContent > .navbarLinks > a > .navbarLogo > .logoImage{
-    filter: invert(1);
-}
+
 .navbarContent > .navbarLinks > a > .navbarLogo > .imgInvert{
     filter: invert(0);
 }
@@ -499,16 +497,15 @@ span{
 .contMobile > .navbarLogoLinkMobile > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
+    filter: invert(1);
 }
 .contMobile > p{
     user-select: none;
 }
 .contMobile > .buttonPanel{
-    filter: invert(100%);
+    
 }
-:global(body.dark) .contMobile > .buttonPanel{
-    filter: invert(0%);
-}
+
 .contMobile > .buttonPanel > img{
     width: 1.5em;
     height: 1.5em;

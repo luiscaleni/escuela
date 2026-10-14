@@ -104,3 +104,9 @@
         padding-top: 0;
     }
 }
+@media (max-width: 955px){
+    .contentPreviewLand > .contentElements > .contentVideo > video{
+        width: 32rem;
+        height: 16rem;
+    }
+}

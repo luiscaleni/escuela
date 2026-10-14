@@ -21,6 +21,6 @@
 :global(body.dark) .goTopButton{
     color:#fff;	
     border:0.1rem solid #b5b5b5;
-    filter: invert(100%);
+    filter: invert(1);
     background-color: #2a2a2a;
 }

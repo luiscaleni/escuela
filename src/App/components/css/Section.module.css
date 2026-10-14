@@ -266,7 +266,7 @@ iframe{
 }
 @media (max-width: 895px){
     .sectionXtreme2{
-        margin-top: 44rem;
+        margin-top: 60rem;
     }
 }
 @media (max-width: 840px){
@@ -281,9 +281,7 @@ iframe{
     }
 }
 @media (max-width: 640px){
-    .sectionXtreme2{
-        margin-top: 34rem;
-    }
+
 }
 @media (max-width: 440px){
     .section > .sectionContent > div > img{
