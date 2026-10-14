@@ -1,9 +1,15 @@
 .contentPreviewLand{
+    cursor: pointer;
     width: 30rem;
     height: 28rem;
     color: white;
     border-radius: var(--border-radius-slim);
+    box-shadow: 0 0 1.2rem #10B981;
+    transition: all ease-in-out .3s;
     background-color: var(--background-solid);
+}
+.contentPreviewLand:hover{
+    box-shadow: 0 0 2.5rem #10B981;
 }
 .contentPreviewLand > .contentElements{
     position: relative;
@@ -47,12 +53,16 @@
 .contentPreviewLand > .contentElements > .contentVideo{
     width: 100%;
     height: auto;
-    border-radius: var(--border-radius-slim);
-    background-color: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .contentPreviewLand > .contentElements > .contentVideo > video{
     width: 100%;
     height: 14rem;
+    border-radius: var(--border-radius-slim);
+    background-color: #000;
     display: block;
 }
 
@@ -76,4 +86,21 @@
 .contentPreviewLand > .contentElements > .contentFooter > span > i{
     padding-right:0.2rem;
     color: rgb(16 185 129);
+}
+
+@media (max-width: 1280px){
+    .contentPreviewLand{
+        width: 100%;
+        height: auto;
+    }
+    .contentPreviewLand > .contentElements > .contentVideo{
+        padding: 1rem;
+    }
+    .contentPreviewLand > .contentElements > .contentVideo > video{
+        width: 40rem;
+        height: 20rem;
+    }
+    .contentPreviewLand > .contentElements > .contentFooter{
+        padding-top: 0;
+    }
 }

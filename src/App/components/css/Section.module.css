@@ -246,6 +246,12 @@ iframe{
 }
 
 @media (max-width: 1280px){
+    .contentLand{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
     .fullScreen > img{
         position: none;
         object-position: center;
