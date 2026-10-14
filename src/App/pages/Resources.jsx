@@ -10,18 +10,11 @@ import Modal from '../components/Modal'
 import FormResources from '../components/FormResources'
 import imgUpload from '/icons/links/upload.png'
 import { UserContext } from '../components/UserProvider'
-import { useTranslation } from 'react-i18next'
 
 function Resources() {
     const [resources, setResources] = useState([])
     const [showContainer, setShowContainer] = useState(false)
     const { user } = useContext(UserContext)
-    const [t, i18n] = useTranslation()    
-    
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
     
     useEffect(() => {
         fetch(`${CONFIG_BACKEND.API_DIR}/showResources`, {
@@ -56,8 +49,8 @@ function Resources() {
             {showContainer && (
                 <Modal
                     id="containerFloat"
-                    titleElm={t('form.resource.title')} 
-                    textElm={`* ${t('form.resource.title')} : jpg, jpeg, png, webp, pdf, docx, xlsx, pptx, mp4, mp3.`}
+                    titleElm="Recursos"
+                    textElm={`* Formatos soportados : jpg, jpeg, png, webp, pdf, docx, xlsx, pptx, mp4, mp3.`}
                     onClickElm={fnCloseContainer}
                 >
                 <FormResources 
@@ -66,7 +59,7 @@ function Resources() {
             </Modal>
             )}
             <Publication 
-                titlePub={t('resources.title')} 
+                titlePub="Recursos"
                 typeElm='img' 
                 nameAsset="banner_resources.jpg"
             >
@@ -74,7 +67,7 @@ function Resources() {
                     <div className={styles.contPushButton}>
                         <ButtonTop 
                             id="pushFile"
-                            textElm={t('buttons.upload')} 
+                            textElm="Subir"
                             typeElm='expand'
                             imgElm={imgUpload}
                             onClick={() => {fnShowContainer()}}
@@ -89,10 +82,10 @@ function Resources() {
                             <p className={styles.descriptionResource}>{resource.descriptionResource}</p>
                             <div className={styles.groupData}>
                                 <p className={styles.dataSize}>
-                                    {t('buttons.wheight')}: {resource.sizeResource??resource.size_resource} MB
+                                    Peso: {resource.sizeResource??resource.size_resource} MB
                                 </p>
                                 <p className={styles.dataDate}>
-                                    {t('buttons.date')}: {resource.dateResource??resource.date_resource}
+                                    Fecha: {resource.dateResource??resource.date_resource}
                                 </p>
                             </div>
                             <Link 
@@ -101,14 +94,14 @@ function Resources() {
                                 id={resource.idResource}
                                 download={`${resource.idResource}.${resource.extResource}`}
                                 target='_blank'
-                                title={t('buttons.download')}
+                                title="Descargar"
                             >
-                                {t('buttons.download')}
+                                Descargar
                             </Link>
                         </Elementor> 
                     ))
                 ):(
-                    <p>{t('alerts.noneRes')}</p>
+                    <p>Nada por aqui</p>
                 )}
             </Publication>
         </>

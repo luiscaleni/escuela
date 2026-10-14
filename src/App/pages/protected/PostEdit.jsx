@@ -1,12 +1,12 @@
 import Section from '../../components/Section'
-import FormPostEdit from '../../components/FormPostEdit'
+import FormDisciplineEdit from '../../components/FormDisciplineEdit'
 
 function PostEdit() {
 
     return ( 
         <>
             <Section>
-                <FormPostEdit/>
+                <FormDisciplineEdit/>
             </Section>  
         </>
      )

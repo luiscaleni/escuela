@@ -3,7 +3,6 @@ section, .section{
     min-height: 5rem;
     padding: 2rem 0;
 
-
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -13,13 +12,14 @@ section, .section{
 section, .section > p{
     color: #000;
 }
-.sectionBanner{
+.sectionBanner,
+.fullScreen{
     position: fixed;
     overflow: hidden;
     width: 100%;
     min-height: 35rem;
-    height: auto;
     margin: 0;
+    z-index: 1;
     background: #252525;
 
     display: flex;
@@ -30,6 +30,9 @@ section, .section > p{
 }
 :global(body.dark) .sectionBanner{
     background-color: #2b2b2b;
+}
+.sectionBanner > h1{
+    position: absolute;
 }
 .sectionBanner > h1,
 .section > h1{
@@ -53,26 +56,40 @@ section, .section > p{
     height: auto;
     top: 0rem;
 }
+.fullScreen {
+    height: 100dvh;
+}
+.fullScreen > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-position: top left;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 
 .bgBlack{
     background-color: black;
 }
-.sectionXtreme{
+.sectionXtreme,
+.sectionXtreme2{
     position: relative;
     width: 100vw;
     height: auto;
-    margin-top: 35rem; /**/
+    z-index: 2;
+    margin-top: 35rem;
     min-width: 23.4rem;
     min-height: 30rem;
-    
-    background-color: #fff;
+    background-color:white;
     
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
 }
-.sectionXtreme >.topXtreme{
+.sectionXtreme >.topXtreme,
+.sectionXtreme2 >.topXtreme{
     position: absolute;
     top: 0;
     width: 100vw;
@@ -80,11 +97,31 @@ section, .section > p{
     z-index: 2;
     border-radius: 3rem 3rem 0 0;
     z-index: 2;
-    transform: translateY(-2.5rem);
-    background-color: #fff;
+    transform: translateY(-3rem);
+    background-color:white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 :global(body.dark) .sectionXtreme >.topXtreme{
     background-color: #1d1d1d;
+}
+:global(body.dark) .sectionXtreme2 >.topXtreme{
+    background-color: #1d1d1d;
+}
+.sectionXtreme > h2{
+    width: 86%;
+    font-size: 4rem;
+    margin: 1rem 1rem 0 1rem;
+    padding: 0 1rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.sectionXtreme2{
+    margin-top: 100dvh;
 }
 .sectionXtreme > p{
     width: 90%;
@@ -105,7 +142,7 @@ section, .section > p{
 
 .section > .sectionContent{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: auto;
     
     border-radius: var(--border-radius);
@@ -116,8 +153,19 @@ section, .section > p{
     flex-direction: row;
     flex-wrap: wrap;
 }
-.section > .sectionContent > h2,
-.section > .sectionContent > p{
+
+section > .sectionContent > .sectionChildren,
+.section > .sectionContent > .sectionChildren{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.section > .sectionContent > .sectionChildren > p{
     width: 100%;
     height: 100%;
     font-size: 1rem;
@@ -127,8 +175,9 @@ section, .section > p{
     justify-content: center;
     align-items: flex-start;
 }
-.section > .sectionContent > h3{
+.section > .sectionContent > h2{
     font-size: 3.5rem;
+    font-style: italic;
 }
 .section > .sectionContent > h4{
     width: 90%;
@@ -168,10 +217,22 @@ iframe{
     background-color: #333;
 }
 
-@media (max-width: 1200px){
+@media (max-width: 1280px){
+    .fullScreen > img{
+        position: none;
+        object-position: center;
+    }
+    .sectionBanner{
+        margin-top: 4rem;
+    }
     .sectionBanner > img{
         width: auto;
         height: 100%;
+    }
+}
+@media (max-width: 895px){
+    .sectionXtreme2{
+        margin-top: 44rem;
     }
 }
 @media (max-width: 840px){
@@ -183,6 +244,11 @@ iframe{
         width: auto;
         height: 100%;
         top: 0;
+    }
+}
+@media (max-width: 640px){
+    .sectionXtreme2{
+        margin-top: 34rem;
     }
 }
 @media (max-width: 440px){

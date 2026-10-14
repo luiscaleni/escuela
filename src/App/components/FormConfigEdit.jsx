@@ -8,7 +8,6 @@ import LeftTopButton from './LeftTopButton'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import { UserContext } from './UserProvider'
 import { useContext } from 'react'
-import { useTranslation } from 'react-i18next'
 import TopButtons from './TopButtons'
 
 function FormConfigEdit() {
@@ -18,12 +17,6 @@ function FormConfigEdit() {
     const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
     const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
     const [message, setMessage] = useState("")
-    const [t, i18n] = useTranslation()
-  
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
     
     useEffect(() => {
         loadConfigData()
@@ -131,27 +124,27 @@ function FormConfigEdit() {
             <form className={styles.form} id='formConfigUpdate' onSubmit={handleSubmit}>
                 <div className={styles.alertContainer} id="alertContainer">{message}</div>
                 <TopButtons>
-                    <LeftTopButton text={t('buttons.configuration')} locationElm={CONFIG_PATHS.CONFIG_PATH} typeElm='expand'/>
+                    <LeftTopButton text="Configuración" locationElm={CONFIG_PATHS.CONFIG_PATH} typeElm='expand'/>
                 </TopButtons>
                 <div className={styles.contElmsForm}>
-                    <h1>{t('buttons.edit')}</h1>
-                    <ContFormInput nameElm={t('showCongiData.fullNameDpto')+" :"}>
+                    <h1>Editar</h1>
+                    <ContFormInput nameElm="departamento">
                         <input type="text" name="dptoNameConfig" value={form.dptoNameConfig} placeholder={configData.dptoNameConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm={t('showCongiData.acronymNameDpto')+" :"}>
+                    <ContFormInput nameElm="acronimo">
                         <input type="text" name="acrDptoNameConfig" value={form.acrDptoNameConfig} placeholder={configData.acrDptoNameConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm={t('showCongiData.nameChurch')+" :"}>
+                    <ContFormInput nameElm="nombre">
                         <input type="text" name="nameChurchConfig" value={form.nameChurchConfig} placeholder={configData.nameChurchConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm={t('showCongiData.acronymChurch')+" :"}>
+                    <ContFormInput nameElm="acronimo">
                         <input type="text" name="acrNameChurchConfig" value={form.acrNameChurchConfig} placeholder={configData.acrNameChurchConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm={t('showCongiData.copyright')+" :"}>
+                    <ContFormInput nameElm="copyright">
                         <input type="number" name="yearConfig" value={form.yearConfig} placeholder={configData.yearConfig} min={2025} max={2026} onChange={handleChange}/>
                     </ContFormInput>
                     
@@ -159,21 +152,21 @@ function FormConfigEdit() {
                         <input type="text" name="emailConfig" value={form.emailConfig} placeholder={configData.emailConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm={t('showCongiData.supervisorName')+" :"}>
+                    <ContFormInput nameElm="supervisor">
                         <input type="text" name="supvNameConfig" value={form.supvNameConfig} placeholder={configData.supvNameConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
-                    <ContFormInput nameElm={t('showCongiData.introText')+" :"}>
+                    <ContFormInput nameElm="contenido">
                         <textarea name="contentConfig" value={form.contentConfig} placeholder={configData.contentConfig} onChange={handleChange}></textarea>
                     </ContFormInput>
                     <Button
                         typeBtn="submit"
-                        altName={t('buttons.saveChanges')}
-                        title={t('buttons.saveChanges')}
+                        altName="Guardar cambios"
+                        title="Guardar cambios"
                         id="guadarCambios"
                         disabled={cargando}
                     >
-                        {cargando ? <Loader mini={true}/> : t('buttons.saveChanges')}
+                        {cargando ? <Loader mini={true}/> : "Guardar cambios"}
                     </Button>
                 </div>
             </form>

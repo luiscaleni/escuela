@@ -17,7 +17,7 @@ export default function ResetPassword() {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [message, setMessage] = useState("")
-  console.log('token:'+token)
+  console.log('token:'+token)/*console*/
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -37,7 +37,7 @@ export default function ResetPassword() {
       return
     }
     
-console.log('passw:'+password)
+    console.log('passw:'+password)
     try {
       const res = await fetch(`${CONFIG_BACKEND.API_DIR}/resetPassw`, {
         method: "POST",

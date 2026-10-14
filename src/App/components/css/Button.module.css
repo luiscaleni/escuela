@@ -1,15 +1,17 @@
 .button{
-    position: relative;
     cursor: pointer;
-    width: 100%;
-    min-height: 2.5rem;
     max-width: 16rem;
-    min-width: 1rem;
-    text-align:center;
+    min-width: 3rem;
+    min-height: 2.5rem;
+    padding: 0.6rem 1.5rem;
+    text-align:c enter;
     color: white;
-    border: var(--border);
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
     border-radius: var(--border-radius);
     background-color: var(--background-color-btn);
+    transition: background-color 0.2s;
 
     display: flex;
     justify-content: center;

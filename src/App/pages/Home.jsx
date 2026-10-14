@@ -7,26 +7,17 @@ import Elementor from '../components/Elementor'
 import LoadData from '../components/LoadData'
 import stylesButton from '../components/css/Button.module.css'
 import { CONFIG_BACKEND, CONFIG_NAMES_COUNTRYS, CONFIG_PATHS } from '../config/config'
-import { useTranslation } from 'react-i18next'
 
 function Home() {
   const [configData, setConfigData]  = useState(null)
   const [cargando, setCargando] = useState(false)
   const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
-  const [dbPlantations, setDbPlantations] = useState()
-  const [leadersPlant, setLeadersPlant] = useState()
-  const [t, i18n] = useTranslation()
 
   useEffect(() => {
     loadConfigData()
     fetchAll()
   }, [])
-
-  useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
   
   const fetchAll = async () => {
     try {
@@ -61,36 +52,22 @@ function Home() {
 
   return (
       <Publication
-        titlePub={configData?.dptoNameConfig??'DPISUD'}
+        type="xtreme2"
         typeElm="img"
-        nameAsset="banner_home.jpg">
+        nameAsset="banner.webp"
+      >
         <Section>
           <h4>{configData?.contentConfig}</h4>
         </Section>
         <Section>
-          <div className={styles.marqueeContainer}>
-            <h2>{t('home.sectPlantTitle')}</h2>
-            <div className={styles.marquee}>
-              <h3 className={styles.one}>{namesCountrys}</h3>
-            </div>
-            <div className={styles.marquee}>
-              <h3 className={styles.two}>{namesCountrysTwo}</h3>
-            </div>
-            <div className={styles.marquee}>
-              <h3 className={styles.three}>{namesCountrysThree}</h3>
-            </div>
-            <Link to={CONFIG_PATHS.PLANTATIONS} className={stylesButton.button}>{t('buttons.seePlantations')}</Link>
-          </div>
-        </Section>
-        <Section>
           <Elementor>
-            <div className={styles.dataCountry}><p>10</p><p>{t('home.countries')}</p></div>
+            <div className={styles.dataCountry}><p>FUTBOL</p><p>11, 8 y 5</p></div>
           </Elementor>
           <Elementor>
-            <div className={styles.dataChurch}><p>{dbPlantations}</p><p>{t('home.plantations')}</p></div>
+            <div className={styles.dataCountry}><p>FUTLSAL</p></div>
           </Elementor>
           <Elementor>
-            <div className={styles.dataPlanters}><p>{leadersPlant}</p><p>{t('home.planters')}</p></div>
+            <div className={styles.dataCountry}><p>FUTBOL</p><p>PLAYA</p></div>
           </Elementor>
         </Section>
         

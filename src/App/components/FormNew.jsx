@@ -7,16 +7,14 @@ import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '/icons/utilities/user_128.png'
-import { useTranslation } from 'react-i18next'
 
-function FormPost() {
+function FormNew() {
     const { user, loadUser } = useContext(UserContext)
     const [preview, setPreview] = useState(null)
     const [selectedImage, setSelectedImage] = useState(null)
     const [cargando, setCargando] = useState(false)
     const [form, setForm] = useState({})
     const navigate = useNavigate()
-    const [t, i18n] = useTranslation()
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -91,10 +89,10 @@ function FormPost() {
     
     return ( 
         <>
-            <div className={styles.contForm}>
-                <form className={styles.form} id='formPost' onSubmit={handleSubmit}>
+            <div className={`${styles.contForm} ${styles.formPost}`}>
+                <form className={`${styles.form} ${styles.form2}`} id='formPost' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <h1>{t('form.newPub.title')}</h1>
+                    <h1>Nuevo Curso</h1>
                     <ContFormInput nameElm="Titulo:">
                         <input type="text" name="titlePub" placeholder="Título" onChange={handleChange} required/>
                     </ContFormInput>
@@ -113,33 +111,33 @@ function FormPost() {
                             <input type="file" name="imgPub" alt='Boton de carga de banner de publicación' accept="image/*" onChange={handleImageChange}/>
                         </div>
                     </ContFormInput>
-                    <ContFormInput nameElm={t('form.newPub.lang.title')+" :"}>
+                    <ContFormInput nameElm="Idioma">
                         <div className={styles.radio}>
                             <label>
                                 <input type='radio' name='langPub' value='es' id='español' onChange={handleChange} required />
-                                {t('form.newPub.lang.es')}
+                                Español
                             </label>
 
                             <label>
                                 <input type='radio' name='langPub' value='pt' id='portugues' onChange={handleChange} required />
-                                {t('form.newPub.lang.pt')}
+                                Portugy
                             </label>
 
                             <label>
                                 <input type='radio' name='langPub' value='en' id='ingles' onChange={handleChange} required />
-                                {t('form.newPub.lang.en')}
+                                Ingles
                             </label>
                         </div>
                     </ContFormInput>
 
                     <Button
                         typeBtn="submit"
-                        altName={t('buttons.saveChanges')}
-                        title={t('buttons.saveChanges')}
+                        altName="Guardar cambios"
+                        title="Guardar cambios"
                         id="guadarCambios"
                         disabled={cargando}
                     >
-                        {cargando ? <Loader mini={true}/> : t('buttons.saveChanges')}
+                        {cargando ? <Loader mini={true}/> : "Guardar cambios"}
                     </Button>
                 </form>
             </div>
@@ -147,4 +145,4 @@ function FormPost() {
      )
 }
 
-export default FormPost
+export default FormNew

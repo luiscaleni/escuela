@@ -6,7 +6,6 @@ import ShowData from './ShowData'
 import pencil from '/icons/utilities/pencil.png'
 import ContFormInput from './ContFormInput'
 import RightTopButton from './RightTopButton'
-import { useTranslation } from 'react-i18next'
 import TopButtons from './TopButtons'
 
 function ShowConfigData() {
@@ -14,12 +13,6 @@ function ShowConfigData() {
     const [cargando, setLoading] = useState(false)
     const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
     const loadConfigData = LoadData(setLoading, setConfigData, 'GET', ROUTE)
-    const [t, i18n] = useTranslation()
-  
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     useEffect(() => {
         loadConfigData()
@@ -31,27 +24,27 @@ function ShowConfigData() {
                 <form className={styles.form} id='formUpdate'>
                     <TopButtons>
                         <div className={styles.alertContainer} id="alertContainer"></div>
-                        <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                        <RightTopButton locationElm={CONFIG_PATHS.CONFIG_EDIT_PATH} typeElm='expand' text="Editar" imgElm={pencil}/>
                     </TopButtons>
                     <div className={styles.contElmsForm}>
-                        <h1>{t('showCongiData.title')}</h1>
-                        <ContFormInput nameElm={t('showCongiData.fullNameDpto')+" :"}>
+                        <h1>Configuración</h1>
+                        <ContFormInput nameElm={"Nombre :"}>
                             <ShowData>{configData?.dptoNameConfig}</ShowData>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('showCongiData.acronymNameDpto')+" :"}>
+                        <ContFormInput nameElm={"Acrónimo :"}>
                             <ShowData>{configData?.acrDptoNameConfig}</ShowData>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('showCongiData.nameChurch')+" :"}>
+                        <ContFormInput nameElm={"Nombre de iglesia :"}>
                             <ShowData>{configData?.nameChurchConfig}</ShowData>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('showCongiData.acronymChurch')+" :"}>
+                        <ContFormInput nameElm={"Acrónimo de iglesia :"}>
                             <ShowData>{configData?.acrNameChurchConfig}</ShowData>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('showCongiData.copyright')+" :"}>
+                        <ContFormInput nameElm={"Copyright :"}>
                             <ShowData>{configData?.yearConfig}</ShowData>
                         </ContFormInput>
                         
@@ -59,11 +52,11 @@ function ShowConfigData() {
                             <ShowData>{configData?.emailConfig}</ShowData>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('showCongiData.supervisorName')+" :"}>
+                        <ContFormInput nameElm={"Nombre del supervisor :"}>
                             <ShowData>{configData?.supvNameConfig}</ShowData>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('showCongiData.introText')+" :"}>
+                        <ContFormInput nameElm={"Contenido :"}>
                             <ShowData>{configData?.contentConfig}</ShowData>
                         </ContFormInput>
                     </div>

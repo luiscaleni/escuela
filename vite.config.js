@@ -11,7 +11,8 @@ export default defineConfig(({ mode, command }) => {
       global: 'window',
     },
     esbuild: {
-      drop: mode === 'production' ? ['console', 'debugger'] : [],
+      //drop: mode === 'production' ? ['console', 'debugger'] : [],
+      drop: mode === 'production' ? ['debugger'] : [],
       legalComments: 'none' 
     },
     server: {
@@ -20,7 +21,7 @@ export default defineConfig(({ mode, command }) => {
           target: env.VITE_API_BASE_URL,
           changeOrigin: true,
           secure: false,
-          rewrite: path => path.replace(/^\/api/, '')
+          rewrite: path => path.replace(/^\/api - escuela de arbitros/, '')
         }
       }
     }

@@ -3,17 +3,8 @@ import styles from './css/Publication.module.css'
 import Video from '../components/Video'
 import bannerDefault from '/images/banner_default.jpg'
 import { CONFIG_BACKEND } from '../config/config'
-import { useTranslation } from 'react-i18next'
-import { useEffect } from 'react'
 
-function Publication({titlePub, nameAsset="", typeElm="", locationPub="", locationAlt= "", children}) {
-  const [t, i18n] = useTranslation()
-  
-  useEffect(()=>{
-      const lang = localStorage.getItem('lang') || 'es'
-      i18n.changeLanguage(lang)
-  },[i18n])
-
+function Publication({titlePub, nameAsset="", type="", typeElm="", locationPub="", locationAlt= "", children}) {
   let mediaSrc
 
   if (typeElm === "img") {
@@ -35,15 +26,17 @@ function Publication({titlePub, nameAsset="", typeElm="", locationPub="", locati
   return (
     <>
       <div className={styles.publication}>
-        <Section typeElm="banner" titleElm={titlePub} >
+        <Section typeElm={type === "xtreme2" ? "fullScreen" : "banner"} titleElm={titlePub} >
+          {type === "xtreme2" ? (<div className={styles.opacity}></div>) : null}
           {typeElm === "img" ? (
-            <img src={mediaSrc} alt="Imagen de la publicación" loading='lazy'/>
-          ) : typeElm === "video" ? (
-            <Video />
-          ) : null}
+              <img src={mediaSrc} alt="Imagen de la publicación" loading='lazy'/>
+            ) : typeElm === "video" ? (
+              <Video />
+            ) : null
+          }
         </Section>
-        <Section typeElm='xtreme'>
-            {children ? children : <p>{t('alerts.WeAreW')}</p>}
+        <Section typeElm={type === "xtreme2" ? "xtreme2" : "xtreme"}>
+            {children ? children : <p>No hay nada aqui</p>}
         </Section>
       </div>
     </>

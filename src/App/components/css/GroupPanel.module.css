@@ -1,0 +1,65 @@
+.groupPanel{
+    user-select: none;
+    width: 100%;
+    height: auto;
+    margin: 0.5rem 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.groupPanel > p{
+    width: 100%;
+    height: auto;
+    padding: 0.6rem;
+    color: white;
+    background-color:#2b2b2b;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+:global(body.dark) .groupPanel > p{
+    background-color: #333;
+}
+.groupPanel > a{
+    width: 100%;
+    height: auto;
+    padding: 0.6rem;
+    background-color: #cacaca;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+:global(body.dark) .groupPanel > a{
+    color: #000;
+}
+.groupPanel > a:hover{
+    color: #fff;
+    background-color: var(--background-color-btn-hover);
+}
+:global(body.dark) .groupPanel > a:hover{
+    color: #fff;
+}
+.groupPanel > a > img{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background-color: #fff;
+}
+
+@media (max-width: 1280px){
+    .groupPanel{
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .groupPanel > a{
+        background-color: transparent;
+    }
+}

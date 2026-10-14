@@ -9,7 +9,6 @@ import ContFormInput from './ContFormInput'
 import ShowData from './ShowData'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '/icons/utilities/user_128.png'
-import { useTranslation } from 'react-i18next'
 import TopButtons from './TopButtons'
 import TopButtonNone from './TopButtonNone'
 
@@ -29,12 +28,6 @@ function FormProfileEdit() {
         province:  user?.province || '',
         aboutMe:  user?.aboutMe || ''
     })
-    const [t, i18n] = useTranslation()
-          
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
     
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -120,42 +113,42 @@ function FormProfileEdit() {
                 <form className={styles.form} id='formUpdate' onSubmit={handleSubmit}>
                     <div className={styles.alertContainer} id="alertContainer">{message}</div>
                     <TopButtons>
-                        <LeftTopButton typeElm='expand' text={t('buttons.profile')} locationElm={CONFIG_PATHS.PROFILE_PATH}/>
+                        <LeftTopButton typeElm='expand' text="Perfil" locationElm={CONFIG_PATHS.PROFILE_PATH}/>
                     </TopButtons>
                     
                     <div className={styles.contElmsForm}>
-                        <h1>{t('profileEdit.title')+" :"}</h1>
-                        <ContFormInput nameElm={t('profileEdit.names')}>
-                            <input type="text" name="names" placeholder={user.names} onChange={handleChange}/>
+                        <h1>Editar perfil</h1>
+                        <ContFormInput nameElm="Nombre">
+                            <input type="text" name="names" placeholder={user?.names} onChange={handleChange}/>
                         </ContFormInput>
 
-                        <ContFormInput nameElm={t('profileEdit.lastName')+" :"}>
-                            <input type="text" name="lastNames" placeholder={user.lastNames} id="apellidos" onChange={handleChange}/>
+                        <ContFormInput nameElm="Apellidos">
+                            <input type="text" name="lastNames" placeholder={user?.lastNames} id="apellidos" onChange={handleChange}/>
                         </ContFormInput>
 
                         <ContFormInput nameElm="Email:" iconElm="?" titleElm='No se puede cambiar este valor'>
-                            <ShowData>{user.email}</ShowData>
+                            <ShowData>{user?.email}</ShowData>
                         </ContFormInput>
 
-                        <ContFormInput nameElm={t('profileEdit.sex')+" :"}>
+                        <ContFormInput nameElm="Sexo">
                             <div className={styles.radio}>
                                 <label>
                                     <input type="radio" name="sex" value='M' id="masculino" onChange={handleChange}/>
-                                    {t('profileEdit.male')}
+                                    Masculino
                                 </label>
 
                                 <label>
                                     <input type="radio" name="sex" value='F' id="femenino" onChange={handleChange}/>
-                                    {t('profileEdit.female')}
+                                    Femenino
                                 </label>
                             </div>
                         </ContFormInput>
 
-                        <ContFormInput nameElm={t('profileEdit.birthdate')+" :"}>
+                        <ContFormInput nameElm="Cumpleaños">
                             <input type="date" name="birthday" placeholder={form.birthday} id="birthday" onChange={handleChange}/>
                         </ContFormInput>
                         
-                        <ContFormInput nameElm={t('profileEdit.countryOfResidence')+" :"}>
+                        <ContFormInput nameElm="Pais">
                             <select className={styles.select} name='country' value={form.country} onChange={handleChange}>
                                 <option value="Argentina">Argentina</option>
                                 <option value="Bolivia">Bolivia</option>
@@ -170,29 +163,29 @@ function FormProfileEdit() {
                             </select>
                         </ContFormInput>
 
-                        <ContFormInput nameElm={t('profileEdit.province')+" :"}>
+                        <ContFormInput nameElm="Provincia">
                             <input type="text" name="province" placeholder={user.province} id="province" onChange={handleChange}/>
                         </ContFormInput>
 
-                        <ContFormInput nameElm={t('profileEdit.aboutMe')+" :"}>
+                        <ContFormInput nameElm="Acerca de mi">
                             <textarea id="aboutMe" name="aboutMe" placeholder={user.aboutMe} onChange={handleChange}></textarea>
                         </ContFormInput>
 
-                        <ContFormInput nameElm={t('profileEdit.profilePicture')+" :"}>
+                        <ContFormInput nameElm="Imagen de perfil">
                             <div className={styles.contImgUpPreview}>
-                                <img src={imgResult} alt={t('profileEdit.preview')} id='imgUserPreview' />
-                                <input type="file" name="imgProfile" alt={t('profileEdit.buttonUpload')} accept="image/*" onChange={handleImageChange}/>
+                                <img src={imgResult} alt="Imagen de perfil" id='imgUserPreview' />
+                                <input type="file" name="imgProfile" alt="Imagen de perfil" accept="image/*" onChange={handleImageChange}/>
                             </div>
                         </ContFormInput>
                         
                         <Button
                             typeBtn="submit"
-                            altName={t('buttons.saveChanges')}
-                            title={t('buttons.saveChanges')}
+                            altName="Guardar cambios"
+                            title="Guardar cambios"
                             id="guadarCambios"
                             disabled={cargando}
                         >
-                            {cargando ? <Loader mini={true}/> : t('buttons.saveChanges')}
+                            {cargando ? <Loader mini={true}/> : "Guardar cambios"}
                         </Button>
                     </div>
                 </form>

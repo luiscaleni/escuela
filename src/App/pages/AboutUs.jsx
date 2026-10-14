@@ -7,20 +7,12 @@ import Section from '../components/Section'
 import ElmSelection from '../components/ElmSelection'
 import LoadData from '../components/LoadData'
 import whoWeAre from '/images/about_us.png'
-import { useTranslation } from 'react-i18next'
 
 function AboutUs() {
   const [configData, setConfigData]  = useState(null)
   const [cargando, setCargando] = useState(false)
   const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
-  const [t, i18n] = useTranslation()    
-
-  useEffect(()=>{
-      const lang = localStorage.getItem('lang') || 'es'
-      i18n.changeLanguage(lang)
-  },[i18n])
-
 
   useEffect(() => {
       loadConfigData()

@@ -12,36 +12,36 @@ nav, .navbar{
     align-items: flex-end;
 }
 .contNavbarContent{
-    width: auto;
+    width: 100dvw;
     height: 4rem;
-    margin-top: 1rem;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
 }
+.contNavbarContentVisible{
+    transition: all 0.3s ease;
+    border-bottom: var(--border);
+    background-color: #fff;
+}
+:global(body.dark) .contNavbarContentVisible{
+    border-bottom: var(--border-dark);
+    background-color: #1D1D1D;
+}
+
 .contNavbarContent > .navbarContent{
     position: relative;
-    width: auto;
-    height: 100%;
-    border: var(--border);
-    border-radius: var(--border-radius);
-    backdrop-filter: var(--backdrop-filter);
-    background: var(--background);
+    width: 60%;
+    height: 4rem;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-:global(body.dark) .contNavbarContent > .navbarContent{
-    background: var(--background-dark);
-    border: var(--border-dark);
 }
 .contNavbarContent > .navbarContent > .contNavbarMenu{
     width: 4rem;
     height: 4rem;
     border-radius: var(--border-radius);
-    background-color: white;
 
     display: flex;
     justify-content: center;
@@ -50,50 +50,60 @@ nav, .navbar{
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     display: none;
 }
-.contNavbarContent > .navbarContent > .navbarLinks,
+.contNavbarContent > .navbarContent > .navbarLinks{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     margin-right: 0.5rem;
 }
-.contNavbarContent > .navbarContent,
+
 .contNavbarContent > .navbarContent > .navbarLinks,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     height: auto;
 }
  
-.navbarContent > .navbarLinks{
-    width: auto;
-    height: 100%;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-}
-.navbarContent > .navbarLinks > div {
-    height: 3rem;
-    display: none;
-    justify-content: flex-start;
-    align-items: center;
-}
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
     width: 100%;
 }
+.contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup{
+    width: auto;
+    height: auto;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .contNavbarContent > .navbarContent > .navbarLinks > a,
+.contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a,
 .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel{
-    min-width: 5rem;
+    min-width: 6rem;
     height: 3rem;
     cursor: pointer;
-    color:#000;
+    color:#fff;
     text-decoration: none;
     font-size: 0.9rem;
     padding: 0 0.5rem;
     margin: 0 0.3rem;
-    border-radius: 2rem;
+    transition: all ease-in-out .3s;
+    border-bottom: 0.2rem solid transparent;
 
     display: flex;
     justify-content: center;
     align-items: center;   
+}
+.contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > div{
+    width: 100%;
+    padding: 0 0.5rem;
+    margin: 0 0.3rem 0 2.2rem;
+
+    display: flex;
+    justify-content: flex-start;
 }
 
 .contNavbarContent > .navbarContent > .navbarLinks > .linkCont{
@@ -111,14 +121,14 @@ nav, .navbar{
     padding-left: 0.5rem;
 }
 :global(body.dark) .navbarContent > .navbarLinks > a,
+:global(body.dark) .navbarContent > .navbarLinks > .navbarLinksGroup > a,
 :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel > p {
     color: white;
 }
 
-.navbarContent > .navbarLinks > a:hover,
+.navbarContent > .navbarLinks > .navbarLinksGroup > a:hover,
 .navbarContent > .navbarLinks > .elmPanel > a:hover{
-    color: #fff;
-    background-color: var(--background-color-btn);
+    border-bottom: 0.2rem solid azure;
 }
 
 .navbarContent > .navbarLinks > a > .navbarLogo{
@@ -132,20 +142,37 @@ nav, .navbar{
 .navbarContent > .navbarLinks > a > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
+    filter: invert(1);
+}
+:global(body.dark) .navbarContent > .navbarLinks > a > .navbarLogo > .logoImage{
+    filter: invert(1);
+}
+.navbarContent > .navbarLinks > a > .navbarLogo > .imgInvert{
+    filter: invert(0);
 }
 .navbarContent > .navbarLinks > a > p{
     padding-left: 0.5rem;
 }
 .navbarContent > .navbarLinks > p > a{
     width: 100%;
-    height: 100%;
-    color: black;
+    height: 100%;    
 }
+
 .navbarContent > .navbarLinks > .navbarLogoLink:hover{
     color: #fff;
     background-color: transparent;
 }
-
+.navbarContent > .navbarLinks > .navbarLogoLink > p{
+    color: #fff;
+}
+.contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > .blackText,
+.navbarContent > .navbarLinks > .navbarLogoLink > .blackText{
+    color: #000;
+}
+:global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > .blackText,
+:global(body.dark) .navbarContent > .navbarLinks > .navbarLogoLink > .blackText{
+    color: #fff;
+}
 
 /* ==========================================================================
    MODIFICACIÓN: Estilos base de la lista desplegable del Menú
@@ -154,8 +181,7 @@ nav, .navbar{
     position: absolute;
     width: 100%;           /* Ancho fijo para que no se herede el estiramiento elástico */
     height: auto;
-    top: 4rem;            /* Desplazado hacia abajo para que quede justo debajo de la barra */
-    padding-top: 0.5rem;    /* Reducido el padding excesivo superior */
+    top: 3rem;            /* Desplazado hacia abajo para que quede justo debajo de la barra */
     padding-bottom: 0.5rem;
     list-style: none;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Sombra para despegarlo del fondo */
@@ -166,8 +192,14 @@ nav, .navbar{
     flex-direction: column;
 }
 .menu.menuOpen {
+    margin-top: 1rem;
     display: flex !important;
+    border: 0.1rem solid #ccc;
+    background: var(--background);
     backdrop-filter: var(--backdrop-filter-2);
+}
+:global(body.dark) .menu.menuOpen {
+    border: 0.1rem solid #555555;
 }
 .menu > li{
     width: 100%;
@@ -209,40 +241,6 @@ nav, .navbar{
     background-color: rgb(255, 255, 255);
 }
 
-.langMenu{
-    height: 15rem;
-    z-index: -1;
-    border: var(--border);
-    background-color: #004196;
-}
-:global(body.dark) .langMenu{
-    background-color: #333;
-}
-.langMenu > option{
-    color: white;
-    border-bottom: var(--border-dark);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.langMenu > option:hover{
-    color: #000;
-    background-color: white;
-}
-.langMenu > li > button{
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.langMenu > li > button > img{
-    margin-right: 0.3rem;
-}
 
 
 span{
@@ -264,12 +262,6 @@ span{
     justify-content: center;
     align-items: center;
 }
-.menuIconLang{
-    background-color: white;
-}
-:global(body.dark) .menuIconLang{
-    padding: 0;
-}
 
 .menuButton {
     width: auto;
@@ -277,7 +269,6 @@ span{
     z-index: 1;
     font-size: 1rem;
     border: none;
-    transition: all ease-in-out 0.1s;
     background-color: transparent;
 
     display: flex;
@@ -286,6 +277,7 @@ span{
 }
 .menuButton > .menuIconProfile{
     position: absolute;
+    cursor: pointer;
     right: 0.2rem;
     bottom: 0;
     width: 1em;
@@ -294,10 +286,14 @@ span{
 }
 .menuButton > .contWellcome{
     position: relative;
+    cursor: pointer;
     width: 4rem;
     height: 4rem;
+    padding: 0.2rem 0;
+    overflow: hidden;
+    border-radius: 1rem 1rem 0 0;
     transition: width ease-in-out .3s, padding ease-in-out .3s;
-
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -308,11 +304,14 @@ span{
     padding-top: 0.5rem;
 }
 .menuButton > .contWellcome > .wellcomeName{
+    cursor: pointer;
     width: 100%;
     height: auto;
+    max-height: 2.6rem;
     color:black;
     font-size: 0.9rem;
     padding-left: 0.5rem;
+    border-radius:0 1rem 0 0;
     overflow: hidden;
     
     display: none;
@@ -322,6 +321,8 @@ span{
     flex-wrap: wrap;
 }
 :global(body.dark) .menuButton > .contWellcome > .wellcomeName{
+    user-select: none;
+    cursor: pointer;
     color: #fff;
 }
 .nameVisible {
@@ -334,10 +335,10 @@ span{
     transition: transform 0.3s ease;
 }
 .menuButton > .contWellcome > .contContImgProfile{
-    max-width: 3.5rem;
-    max-height: 3.5rem;
-    min-width: 3rem;
-    min-height: 3rem;
+    max-width: 3rem;
+    max-height: 3rem;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
     border-radius: 50%;
     object-fit: cover;
 
@@ -358,43 +359,49 @@ span{
     width: 4rem;
     height: 4rem;
     margin-left: 1rem;
-    border-radius: 2.5rem;
-    transition: width ease-in-out .3s, border-radius ease-in-out .3s;
+    border-radius: 100%;
+    transition: width ease-in-out .1s, border-radius ease-in-out .3s;
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
     flex-wrap: nowrap;
 }
 .menuProfileActive {
     width: 12rem !important;
+    transition: all ease-in-out .3s;
 }
-:global(body.dark) .menuProfile {
-    background: var(--background-dark);
-}
+
 :global(body.dark) .menuProfileActive {
     border-radius: 2rem 2rem 0 0;
-    background: var(--background-dark);
+
 }
 .menuProfile > .menuProfileButton{
     width: 100%;
-    height: auto;
+    height: 3.6rem;
     border-radius: 2.5rem;
-    backdrop-filter: var(--backdrop-filter-2);
+    border: var(--border);
+    background: var(--background);
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .menuProfileActive > .menuProfileButton{
+    margin-top: 0.6rem;
     border-radius: 2rem 2rem 0 0;
 }
-
+:global(body.dark) .menuProfile > .menuProfileButton{
+    border:0.1rem solid #555555;
+    border-bottom: 0;
+    background: var(--background-dark); 
+}
 /* ==========================================================================
    MODIFICACIÓN: Estilos específicos adaptados de .ulMenuProfile
    ========================================================================== */
 .ulMenuProfile{
+    overflow: hidden;
     cursor: pointer;
     color: #fff;
     border-radius: 0 0 1rem 1rem;
@@ -519,49 +526,8 @@ span{
     display: none;
 }
 
-.langMenuMobile{
-    width: 100%;
-    height: auto;
-    padding: 1rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.langMenuMobile > select{
-    width: auto;
-    margin: 0.2rem;
-    padding: 0.5rem 0.7rem;
-    border-radius: var(--border-radius);
-    background-color: #333;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.langMenuMobile > div > button{
-    border: none;
-    background-color: transparent;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.langMenuMobile > div > button > img {
-    padding-right: 0.5rem;
-}
-.langMenuMobile > div > a{
-    padding: 0.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.langMenuMobile > div > a > img{
-    padding-right: 0.5rem;
-}
-
 .contNavbarContent > .navbarContent > .navbarLinks > a > img,
+.contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a > img,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
     filter: invert(100%);
 }
@@ -579,7 +545,7 @@ span{
 }
 
 @media (max-width: 1280px){
-    .contNavbarContent > .navbarContent > .navbarLinks > .linkHome{
+    .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > .linkHome{
         display: flex;
     }
     .contNavbarContent > .navbarContent > .contNavbarMenu{
@@ -616,11 +582,17 @@ span{
         padding-right: 0.5rem;
         display: flex;
     }
+    .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+    }
     .contNavbarContent > .navbarContent > .navbarLinks > .linkCont,
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel,
     .contNavbarContent > .navbarContent > .navbarLinks > .langMenuMobile,
     .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel,
-    .navbarContent > .navbarLinks > div,
     .navbarMenuMobile,
     .contLinksUser{
         width: 100%;
@@ -630,22 +602,26 @@ span{
         display: flex;
         justify-content: flex-start;
     }
-    .navbarContent > .navbarLinks > div{
-        padding:0.5rem 0 0.5rem 1.5rem;
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > div{
+        padding: 0.5rem;
+        margin-left: 1rem;
     }
     .navbarMenu,
     .contNavbarContent > .navbarContent > .navbarLinks > .navbarLogoLink,
     .contNavbarContent > .menuProfile{
         display: none;
     }
-    .navbarContent > .navbarLinks > a:hover,
+    .navbarContent > .navbarLinks > .navbarLinksGroup > a:hover,
     .navbarContent > .navbarLinks > .elmPanel > a:hover{
         border-radius: 0;
+        border-bottom: 0.2rem solid transparent;
+        color: #fff;
+        background-color: #006eff;
     }
     .navbarContent > .navbarLinks > .elmPanel > form{
         width: 100%;
         height: auto;
-        padding: 0.5rem;
+        padding: 1rem 0;
 
         display: flex;
         justify-content: center;
@@ -654,7 +630,7 @@ span{
     nav, .navbar{
         height: 4em;
         border-bottom: var(--border);
-        transition: all 0.3s ease;
+        transition: all .3s ease;
         backdrop-filter: var(--backdrop-filter);
         background: var(--background-2);
 
@@ -710,7 +686,7 @@ span{
         align-content: flex-start;
     }
     :global(body.dark) .contNavbarContent > .navbarContent{
-        border: none;
+        background: var(--background-dark2);
     }
     
     .contNavbarContent > .navbarContent > a{
@@ -721,7 +697,7 @@ span{
         align-items: center;
         flex-direction: row;
     }
-    .contNavbarContent > .navbarContent > .navbarLinks > a,
+    .contNavbarContent > .navbarContennt > .navbarLinks > .navbarLinksGroup > a,
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a {
         display: flex;
         justify-content: flex-start;
@@ -731,11 +707,9 @@ span{
         color: white;
     }
     :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > a > img,
+    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a > img,
     :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
         filter: invert(0%);
-    }
-    .contNavbarContent > .navbarContent > .navbarLinks > div{
-        margin-bottom: 1rem;
     }
     .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
         margin: 0.5rem;
@@ -761,16 +735,21 @@ span{
         color: white;
     }
     .contNavbarContent > .navbarContent > .navbarLinks > a,
+    .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a,
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
         width: 100%;
+        margin: 0;
         padding: 0.6rem 0 0.6rem 1.5rem;
+        color: #000;
+
+        display: flex;
+        justify-content: flex-start;
     }
     .contNavbarContent > .menuProfile{
         display: none;
     }
     .contNavbarContent > .navbarContent > .navbarMenuMobile{
         width: 100%;
-
         border-radius: 0;
         background-color: transparent;
 
@@ -789,7 +768,7 @@ span{
         z-index: 12;
         width: 20rem;
         height: 100vh;
-        top: 3rem;
+        top: 4rem;
         right: -20rem; /* Estado cerrado por defecto */
         border-left: var(--border);
         background-color: white;

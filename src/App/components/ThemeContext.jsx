@@ -4,17 +4,17 @@ const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
     const getInitialDark = () => {
-        const saved = localStorage.getItem('dark')
+        const saved = localStorage.getItem('darkMode')
         if (saved !== null) return saved === '1'
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-        localStorage.setItem('dark', prefersDark ? '1' : '0')
+        localStorage.setItem('darkMode', prefersDark ? '1' : '0')
         return prefersDark
     }
     const [dark, setDark] = useState(getInitialDark)
 
     useEffect(() => {
         document.body.classList.toggle('dark', dark)
-        localStorage.setItem('dark', dark ? '1' : '0')
+        localStorage.setItem('darkMode', dark ? '1' : '0')
     }, [dark])
 
     return (

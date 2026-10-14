@@ -2,41 +2,30 @@ import {useState, useContext, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import styles from "./css/NavBar.module.css"
-import isotipo from "/isotipo_bn.svg"
+import isotipo from "/arbitro.png"
 import DarkMode from '../../components/DarkMode'
 import Button from '../../components/Button'
 import ImgProfile from '../../components/ImgProfile'
-
 import menu from '/icons/responsive/menu.png'
 import close from '/icons/responsive/close.png'
-
 import arrowBottom from "/icons/utilities/arrowBottom.png"
-
 import imgHome from '/icons/links/home.png'
-import imgDonate from '/icons/links/donate.png'
-import imgResources from '/icons/links/resources.png'
 import imgConfiguration from '/icons/links/configuration.png'
 import imgHelp from '/icons/links/help.png'
 import imgProfileMen from '/icons/links/profile_men.png'
 import imgNews from '/icons/links/news.png'
-import imgPlantations from '/icons/links/plantations.png'
-import imgAboutUs from '/icons/links/about_us.png'
 import imgPublication from '/icons/links/publication.png'
-
 import { UserContext } from '../../components/UserProvider'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../../config/config'
-import { useTranslation } from 'react-i18next'
-import LanguageSelector from '../../components/LanguageSelector'
 
 function NavBar() {
-    const { user, loadUser } = useContext(UserContext)
+    const { user, loadUser, setUser } = useContext(UserContext)
     const [menuProfileOpen, setMenuProfileOpen] = useState(false)
     const [togglePanel, setTogglePanel] = useState(false)
     const [cargando, setCargando] = useState(false)
     const navigate = useNavigate()
-    const [t, i18n] = useTranslation()    
     const apiUrl = CONFIG_BACKEND.API_DIR
-    const [imgMenuButtonPanel, setImgMenuButtonPanel] = useState(menu)
+    const [visible, setVisible] = useState(false)
 
     function toggleMenuProfile() {
         setMenuProfileOpen(!menuProfileOpen)
@@ -51,32 +40,37 @@ function NavBar() {
         setCargando(true)
 
         try {
-            const response = await fetch(`${apiUrl}/user/logout`, {
+            // 1. Limpiamos el usuario de forma instantánea en la interfaz
+            setUser(null)
+
+            // 2. Destruimos la sesión en el servidor PHP
+            await fetch(`${apiUrl}/user/logout`, {
                 method: 'POST',
                 credentials: 'include'
             })
-            if (!response.ok) {
-                if (import.meta.env.DEV) { console.error('Error status:', response.status) }
-                throw new Error('Network response was not ok')
-            }
-            const data = await response.json()
-            if (!data.logueado) {
-                navigate('/login')
-            }
+
+            // 3. Redirigimos al login sin requerir F5
+            navigate('/login', { replace: true })
+
         } catch (error) {
-            alert("❌ Error al iniciar sesión. Intenta nuevamente.")
+            if (import.meta.env.DEV) { 
+                console.error('Error al cerrar sesión:', error); 
+            }
+            navigate('/login', { replace: true })
         } finally {
             setCargando(false)
-            await loadUser()
         }
     }
 
-    /*traduccion */
     useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
-
+        const handleVisibleNavbar = ()=>{
+            setVisible(window.scrollY > 20)
+        }
+        window.addEventListener('scroll', handleVisibleNavbar)
+        handleVisibleNavbar()
+        
+        return ()=> window.removeEventListener('scroll', handleVisibleNavbar)
+    },[])
 
     return ( 
         <>
@@ -87,14 +81,14 @@ function NavBar() {
                             <img src={isotipo} alt="Logo" className={styles.logoImage} />
                         </div>
                     </Link>
-                    <p>DPISUD</p>
+                    <p>Escuela de Árbitros</p>
                     <div className={styles.buttonPanel} alt='buttonPanel' onClick={toggleMenuPanel}>
                         <img src={togglePanel ? close : menu} className={styles.imgMenuButtonPanel} alt="Menu Toggle"/>
                     </div>
                 </div>
-                <div className={`${styles.contNavbarContent} ${togglePanel ? styles.panelOpen : ''}`} id="contNavbarContent">
+                <div className={`${styles.contNavbarContent} ${visible && styles.contNavbarContentVisible} ${togglePanel && styles.panelOpen}`} id="contNavbarContent">
                     <nav className={styles.navbarContent} id="navbarContent">
-                        <div className={styles.navbarLinks} id='navbarLinks'>
+                        <div className={styles.navbarLinks} id='navbarLinks' >
                             {user && (
                                 <Link to={CONFIG_PATHS.PROFILE_PATH} className={styles.linkCont}>
                                     <div className={styles.imgProfilePanel}>
@@ -105,88 +99,69 @@ function NavBar() {
                             )}
                             <Link to='/' className={styles.navbarLogoLink}>
                                 <div className={styles.navbarLogo}>
-                                    <img src={isotipo} alt="Logo" className={styles.logoImage} />
+                                    <img src={isotipo} alt="Logo" className={`${styles.logoImage} ${visible && styles.imgInvert}`} />
                                 </div>
-                                <p>DPISUD</p>
+                                <p className={visible ? styles.blackText : styles.whiteText}>Escuela de Árbitros</p>
                             </Link>
-                            <Link to={CONFIG_PATHS.HOME_PATH} className={styles.linkHome}>
-                                <img src={imgHome} className={styles.imgMobile}/>
-                                {t('navbar.home')}
-                            </Link>
-                            <Link to={CONFIG_PATHS.NEWS_PATH}>
-                                <img src={imgNews} className={styles.imgMobile}/>
-                                {t('navbar.news')}
-                            </Link>
-                            <Link to={CONFIG_PATHS.ABOUT_US_PATH}>
-                                <img src={imgAboutUs} className={styles.imgMobile}/>
-                                {t('navbar.aboutUs')}
-                            </Link>
-                            <Link to={CONFIG_PATHS.RESOURCES_PATH}>
-                                <img src={imgResources} className={styles.imgMobile}/>
-                                {t('navbar.resources')}
-                            </Link>
-                            <Link to={CONFIG_PATHS.PLANTATIONS}>
-                                <img src={imgPlantations} className={styles.imgMobile}/>
-                                {t('navbar.plantations')}
-                            </Link>
-                            <Link to={CONFIG_PATHS.DONATE_PATH}>
-                                <img src={imgDonate} className={styles.imgMobile}/>
-                                {t('navbar.donate')}
-                            </Link>
-                            
-                            {!user ? (
-                            <>
-                            <Link to={CONFIG_PATHS.LOGIN_PATH}>
-                                <img src={imgProfileMen} className={styles.imgMobile}/>
-                                {t('navbar.login')}
-                            </Link>
-                            <div className={styles.contNavbarMenuPanel}>
-                                <LanguageSelector />
-                            </div>
-
-                            <DarkMode />
-                            </>
-                            ) : (
-                            <>
-                            <div className={styles.elmPanel}>
-                                <Link to={CONFIG_PATHS.PROFILE_PATH}>
-                                    <img src={imgProfileMen} className={styles.imgMobile}/>
-                                    {t('navbar.profile')}
+                            <div className={styles.navbarLinksGroup}>
+                                <Link to={CONFIG_PATHS.HOME_PATH} className={`${styles.linkHome} ${visible && styles.blackText}`} onClick={toggleMenuPanel}>
+                                    <img src={imgHome} className={styles.imgMobile}/>
+                                    Inicio
                                 </Link>
-                                {(user.rolId === 1) && (
-                                    <>
-                                    <Link to={CONFIG_PATHS.NEW_POST_PATH}>
+                                <Link to={CONFIG_PATHS.SPORTS_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
+                                    <img src={imgNews} className={styles.imgMobile}/>
+                                    Cursos
+                                </Link>
+                                {user &&(
+                                    <Link to={CONFIG_PATHS.CAMPUS_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
                                         <img src={imgPublication} className={styles.imgMobile}/>
-                                        {t('navbar.publication')}
+                                        Campus
                                     </Link>
-                                    <Link to={CONFIG_PATHS.CONFIG_PATH}>
-                                        <img src={imgConfiguration} className={styles.imgMobile}/>
-                                        {t('navbar.configuration')}
+                                )}                       
+                            
+                                {!user && (
+                                    <>
+                                    <Link to={CONFIG_PATHS.LOGIN_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
+                                        <img src={imgProfileMen} className={styles.imgMobile}/>
+                                        Login
                                     </Link>
+                                    
+                                    <DarkMode float = {true} />
                                     </>
                                 )}
-                                <Link to={CONFIG_PATHS.HELP_PATH}>
-                                    <img src={imgHelp} className={styles.imgMobile}/>
-                                    {t('navbar.help')}
-                                </Link>
-                                <div className={styles.contNavbarMenuPanel}>
-                                    <LanguageSelector />
-                                </div>
-                                <DarkMode />
-                                <form onSubmit={handleSubmit}>
-                                    <Button
-                                        typeBtn="submit"
-                                        altNameBtn="logout"
-                                        titleBtn="Cerrar Sesión"
-                                        disabled={cargando}
-                                    >{t('navbar.logout')}</Button>
-                                </form>
                             </div>
-                            </>
+                            
+                            {user &&(
+                                <div className={styles.elmPanel}>
+                                    <Link to={CONFIG_PATHS.PROFILE_PATH} onClick={toggleMenuPanel}>
+                                        <img src={imgProfileMen} className={styles.imgMobile}/>
+                                        Perfil
+                                    </Link>
+                                    {(user.rolId === 1) && (
+                                        <>
+                                        <Link to={CONFIG_PATHS.CONFIG_PATH} onClick={toggleMenuPanel}>
+                                            <img src={imgConfiguration} className={styles.imgMobile}/>
+                                            Configuración
+                                        </Link>
+                                        </>
+                                    )}
+                                    <Link to={CONFIG_PATHS.HELP_PATH} onClick={toggleMenuPanel}>
+                                        <img src={imgHelp} className={styles.imgMobile}/>
+                                        Ayuda
+                                    </Link>
+
+                                    <DarkMode />
+                                    
+                                    <form onSubmit={handleSubmit}>
+                                        <Button
+                                            typeBtn="submit"
+                                            altNameBtn="logout"
+                                            titleBtn="Cerrar Sesión"
+                                            disabled={cargando}
+                                        >Cerrar sesión</Button>
+                                    </form>
+                                </div>
                             )}
-                        </div>
-                        <div className={styles.contNavbarMenu}>
-                            <LanguageSelector />
                         </div>
 
                     </nav>
@@ -197,29 +172,24 @@ function NavBar() {
                                     <div className={styles.contContImgProfile} id="contContImgProfile">
                                         <ImgProfile id="imgProfile"/>
                                     </div>
-                                    <p className={`${styles.wellcomeName} ${menuProfileOpen ? styles.nameVisible : ''}`} id="wellcomeName">{user.names}</p>
+                                    <p className={`${styles.wellcomeName} ${menuProfileOpen ? styles.nameVisible : ''}`} id="wellcomeName">Hola <br/>{user.names}</p>
                                 </div>
                                 <img src={arrowBottom} alt="arrowMenu" id="imgMenu" className={`${styles.menuIcon} ${styles.menuIconProfile} ${menuProfileOpen ? styles.rotateArrow : ''}`}/>
                             </div>
                             <ul className={`${styles.menu} ${styles.ulMenuProfile} ${menuProfileOpen ? styles.menuOpen : ''}`} id="ulMenuProfile">
                                 <li>
-                                    <Link to={CONFIG_PATHS.PROFILE_PATH}>{t('buttons.profile')}</Link>
+                                    <Link to={CONFIG_PATHS.PROFILE_PATH}>Perfil</Link>
                                 </li>
                                 {(user.rolId === 1) && (
-                                    <>
                                     <li>
-                                        <Link to={CONFIG_PATHS.NEW_POST_PATH}>{t('navbar.publication')}</Link>
+                                        <Link to={CONFIG_PATHS.CONFIG_PATH}>Configuración</Link>
                                     </li>
-                                    <li>
-                                        <Link to={CONFIG_PATHS.CONFIG_PATH}>{t('navbar.configuration')}</Link>
-                                    </li>
-                                    </>
                                 )}
                                 <li>
-                                    <Link to={CONFIG_PATHS.HELP_PATH}>{t('navbar.help')}</Link>
+                                    <Link to={CONFIG_PATHS.HELP_PATH}>Ayuda</Link>
                                 </li>
                                 <li>
-                                    <DarkMode />
+                                    <DarkMode float = {false}/>
                                 </li>
                                 <form onSubmit={handleSubmit}>
                                     <Button
@@ -227,7 +197,7 @@ function NavBar() {
                                         altNameBtn="logout"
                                         titleBtn="Cerrar Sesión"
                                         disabled={cargando}
-                                    >{t('navbar.logout')}</Button>
+                                    >Cerrar sesión</Button>
                                 </form>
                             </ul>
                         </menu>

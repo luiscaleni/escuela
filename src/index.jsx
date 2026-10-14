@@ -2,83 +2,91 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import { UserProvider } from './App/components/UserProvider'
+import ContentCampus from './App/components/ContentCampus'
 import Template from './App/template/Template'
+import TemplateCampus from './App/template/TemplateCampus'
 import './index.css'
-import './App/i18n'
 
-import Home               from './App/pages/Home'
-import News               from './App/pages/News'
-import AboutUs            from './App/pages/AboutUs'
-import Resources          from './App/pages/Resources'
-import Donate             from './App/pages/Donate'
+import Home                     from './App/pages/Home'
+import AboutUs                  from './App/pages/AboutUs'
 
-import Register           from './App/pages/Register'
-import Login              from './App/pages/Login'
-import Success            from './App/pages/Success'
-import NewsDetail         from './App/pages/NewsDetail'
-import ForgetPassw        from './App/pages/ForgetPassw'
-import ResetPassw         from './App/pages/ResetPassw'
-import Plantations        from './App/pages/Plantations'
-import PlantationsCountry from './App/pages/PlantationsCountry'
-import PlantationDetail   from './App/pages/PlantationDetail'
+import Register                 from './App/pages/Register'
+import Login                    from './App/pages/Login'
+import Success                  from './App/pages/Success'
+import ForgetPassw              from './App/pages/ForgetPassw'
+import ResetPassw               from './App/pages/ResetPassw'
 
 /*Protected */
-import PublicRoute        from './App/components/PublicRoute'
-import ProtectedRoute     from './App/components/ProtectedRoute'
-import Profile            from './App/pages/protected/Profile'
-import ProfileEdit        from './App/pages/protected/ProfileEdit'
-import Wellcome           from './App/pages/protected/Wellcome'
-import Configuration      from './App/pages/protected/Configuration'
-import ConfigurationEdit  from './App/pages/protected/ConfigurationEdit'
-import PlantationEdit     from './App/pages/protected/PlantationEdit'
-import NewPost            from './App/pages/protected/NewPost'
-import PostEdit           from './App/pages/protected/PostEdit'
-import Help               from './App/pages/protected/Help'
-import { CONFIG_PATHS }   from './App/config/config'
-import { ThemeProvider }  from './App/components/ThemeContext'
+import PublicRoute              from './App/components/PublicRoute'
+import ProtectedRoute           from './App/components/ProtectedRoute'
+import Profile                  from './App/pages/protected/Profile'
+import ProfileEdit              from './App/pages/protected/ProfileEdit'
+import Wellcome                 from './App/pages/protected/Wellcome'
+import Configuration            from './App/pages/protected/Configuration'
+import ConfigurationEdit        from './App/pages/protected/ConfigurationEdit'
+import PostEdit                 from './App/pages/protected/PostEdit'
+import Help                     from './App/pages/protected/Help'
+
+import { CONFIG_PATHS }         from './App/config/config'
+import { ThemeProvider }        from './App/components/ThemeContext'
+import Sports                   from './App/pages/Sports'
+
+import Campus                   from './App/pages/protected/campus/Campus'
+import MyCourseDetail           from './App/pages/protected/campus/MyCourseDetail'
+import MyCourses                from './App/pages/protected/campus/MyCourses'
+import DisciplineDetail         from './App/pages/DisciplineDetail'
 
 const routes = [
   {
     path: "/",
     element: <Template separator={false} />,
     children: [
-      { path: CONFIG_PATHS.HOME_PATH,                    element: <Home/>,                  },
-      { path: CONFIG_PATHS.NEWS_PATH,                    element: <News/>,                  },
-      { path: CONFIG_PATHS.NEWS_PATH+"/:id_news",        element: <NewsDetail/>,            },
-      { path: CONFIG_PATHS.ABOUT_US_PATH,                element: <AboutUs/>,               },
-      { path: CONFIG_PATHS.RESOURCES_PATH,               element: <Resources/>,             },
-      { path: CONFIG_PATHS.DONATE_PATH,                  element: <Donate/>,                },
-      { path: CONFIG_PATHS.PLANTATIONS,                  element: <Plantations/>,           },
-      { path: CONFIG_PATHS.PLANTATIONS+"/:country",      element: <PlantationsCountry />,   },
-      { path: CONFIG_PATHS.PLANTATIONS+"/:country/:id",  element: <PlantationDetail />,     },
+      { path: CONFIG_PATHS.HOME_PATH,                                       element: <Home/>,                  },
+      { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                },
+      { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <DisciplineDetail/>,      },
+      { path: CONFIG_PATHS.ABOUT_US_PATH,                                   element: <AboutUs/>,               },
       //
-      { path: "*",                                       element: <Home/>                    }
+      { path: "*",                                                          element: <Home/>                   }
     ]
   },
   {  
     path: "/",
     element: <Template separator={true} />,
     children: [
-      { path: CONFIG_PATHS.RESET_PASSW,                  element: <ResetPassw />         },
-      { path: CONFIG_PATHS.SUCCESS_PATH,                 element: <Success />                },
+      { path: CONFIG_PATHS.RESET_PASSW,                                     element: <ResetPassw />                                                 },
+      { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
       
-      { path: CONFIG_PATHS.REGISTER_PATH,                element: <PublicRoute>     <Register/>           </PublicRoute>    },
-      { path: CONFIG_PATHS.LOGIN_PATH,                   element: <PublicRoute>     <Login/>              </PublicRoute>    },
-      { path: CONFIG_PATHS.FORGET_PASSW_PATH,            element: <PublicRoute>     <ForgetPassw/>        </PublicRoute>    },
+      { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
+      { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>     <Login/>                   </PublicRoute>    },
+      { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>     <ForgetPassw/>             </PublicRoute>    },
 
       //Protected - ROL 1 y 2
-      { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,           element: <ProtectedRoute>  <Wellcome/>           </ProtectedRoute> },
-      { path: CONFIG_PATHS.PROFILE_PATH,                 element: <ProtectedRoute>  <Profile/>            </ProtectedRoute> },
-      { path: CONFIG_PATHS.PROFILE_EDIT_PATH,            element: <ProtectedRoute>  <ProfileEdit/>        </ProtectedRoute> },
-      { path: CONFIG_PATHS.HELP_PATH,                    element: <ProtectedRoute>  <Help/>               </ProtectedRoute> },
+      { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,                              element: <ProtectedRoute>  <Wellcome/>                </ProtectedRoute> },
+      { path: CONFIG_PATHS.PROFILE_PATH,                                    element: <ProtectedRoute>  <Profile/>                 </ProtectedRoute> },
+      { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
+      { path: CONFIG_PATHS.HELP_PATH,                                       element: <ProtectedRoute>  <Help/>                    </ProtectedRoute> },
       
       //Protected - ROl 1
-      { path: CONFIG_PATHS.NEW_POST_PATH,                element: <ProtectedRoute>  <NewPost/>            </ProtectedRoute> },
-      { path: CONFIG_PATHS.EDIT_POST_PATH+"/:id_news",   element: <ProtectedRoute>  <PostEdit/>           </ProtectedRoute> },
-      { path: CONFIG_PATHS.CONFIG_PATH,                  element: <ProtectedRoute>  <Configuration/>      </ProtectedRoute> },
-      { path: CONFIG_PATHS.CONFIG_EDIT_PATH,             element: <ProtectedRoute>  <ConfigurationEdit/>  </ProtectedRoute> },
+      { path: CONFIG_PATHS.EDIT_POST_PATH+"/:id_course",                    element: <ProtectedRoute>  <PostEdit/>                </ProtectedRoute> },
+      { path: CONFIG_PATHS.CONFIG_PATH,                                     element: <ProtectedRoute>  <Configuration/>           </ProtectedRoute> },
+      { path: CONFIG_PATHS.CONFIG_EDIT_PATH,                                element: <ProtectedRoute>  <ConfigurationEdit/>       </ProtectedRoute> },
     ]
-  }
+  },
+  { 
+    path: "campus",
+    element: <TemplateCampus />,
+    children: [
+      { path: CONFIG_PATHS.CAMPUS_PATH, element: <ProtectedRoute> <Campus/> </ProtectedRoute> },
+      { 
+        path: "mis-cursos",
+        element: <ContentCampus />, // <--- Este componente es el contenedor clave
+        children: [
+          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_PATH+"/:id",          element: <ProtectedRoute> <MyCourses/>      </ProtectedRoute> },
+          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_DETAIL_PATH+"/:id",   element: <ProtectedRoute> <MyCourseDetail/> </ProtectedRoute> },
+        ]
+      }
+    ]
+  },
 ]
 const router = createBrowserRouter(routes)
 

@@ -4,7 +4,6 @@ import Button from './Button'
 import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND } from '../config/config'
-import { useTranslation } from 'react-i18next'
 import TopButtons from './TopButtons'
 import TopButtonNone from './TopButtonNone'
 
@@ -13,12 +12,6 @@ function FormResources({onSuccess}) {
     const [selectedResource, setSelectedResource] = useState(null)
     const [form, setForm] = useState({})
     const formRef = useRef(null)
-    const [t, i18n] = useTranslation()   
-
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -98,21 +91,21 @@ function FormResources({onSuccess}) {
                     <TopButtonNone />
                 </TopButtons>
                 <div className={styles.contElmsForm}>
-                    <ContFormInput nameElm={t('form.resource.name')}>
+                    <ContFormInput nameElm="Recurso">
                         <input 
                             type="text" 
                             alt="titleResource" 
                             name="titleResource" 
-                            placeholder= {t('form.resource.name')+' ...'}
+                            placeholder= "nombre"
                             onChange={handleChange}
                             required
                         />
                     </ContFormInput>
-                    <ContFormInput nameElm={t('form.resource.descript')}>
+                    <ContFormInput nameElm="descripcion">
                         <textarea 
                             alt="descriptionResource" 
                             name="descriptionResource" 
-                            placeholder={t('form.resource.descript')+' ...'}
+                            placeholder="descripcion del recurso"
                             onChange={handleChange}
                             required
                         ></textarea>
@@ -129,12 +122,12 @@ function FormResources({onSuccess}) {
                     
                     <Button
                         typeBtn="submit"
-                        altName={t('buttons.goUp')}
-                        title={t('buttons.goUp')}
+                        altName="Subir"
+                        title="Subir"
                         id="subirArchivo"
                         disabled={cargando}
                     >
-                        {cargando ? <Loader mini={true}/> : t('buttons.goUp')}
+                        {cargando ? <Loader mini={true}/> : "Subir"}
                     </Button>
                 </div>
             </form>

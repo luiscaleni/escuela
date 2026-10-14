@@ -21,22 +21,6 @@
   flex-direction: column;
 }
 
-.dataCountry > p,
-.dataChurch > p,
-.dataPlanters > p{
-  color: white;
-}
-
-.dataCountry{
-  background-color: #0F6BBF;
-}
-.dataChurch{
-  background-color: #BF0F0F;
-}
-.dataPlanters{
-  background-color: #2b924a;
-}
-
 .marqueeContainer{
   width: auto;
   padding: 2rem 0rem 2rem 0rem;

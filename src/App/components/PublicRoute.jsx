@@ -9,7 +9,7 @@ function PublicRoute({ children }) {
 
   if (loading) return <Loader />
 
-  return user ? <Navigate to={CONFIG_PATHS.YOUR_WELLCOME_PATH} replace /> : children
+  return user ? <Navigate to={CONFIG_PATHS.CAMPUS_PATH} replace /> : children
 }
 
 export default PublicRoute

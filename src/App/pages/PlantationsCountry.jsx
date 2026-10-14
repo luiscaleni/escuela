@@ -7,7 +7,6 @@ import stylesB from '../components/css/Button.module.css'
 import LeftTopButton from '../components/LeftTopButton'
 import Modal from '../components/Modal'
 import stylesButton from '../components/css/Button.module.css'
-import { useTranslation } from 'react-i18next'
 import RightTopButton from "../components/RightTopButton"
 import imgPlus from '/icons/utilities/plus.png'
 import imgGraphic from '/icons/utilities/graphic.png'
@@ -20,16 +19,10 @@ import TopButtons from "../components/TopButtons"
 
 function PlantationsCountry() {
     const [plantations, setPlantations] = useState([])
-    const {country} = useParams()
     const [showContainerForm, setShowContainerForm] = useState(false)
     const [showContainer, setShowContainer] = useState(false)
+    const {country} = useParams()
     const { user, loadUser } = useContext(UserContext)
-    const [t, i18n] = useTranslation()    
-    
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     useEffect(() => {
         fetch(`${CONFIG_BACKEND.API_DIR}/plantationsCountry?country=${country}`, {
@@ -79,14 +72,14 @@ function PlantationsCountry() {
                 <Modal
                     id="containerFloat"
                     titleElm={country} 
-                    textElm={`* ${t('buttons.suppFormats')}: jpg, jpeg, png y webp.`}
+                    textElm={`* Formatos permitidos: jpg, jpeg, png y webp.`}
                     onClickElm={fnCloseContainer}
                 >
                     <div className={styles.contGB}>
                         <ChartPie country={country} />
                         
                         <button onClick={downloadImg} className={stylesB.button}>
-                            {t('buttons.download')}
+                            Descargar
                         </button>
                     </div>
                 </Modal>
@@ -94,8 +87,8 @@ function PlantationsCountry() {
             {showContainerForm && (
                 <Modal
                     id="containerFloat"
-                    titleElm={t('buttons.newPlantation')} 
-                    textElm={`* ${t('buttons.suppFormats')}: jpg, jpeg, png y webp.`}
+                    titleElm="Nueva plantación" 
+                    textElm={`* Formatos permitidos: jpg, jpeg, png y webp.`}
                     onClickElm={fnCloseContainerForm}
                 >
                     <FormPlantation countryPlant={country}/>
@@ -103,7 +96,7 @@ function PlantationsCountry() {
             )}
             
             <Publication
-                titlePub={t('plantations.titleCountry')+country}
+                titlePub={"Plantacion"+country}
                 typeElm="img"
                 locationAlt="coverCountrys"
                 nameAsset={`${country}.jpg`}
@@ -112,14 +105,14 @@ function PlantationsCountry() {
                 <TopButtons>
                     <LeftTopButton 
                         typeElm='expand' 
-                        text={t('buttons.plantations')} 
+                        text="Plantacion"
                         marginLeft={true}
                         locationElm={CONFIG_PATHS.PLANTATIONS} 
                     />
                     {plantations.length > 0 &&(
                         <ButtonTop 
                             id="seeGraphic"
-                            textElm={t('buttons.graphic')} 
+                            textElm="Gráficos"
                             typeElm='expand'
                             imgElm={imgGraphic}
                             onClick={() => {fnShowContainer()}}
@@ -128,7 +121,7 @@ function PlantationsCountry() {
                     {user && (user.rolId === 1 || user.rolId === 2) && (    
                         <RightTopButton 
                             typeElm='expand' 
-                            text={t('buttons.newPlantation')} 
+                            text="Nueva plantación"
                             marginRight={true} 
                             imgElm={imgPlus} 
                             onClick={() => {fnShowContainerForm()}} 
@@ -140,13 +133,13 @@ function PlantationsCountry() {
                         <div className={styles.contContTable}>
                             <div className={styles.contTable}>
                                 <div className={styles.headerList}>
-                                    <div className={styles.mediumSpace}>{t('plantations.province')}</div>
-                                    <div className={styles.mediumSpace}>{t('plantations.match')}</div>
-                                    <div className={styles.largeSpace}>{t('plantations.street')}</div>
-                                    <div className={styles.smallSpace}>{t('plantations.members')}</div>
-                                    <div className={styles.mediumSpace}>{t('plantations.planter')}</div>
-                                    <div className={styles.mediumSpace}>{t('plantations.start')}</div>
-                                    <div className={styles.mediumSpace}>{t('plantations.info')}</div>
+                                    <div className={styles.mediumSpace}>a</div>
+                                    <div className={styles.mediumSpace}>a</div>
+                                    <div className={styles.largeSpace}>a</div>
+                                    <div className={styles.smallSpace}>a</div>
+                                    <div className={styles.mediumSpace}>a</div>
+                                    <div className={styles.mediumSpace}>a</div>
+                                    <div className={styles.mediumSpace}>a</div>
                                 </div>
                                 <div className={styles.table}>
                                     { plantations.length > 0 ? (
@@ -169,7 +162,7 @@ function PlantationsCountry() {
                                                         to={`/plantaciones/${country}/${plant.id_plant}`}
                                                         className={stylesButton.button}
                                                     >
-                                                        {t('buttons.seeMore')}
+                                                        Ver más...
                                                     </Link>
                                                 </div>
                                             </div>
@@ -179,7 +172,7 @@ function PlantationsCountry() {
                             </div>
                         </div>
                     ):(
-                        <p>{t('alerts.nonePlant')}</p>
+                        <p>No hay nada</p>
                     )}
             </Publication>
         </>

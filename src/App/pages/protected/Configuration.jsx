@@ -16,9 +16,11 @@ function Configuration() {
     return ( 
         <>
             <Section>
-                {(user && (user.rolId === 1)) ? (
+                {user?.rolId === 1 ? (
                     <ShowConfigData />
-                ): null}
+                ) : (
+                    <p>Nada por aqui</p>
+                )}
             </Section>
         </>
      )

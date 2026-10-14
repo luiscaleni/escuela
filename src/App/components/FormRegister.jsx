@@ -5,18 +5,11 @@ import Button from "./Button"
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Loader from './Loader'
-import { useTranslation } from 'react-i18next'
 
 function FormRegister() {
 	const [ipAddress, setIpAddress] = useState('')
 	const [cargando, setCargando] = useState(false)
 	const navigate = useNavigate()
-	const [t, i18n] = useTranslation()  
-
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
 	useEffect(() => {
 		const fetchIp = async () => {
@@ -75,44 +68,49 @@ function FormRegister() {
 		alertContainer.style.padding="0.5em"
 
 		try {
-			const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/save`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'Accept': 'application/json'
-				},
-				body: JSON.stringify(userData)
-			})
-			const contentType = response.headers.get('content-type')
-			if (contentType && contentType.includes('application/json')) {
-				const data = await response.json()
+            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/save`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
 
-				if (data.success) {
-					alertContainer.style.backgroundColor = "#059c38"
-					alertContainer.innerHTML = "✅ " + data.message
-					setCargando(true)
-					setTimeout(() => navigate(CONFIG_PATHS.LOGIN_PATH), 3000)
-				} else {
-					alertContainer.style.backgroundColor = "#f00"
-					alertContainer.innerHTML = "❌ " + data.error
-					formRegister.reset()
-					setTimeout(() => {
-						alertContainer.innerHTML = ""
-						alertContainer.style.padding = ""
-					}, 3000)
-				}
-			} else {
-				const text = await response.text()
-				throw new Error(`❌ Respuesta no JSON: ${text}`)
-			}
-		} catch (errorCatch) {
-				if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch) }
-				alertContainer.innerHTML="❌ "+errorCatch.error
-				alertContainer.style.backgroundColor="#f00"
-				setTimeout(() => {
-					formRegister.reset()
-				}, 2000)
-		}
+            // Lee la respuesta como texto primero para ver qué llega exactamente
+            const rawText = await response.text();
+            console.log("Respuesta cruda del servidor:", rawText);
+
+            if (!rawText) {
+                throw new Error("El servidor respondió con un texto vacío.");
+            }
+
+            const data = JSON.parse(rawText);
+
+            if (data.success) {
+                alertContainer.style.backgroundColor = "#059c38";
+                alertContainer.innerHTML = "✅ " + data.message;
+                setCargando(true);
+                setTimeout(() => navigate(CONFIG_PATHS.LOGIN_PATH), 3000);
+            } else {
+                alertContainer.style.backgroundColor = "#f00";
+                alertContainer.innerHTML = "❌ " + (data.error || "Error desconocido");
+                formRegister.reset();
+                setTimeout(() => {
+                    alertContainer.innerHTML = "";
+                    alertContainer.style.padding = "";
+                }, 3000);
+            }
+        } catch (errorCatch) {
+            if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch); }
+            alertContainer.innerHTML = "❌ " + errorCatch.message;
+            alertContainer.style.backgroundColor = "#f00";
+            setTimeout(() => {
+                formRegister.reset();
+                alertContainer.innerHTML = "";
+                alertContainer.style.padding = "";
+            }, 3000);
+        }
 	}
 
 	return (
@@ -120,56 +118,56 @@ function FormRegister() {
 		<div className={styles.contForm}>
 			<form className={styles.form} id='formRegister' onSubmit={handleSubmit}>
 				<div className={styles.alertContainer} id="alertContainer"></div>
-				<h2>{t('buttons.register')}</h2>
-				<ContFormInput nameElm={t('form.register.names')+" :"}>
-					<input type='text' name='names' value={form.names} id='name' placeholder={t('form.register.names')} onChange={handleChange} required />
+				<h2>Regístrate</h2>
+				<ContFormInput nameElm="Nombre/s :">
+					<input type='text' name='names' value={form.names} id='name' placeholder="Nombres" onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm={t('form.register.lastName')+" :"}>
-					<input type='text' name='lastNames' value={form.lastNames} id='lastNames' placeholder={t('form.register.lastName')} onChange={handleChange} required />
+				<ContFormInput nameElm="Apellido/s :">
+					<input type='text' name='lastNames' value={form.lastNames} id='lastNames' placeholder="Apellidos" onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm={t('form.login.email')+" :"}>
-					<input type='text' name='email' value={form.email} id='email' placeholder={t('form.login.email')} onChange={handleChange} required />
+				<ContFormInput nameElm="Email :">
+					<input type='text' name='email' value={form.email} id='email' placeholder="Email" onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm={t('form.login.passw')+" :"}>
-					<input type='password' name='passw' value={form.passw} id='passwordRegister' placeholder={t('form.login.passw')} onChange={handleChange} required />
+				<ContFormInput nameElm="Contraseña :">
+					<input type='password' name='passw' value={form.passw} id='passwordRegister' placeholder="Contraseña" onChange={handleChange} required />
 				</ContFormInput>
 				
-				<ContFormInput nameElm={t('form.register.sex')+" :"}>
+				<ContFormInput nameElm="Sexo :">
 					<div className={styles.radio}>
 						<label>
 							<input type='radio' name='sex' value='M' id='masculino' onChange={handleChange} required />
-							{t('form.register.male')}
+							Masculino
 						</label>
 
 						<label>
 							<input type='radio' name='sex' value='F' id='femenino' onChange={handleChange} required />
-							{t('form.register.female')}
+							Femenino
 						</label>
 					</div>
 				</ContFormInput>
 
-				<ContFormInput nameElm={t('form.register.birthday')+" :"}>
+				<ContFormInput nameElm="Fecha de nac. :">
 					<input type='date' name='birthday' value={form.birthday} id='birthday' onChange={handleChange} required />
 				</ContFormInput>
 
-				<ContFormInput nameElm={t('form.register.code')+" :"}>
-					<input type='password' name='hash' value={form.hash} id='hash' placeholder={t('form.register.code')} onChange={handleChange} autoComplete="off" required />
+				<ContFormInput nameElm="Código de registro :">
+					<input type='password' name='hash' value={form.hash} id='hash' placeholder="Lo proporciona administración" onChange={handleChange} autoComplete="off" required />
 				</ContFormInput>
 
 				<ContFormInput className={styles.btn}>
 					<Button
 						type='submit'
 						altName='Registrarme'
-						title={t('buttons.register')}
+						title="Restrarme"
 						disabled={cargando}
 					>
-						{cargando ? <Loader mini={true}/> : t('buttons.register')}
+						{cargando ? <Loader mini={true}/> : "Registrarme"}
 					</Button>
 				</ContFormInput>
-				<p className={styles.smallText}>{t('buttons.youAccount')}<Link to='/login'>{t('buttons.login')}</Link></p>
+				<p className={styles.smallText}>Ya tengo una cuenta, ir a<Link to='/login'>Inicio de sesión</Link></p>
 			</form>
 		</div>
 		</>

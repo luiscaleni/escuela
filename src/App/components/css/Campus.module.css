@@ -1,0 +1,96 @@
+.panelCampus{
+    width: 100dvw;
+    height: auto;
+    background-color: #afafaf;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panelCampus > .panelContainer{
+    width: 100%;
+    height: auto;
+    min-height: 100dvh;
+    padding: 2rem 16% 1rem 2rem;
+    background-color: #fff;
+
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+:global(body.dark) .panelCampus > .panelContainer{
+    background-color: #1D1D1D;
+}
+.panelCampus > .panelContainer > h2{
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
+}
+.panelCampus > .panelContainer > h2,
+.panelCampus > .panelContainer > p{
+    color: #000;
+}
+:global(body.dark) .panelCampus > .panelContainer > h2,
+.panelCampus > .panelContainer > p{
+    color: #fff;
+}
+.panelCampus > .sidePanel > .buttonPanel{
+    transition: all ease-in-out .3s;
+    display: none;
+}
+.panelCampus > .sidePanel > .buttonPanel > img{
+    padding: 0 0.2rem 0.4rem 0.2rem;
+}
+.panelCampus > .sidePanel > h2{
+    display: none;
+}
+
+
+@media (max-width: 1280px){
+    .panelCampus{
+        position: relative;
+    }
+    .panelCampus > .sidePanel{
+        position: fixed;
+        width: 19.4rem;
+        top: 4rem;
+        padding: 0;
+        right: -19.4rem;
+        z-index: 1000;
+    }
+    .panelCampus > .sidePanel > h2{
+        height: 2.6rem;
+        color: #000;
+        padding: 0.2rem 0.5rem;
+        background-color: #CCCCCC;
+
+        display: flex;
+    }
+    .panelCampus > .sidePanel > .buttonPanel{
+        position: absolute;
+        width: 3rem;
+        left: -3rem;
+        padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+        border-radius: 0 0 0 1rem;
+        background-color: #ccc;
+
+        display: flex;
+    }
+    .panelCampus > .sidePanel > .buttonPanel > img{
+        filter: invert(1);
+    }
+    .panelCampus > .panelContainer{
+        width: 100%;
+    }
+    .panelCampus > .sidePanel{
+        background-color: #AFAFAF;
+    }
+    .panelCampus > .panelOpen{
+        right: 0 !important;
+    }
+}
+
+@media (max-width: 1080px){
+}

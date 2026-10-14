@@ -2,7 +2,7 @@ import styles from './css/Modal.module.css'
 import { createPortal } from 'react-dom'
 import imgClose from '/icons/utilities/close.png'
 
-function Modal({titleElm, onClickElm, textElm="", children}) {
+function Modal({titleElm, onClickElm, children, formats=""}) {
     const modal = ( 
         <>
             <div className={styles.modal}>
@@ -15,7 +15,7 @@ function Modal({titleElm, onClickElm, textElm="", children}) {
                         <div className={styles.contChildren}>
                             {children}
                         </div>
-                        <p>{textElm}</p>
+                        {formats && <p>Formatos permitidos: {formats}</p>}
                     </div>
                 </div>
             </div>

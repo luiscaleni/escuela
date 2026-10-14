@@ -5,7 +5,6 @@ import Button from "./Button"
 import ContFormInput from "./ContFormInput"
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Loader from "./Loader"
-import { useTranslation } from 'react-i18next'
 
 
 function FormForgetPassw() {
@@ -16,12 +15,6 @@ function FormForgetPassw() {
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
-    const [t, i18n] = useTranslation()  
-    
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -79,11 +72,11 @@ function FormForgetPassw() {
                     onSubmit={handleSubmit}
                 >
                     <div className={styles.alertContainer} id="alertContainer"></div>
-                    <h2>{t('form.recoveryPassw.title')}</h2>
-                    <ContFormInput nameElm={t('form.login.email')+" :"}>
+                    <h2>Olvidé mi contraseña</h2>
+                    <ContFormInput nameElm="Email :">
                         <input
                             type="email"
-                            placeholder={t('form.login.email')}
+                            placeholder="Email"
                             value={form.email}
                             name='email'
                             id='email'
@@ -96,13 +89,13 @@ function FormForgetPassw() {
                         <Button
                             typeBtn='submit'
                             altName='Recuperar'
-                            title={t('buttons.recovery')}
+                            title="Recuperar"
                             disabled={loading}
                         >
-                            {loading ? <Loader mini={true}/> : t('buttons.recovery')}
+                            {loading ? <Loader mini={true}/> : "Recuperar"}
                         </Button>
                     </ContFormInput>
-                    <p className={styles.smallText}>{t('buttons.youAccount')}<Link to='/login'>{t('buttons.login')}</Link></p>
+                    <p className={styles.smallText}>Ya tengo una cuenta, ir a<Link to='/login'>Inicio de sesión</Link></p>
                 </form>
             </div>
         </>

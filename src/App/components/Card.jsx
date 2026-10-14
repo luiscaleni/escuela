@@ -3,9 +3,9 @@ import styles from "./css/Card.module.css"
 import bannerDefaultCard from '/images/banner_default_card.jpg'
 import { CONFIG_BACKEND } from "../config/config"
 
-function Card({link, cardTitle, descriptionCard, imgCard=""}) {
+function Card({link, cardTitle, ubication="", descriptionCard, imgCard=""}) {
     let imgSrc
-    let routeImg = CONFIG_BACKEND.API_DIR+"/src/assets/publications/"+imgCard
+    let routeImg = CONFIG_BACKEND.API_DIR+"/src/assets/"+ubication+"/"+imgCard
     
     if(imgCard){
         imgSrc = routeImg

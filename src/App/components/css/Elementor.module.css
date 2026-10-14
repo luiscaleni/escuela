@@ -1,14 +1,15 @@
 .elementor{
+    user-select: none;
     max-width: 30rem;
     min-width: 20rem;
     width: 100%;
     height: 20rem;
     margin: 0.5rem 1rem;
-    color: white;
-    text-align: center;
-    overflow: hidden;
     border: var(--border);
     border-radius: var(--border-radius);
+    color: #000;
+    text-align: center;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;

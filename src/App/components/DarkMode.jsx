@@ -1,19 +1,13 @@
-import { useTranslation } from 'react-i18next'
 import { CONFIG_BACKEND } from '../config/config'
 import styles from './css/DarkMode.module.css'
 import { useEffect, useContext } from 'react'
 import { UserContext } from './UserProvider'
 import { useTheme } from './ThemeContext'
+import MoonIcon from "/icons/moon.png"
 
-function DarkMode() {
+function DarkMode({float = false}) {
     const { user } = useContext(UserContext)
     const { dark, setDark } = useTheme()
-    const [t, i18n] = useTranslation()  
-
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     useEffect(()=>{
         if (user && user.darkMode !== undefined && user.darkMode !== null) {
@@ -47,14 +41,27 @@ function DarkMode() {
     const colorClass = styles.colorText
   
     return (
-        <div className={styles.buttonMode}>
-            <p className={colorClass}>{t('navbar.darkMode')}</p>
-            <label className={styles.switch}>
-                <button type='button' className={`${styles.slider} ${dark ? styles.right : styles.left}`} onClick={toggleDarkMode} name='check' aria-pressed={dark}></button>
-                <span className={styles.on}>ON</span>
-                <span className={styles.off}>OFF</span>
-            </label>
-        </div>
+        !float ? (
+            <div className={styles.buttonMode}>
+                <p className={`${colorClass} ${styles.desktop}`}>Modo oscuro</p>
+                <label className={styles.switch}>
+                    <button type='button' className={`${styles.slider} ${dark ? styles.right : styles.left}`} onClick={toggleDarkMode} name='check' aria-pressed={dark}></button>
+                    <span className={styles.on}>ON</span>
+                    <span className={styles.off}>OFF</span>
+                </label>
+                <p className={`${colorClass} ${styles.mobile}`}>Modo oscuro</p>
+            </div>
+        ) : (
+            <div className={styles.buttonMode_float} id='buttonMode_float'>
+                <label className={styles.switch_float}>
+                    <button type='button' className={`${styles.slider} ${dark ? styles.right : styles.left}`} onClick={toggleDarkMode} name='check' aria-pressed={dark}>
+                        <img src={MoonIcon} className={styles.moonIcon} alt="Moon" />
+                    </button>
+                    <span className={styles.off}>OFF</span>
+                    <span className={styles.on}>ON</span>
+                </label>
+            </div>
+        )
     )
 }
 

@@ -9,21 +9,12 @@ import Loader from '../../components/Loader'
 import pencil from '/icons/utilities/pencil.png'
 import { CONFIG_PATHS } from '../../config/config'
 import RightTopButton from '../../components/RightTopButton'
-import { useTranslation } from 'react-i18next'
-import TopButtons from '../../components/TopButtons'
-import TopButtonNone from '../../components/TopButtonNone'
 
 function Profile() {   
     const { user, loadUser } = useContext(UserContext)
     const location = useLocation()
     const navigate = useNavigate()
     let nameRol
-    const [t, i18n] = useTranslation()
-      
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     useEffect(() => {
         if (location.state?.updated) {
@@ -42,9 +33,9 @@ function Profile() {
     }
 
     if (user.rolId === 1) {
-        nameRol=t('rol.admin')
+        nameRol="Administradora"
     }else if (user.rolId === 2) {
-        nameRol=t('rol.planter')
+        nameRol="Plantador"
     }
 
     return ( 
@@ -58,33 +49,21 @@ function Profile() {
                                     <ImgProfile />
                                 </div>
                                 <div className={styles.contTextProfile}>
-                                    <h2>{user.names} {user.lastNames}</h2>
+                                    <h2>{user?.names} {user.lastNames}</h2>
                                     <p className={styles.nameRol}>{nameRol}</p>
                                 </div>
                             </div>
                             
-                            <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text={t('buttons.edit')} imgElm={pencil}/>
+                            <RightTopButton locationElm={CONFIG_PATHS.PROFILE_EDIT_PATH} typeElm='expand' text="Editar" imgElm={pencil}/>
                         </div>                        
                         <div className={styles.dataProfile}>
                             <div className={styles.contElm}>
-                                <p className={styles.titleElm}>Email:</p>
-                                <p className={styles.valueElm}>{user.email}</p>
+                                <p className={styles.titleElm}>Email :</p>
+                                <p className={styles.valueElm}>{user?.email}</p>
                             </div>
                             <div className={styles.contElm}>
-                                <p className={styles.titleElm}>{t('profile.country')+" :"}</p>
-                                <p className={styles.valueElm}>{user.country}</p>
-                            </div>
-                            <div className={styles.contElm}>
-                                <p className={styles.titleElm}>{t('profile.province')+" :"}</p>
-                                <p className={styles.valueElm}>{user.province}</p>
-                            </div>
-                            <div className={styles.contElm}>
-                                <p className={styles.titleElm}>{t('profile.ministry')+" :"}</p>
-                                <p className={styles.valueElm}>{user.ministry}</p>
-                            </div>
-                            <div className={styles.contElm}>
-                                <p className={styles.titleElm}>{t('profile.about')+" :"}</p>
-                                <p className={styles.valueElm}>{user.aboutMe}</p>
+                                <p className={styles.titleElm}>Sobre mi :</p>
+                                <p className={styles.valueElm}>{user?.aboutMe}</p>
                             </div>
                         </div>
                     </div>

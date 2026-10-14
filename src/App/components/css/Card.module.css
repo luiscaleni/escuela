@@ -1,7 +1,7 @@
 .contCard{
     width: 20rem;
     height: 30rem;
-    margin: 2rem 2.5rem;
+    margin: 2rem 1.5rem;
     overflow: hidden;
     border: var(--border);
     border-radius: var(--border-radius);

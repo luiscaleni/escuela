@@ -7,7 +7,7 @@ export const CONFIG_PRODUCTION_DATA = {
 
 export const CONFIG_SOCIAL_NETWORK = {
     FB: 'https://www.facebook.com/',
-    TW: 'https://x.com/?lang=es',
+    IG: 'https://www.instagram.com/',
     IG: 'https://www.instagram.com/',
     YT: 'https://www.youtube.com/',
     EMAIL: 'mailto:luis.caleni@gmail.com'
@@ -23,12 +23,10 @@ export const CONFIG_PATHS = {
     ROOT_Path: "/",
     HOME_PATH: "/",
     INDEX_PATH: "/index.php",
-    NEWS_PATH: "/noticias",
+    SPORTS_PATH: "/deportes",
     ABOUT_US_PATH: "/acerca-de",
     RESOURCES_PATH: "/recursos",
-    DONATE_PATH: "/donar",
     CONTACT_PATH: "/contacto",
-    PLANTATIONS: "/plantaciones",
 
     REGISTER_PATH: "/registro",
     LOGIN_PATH: "/login",
@@ -43,14 +41,16 @@ export const CONFIG_PATHS = {
     YOUR_WELLCOME_PATH: "/bienvenida",
     PROFILE_PATH: "/perfil",
     PROFILE_EDIT_PATH: "/editar-perfil",
-    NEW_POST_PATH: "/nueva-publicacion",
     EDIT_POST_PATH: "/editar-publicacion",
-    SUCCESS_PATH: "/registro-exitoso"
+    SUCCESS_PATH: "/registro-exitoso",
+
+    CAMPUS_PATH: "/campus",
+    CAMPUS_MY_COURSES_PATH: "/campus/mis-cursos",
+    CAMPUS_MY_COURSES_DETAIL_PATH: "/campus/mis-cursos/detalles"
 }
 
 export const CONFIG_NAMES_COUNTRYS = [
-    "Argentina", "Brasil", "Venezuela", "Colombia", "Paraguay",
-    "Uruguay", "Perú", "Ecuador", "Bolivia", "Chile"
+    "Argentina"
 ]
 
 export const ENABLE_TRANSLATION = false

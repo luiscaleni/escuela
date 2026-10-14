@@ -5,7 +5,6 @@ import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { UserContext } from '../components/UserProvider'
 import { CONFIG_BACKEND } from '../config/config'
-import { useTranslation } from 'react-i18next'
 
 function FormPlantation({onSuccess, countryPlant}) {
     const { user } = useContext(UserContext)
@@ -13,12 +12,6 @@ function FormPlantation({onSuccess, countryPlant}) {
     const [selectedImage, setSelectedImage] = useState(null)
     const [form, setForm] = useState({})
     const formRef = useRef(null)
-    const [t, i18n] = useTranslation()  
-
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value})

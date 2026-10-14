@@ -2,15 +2,13 @@ import styles from './css/Footer.module.css'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import LoadData from '../../components/LoadData'
-import { CONFIG_BACKEND, CONFIG_SOCIAL_NETWORK } from '../../config/config'
-import { useTranslation } from 'react-i18next'
+import { CONFIG_BACKEND, CONFIG_SOCIAL_NETWORK, CONFIG_PATHS } from '../../config/config'
 
 function Footer() {
     const [configData, setConfigData]  = useState(null)
     const [cargando, setCargando] = useState(false)
     const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
     const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
-    const [t, i18n] = useTranslation()
     
     useEffect(() => {
         loadConfigData()
@@ -21,36 +19,41 @@ function Footer() {
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
                     <div className={styles.group}>
-                        <p>{t('footer.aboutUs')}:</p>
+                        <p>Sobre nosotros:</p>
                         <ul>
-                            <li><Link to="#">{t('footer.mission')}</Link></li>
-                            <li><Link to="#">{t('footer.vision')}</Link></li>
+                            <li><Link to={CONFIG_PATHS.ABOUT_US_PATH}>Acerca de</Link></li>
                         </ul>
                     </div>
                     
                     <div className={styles.group}>
-                        <p>{t('footer.privacy')}:</p>
+                        <p>Privacidad:</p>
                         <ul>
-                            <li><Link to="#">{t('footer.privacy')}</Link></li>
+                            <li><Link to="#">Política de privacidad</Link></li>
                         </ul>
                     </div>
 
                     <div className={styles.group}>
-                        <p>{t('footer.contact')}:</p>
+                        <p>Contacto:</p>
                         <ul>
                             <li>
                                 <Link to={CONFIG_SOCIAL_NETWORK.EMAIL}>
                                     <span className="icon-mail4"></span> Email
                                 </Link>
                             </li>
+                        </ul>
+                    </div>
+
+                    <div className={styles.group}>
+                        <p>Redes sociales:</p>
+                        <ul>
                             <li>
                                 <Link to={CONFIG_SOCIAL_NETWORK.FB} target="_blank" className="facebook">
                                     <span className="icon-facebook"></span> Facebook
                                 </Link>
                             </li>
                             <li>
-                                <Link to={CONFIG_SOCIAL_NETWORK.TW} target="_blank" className="twitter">
-                                    <span className="icon-twitter"></span> Twitter
+                                <Link to={CONFIG_SOCIAL_NETWORK.IG} target="_blank" className="twitter">
+                                    <span className="icon-twitter"></span> Instagram
                                 </Link>
                             </li>
                             <li>
@@ -62,7 +65,7 @@ function Footer() {
                     </div>
                 </div>
                 <p className={styles.copyright}>
-                    {configData ? `© ${configData.yearConfig} ${configData.acrDptoNameConfig}. ${t('footer.copyright')}` : "DPISUD"}
+                    {configData ? `© ${configData.yearConfig}` : "2026"} Escuela arbitral. Argentina. Todos los derechos reservados.
                 </p>
             </footer>
         </>

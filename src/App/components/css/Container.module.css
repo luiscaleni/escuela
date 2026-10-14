@@ -2,26 +2,25 @@
 .containerMax{
     position: relative;
     overflow: hidden;
-    max-width: 67rem;
+    max-width: 70rem;
     min-width: 22rem;
-    min-height: 35rem;
+    min-height: 25rem;
     width: 85vw;
     color: #000;
     border: var(--border);
     border-radius: var(--border-radius);
-    background-color: var(--background-solid);
+    background-color: #fff;
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
-.containerMax{padding: 1.5rem 0;}
+.containerMax{padding: 1.5rem 1rem;}
 
 :global(body.dark) .container,
 :global(body.dark) .containerMax {
-    border: var(--border-dark);
-    background-color: #272727;
+    background-color: #1D1D1D;
     color: #fff;
 }
 

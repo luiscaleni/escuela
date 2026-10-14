@@ -3,7 +3,8 @@
   background-color: #222222;
 }
 
-.buttonMode{
+.buttonMode,
+.buttonMode_float{
   z-index: 19;
   width: 100%;
   bottom: 0;
@@ -18,19 +19,33 @@
 }
 
 .buttonMode > p{
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: bold;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.buttonMode_float{
+  width: auto;
+  height: 4rem;
+  border: none;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+:global(body.dark) .buttonMode_float{
+  background: var(--background-dark-alpha);
 }
 
-.switch {
+.switch,
+.switch_float {
   position: relative;
-  width: 4em;
-  height: 2em;
+  width: 4rem;
+  height: 2rem;
   cursor: pointer;
+  padding: 0.1rem;
   border: var(--border);
   border-radius: var(--border-radius);
-  background-color: #5c5c5c;
+  background-color: #a1a1a1;
   -webkit-transition: .4s;
   transition: .4s;
 
@@ -39,41 +54,79 @@
   align-items: center;
 }
 
-.switch > .slider {
+.switch_float{
+  width: 5rem;
+  height: 3rem;
+  background-color: white;
+}
+
+:global(body.dark) .switch,
+:global(body.dark) .switch_float{
+  background-color: var(--background-color-btn);
+}
+
+:global(body.dark) .switch_float{
+  background-color: rgb(78, 78, 78);
+}
+
+.switch > .slider,
+.switch_float > .slider{
   position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 2rem;
+  -webkit-transition: .4s;
+  transition: .4s;
+  background-color: #2b2b2b;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch > .slider{
   width: 1.6rem;
   height: 1.6rem;
-  top: 0.1rem;
-  z-index: 2;
-  border: none;
+  margin: 0;
   border-radius: var(--border-radius);
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.switch > .on{
+.switch > .on,
+.switch_float > .on{
   position: absolute;
   width: auto;
   left: 0.4rem;
-  font-size: 0.8em;
+  font-size: 0.8rem;
   font-weight: bold;
   padding: 0;
   color: white;
 }
-.switch > .off{
+
+.switch > .on{
+  left: 0.3rem;
+}
+
+:global(body.dark) .switch_float > .on{
+  color: white;
+}
+/**/
+.switch > .off,
+.switch_float > .off{
   position: absolute;
   width: auto;
   right: 0.4rem;
   padding: 0;
   font-size: 0.8em;
   font-weight: bold;
-  color: #fff;
+  color: #000;
 }
+.switch > .off{
+  right: 0.3rem;
+}
+
 .left{
   left: 0.2rem;
 }
@@ -81,13 +134,37 @@
   right: 0.2rem;
 }
 
-:global(body.dark) .switch{
-  background-color: var(--background-color-btn);
-}
-
 .buttonMode > .colorText{
-    color: #000;
+  font-size: 1rem;
+  color: #000;
 }
 :global(body.dark) .buttonMode > .colorText{
   color: white;
+}
+.mobile{
+  margin-left: 0.5rem;
+  display: none;
+}
+
+
+.sunIcon, 
+.moonIcon{
+  margin-top: 0.2rem;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+@media (max-width: 1279px) {
+  .buttonMode{
+    padding: 0.5rem 0;
+  }
+  .desktop{
+    display: none;
+  }
+  .mobile{
+    display: flex;
+  }
+  .buttonMode_float{
+    display: none;
+  }
 }
