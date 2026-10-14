@@ -112,56 +112,54 @@ function NavBar() {
                                     <img src={imgNews} className={styles.imgMobile}/>
                                     Cursos
                                 </Link>
-                                {user &&(
+                                {user ?(
                                     <Link to={CONFIG_PATHS.CAMPUS_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
                                         <img src={imgPublication} className={styles.imgMobile}/>
                                         Campus
                                     </Link>
-                                )}                       
-                            
-                                {!user && (
-                                    <>
+                                ):(
                                     <Link to={CONFIG_PATHS.LOGIN_PATH} className={visible && styles.blackText} onClick={toggleMenuPanel}>
                                         <img src={imgProfileMen} className={styles.imgMobile}/>
                                         Login
                                     </Link>
-                                    
-                                    <DarkMode float = {true} />
-                                    </>
                                 )}
+                                <DarkMode float = {true} />
+
                             </div>
                             
-                            {user &&(
                                 <div className={styles.elmPanel}>
-                                    <Link to={CONFIG_PATHS.PROFILE_PATH} onClick={toggleMenuPanel}>
-                                        <img src={imgProfileMen} className={styles.imgMobile}/>
-                                        Perfil
-                                    </Link>
-                                    {(user.rolId === 1) && (
-                                        <>
-                                        <Link to={CONFIG_PATHS.CONFIG_PATH} onClick={toggleMenuPanel}>
-                                            <img src={imgConfiguration} className={styles.imgMobile}/>
-                                            Configuración
+                                    {user &&(
+                                    <>
+                                        <Link to={CONFIG_PATHS.PROFILE_PATH} onClick={toggleMenuPanel}>
+                                            <img src={imgProfileMen} className={styles.imgMobile}/>
+                                            Perfil
                                         </Link>
-                                        </>
-                                    )}
-                                    <Link to={CONFIG_PATHS.HELP_PATH} onClick={toggleMenuPanel}>
-                                        <img src={imgHelp} className={styles.imgMobile}/>
-                                        Ayuda
-                                    </Link>
+                                        {(user.rolId === 1) && (
+                                            <>
+                                            <Link to={CONFIG_PATHS.CONFIG_PATH} onClick={toggleMenuPanel}>
+                                                <img src={imgConfiguration} className={styles.imgMobile}/>
+                                                Configuración
+                                            </Link>
+                                            </>
+                                        )}
+                                        <Link to={CONFIG_PATHS.HELP_PATH} onClick={toggleMenuPanel}>
+                                            <img src={imgHelp} className={styles.imgMobile}/>
+                                            Ayuda
+                                        </Link>
 
+                                        
+                                        <form onSubmit={handleSubmit}>
+                                            <Button
+                                                typeBtn="submit"
+                                                altNameBtn="logout"
+                                                titleBtn="Cerrar Sesión"
+                                                disabled={cargando}
+                                            >Cerrar sesión</Button>
+                                        </form>
+                                    </>
+                                    )}
                                     <DarkMode />
-                                    
-                                    <form onSubmit={handleSubmit}>
-                                        <Button
-                                            typeBtn="submit"
-                                            altNameBtn="logout"
-                                            titleBtn="Cerrar Sesión"
-                                            disabled={cargando}
-                                        >Cerrar sesión</Button>
-                                    </form>
                                 </div>
-                            )}
                         </div>
 
                     </nav>
