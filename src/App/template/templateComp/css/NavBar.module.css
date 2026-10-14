@@ -497,7 +497,6 @@ span{
 .contMobile > .navbarLogoLinkMobile > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
-    filter: invert(1);
 }
 .contMobile > p{
     user-select: none;
@@ -528,7 +527,7 @@ span{
 .contNavbarContent > .navbarContent > .navbarLinks > a > img,
 .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a > img,
 .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
-    filter: invert(100%);
+    
 }
 
 .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
@@ -544,6 +543,9 @@ span{
 }
 
 @media (max-width: 1280px){
+    .contNavbarContent > .navbarContent{
+        backdrop-filter: none;
+    }
     .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > .linkHome{
         display: flex;
     }
@@ -578,6 +580,7 @@ span{
         background-color: #000;
     }
     .imgMobile{
+        filter: invert(0);
         padding-right: 0.5rem;
         display: flex;
     }
@@ -677,7 +680,7 @@ span{
         padding: 0;
         border: none;
         padding-top: 1rem;
-        background: white;
+        background: transparent;
 
         display: flex;
         justify-content: flex-start;
@@ -698,6 +701,8 @@ span{
     }
     .contNavbarContent > .navbarContennt > .navbarLinks > .navbarLinksGroup > a,
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a {
+        color: white;
+
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -739,7 +744,7 @@ span{
         width: 100%;
         margin: 0;
         padding: 0.6rem 0 0.6rem 1.5rem;
-        color: #000;
+        color: #fff;
 
         display: flex;
         justify-content: flex-start;
@@ -770,7 +775,7 @@ span{
         top: 4rem;
         right: -20rem; /* Estado cerrado por defecto */
         border-left: var(--border);
-        background-color: white;
+        background: var(--background-solid);
         transition: right ease-in-out .3s; /* Transición limpia del slide */
 
         display: flex;

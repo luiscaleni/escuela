@@ -11,7 +11,7 @@
   width: auto;
   height: 4rem;
   cursor: pointer;
-  color: #000;
+  color: #fff;
 
   display: flex;
   justify-content: center;
@@ -136,7 +136,7 @@
 
 .buttonMode > .colorText{
   font-size: 1rem;
-  color: #000;
+  color: #fff;
 }
 :global(body.dark) .buttonMode > .colorText{
   color: white;
