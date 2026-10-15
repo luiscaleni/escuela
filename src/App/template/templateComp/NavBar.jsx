@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import styles from "./css/NavBar.module.css"
@@ -25,6 +25,8 @@ function NavBar() {
     const [cargando, setCargando] = useState(false)
     const navigate = useNavigate()
     const apiUrl = CONFIG_BACKEND.API_DIR
+    const [visible, setVisible] = useState(false)
+
 
     function toggleMenuProfile() {
         setMenuProfileOpen(!menuProfileOpen)
@@ -61,9 +63,20 @@ function NavBar() {
         }
     }
 
+    useEffect(()=>{
+        const handleScroll = ()=>{
+            setVisible(window.scrollY > 0)
+        }
+        window.addEventListener('scroll', handleScroll)
+        handleScroll()
+        
+        return ()=> window.removeEventListener('scroll', handleScroll)
+    },[])
+
+
     return ( 
         <>
-            <div className={styles.navbar} id='navbar'>
+            <div className={`${styles.navbar} ${visible && styles.navVisible}`} id='navbar'>
                 <div className={styles.contMobile}>
                     <Link to='/' className={styles.navbarLogoLinkMobile}>
                         <div className={styles.navbarLogo}>

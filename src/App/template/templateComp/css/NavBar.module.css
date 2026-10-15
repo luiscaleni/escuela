@@ -7,13 +7,19 @@ nav, .navbar{
     height: auto;
     transition: all 0.3s ease;
 
+
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
+.navVisible{
+    background: var(--background);
+    backdrop-filter: var(--backdrop-filter);
+}
 .contNavbarContent{
     width: 100dvw;
     height: 5rem;
+    background: transparent;
 
     display: flex;
     justify-content: center;
@@ -21,10 +27,6 @@ nav, .navbar{
 }
 .contNavbarContentVisible{
     transition: all 0.3s ease;
-    border-bottom: 1px;
-    border-color: rgb(30 41 59 / 0.6);
-    background: var(--background);
-    backdrop-filter: var(--backdrop-filter-2);
 }
 :global(body.dark) .contNavbarContentVisible{
     border-bottom: var(--border-dark);
@@ -632,8 +634,6 @@ span{
         height: 4em;
         border-bottom: var(--border);
         transition: all .3s ease;
-        backdrop-filter: var(--backdrop-filter);
-        background: var(--background-solid);
 
         display: flex;
         justify-content: center;

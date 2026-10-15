@@ -46,7 +46,13 @@ const routes = [
       { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                },
       { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <DisciplineDetail/>,      },
       { path: CONFIG_PATHS.ABOUT_US_PATH,                                   element: <AboutUs/>,               },
-      { path: CONFIG_PATHS.PRIVACY_PATH,                                    element: <PrivacyPolitic/>,           },
+      { path: CONFIG_PATHS.PRIVACY_PATH,                                    element: <PrivacyPolitic/>,        },
+      { path: CONFIG_PATHS.RESET_PASSW,                                     element: <ResetPassw />                                                 },
+      { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
+      
+      { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
+      { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>     <Login/>                   </PublicRoute>    },
+      { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>     <ForgetPassw/>             </PublicRoute>    },
       //
       { path: "*",                                                          element: <Home/>                   }
     ]
@@ -55,13 +61,6 @@ const routes = [
     path: "/",
     element: <Template separator={true} />,
     children: [
-      { path: CONFIG_PATHS.RESET_PASSW,                                     element: <ResetPassw />                                                 },
-      { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
-      
-      { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
-      { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>     <Login/>                   </PublicRoute>    },
-      { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>     <ForgetPassw/>             </PublicRoute>    },
-
       //Protected - ROL 1 y 2
       { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,                              element: <ProtectedRoute>  <Wellcome/>                </ProtectedRoute> },
       { path: CONFIG_PATHS.PROFILE_PATH,                                    element: <ProtectedRoute>  <Profile/>                 </ProtectedRoute> },
