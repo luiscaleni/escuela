@@ -471,11 +471,8 @@ span{
 .logoImageLink{
     width: 1.5rem;
     height: 1.5rem;
-    filter: invert(100%);
 }
-:global(body.dark) .logoImageLink{
-    filter: invert(0%);
-}
+
 
 
 .contMobile{
@@ -501,7 +498,6 @@ span{
 .contMobile > .navbarLogoLinkMobile > .navbarLogo > .logoImage{
     width: auto;
     height: 2.5em;
-    filter: invert(1);
 }
 .contMobile > p{
     user-select: none;
@@ -547,6 +543,15 @@ span{
 }
 
 @media (max-width: 1280px){
+    nav, .navbar{
+        height: 4em;
+        transition: all .3s ease;
+        background-color: #1d1d1d;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .contNavbarContent > .navbarContent{
         backdrop-filter: none;
     }
@@ -633,21 +638,6 @@ span{
         justify-content: center;
         align-items: center;
     }
-    nav, .navbar{
-        height: 4em;
-        border-bottom: var(--border);
-        transition: all .3s ease;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    :global(body.dark) nav, 
-    :global(body.dark) .navbar{
-        backdrop-filter: var(--backdrop-filter);
-        background: var(--background-dark-2) ;
-        border-bottom: 0.1rem solid rgb(36, 36, 36);
-    }
     .contMobile{
         width: 94%;
         height: 100%;
@@ -711,11 +701,6 @@ span{
     }
     :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
         color: white;
-    }
-    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > a > img,
-    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a > img,
-    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a > img{
-        filter: invert(0%);
     }
     .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
         margin: 0.5rem;

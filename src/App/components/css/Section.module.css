@@ -109,7 +109,7 @@ section > .blurCircle,
     height: 3rem;
     z-index: 2;
     border-radius: 3rem 3rem 0 0;
-    z-index: 2;
+    border-top: 0.1rem solid #424242;
     transform: translateY(-3rem);
     background-color:var(--background-solid-2);
 

@@ -29,7 +29,6 @@ import Help                     from './App/pages/protected/Help'
 import PrivacyPolitic     from './App/pages/PrivacyPolitic'
 
 import { CONFIG_PATHS }         from './App/config/config'
-import { ThemeProvider }        from './App/components/ThemeContext'
 import Sports                   from './App/pages/Sports'
 
 import Campus                   from './App/pages/protected/campus/Campus'
@@ -93,10 +92,8 @@ const router = createBrowserRouter(routes)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider>
       <UserProvider>
         <RouterProvider router={router}/>
       </UserProvider>
-    </ThemeProvider>
   </React.StrictMode>
 )
