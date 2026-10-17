@@ -56,7 +56,7 @@ function Sports() {
             )}
             <Publication titlePub="Cursos" typeElm='img' nameAsset="banner_news.jpg">
                 <TopButtons>
-                    {user && (user.rolId === 1 || user.rolId === 2) && (
+                    {user && (user.rolId === 1) && (
                         <>
                         <br/>
                         <RightTopButton 
@@ -69,7 +69,7 @@ function Sports() {
                         </>
                     )}
                 </TopButtons>
-                <h2>Futbol</h2>
+                <h2>Nuestros cursos</h2>
 
                 {/* Mostramos un mensaje o indicador sutil mientras carga, evitando el parpadeo vacío */}
                 {loadingDisciplines ? (

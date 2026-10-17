@@ -6,14 +6,14 @@ import Card from './Card'
 
 function ContentCourses() {
     const [cargando, setCargando] = useState(true)
-    const [courses, setCourses] = useState(null)
+    const [matters, setMatters] = useState(null)
     const [discipline, setDiscipline] = useState(null)
     const { id } = useParams()
 
     useEffect(() => {
         if (!id) return
 
-        fetch(`${CONFIG_BACKEND.API_DIR}/showMyCourses?id=${id}`, {
+        fetch(`${CONFIG_BACKEND.API_DIR}/showMyMatters?id=${id}`, {
             method: 'GET',
             credentials: 'include'
         })
@@ -21,7 +21,7 @@ function ContentCourses() {
             .then(data => {
                 if (data.success) {
                     setDiscipline(data.discipline)
-                    setCourses(data.result)
+                    setMatters(data.result)
                 } else {
                     console.error('El backend reportó un error: ', data.error)
                 }
@@ -41,14 +41,14 @@ function ContentCourses() {
                     <h2>{cargando ? "Cargando ..." : discipline ? discipline.name_discip: "No se encontró"}</h2>
                         {cargando ? (
                             <p>Cargando curso...</p>
-                        ) : courses?.length > 0 ? (
-                                courses.map(course => (
+                        ) : matters?.length > 0 ? (
+                                matters.map(matter => (
                                 <Card 
-                                    key={course.id_course}
-                                    link={`/campus/mis-cursos/detalles/${course.id_course}`}
-                                    className={styles.courseCard}
-                                    cardTitle={course.title_course}
-                                    descriptCard={course.descript_course}
+                                    key={matter.id_matter}
+                                    link={`/campus/mis-cursos/detalles/${matter.id_matter}`}
+                                    className={styles.matterCard}
+                                    cardTitle={matter.title_matter}
+                                    descriptCard={matter.descript_matter}
                                 />
                             ))
                         ) : (

@@ -47,7 +47,8 @@ export const CONFIG_PATHS = {
 
     CAMPUS_PATH: "/campus",
     CAMPUS_MY_COURSES_PATH: "/campus/mis-cursos",
-    CAMPUS_MY_COURSES_DETAIL_PATH: "/campus/mis-cursos/detalles"
+    CAMPUS_MY_COURSES_DETAIL_PATH: "/campus/mis-cursos/detalles",
+    CAMPUS_ASSING_PROFESSORS_PATH: "/campus/asignar-cursos-a-profesores"
 }
 
 export const CONFIG_NAMES_COUNTRYS = [

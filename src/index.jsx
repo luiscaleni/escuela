@@ -26,15 +26,17 @@ import Configuration            from './App/pages/protected/Configuration'
 import ConfigurationEdit        from './App/pages/protected/ConfigurationEdit'
 import PostEdit                 from './App/pages/protected/PostEdit'
 import Help                     from './App/pages/protected/Help'
-import PrivacyPolitic     from './App/pages/PrivacyPolitic'
+import PrivacyPolitic           from './App/pages/PrivacyPolitic'
 
 import { CONFIG_PATHS }         from './App/config/config'
 import Sports                   from './App/pages/Sports'
+import DisciplineDetail         from './App/pages/DisciplineDetail'
 
 import Campus                   from './App/pages/protected/campus/Campus'
 import MyCourseDetail           from './App/pages/protected/campus/MyCourseDetail'
 import MyCourses                from './App/pages/protected/campus/MyCourses'
-import DisciplineDetail         from './App/pages/DisciplineDetail'
+import ProfessorAssing          from './App/pages/protected/campus/ProfessorAssing'
+
 
 const routes = [
   {
@@ -49,7 +51,6 @@ const routes = [
       { path: CONFIG_PATHS.RESET_PASSW,                                     element: <ResetPassw />                                                 },
       { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
       
-      { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
       { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>     <Login/>                   </PublicRoute>    },
       { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>     <ForgetPassw/>             </PublicRoute>    },
       //
@@ -60,6 +61,7 @@ const routes = [
     path: "/",
     element: <Template separator={true} />,
     children: [
+      { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
       { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
       { path: CONFIG_PATHS.CONFIG_PATH,                                     element: <ProtectedRoute>  <Configuration/>           </ProtectedRoute> },
       { path: CONFIG_PATHS.CONFIG_EDIT_PATH,                                element: <ProtectedRoute>  <ConfigurationEdit/>       </ProtectedRoute> },
@@ -83,6 +85,13 @@ const routes = [
     element: <TemplateCampus separator={false}/>,
     children: [
       { path: CONFIG_PATHS.CAMPUS_PATH,                                     element: <ProtectedRoute>  <Campus/>                  </ProtectedRoute> },
+      { 
+        path: CONFIG_PATHS.CAMPUS_ASSING_PROFESSORS_PATH,
+        element: <ContentCampus separator={false}/>, // <--- Este componente es el contenedor clave
+        children: [
+          { path: CONFIG_PATHS.CAMPUS_ASSING_PROFESSORS_PATH,               element: <ProtectedRoute>  <ProfessorAssing/>               </ProtectedRoute> },
+        ]
+      },
       { 
         path: "mis-cursos",
         element: <ContentCampus separator={false}/>, // <--- Este componente es el contenedor clave
