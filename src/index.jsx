@@ -56,14 +56,20 @@ const routes = [
       { path: "*",                                                          element: <Home/>                   }
     ]
   },
-  {  
+  {
     path: "/",
     element: <Template separator={true} />,
+    children: [
+      { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
+    ]
+  },
+  {  
+    path: "/",
+    element: <Template separator={false} />,
     children: [
       //Protected - ROL 1 y 2
       { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,                              element: <ProtectedRoute>  <Wellcome/>                </ProtectedRoute> },
       { path: CONFIG_PATHS.PROFILE_PATH,                                    element: <ProtectedRoute>  <Profile/>                 </ProtectedRoute> },
-      { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
       { path: CONFIG_PATHS.HELP_PATH,                                       element: <ProtectedRoute>  <Help/>                    </ProtectedRoute> },
       
       //Protected - ROl 1

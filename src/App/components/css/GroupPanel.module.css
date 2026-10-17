@@ -59,7 +59,11 @@
         border-radius: 0;
         box-shadow: none;
     }
+    .groupPanel > p{
+        background-color: #686868;
+    }
     .groupPanel > a{
+        color: #fff;
         background-color: transparent;
     }
 }

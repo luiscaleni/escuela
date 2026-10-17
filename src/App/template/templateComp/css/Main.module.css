@@ -11,21 +11,18 @@ main, .main{
 .main > .mainContent{
     width: 100%;
     min-height: calc(70vh - 4rem);
-    background: var(--background-solid);
+    background: var(--background);
 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-:global(body.dark) .main > .mainContent{
-    background-color: #1d1d1d;
-}
 
 .separator{
     width: 100%;
-    height: 4rem;
-    background-color: rgb(158, 184, 184);
+    height: 5rem;
+    background-color: var(--background);
 }
 :global(body.dark) .separator{
     background-color: transparent;

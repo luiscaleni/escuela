@@ -51,7 +51,7 @@
   --box-shadow-strong-top: 0 -0.1rem 1rem rgba(27, 27, 27, 0.4);
 
   
-  --background: rgba(16, 23, 39, 0.8);
+  --background: #1d1d1d;
   --background-solid: #090D16;
   --background-solid-2: #0d1424;
   --background-solid-3: #10B981;
@@ -135,7 +135,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Evita desplazamiento lateral */
-  background-color: var(--background-solid);
+  background-color: var(--background);
 
   display: flex;
   justify-content: center;
@@ -149,7 +149,7 @@ a{
 #root {
   width: 100vw;
   height: auto;
-  background-color: #fff;
+  background-color: #1d1d1d;
 
   display: flex;
   justify-content: center;

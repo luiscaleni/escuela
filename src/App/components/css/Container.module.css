@@ -4,7 +4,7 @@
     overflow: hidden;
     max-width: 70rem;
     min-width: 22rem;
-    min-height: 25rem;
+    min-height: 20rem;
     width: 85vw;
     color: #000;
     border: var(--border);
@@ -17,12 +17,6 @@
     flex-wrap: wrap;
 }
 .containerMax{padding: 1.5rem 1rem;}
-
-:global(body.dark) .container,
-:global(body.dark) .containerMax {
-    background-color: #1D1D1D;
-    color: #fff;
-}
 
 .hiddenStyle{
     border: none;
