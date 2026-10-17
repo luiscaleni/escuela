@@ -1,8 +1,7 @@
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import styles from './css/ContentCampus.module.css'
 
 function ContentCampus() {
-    const location = useLocation();
 
     return (
         <div className={styles.contentCampusWrapper}>

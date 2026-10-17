@@ -10,7 +10,7 @@ function Campus() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (user && user.rolId !== 1) {
+        if (!user) {
             navigate(CONFIG_PATHS.HOME_PATH, { replace: true })
         }
     }, [user, navigate])

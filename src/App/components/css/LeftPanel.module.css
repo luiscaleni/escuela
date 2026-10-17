@@ -3,7 +3,7 @@
     min-height: 70dvh;
     margin-top: 6rem;
     margin-right: 6%;
-    padding: 1rem;
+    padding: 1rem 0 1rem 1rem;
 
     display: flex;
     justify-content: flex-start;
@@ -12,6 +12,8 @@
 
 @media (max-width:1280px){
     .leftPanel{
+        width: 98%;
         margin-top: 4rem;
+        margin-right: 0%;
     }
 }

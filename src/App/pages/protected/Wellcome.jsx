@@ -2,10 +2,7 @@ import styles from './css/Wellcome.module.css'
 import Section from '../../components/Section'
 import Container from '../../components/Container'
 import { useContext} from 'react'
-import { Link } from 'react-router-dom'
-import { CONFIG_PATHS } from '../../config/config'
 import { UserContext } from '../../components/UserProvider'
-import classBtn from '../../components/css/Button.module.css'
 
 function Wellcome() {
     const { user } = useContext(UserContext)
@@ -17,12 +14,6 @@ function Wellcome() {
                 <Container>
                     <div className={styles.wellcome}>
                         <h1>{wellcome} {user?.names}</h1>
-                            <p>Links de interés:</p>
-                        <div className={styles.contLinks}>
-                            <Link to={CONFIG_PATHS.PROFILE_PATH} className={classBtn.button}>Perfil</Link>
-                            <Link to={CONFIG_PATHS.PROFILE_EDIT_PATH} className={classBtn.button}>Editar mis datos</Link>
-                            {user && user.rolId === 2 && (<Link to={CONFIG_PATHS.CONFIG_PATH} className={classBtn.button}>Configuración</Link>)}
-                        </div>
                     </div>
                 </Container>
             </Section>

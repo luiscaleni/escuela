@@ -41,11 +41,11 @@ const routes = [
     path: "/",
     element: <Template separator={false} />,
     children: [
-      { path: CONFIG_PATHS.HOME_PATH,                                       element: <Home/>,                  },
-      { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                },
-      { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <DisciplineDetail/>,      },
-      { path: CONFIG_PATHS.ABOUT_US_PATH,                                   element: <AboutUs/>,               },
-      { path: CONFIG_PATHS.PRIVACY_PATH,                                    element: <PrivacyPolitic/>,        },
+      { path: CONFIG_PATHS.HOME_PATH,                                       element: <Home/>,                                                       },
+      { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                                                     },
+      { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <DisciplineDetail/>,                                           },
+      { path: CONFIG_PATHS.ABOUT_US_PATH,                                   element: <AboutUs/>,                                                    },
+      { path: CONFIG_PATHS.PRIVACY_PATH,                                    element: <PrivacyPolitic/>,                                             },
       { path: CONFIG_PATHS.RESET_PASSW,                                     element: <ResetPassw />                                                 },
       { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
       
@@ -53,7 +53,7 @@ const routes = [
       { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>     <Login/>                   </PublicRoute>    },
       { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>     <ForgetPassw/>             </PublicRoute>    },
       //
-      { path: "*",                                                          element: <Home/>                   }
+      { path: "*",                                                          element: <Home/>                                                        }
     ]
   },
   {
@@ -82,13 +82,13 @@ const routes = [
     path: "campus",
     element: <TemplateCampus separator={false}/>,
     children: [
-      { path: CONFIG_PATHS.CAMPUS_PATH,                                     element: <ProtectedRoute> <Campus/>         </ProtectedRoute> },
+      { path: CONFIG_PATHS.CAMPUS_PATH,                                     element: <ProtectedRoute>  <Campus/>                  </ProtectedRoute> },
       { 
         path: "mis-cursos",
         element: <ContentCampus separator={false}/>, // <--- Este componente es el contenedor clave
         children: [
-          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_PATH+"/:id",               element: <ProtectedRoute> <MyCourses/>      </ProtectedRoute> },
-          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_DETAIL_PATH+"/:id",        element: <ProtectedRoute> <MyCourseDetail/> </ProtectedRoute> },
+          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_PATH+"/:id",               element: <ProtectedRoute>  <MyCourses/>               </ProtectedRoute> },
+          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_DETAIL_PATH+"/:id",        element: <ProtectedRoute>  <MyCourseDetail/>          </ProtectedRoute> },
         ]
       }
     ]
