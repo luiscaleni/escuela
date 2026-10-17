@@ -61,6 +61,8 @@ const routes = [
     element: <Template separator={true} />,
     children: [
       { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
+      { path: CONFIG_PATHS.CONFIG_PATH,                                     element: <ProtectedRoute>  <Configuration/>           </ProtectedRoute> },
+      { path: CONFIG_PATHS.CONFIG_EDIT_PATH,                                element: <ProtectedRoute>  <ConfigurationEdit/>       </ProtectedRoute> },
     ]
   },
   {  
@@ -74,8 +76,6 @@ const routes = [
       
       //Protected - ROl 1
       { path: CONFIG_PATHS.EDIT_POST_PATH+"/:id_course",                    element: <ProtectedRoute>  <PostEdit/>                </ProtectedRoute> },
-      { path: CONFIG_PATHS.CONFIG_PATH,                                     element: <ProtectedRoute>  <Configuration/>           </ProtectedRoute> },
-      { path: CONFIG_PATHS.CONFIG_EDIT_PATH,                                element: <ProtectedRoute>  <ConfigurationEdit/>       </ProtectedRoute> },
     ]
   },
   { 

@@ -65,7 +65,7 @@ function Footer() {
                     </div>
                 </div>
                 <p className={styles.copyright}>
-                    {configData ? `© ${configData.yearConfig}` : "2026"} Escuela arbitral. Argentina. Todos los derechos reservados.
+                    {configData ? `© ${configData.yearConfig}` : "2026"} ARBITRA. Argentina. Todos los derechos reservados.
                 </p>
             </footer>
         </>

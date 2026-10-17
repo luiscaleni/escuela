@@ -62,7 +62,7 @@ function Home() {
             <div className={styles.dataCountry}><p>FUTBOL</p><p>11, 8 y 5</p></div>
           </Elementor>
           <Elementor>
-            <div className={styles.dataCountry}><p>FUTLSAL</p></div>
+            <div className={styles.dataCountry}><p>FUTSAL</p></div>
           </Elementor>
           <Elementor>
             <div className={styles.dataCountry}><p>FUTBOL</p><p>PLAYA</p></div>

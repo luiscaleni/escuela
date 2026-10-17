@@ -29,19 +29,7 @@ function ShowConfigData() {
                     <div className={styles.contElmsForm}>
                         <h1>Configuración</h1>
                         <ContFormInput nameElm={"Nombre :"}>
-                            <ShowData>{configData?.dptoNameConfig}</ShowData>
-                        </ContFormInput>
-                        
-                        <ContFormInput nameElm={"Acrónimo :"}>
-                            <ShowData>{configData?.acrDptoNameConfig}</ShowData>
-                        </ContFormInput>
-                        
-                        <ContFormInput nameElm={"Nombre de iglesia :"}>
-                            <ShowData>{configData?.nameChurchConfig}</ShowData>
-                        </ContFormInput>
-                        
-                        <ContFormInput nameElm={"Acrónimo de iglesia :"}>
-                            <ShowData>{configData?.acrNameChurchConfig}</ShowData>
+                            <ShowData>{configData?.nameWebConfig}</ShowData>
                         </ContFormInput>
                         
                         <ContFormInput nameElm={"Copyright :"}>
@@ -50,10 +38,6 @@ function ShowConfigData() {
                         
                         <ContFormInput nameElm="Email:">
                             <ShowData>{configData?.emailConfig}</ShowData>
-                        </ContFormInput>
-                        
-                        <ContFormInput nameElm={"Nombre del supervisor :"}>
-                            <ShowData>{configData?.supvNameConfig}</ShowData>
                         </ContFormInput>
                         
                         <ContFormInput nameElm={"Contenido :"}>

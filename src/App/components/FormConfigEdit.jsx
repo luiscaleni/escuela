@@ -24,13 +24,9 @@ function FormConfigEdit() {
 
     
     const [form, setForm] = useState({
-        dptoNameConfig:  configData?.dptoNameConfig || '',
-        acrDptoNameConfig: configData?.acrDptoNameConfig || '',
-        nameChurchConfig:  configData?.nameChurchConfig || '',
-        acrNameChurchConfig:  configData?.acrNameChurchConfig || '',
+        nameWebConfig:  configData?.nameWebConfig || '',
         yearConfig:  configData?.yearConfig || '',
         emailConfig:  configData?.emailConfig || '',
-        supvNameConfig:  configData?.supvNameConfig || '',
         contentConfig:  configData?.contentConfig || ''
     })
     
@@ -44,13 +40,9 @@ function FormConfigEdit() {
         const alertContainer = document.getElementById('alertContainer')
 
         const formData = new FormData()
-        if (form.dptoNameConfig) formData.append('dptoNameConfig', form.dptoNameConfig)
-        if (form.acrDptoNameConfig) formData.append('acrDptoNameConfig', form.acrDptoNameConfig)
-        if (form.nameChurchConfig) formData.append('nameChurchConfig', form.nameChurchConfig)
-        if (form.acrNameChurchConfig) formData.append('acrNameChurchConfig', form.acrNameChurchConfig)
+        if (form.nameWebConfig) formData.append('nameWebConfig', form.nameWebConfig)
         if (form.yearConfig) formData.append('yearConfig', form.yearConfig)
         if (form.emailConfig) formData.append('emailConfig', form.emailConfig)     
-        if (form.supvNameConfig) formData.append('supvNameConfig', form.supvNameConfig)
         if (form.contentConfig) formData.append('contentConfig', form.contentConfig)
 
         if (user.rolId === 1) {
@@ -129,19 +121,7 @@ function FormConfigEdit() {
                 <div className={styles.contElmsForm}>
                     <h1>Editar</h1>
                     <ContFormInput nameElm="departamento">
-                        <input type="text" name="dptoNameConfig" value={form.dptoNameConfig} placeholder={configData.dptoNameConfig} onChange={handleChange}/>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="acronimo">
-                        <input type="text" name="acrDptoNameConfig" value={form.acrDptoNameConfig} placeholder={configData.acrDptoNameConfig} onChange={handleChange}/>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="nombre">
-                        <input type="text" name="nameChurchConfig" value={form.nameChurchConfig} placeholder={configData.nameChurchConfig} onChange={handleChange}/>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="acronimo">
-                        <input type="text" name="acrNameChurchConfig" value={form.acrNameChurchConfig} placeholder={configData.acrNameChurchConfig} onChange={handleChange}/>
+                        <input type="text" name="nameWebConfig" value={form.nameWebConfig} placeholder={configData.nameWebConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
                     <ContFormInput nameElm="copyright">
@@ -150,10 +130,6 @@ function FormConfigEdit() {
                     
                     <ContFormInput nameElm="Email:">
                         <input type="text" name="emailConfig" value={form.emailConfig} placeholder={configData.emailConfig} onChange={handleChange}/>
-                    </ContFormInput>
-                    
-                    <ContFormInput nameElm="supervisor">
-                        <input type="text" name="supvNameConfig" value={form.supvNameConfig} placeholder={configData.supvNameConfig} onChange={handleChange}/>
                     </ContFormInput>
                     
                     <ContFormInput nameElm="contenido">
