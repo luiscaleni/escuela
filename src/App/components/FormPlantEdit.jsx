@@ -4,7 +4,6 @@ import Button from './Button'
 import Loader from './Loader'
 import ContFormInput from './ContFormInput'
 import { CONFIG_BACKEND } from '../config/config'
-import { useTranslation } from 'react-i18next'
 import { UserContext } from '../components/UserProvider'
 
 function FormPlantEdit({countryPlant, plantation, onSuccess}) {
@@ -12,12 +11,6 @@ function FormPlantEdit({countryPlant, plantation, onSuccess}) {
     const [cargando, setCargando] = useState(false)
     const [selectedImage, setSelectedImage] = useState(null)
     const [result, setResult] = useState('')
-    const [t, i18n] = useTranslation()  
-
-    useEffect(()=>{
-        const lang = localStorage.getItem('lang') || 'es'
-        i18n.changeLanguage(lang)
-    },[i18n])
 
     const handleImageChange = (e) =>{
         const file = e.target.files[0]

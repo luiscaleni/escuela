@@ -7,14 +7,14 @@ nav, .navbar{
     height: auto;
     transition: all 0.3s ease;
 
-
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 .navVisible{
     background: var(--background);
-    backdrop-filter: var(--backdrop-filter);
+    box-shadow: 0 0 0.1rem #ddd;
+    backdrop-filter: var(--backdrop-filter-2);
 }
 .contNavbarContent{
     width: 100dvw;
@@ -28,8 +28,7 @@ nav, .navbar{
 .contNavbarContentVisible{
     transition: all 0.3s ease;
 }
-:global(body.dark) .contNavbarContentVisible{
-    border-bottom: var(--border-dark);
+:global(body.dark) .navVisible{
     background-color: #1D1D1D;
 }
 
@@ -149,7 +148,7 @@ nav, .navbar{
 }
 
 .navbarContent > .navbarLinks > a > .navbarLogo > .imgInvert{
-    filter: invert(0);
+    
 }
 .navbarContent > .navbarLinks > a > p{
     padding-left: 0.5rem;
@@ -193,10 +192,10 @@ nav, .navbar{
     flex-direction: column;
 }
 .menu.menuOpen {
-    margin-top: 1rem;
+    margin-top: 0.7rem;
     display: flex !important;
     border: 0.1rem solid #ccc;
-    background: var(--background);
+    background-color: #fff;
     backdrop-filter: var(--backdrop-filter-2);
 }
 :global(body.dark) .menu.menuOpen {
@@ -253,6 +252,7 @@ span{
     color: #000;
 }
 .menuIcon{
+    position: absolute;
     width: 1.1rem;
     height: auto;
     margin-left: 0.2em;
@@ -265,6 +265,7 @@ span{
 }
 
 .menuButton {
+    position: relative;
     width: auto;
     height: 100%;
     z-index: 1;
@@ -280,8 +281,9 @@ span{
     position: absolute;
     cursor: pointer;
     right: 0.2rem;
-    bottom: 0;
+    bottom: 0.2rem;
     width: 1em;
+    border: var(--border);
     border-radius: var(--border-radius);
     background-color: white;
 }
@@ -380,10 +382,11 @@ span{
 }
 .menuProfile > .menuProfileButton{
     width: 100%;
-    height: 3.6rem;
-    border-radius: 2.5rem;
+    height: 4rem;
+    margin-bottom: 1rem;
+    border-radius: var(--border-radius);
     border: var(--border);
-    background: var(--background);
+    background-color: #fff;
 
     display: flex;
     justify-content: center;

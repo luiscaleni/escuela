@@ -1,0 +1,41 @@
+.textLand{
+    width: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.textLand > img {
+    width: 15rem;
+    padding-bottom: 1rem;
+}
+.textLand > .contentText{
+    border-top: 0.1rem solid yellow;
+    padding-top: 1rem;
+}
+.textLand > .contentText > .titleTextLand{
+    width: 100%;
+    color: white;
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 900;
+    margin-bottom: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textLand > .contentText > .titleDescript{
+    width: 100%;
+    color: white;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.textLand > .contentText > .descript{
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    color: #fff;
+}

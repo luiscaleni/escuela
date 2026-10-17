@@ -75,15 +75,15 @@ const routes = [
   },
   { 
     path: "campus",
-    element: <TemplateCampus />,
+    element: <TemplateCampus separator={false}/>,
     children: [
-      { path: CONFIG_PATHS.CAMPUS_PATH, element: <ProtectedRoute> <Campus/> </ProtectedRoute> },
+      { path: CONFIG_PATHS.CAMPUS_PATH,                                     element: <ProtectedRoute> <Campus/>         </ProtectedRoute> },
       { 
         path: "mis-cursos",
-        element: <ContentCampus />, // <--- Este componente es el contenedor clave
+        element: <ContentCampus separator={false}/>, // <--- Este componente es el contenedor clave
         children: [
-          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_PATH+"/:id",          element: <ProtectedRoute> <MyCourses/>      </ProtectedRoute> },
-          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_DETAIL_PATH+"/:id",   element: <ProtectedRoute> <MyCourseDetail/> </ProtectedRoute> },
+          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_PATH+"/:id",               element: <ProtectedRoute> <MyCourses/>      </ProtectedRoute> },
+          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_DETAIL_PATH+"/:id",        element: <ProtectedRoute> <MyCourseDetail/> </ProtectedRoute> },
         ]
       }
     ]

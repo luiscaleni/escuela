@@ -11,7 +11,7 @@ function DarkMode({float = false}) {
 
     useEffect(()=>{
         if (user && user.darkMode !== undefined && user.darkMode !== null) {
-            const userMode = user.darkMode === 1 || user.darkMode === '1' || user.darkMode === true
+            const userMode = user.darkMode === 1
             setDark(userMode)
         }
     },[user, setDark])

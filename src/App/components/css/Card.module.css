@@ -1,7 +1,7 @@
 .contCard{
-    width: 20rem;
-    height: 30rem;
-    margin: 2rem 1.5rem;
+    width: 16rem;
+    height: 24rem;
+    margin: 2rem 1rem;
     overflow: hidden;
     border: var(--border);
     border-radius: var(--border-radius);
@@ -47,7 +47,7 @@
     width: 100%;
     height: 65%;
     border-top: var(--border);
-    background-color: var(--background-solid);
+    background-color: var(--background-solid-2);
 
     display: flex;
     justify-content: center;
@@ -58,7 +58,7 @@
 .contCard > a > .card > .cardContent > .cardTitle{
     width: 90%;
     height: auto;
-    color: black;
+    color: #fff;
     font-size: 1.5rem;
     padding: 0.5rem;
     text-align: center;

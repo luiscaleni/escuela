@@ -28,18 +28,15 @@ function TemplateCampus({ separator = false }) {
     }
   }, [location])
 
-  // 1. Si el contexto está verificando la sesión en el servidor, mostramos el Loader global
-  if (loading) {
+  if (loading) { // 1. Si el contexto está verificando la sesión en el servidor, mostramos el Loader global
     return <Loader />
   }
 
-  // 2. Si terminó de cargar y no hay usuario, mandamos al login al instante
-  if (!user) {
+  if (!user) {// 2. Si terminó de cargar y no hay usuario, mandamos al login al instante
     return <Navigate to="/login" replace />
   }
 
-  // 3. Si hay usuario y terminó de cargar, renderizamos el campus de inmediato sin trabas
-  return (
+  return (// 3. Si hay usuario y terminó de cargar, renderizamos el campus de inmediato sin trabas
     <>
       <NavBar />
       {separator && <div className={styles.separator}></div>}

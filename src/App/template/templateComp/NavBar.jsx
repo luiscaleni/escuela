@@ -2,8 +2,7 @@ import {useState, useContext, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
 import styles from "./css/NavBar.module.css"
-import isotipo from "/arbitro.png"
-import DarkMode from '../../components/DarkMode'
+import isotipo from "/logo.png"
 import Button from '../../components/Button'
 import ImgProfile from '../../components/ImgProfile'
 import menu from '/icons/responsive/menu.png'
@@ -83,7 +82,7 @@ function NavBar() {
                             <img src={isotipo} alt="Logo" className={styles.logoImage} />
                         </div>
                     </Link>
-                    <p>Escuela de Árbitros</p>
+                    <p>ARBITRA</p>
                     <div className={styles.buttonPanel} alt='buttonPanel' onClick={toggleMenuPanel}>
                         <img src={togglePanel ? close : menu} className={styles.imgMenuButtonPanel} alt="Menu Toggle"/>
                     </div>
@@ -103,7 +102,7 @@ function NavBar() {
                                 <div className={styles.navbarLogo}>
                                     <img src={isotipo} alt="Logo" className={`${styles.logoImage} ${styles.imgInvert}`} />
                                 </div>
-                                <p>Escuela de Árbitros</p>
+                                <p>ARBITRA</p>
                             </Link>
                             <div className={styles.navbarLinksGroup}>
                                 <Link to={CONFIG_PATHS.HOME_PATH} className={styles.linkHome} onClick={toggleMenuPanel}>
@@ -125,7 +124,7 @@ function NavBar() {
                                         Login
                                     </Link>
                                 )}
-                                <DarkMode float = {true} />
+                                {/*darkmode float*/}
 
                             </div>
                             
@@ -160,7 +159,7 @@ function NavBar() {
                                         </form>
                                     </>
                                     )}
-                                    <DarkMode />
+                                    {/*darkmode*/}
                                 </div>
                         </div>
 
@@ -188,9 +187,7 @@ function NavBar() {
                                 <li>
                                     <Link to={CONFIG_PATHS.HELP_PATH}>Ayuda</Link>
                                 </li>
-                                <li>
-                                    <DarkMode float = {false}/>
-                                </li>
+                                {/*darkmode float*/}
                                 <form onSubmit={handleSubmit}>
                                     <Button
                                         typeBtn="submit"

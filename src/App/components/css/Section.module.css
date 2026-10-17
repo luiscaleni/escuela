@@ -1,5 +1,5 @@
 .contentLand{
-    width: 80rem;
+    width: 65%;
     height: auto;
     z-index: 2;
     padding: 0 2rem;
@@ -56,6 +56,9 @@ section > .blurCircle,
 }
 :global(body.dark) .sectionBanner{
     background-color: #2b2b2b;
+}
+:global(body.dark) .fullScreen{
+    background-color: #131313;
 }
 .sectionBanner > h1{
     position: absolute;

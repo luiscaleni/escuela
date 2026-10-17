@@ -135,8 +135,9 @@
 }
 
 .buttonMode > .colorText{
-  font-size: 1rem;
-  color: #fff;
+  font-size: 0.9rem;
+  font-weight: lighter;
+  color: #000;
 }
 :global(body.dark) .buttonMode > .colorText{
   color: white;

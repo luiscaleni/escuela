@@ -1,6 +1,6 @@
 import styles from './css/Section.module.css'
-import ContentPreviewLand from './ContentPreviewLand';
-import ContentTextLand from './ContentTextLand';
+import TextLand from './TextLand'
+import bannerHome from '/images/banner_home.png'
 
 function Section({home=false, typeElm="", children, titleElm=""}) {
     let nameStyles=""
@@ -25,10 +25,9 @@ function Section({home=false, typeElm="", children, titleElm=""}) {
                 {home && (
                     <>
                         <div className={styles.contentLand}>
-                            <ContentTextLand />
-                            <ContentPreviewLand/>
+                            <TextLand />
                         </div>
-                        <div className={styles.blurCircle}></div>
+                        <img src={bannerHome}/>
                     </>
                 )}
                 {typeElm === "banner" || typeElm === "xtreme" || typeElm === "fullScreen" ? (
