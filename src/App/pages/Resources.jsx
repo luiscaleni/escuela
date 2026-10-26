@@ -1,8 +1,8 @@
 import Publication from '../components/Publication'
 import Elementor from '../components/Elementor'
 import { useState, useEffect, useContext } from 'react'
-import { CONFIG_BACKEND } from '../config/config'
-import { Link } from 'react-router-dom'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import { Link, useNavigate } from 'react-router-dom'
 import ButtonTop from '../components/ButtonTop'
 import styles from './css/Resources.module.css'
 import stylesButton from '../components/css/Button.module.css'
@@ -15,6 +15,13 @@ function Resources() {
     const [resources, setResources] = useState([])
     const [showContainer, setShowContainer] = useState(false)
     const { user } = useContext(UserContext)
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        if (user.rolId !== 1) {
+            navigate(CONFIG_PATHS.CAMPUS_PATH)
+        }
+    },[])
     
     useEffect(() => {
         fetch(`${CONFIG_BACKEND.API_DIR}/showResources`, {

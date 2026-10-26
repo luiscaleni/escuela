@@ -2,10 +2,14 @@
     width: 100%;
     height: auto;
     min-height: 10rem;
+    padding: 0 3rem 0 0;
     color: #000;
 
     display: flex;
     justify-content: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
+}
+.contentCampusWrapper > h2{
+    width: 100%;
 }

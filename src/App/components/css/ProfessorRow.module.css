@@ -1,0 +1,68 @@
+.container{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 10rem;
+    overflow: hidden;
+    border-radius: var(--border-radius-slim);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.container > .headers{
+    position: absolute;
+    width: 100%;
+    height: 3rem;
+    z-index: 10;
+    background-color: var(--color-primary);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.container > .headers > p{
+    width: 16.2rem;
+    height: 3rem;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container > .headers > .title{
+    width: 8rem;
+    height: 3rem;
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.container > .contentProfessors{
+    width: 100%;
+    min-height: 10rem;
+    max-height: 20rem;
+    margin-top: 3rem;
+    padding-top: 0.5rem;
+    background-color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+@media (max-width: 1280px){
+    .container > .contentProfessors{
+        overflow-x: auto;
+    }
+}

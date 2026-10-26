@@ -1,15 +1,16 @@
 .contentPreviewLand{
     cursor: pointer;
     width: 30rem;
-    height: 28rem;
+    min-height: 32rem;
     color: white;
     border-radius: var(--border-radius-slim);
     box-shadow: 0 0 1.2rem #10B981;
     transition: all ease-in-out .3s;
-    background-color: var(--background-solid);
+    background-color: rgb(18, 33, 47);
 }
 .contentPreviewLand:hover{
     box-shadow: 0 0 2.5rem #10B981;
+    background-color: rgb(18, 43, 53);
 }
 .contentPreviewLand > .contentElements{
     position: relative;
@@ -59,8 +60,9 @@
     align-items: center;
 }
 .contentPreviewLand > .contentElements > .contentVideo > video{
-    width: 100%;
+    width: auto;
     height: 14rem;
+    margin: 0.5rem 0;
     border-radius: var(--border-radius-slim);
     background-color: #000;
     display: block;

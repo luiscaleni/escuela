@@ -10,7 +10,6 @@ import ShowData from './ShowData'
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import userDefault from '/icons/utilities/user_128.png'
 import TopButtons from './TopButtons'
-import TopButtonNone from './TopButtonNone'
 
 function FormProfileEdit() {
     const { user, loadUser } = useContext(UserContext)
@@ -24,8 +23,6 @@ function FormProfileEdit() {
         lastNames:  user?.lastNames || '',
         sex:  user?.sex || '',
         birthday:  user?.birthday || '',
-        country:  user?.country || '',
-        province:  user?.province || '',
         aboutMe:  user?.aboutMe || ''
     })
     
@@ -54,9 +51,7 @@ function FormProfileEdit() {
         formData.append('lastNames', form.lastNames)
         formData.append('sex', form.sex)
         formData.append('birthday', form.birthday)
-        formData.append('imgProfile', selectedImage)        
-        formData.append('country', form.country)
-        formData.append('province', form.province)
+        formData.append('imgProfile', selectedImage)
         formData.append('aboutMe', form.aboutMe)
 
         alertContainer.style.padding="0.5rem"
@@ -144,27 +139,8 @@ function FormProfileEdit() {
                             </div>
                         </ContFormInput>
 
-                        <ContFormInput nameElm="Cumpleaños">
+                        <ContFormInput nameElm="Fecha de nac.">
                             <input type="date" name="birthday" placeholder={form.birthday} id="birthday" onChange={handleChange}/>
-                        </ContFormInput>
-                        
-                        <ContFormInput nameElm="Pais">
-                            <select className={styles.select} name='country' value={form.country} onChange={handleChange}>
-                                <option value="Argentina">Argentina</option>
-                                <option value="Bolivia">Bolivia</option>
-                                <option value="Brasil">Brasil</option>
-                                <option value="Chile">Chile</option>
-                                <option value="Colombia">Colombia</option>
-                                <option value="Ecuador">Ecuador</option>
-                                <option value="Paraguay">Paraguay</option>
-                                <option value="Perú">Perú</option>
-                                <option value="Uruguay">Uruguay</option>
-                                <option value="Venezuela">Venezuela</option>
-                            </select>
-                        </ContFormInput>
-
-                        <ContFormInput nameElm="Provincia">
-                            <input type="text" name="province" placeholder={user.province} id="province" onChange={handleChange}/>
                         </ContFormInput>
 
                         <ContFormInput nameElm="Acerca de mi">

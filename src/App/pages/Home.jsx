@@ -5,6 +5,8 @@ import Publication from '../components/Publication'
 import Elementor from '../components/Elementor'
 import LoadData from '../components/LoadData'
 import { CONFIG_BACKEND, CONFIG_NAMES_COUNTRYS, CONFIG_PATHS } from '../config/config'
+import { Link } from 'react-router-dom'
+import SimulatorAndSuccess from '../components/SimulatorAndSuccess'
 
 function Home() {
   const [configData, setConfigData]  = useState(null)
@@ -14,39 +16,7 @@ function Home() {
 
   useEffect(() => {
     loadConfigData()
-    fetchAll()
   }, [])
-  
-  const fetchAll = async () => {
-    try {
-      const [plantsRes, leadersRes] = await Promise.all([
-      fetch(`${CONFIG_BACKEND.API_DIR}/plantations`, {
-          method: 'GET'
-      }),
-      fetch(`${CONFIG_BACKEND.API_DIR}/leadersPlants`, {
-          method: 'GET'
-      })])
-      
-      const [plantsData, leadersData] = await Promise.all([
-        plantsRes.json(),
-        leadersRes.json()
-      ])
-
-      if (plantsData.success) {
-        setDbPlantations(plantsData.result)
-      }/**/
-
-      if (leadersData.success) {
-        setLeadersPlant(leadersData.result.length)
-      }
-    }catch (error){
-      return
-    }
-  }
-  
-  const namesCountrys = CONFIG_NAMES_COUNTRYS.join(" • ") + " • "
-  const namesCountrysTwo = CONFIG_NAMES_COUNTRYS.slice().reverse().join(" • ") + " • "
-  const namesCountrysThree = CONFIG_NAMES_COUNTRYS.slice().sort(() => Math.random() - 0.5).join(" • ") + " • "
 
   return (
       <Publication
@@ -58,26 +28,95 @@ function Home() {
           <h2>{configData?.contentConfig}</h2>
         </Section>
         <Section>
-          <Elementor>
-            <div className={styles.dataCountry}><p>FUTBOL</p><p>11, 8 y 5</p></div>
-          </Elementor>
-          <Elementor>
-            <div className={styles.dataCountry}><p>FUTSAL</p></div>
-          </Elementor>
-          <Elementor>
-            <div className={styles.dataCountry}><p>FUTBOL</p><p>PLAYA</p></div>
-          </Elementor>
+            {/* TARJETA 1: FÚTBOL 11 */}
+            <Elementor>
+                <div className={styles.cardContainer}>
+                    <div>
+                        <div className={styles.cardHeader}>
+                            <span className={styles.badgeLevel}>Nivel Inicial / Intermedio</span>
+                            <span className={styles.cardDuration}><i className="fa-regular fa-clock mr-1"></i> 6 Meses</span>
+                        </div>
+                        <h3 className={styles.cardTitle}>Árbitro de Campo (Fútbol 11)</h3>
+                        <p className={styles.cardDescription}>Dominio completo de las 17 reglas del juego IFAB, posicionamiento táctico, lenguaje corporal y señalética oficial.</p>
+                        
+                        <ul className={styles.cardList}>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Táctica y Posicionamiento de Diagonal</li>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Preparación Física &amp; Test Yo-Yo</li>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Redacción de Actas e Informes Oficiales</li>
+                        </ul>
+                    </div>
+                    <div className={styles.cardFooter}>
+                        <div>
+                            <span className={styles.investmentLabel}>Inversión</span>
+                            <span className={styles.investmentPrice}>Consultar <span className={styles.investmentSub}>/mes</span></span>
+                        </div>
+                        <Link to='/deportes' className={styles.cardButton}>
+                            Ver Programa
+                        </Link>
+                    </div>
+                </div>
+            </Elementor>
+
+            {/* TARJETA 2: FÚTBOL 8 Y FÚTBOL 5 (DESTACADA) */}
+            <Elementor>
+                <div className={`${styles.cardContainer} ${styles.cardFeatured}`}>
+                    <div>
+                        <div className={styles.cardHeader}>
+                            <span className={styles.badgeLevel}>Avanzado / Formativo</span>
+                            <span className={styles.cardDuration}><i className="fa-regular fa-clock mr-1"></i> 4 Meses</span>
+                        </div>
+                        <h3 className={styles.cardTitle}>Árbitro de Fútbol 8 y 5</h3>
+                        <p className={styles.cardDescription}>Gestión de espacios reducidos, control de faltas tácticas, arbitraje dinámico y manejo de banco de suplentes.</p>
+                        
+                        <ul className={styles.cardList}>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Criterio de Ley de Ventaja en Espacios Reducidos</li>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Control Disciplinario y Tarjetas en F5/F8</li>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Coordinación con Cronometraje y Planilleros</li>
+                        </ul>
+                    </div>
+                    <div className={styles.cardFooter}>
+                        <div>
+                            <span className={styles.investmentLabel}>Inversión</span>
+                            <span className={styles.investmentPrice}>Consultar <span className={styles.investmentSub}>/mes</span></span>
+                        </div>
+                        <Link to='/deportes' className={styles.cardButton}>
+                            Ver Programa
+                        </Link>
+                    </div>
+                </div>
+            </Elementor>
+
+            {/* TARJETA 3: FUTSAL / FÚTBOL SALA */}
+            <Elementor>
+                <div className={styles.cardContainer}>
+                    <div>
+                        <div className={styles.cardHeader}>
+                            <span className={styles.badgeLevel}>Especialidad</span>
+                            <span className={styles.cardDuration}><i className="fa-regular fa-clock mr-1"></i> 3 Meses</span>
+                        </div>
+                        <h3 className={styles.cardTitle}>Árbitro de Futsal (Fútbol Sala)</h3>
+                        <p className={styles.cardDescription}>Reglamentación específica FIFA/AFA de superficies indoor, faltas acumuladas, doble penal y conteo de 4 segundos.</p>
+                        
+                        <ul className={styles.cardList}>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Reglas Oficiales de Futsal y Dinámica de Dupla</li>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Manejo de Cronómetro Electrónico y Tiempos Muertos</li>
+                            <li className={styles.cardListItem}><i className="fa-solid fa-check"></i> Protocolo de Sustituciones y Área Técnica</li>
+                        </ul>
+                    </div>
+                    <div className={styles.cardFooter}>
+                        <div>
+                            <span className={styles.investmentLabel}>Inversión</span>
+                            <span className={styles.investmentPrice}>Consultar <span className={styles.investmentSub}>/mes</span></span>
+                        </div>
+                        <Link to='/deportes' className={styles.cardButton}>
+                            Ver Programa
+                        </Link>
+                    </div>
+                </div>
+            </Elementor>
         </Section>
-        
-        <Section typeElm="maps">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d256.1527077294531!2d-58.445179678764134!3d-34.65031875185828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d-34.6502313198327!2d-58.445158221092!5e1!3m2!1ses!2sar!4v1749513947818!5m2!1ses!2sar"
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Google Maps"
-          ></iframe>
-        </Section>
+        <SimulatorAndSuccess />
+
       </Publication>
   )
 }

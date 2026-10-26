@@ -1,0 +1,116 @@
+.cont{
+    width: 100%;
+    height: 35rem;
+    min-width: 10rem;
+    padding: 2rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    background: #222222;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.cont > .contExam{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}
+.cont > .contExam > .contHeaders{
+    margin-bottom: 1rem;
+}
+.cont > .contExam > .contHeaders > .headerExam{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.cont > .contExam > .contHeaders > .headerExam > span{
+    width: 100%;
+    color: #ccc;
+}
+.cont > .contExam > .contHeaders > .headerExam > h2{
+    width: 100%;
+    font-size: 2.5rem;
+}
+.cont > .contExam > .contTimer{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    background-color: rgb(110, 85, 2);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+.contExam > .contGralAnsw{
+    width: 100%;
+    height: auto;    
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.contExam > .contGralAnsw > .contNumAnsw{
+
+}
+.contExam > .contGralAnsw > .contNumAnsw > span{
+    width: 100%;
+    color: #ccc;
+}
+
+.contExam > .contGralAnsw > h2{
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+    margin-top: 1rem;
+}
+
+.contExam > .contGralAnsw > .questions{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.contExam > .contGralAnsw > .questions > .contQuest{
+    width: 100%;
+    padding: 0.2rem;
+    margin: 0.5rem 0;
+
+    display: flex;
+    flex-direction: row;
+}
+.contExam > .contGralAnsw > .questions > .contQuestTrue{
+    border-radius: var(--border-radius);
+    background-color: rgb(71, 71, 252);
+}
+.contExam > .contGralAnsw > .questions > .contQuestFalse{
+    
+}
+.contExam > .contGralAnsw > .questions > .contQuest > input{
+    cursor: pointer;
+}
+
+
+.contExam > .contGralAnsw > .contBtns{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 1rem 0;
+}
+.contExam > .contGralAnsw > .contBtns > button{
+    cursor: pointer;
+    margin: 0 0.5rem;
+    padding: 0.5rem;
+}

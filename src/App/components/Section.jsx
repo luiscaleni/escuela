@@ -1,8 +1,6 @@
 import styles from './css/Section.module.css'
-import TextLand from './TextLand'
-import bannerHome from '/images/banner_home.png'
 
-function Section({home=false, typeElm="", children, titleElm=""}) {
+function Section({typeElm="", children, titleElm=""}) {
     let nameStyles=""
 
     if(typeElm === "banner"){
@@ -22,14 +20,6 @@ function Section({home=false, typeElm="", children, titleElm=""}) {
     return ( 
         <>
             <section className={nameStyles}>
-                {home && (
-                    <>
-                        <div className={styles.contentLand}>
-                            <TextLand />
-                        </div>
-                        <img src={bannerHome}/>
-                    </>
-                )}
                 {typeElm === "banner" || typeElm === "xtreme" || typeElm === "fullScreen" ? (
                     <>
                         {typeElm === "xtreme" ? <div className={styles.topXtreme}></div> : null}

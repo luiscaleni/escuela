@@ -29,14 +29,7 @@ export function UserProvider({ children }) {
   useEffect(() => {
     loadUser()
   }, [])
-/*
-  useEffect(() => {
-      if (user && user.darkMode !== undefined && user.darkMode !== null) {
-          const userMode = user.darkMode === 1 || user.darkMode === '1' || user.darkMode === true
-          setDark(userMode)
-      }
-  }, [user])
-*/
+
   return (
     <UserContext.Provider value={{ user, loading, initialized, loadUser, setUser }}>
       {children}

@@ -1,0 +1,68 @@
+.professorCard {
+    width: 100%;
+    background: #1e1e1e;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 1rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    
+    display: flex;
+    flex-direction: column; /* Por defecto en móviles: se apila todo verticalmente */
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    word-break: break-word; /* Evita que textos largos rompan el diseño */
+}
+
+.professorName {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.assignedDetails {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.4;
+}
+
+.assignButton {
+    padding: 0.6rem 1rem;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.2s;
+    width: 100%; /* En móviles ocupa todo el ancho debajo del texto */
+}
+
+.assignButton:hover {
+    background: #0056b3;
+}
+
+/* En pantallas de escritorio (tablets y PCs), se alinean en horizontal para aprovechar el espacio */
+@media (min-width: 768px) {
+    .professorCard {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .infoContainer {
+        max-width: 75%; /* Deja espacio para que el botón no colisione */
+    }
+
+    .assignButton {
+        width: auto; /* El botón adopta su tamaño natural y nunca se solapa */
+        flex-shrink: 0;
+    }
+}

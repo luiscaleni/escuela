@@ -1,4 +1,5 @@
 import styles from './css/ContentPreviewLand.module.css'
+import videoHome from '/videos/arbitros.mp4'
 
 function ContentPreviewLand() {
     return ( 
@@ -17,7 +18,10 @@ function ContentPreviewLand() {
                         </div>
                     </div>
                     <div className={styles.contentVideo}>
-                        <video></video>
+                        <video muted loop autoPlay playsInline>
+                            <source src={videoHome} type="video/mp4"/>
+                            Tu navegador no soporta la etiqueta de video.
+                        </video>
                     </div>
                     <p className={styles.descriptVideo}>
                         Accede a nuestro simulador interactivo con más de 500 clips de jugadas reales para evaluar fueras de juego, disputas tácticas y mano punible.

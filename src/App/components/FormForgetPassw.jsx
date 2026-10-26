@@ -1,6 +1,6 @@
 import styles from './css/Form.module.css'
 import { Link, useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Button from "./Button"
 import ContFormInput from "./ContFormInput"
 import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'

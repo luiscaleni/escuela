@@ -65,6 +65,135 @@
   animation: scroll 300s linear infinite;
 }
 
+
+
+.cardContainer {
+    border-radius: 1rem;
+    padding: 2rem;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.cardContainer:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    transform: translateY(-4px);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.badgeLevel {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.cardDuration {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.cardContainer:hover .cardTitle {
+    color: #10B981;
+}
+
+.cardDescription {
+    color: #9CA3AF;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.cardList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-size: 0.75rem;
+    color: #D1D5DB;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    padding: 0;
+}
+
+.cardListItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cardListItem i {
+    color: #10B981;
+}
+
+.cardFooter {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.investmentLabel {
+    display: block;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    color: #9CA3AF;
+    letter-spacing: 0.05em;
+}
+
+.investmentPrice {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.investmentSub {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+    font-weight: normal;
+}
+
+.cardButton {
+    padding: 0.5rem 1rem;
+    border-radius: 0.75rem;
+    background-color: rgba(16, 24, 39, 0.8);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.75rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cardButton:hover {
+    background-color: #10B981;
+    color: #090D16;
+    border-color: #10B981;
+}
+
+
+
 @keyframes scroll {
     0% {
         transform: translateX(0%);

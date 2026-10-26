@@ -1,0 +1,38 @@
+.cont{
+    width: 90%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.cont > .contAnws{
+    width: 80%;
+    height: auto;
+    margin: 0.5rem;
+    padding: 1rem;    
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.cont > .contAnws > h3{
+    margin-bottom:1rem;
+    color: var(--color-primary);
+    padding: 1rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.cont > .contAnws > p{
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    color: rgb(219, 216, 216);
+}

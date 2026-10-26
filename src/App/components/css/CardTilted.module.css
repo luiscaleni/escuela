@@ -1,0 +1,126 @@
+.linkSports{
+    position: relative;
+    width: 100%;
+    max-width: 20rem;
+    height: 14rem;
+    background: rgba(16, 24, 39, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: 0.75rem;
+    margin: 1rem;
+    overflow: hidden;
+    transform: skewX(-10deg); /* Inclinación de la tarjeta */
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.25), 
+                inset 0 0 15px rgba(16, 185, 129, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 1.25rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.linkSports > .cardTilted {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.linkSports:hover {
+    border-color: rgba(16, 185, 129, 0.9);
+    box-shadow: 0 0 25px rgba(16, 185, 129, 0.5), 
+                inset 0 0 20px rgba(16, 185, 129, 0.15);
+    transform: skewX(-10deg) translateY(-4px);
+}
+
+/* Contrarresta la inclinación para que el texto NO se tuerza */
+.contentRight {
+    transform: skewX(10deg);
+    position: relative;
+    z-index: 2;
+}
+
+.contentRight h3 {
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+
+.contentRight p {
+    height: 2.2rem;
+    color: #9CA3AF;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Capa oscura degradada para que el texto resalte sobre la foto */
+.opacity {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(9, 13, 22, 1) 20%, rgba(9, 13, 22, 0.3) 100%);
+    z-index: 1;
+}
+
+/* Imagen de fondo de la tarjeta */
+.cardTilted img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(0.7);
+    transition: transform 0.5s ease;
+}
+
+.cardTilted:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width:1280px) {
+    .linkSports{
+        max-width: 10rem;
+        height: 14rem;
+    }
+    .linkSports > .cardTilted {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .opacity {
+        background: rgba(9, 13, 22, 0.8);
+    }
+}
+@media (max-width:830px) {
+    .linkSports{
+        max-width: 16rem;
+        height: 8rem;
+        margin: 0.4rem;
+        transform: skewX(0deg);
+        box-shadow:none;
+    }
+    .contentRight,
+    .linkSports:hover {
+        transform: skewX(0deg);
+    }
+    .contentRight p {
+        display: none;
+    }
+}
+@media (max-width:600px){
+    .linkSports{
+        max-width: 14rem;
+        height: 7rem;
+    }
+}
+@media (max-width:536px){
+    .linkSports{
+        max-width: 16rem;
+        height: 4rem;
+    }
+}

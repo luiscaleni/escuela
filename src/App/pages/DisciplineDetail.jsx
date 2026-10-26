@@ -6,7 +6,6 @@ import Publication from '../components/Publication'
 import LeftTopButton from '../components/LeftTopButton'
 import Container from '../components/Container'
 import Loader from '../components/Loader'
-import plus from '/icons/utilities/plus.png'
 import pencil from '/icons/utilities/pencil.png'
 import RightTopButton from '../components/RightTopButton'
 import { UserContext } from '../../App/components/UserProvider'
@@ -14,7 +13,6 @@ import TopButtons from '../components/TopButtons'
 import Modal from '../components/Modal'
 import FormDisciplineEdit from '../components/FormDisciplineEdit'
 import CenterContainer from '../components/CenterContainer'
-import CenterTopButton from '../components/CenterTopButton'
 import FormInscriptionCourse from '../components/FormInscriptionCourse'
 
 function DisciplineDetail() {
@@ -24,20 +22,11 @@ function DisciplineDetail() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [showContainerForm, setShowContainerForm] = useState(false)
-    const [showInscripForm, setShowInscripForm] = useState(false)
 
     const fnCloseContainerForm = () => setShowContainerForm(false)
-    const fnCloseInscripForm = () => setShowInscripForm(false)
 
     const fnShowContainerForm = () => {
         setShowContainerForm(true)
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    }
-    const fnShowInscripForm = () => {
-        setShowInscripForm(true)
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
@@ -58,7 +47,6 @@ function DisciplineDetail() {
                 setDiscipline(data.result)
             }
         }catch (error) {
-            //navigate(CONFIG_PATHS.COURSES_PATH)
             setLoading(false)
             setDiscipline(null)
         }finally{
@@ -69,29 +57,15 @@ function DisciplineDetail() {
     if(loading) return <Loader />
     if(error) return <p>Error en detalles: {error}</p>
 
-    /*
-    const formateada = new Date(course.datePub).toLocaleDateString("es-ES", {
-        day: "2-digit",
-        month: "long",
-        year: "numeric"
-    })*/
-
     return (
         <>
-        {showContainerForm ? (
+        {showContainerForm && (
             <Modal
                 id="containerFloat"
                 onClickElm={fnCloseContainerForm}
                 formats="jpg, jpeg, png y webp."
             >
                 <FormDisciplineEdit/>
-            </Modal>
-        ) : showInscripForm && (
-            <Modal
-                id="containerFloat"
-                onClickElm={fnCloseInscripForm}
-            >
-                <FormInscriptionCourse value={discipline}/>
             </Modal>
         )}
             {discipline && (
@@ -108,14 +82,6 @@ function DisciplineDetail() {
                                 typeElm='expand'
                                 text="Volver"
                             />
-                        {user && user.rolId === 3 && (
-                            <CenterTopButton
-                                onClick={()=>{fnShowInscripForm()}}
-                                typeElm='expand'
-                                text="Inscribirse a este curso"
-                                imgElm={plus}
-                            />
-                        )}
 
                         {user && user.rolId === 1 && (
                             <RightTopButton

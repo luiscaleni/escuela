@@ -8,10 +8,12 @@ import { CONFIG_PATHS } from '../../config/config'
 function NewPost() {
     const { user } = useContext(UserContext)
     const navigate = useNavigate()
-
-    if(user.rolId !== 1){
-        navigate(CONFIG_PATHS.HOME_PATH)
-    }
+    
+    useEffect(()=>{
+        if (user.rolId !== 1) {
+            navigate(CONFIG_PATHS.CAMPUS_PATH)
+        }
+    },[])
 
     return ( 
         <>

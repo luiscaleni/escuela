@@ -3,6 +3,14 @@ import styles from './css/Publication.module.css'
 import Video from '../components/Video'
 import bannerDefault from '/images/banner_default.jpg'
 import { CONFIG_BACKEND } from '../config/config'
+import ContentTextLand from './ContentTextLand'
+import CardTilted from './CardTilted'
+
+import futbol from '/images/others/futbol.png'
+import basket from '/images/others/basket.png'
+import voley from '/images/others/voley.png'
+import rugby from '/images/others/rugby.png'
+import ContainerWrapper from './ContainerWrapper'
 
 function Publication({home=false, titlePub, nameAsset="", type="", typeElm="", locationPub="", locationAlt= "", children}) {
   let mediaSrc
@@ -27,7 +35,36 @@ function Publication({home=false, titlePub, nameAsset="", type="", typeElm="", l
     <>
       <div className={styles.publication}>
         <Section home={home} typeElm={type === "xtreme2" ? "fullScreen" : "banner"} titleElm={titlePub} >
-          {typeElm === "img" ? (
+          {home ===true ? (
+              <div className={styles.contTotal}>
+                <div className={styles.degrade}></div>
+                <ContainerWrapper images={['/images/others/img1.jpg', '/images/others/img2.jpg', '/images/others/img3.jpg']}>
+                      <ContentTextLand />
+                      <div className={styles.cont}>
+                        <CardTilted 
+                          title='Fútbol'
+                          subtitle='Tácticas VAR / Reglas FIFA'
+                          imgSrc={futbol}
+                        />
+                        <CardTilted 
+                          title='Básquet'
+                          subtitle='Sistema de Repetición Instantánea (IRS) / Reglas FIBA'
+                          imgSrc={basket}
+                        />
+                        <CardTilted 
+                          title='Voley'
+                          subtitle='Sistema de Desafío (Challenge System) / Reglas FIVB'
+                          imgSrc={voley}
+                        />
+                        <CardTilted 
+                          title='Rugby'
+                          subtitle='Oficial de Partido de Televisión (TMO) / Reglas World Rugby'
+                          imgSrc={rugby}
+                        />
+                      </div>
+                </ContainerWrapper>
+              </div>                        
+            ) : typeElm === "img" ? (
               <img src={mediaSrc} alt="Imagen de la publicación" loading='lazy'/>
             ) : typeElm === "video" ? (
               <Video />

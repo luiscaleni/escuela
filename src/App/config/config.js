@@ -2,7 +2,7 @@
 // This file contains constants that are used throughout the application
 
 export const CONFIG_PRODUCTION_DATA = {
-    APP_URL: 'https://dpisud-beta.infy.uk'
+    APP_URL: 'https://beta.infy.uk'
 }
 
 export const CONFIG_SOCIAL_NETWORK = {
@@ -10,7 +10,7 @@ export const CONFIG_SOCIAL_NETWORK = {
     IG: 'https://www.instagram.com/',
     IG: 'https://www.instagram.com/',
     YT: 'https://www.youtube.com/',
-    EMAIL: 'mailto:luis.caleni@gmail.com'
+    EMAIL: 'mailto:contacto@gmail.com'
 }
 
 export const CONFIG_BACKEND = {
@@ -20,7 +20,7 @@ export const CONFIG_BACKEND = {
 }
 
 export const CONFIG_PATHS = {
-    ROOT_Path: "/",
+    ROOT_PATH: "/",
     HOME_PATH: "/",
     INDEX_PATH: "/index.php",
     SPORTS_PATH: "/deportes",
@@ -39,16 +39,21 @@ export const CONFIG_PATHS = {
     CONFIG_PASSW_PATH: "/passw",
     HELP_PATH: "/ayuda",
 
-    YOUR_WELLCOME_PATH: "/bienvenida",
     PROFILE_PATH: "/perfil",
     PROFILE_EDIT_PATH: "/editar-perfil",
     EDIT_POST_PATH: "/editar-publicacion",
     SUCCESS_PATH: "/registro-exitoso",
-
+    
     CAMPUS_PATH: "/campus",
-    CAMPUS_MY_COURSES_PATH: "/campus/mis-cursos",
-    CAMPUS_MY_COURSES_DETAIL_PATH: "/campus/mis-cursos/detalles",
-    CAMPUS_ASSING_PROFESSORS_PATH: "/campus/asignar-cursos-a-profesores"
+    YOUR_WELLCOME_PATH: "bienvenida",
+    CAMPUS_MY_COURSES_PATH: "mis-cursos",
+    CAMPUS_MY_COURSES_DETAIL_PATH: "mis-cursos/detalles",
+    CAMPUS_COURSE_INSCRIPTIONS: "inscribirme-a-cursos",
+
+    CAMPUS_COURSES_LIST_PROFESSOR_PATH: "profesor-cursos",
+    
+    CAMPUS_CREATE_COURSE_PATH: "crear-un-nuevo-curso",
+    CAMPUS_ASSING_PROFESSORS_PATH: "asignar-cursos-a-profesores"
 }
 
 export const CONFIG_NAMES_COUNTRYS = [

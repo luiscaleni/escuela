@@ -28,7 +28,6 @@
   min-width: 20rem;
   color: var(--color-dark);
   padding: 0.8rem 1.6rem;
-  border: var(--border);
   border-radius: var(--border-radius);
   background-color: #fff;
 
@@ -37,7 +36,9 @@
   align-items: center;
   flex-direction: column;
 }
-
+.form2{
+  border: var(--border);
+}
 :global(body.dark) .contForm > .form {
   background-color: #2b2b2b;
   border: var(--border-dark);
@@ -45,6 +46,85 @@
 }
 .contForm > .form2 {
   border: 0;
+}
+
+
+
+
+
+
+
+.dynamicForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blocksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.blockItem {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    /* Reservamos espacio para el borde y evitamos que salte de tamaño en el hover */
+    border: 0.1rem solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.blockItem:hover {
+    border-color: #4f46e5;
+}
+
+.contBtns {
+    display: flex;
+    color: #000;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.submitBtn {
+    padding: 10px 20px;
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+.contBtns{
+  gap: 10px;
+  margin: 0.9rem 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submitBtn{
+  width: 100%;
+  cursor: pointer;
+  padding: 0.7rem;
+  color: white;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  background: var(--background-color-btn)
 }
 .contForm > .form > .smallText{
   width: 100%;
@@ -159,7 +239,94 @@ label > span{
 
 :global(body.dark) .contForm > .form {
   border: none;
- }
+}
+
+/* form.module.css */
+
+.dynamicForm {
+  color: #000;
+  gap: 15px;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.blocksContainer {
+  margin: 0 auto;
+  width: 96%;
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 5px;
+  gap: 12px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blockItem{
+  width: 90%;
+  border: var(--border);
+  padding: 0.8rem;
+  margin-bottom: 0.7rem;
+  border-radius: var(--border-radius-slim);
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+input[type='text'],
+label,
+.blockItem > div {
+  width: 100%;
+  margin: 0.2rem;
+}
+
+
+.blockHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.blockLabelInput {
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 14px;
+    width: 60%;
+    outline: none;
+}
+
+.blockLabelInput:focus {
+    border-bottom: 1px solid #007bff;
+}
+
+.blockActions {
+    display: flex;
+    gap: 6px;
+}
+
+.blockActions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 5px;
+}
+
+.addButtonsContainer {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+/* Puedes reutilizar las clases de botones que ya tengas en tu CSS de formularios */
 
 @media (max-width: 650px){
   .form > .contElmsForm > h2{

@@ -131,7 +131,8 @@ nav, .navbar{
 
 .navbarContent > .navbarLinks > .navbarLinksGroup > a:hover,
 .navbarContent > .navbarLinks > .elmPanel > a:hover{
-    border-bottom: 0.2rem solid azure;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 0.2rem solid var(--background-color-btn);
 }
 
 .navbarContent > .navbarLinks > a > .navbarLogo{
@@ -301,6 +302,9 @@ span{
     justify-content: center;
     align-items: center;
     
+}
+.menuButton > .contWellcome > div > div > img{
+    height: 3rem;
 }
 .wellcomeActive {
     width: 10rem !important;

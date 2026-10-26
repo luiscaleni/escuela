@@ -79,7 +79,6 @@ function FormRegister() {
 
             // Lee la respuesta como texto primero para ver qué llega exactamente
             const rawText = await response.text();
-            console.log("Respuesta cruda del servidor:", rawText);
 
             if (!rawText) {
                 throw new Error("El servidor respondió con un texto vacío.");

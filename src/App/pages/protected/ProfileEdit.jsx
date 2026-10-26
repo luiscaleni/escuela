@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Section from '../../components/Section'
 import FormProfileEdit from '../../components/FormProfileEdit'
@@ -9,9 +9,11 @@ function Register() {
     const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
-    if (!user){
-        return navigate(CONFIG_PATHS.LOGIN_PATH, { state: { updated: true } })
-    }
+    useEffect(()=>{
+        if (!user){
+            navigate(CONFIG_PATHS.LOGIN_PATH, { state: { updated: true } })
+        }
+    },[])
 
     return ( 
         <Section>

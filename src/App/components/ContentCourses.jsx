@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styles from './css/Campus.module.css'
 import { useParams } from 'react-router-dom'
-import { CONFIG_BACKEND } from '../config/config'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 import Card from './Card'
 
 function ContentCourses() {
@@ -45,9 +45,9 @@ function ContentCourses() {
                                 matters.map(matter => (
                                 <Card 
                                     key={matter.id_matter}
-                                    link={`/campus/mis-cursos/detalles/${matter.id_matter}`}
+                                    link={`/campus/${CONFIG_PATHS.CAMPUS_MY_COURSES_PATH}/detalles/${matter.id_matter}`}
                                     className={styles.matterCard}
-                                    cardTitle={matter.title_matter}
+                                    cardTitle={matter.name_matter}
                                     descriptCard={matter.descript_matter}
                                 />
                             ))

@@ -1,0 +1,250 @@
+/* ==========================================
+   ESTILOS: SECCIÓN SIMULADOR / DESAFÍO
+   ========================================== */
+.simulatorSection {
+    background-color: #090D16;
+    padding: 4rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulatorCard {
+    background: rgba(16, 24, 39, 0.75);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 850px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.simulatorHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.badgeExprss {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: #F59E0B;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    letter-spacing: 0.05em;
+}
+
+.ruleTag {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.yearTag {
+    color: #10B981;
+    font-weight: bold;
+    margin-left: 0.25rem;
+}
+
+.simulatorTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+}
+
+.simulatorSubtitle {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+.caseBox {
+    background: rgba(9, 13, 22, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.caseText {
+    color: #D1D5DB;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.caseHighlight {
+    color: #10B981;
+}
+
+.underlineText {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.optionsList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.optionItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(16, 24, 39, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.optionItem:hover {
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.05);
+}
+
+.optionText {
+    color: #E5E7EB;
+    font-size: 0.875rem;
+}
+
+.radioInput {
+    accent-color: #10B981;
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.simulatorFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.footerPromptText {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+}
+
+.footerLink {
+    font-size: 0.8rem;
+    color: #10B981;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.footerLink:hover {
+    color: #34D399;
+    text-decoration: underline;
+}
+
+
+/* ==========================================
+   ESTILOS: SECCIÓN CASOS DE ÉXITO (EGRESADOS)
+   ========================================== */
+.successSection {
+    background-color: #090D16;
+    padding: 4rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.successHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.successTag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #10B981;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.successTitle {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #FFFFFF;
+}
+
+.successGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.successCard {
+    background: rgba(16, 24, 39, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.successCard:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+    transform: translateY(-4px);
+}
+
+.graduateHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: #090D16;
+    font-weight: 800;
+    font-size: 0.95rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.graduateName {
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.graduateRole {
+    color: #9CA3AF;
+    font-size: 0.75rem;
+}
+
+.graduateQuote {
+    color: #D1D5DB;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-style: italic;
+}

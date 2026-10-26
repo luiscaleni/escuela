@@ -9,7 +9,7 @@
     color: #000;
     border: var(--border);
     border-radius: var(--border-radius);
-    background-color: #fff;
+    background-color: #1d1d1d;
 
     display: flex;
     justify-content: space-between;

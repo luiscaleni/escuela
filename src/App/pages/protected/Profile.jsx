@@ -35,7 +35,17 @@ function Profile() {
     if (user.rolId === 1) {
         nameRol="Administradora"
     }else if (user.rolId === 2) {
-        nameRol="Plantador"
+        if(user.sex === "M"){
+            nameRol="Profesor"
+        }else{
+            nameRol="Profesora"
+        }
+    } if (user.rolId === 3){
+        if(user.sex === "M"){
+            nameRol="Alumno"
+        }else{
+            nameRol="Alumna"
+        }
     }
 
     return ( 

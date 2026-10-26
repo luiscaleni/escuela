@@ -1,5 +1,5 @@
 import { useNavigate, Link } from "react-router-dom"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { UserContext } from "./UserProvider"
 import styles from './css/Form.module.css'
 import Button from "./Button"
@@ -11,8 +11,10 @@ function FormLogin() {
     const { loadUser } = useContext(UserContext)
     const navigate = useNavigate()
     const [cargando, setCargando] = useState(false)
+    
+    // Inicializamos el email recuperándolo de localStorage (si existe)
     const [form, setForm] = useState({
-        email: '',
+        email: localStorage.getItem('remembered_email') || '',
         passw: ''
     })
 
@@ -40,8 +42,12 @@ function FormLogin() {
             const data = await response.json()
             
             if (data.success) {
+                // Guardamos el email actual en localStorage para recordarlo la próxima vez
+                localStorage.setItem('remembered_email', form.email)
+                
                 await loadUser()
-                setForm({ email: '', passw: '' })
+                // Limpiamos únicamente la contraseña, conservando el email guardado en el estado/storage
+                setForm(prev => ({ ...prev, passw: '' }))
                 navigate(CONFIG_PATHS.CAMPUS_PATH)
             } else {
                 alert("Credenciales incorrectas. Intenta nuevamente.")
@@ -58,7 +64,8 @@ function FormLogin() {
         <>
             <div className={styles.contForm}>
                 <form
-                    autoComplete="off"
+                    // Quitamos el "off" general para permitir que el navegador gestione o asista con el email, 
+                    // mientras el input de contraseña se mantiene seguro.
                     id='formLogin'
                     className={styles.form}
                     onSubmit={handleSubmit}
@@ -71,6 +78,7 @@ function FormLogin() {
                             value={form.email}
                             name='email'
                             id='email'
+                            autoComplete="email"
                             onChange={handleChange}
                             required
                         />
@@ -82,6 +90,7 @@ function FormLogin() {
                             value={form.passw}
                             name='passw'
                             id='passwordLogin'
+                            autoComplete="current-password"
                             onChange={handleChange}
                             required
                         />

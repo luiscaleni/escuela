@@ -105,23 +105,25 @@ function NavBar() {
                                 <p>ARBITRA</p>
                             </Link>
                             <div className={styles.navbarLinksGroup}>
-                                <Link to={CONFIG_PATHS.HOME_PATH} className={styles.linkHome} onClick={toggleMenuPanel}>
-                                    <img src={imgHome} className={styles.imgMobile}/>
-                                    Inicio
-                                </Link>
-                                <Link to={CONFIG_PATHS.SPORTS_PATH} onClick={toggleMenuPanel}>
-                                    <img src={imgNews} className={styles.imgMobile}/>
-                                    Cursos
-                                </Link>
-                                {user ?(
-                                    <Link to={CONFIG_PATHS.CAMPUS_PATH} onClick={toggleMenuPanel}>
-                                        <img src={imgPublication} className={styles.imgMobile}/>
-                                        Campus
+                                {!user ?(
+                                    <>
+                                    <Link to={CONFIG_PATHS.HOME_PATH} className={styles.linkHome} onClick={toggleMenuPanel}>
+                                        <img src={imgHome} className={styles.imgMobile}/>
+                                        Inicio
                                     </Link>
-                                ):(
+                                    <Link to={CONFIG_PATHS.SPORTS_PATH} onClick={toggleMenuPanel}>
+                                        <img src={imgNews} className={styles.imgMobile}/>
+                                        Cursos
+                                    </Link>
                                     <Link to={CONFIG_PATHS.LOGIN_PATH} onClick={toggleMenuPanel}>
                                         <img src={imgProfileMen} className={styles.imgMobile}/>
                                         Login
+                                    </Link>
+                                    </>
+                                ):(
+                                    <Link to={CONFIG_PATHS.CAMPUS_PATH} onClick={toggleMenuPanel}>
+                                        <img src={imgPublication} className={styles.imgMobile}/>
+                                        Inicio
                                     </Link>
                                 )}
                                 {/*darkmode float*/}

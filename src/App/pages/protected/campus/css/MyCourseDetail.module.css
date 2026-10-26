@@ -1,8 +1,59 @@
-.routes{
+.routes {
     width: 100%;
     margin: 1rem 0;
 }
 
-h2{
+h2 {
+    color: white;
+}
+
+.tabsContainer {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background: #1e1b4b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: normal;
+    transition: background 0.3s ease;
+}
+
+.tab-button.active {
+    background: #4f46e5;
+    font-weight: bold;
+}
+
+.classContentContainer {
+    display: flex;
+    flex-direction: column; /* Apila los bloques verticalmente */
+    gap: 15px;
+    width: 100%;
+}
+
+.blockItem {
+    width: 90%;
+    margin: 0 auto; /* Centra los bloques horizontalmente dentro del contenedor */
+    padding: 15px;
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+    border: 0.1rem solid transparent; /* Reserva el espacio para evitar saltos al hacer hover */
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    white-space: pre-line;
+}
+
+.blockItem:hover {
+    cursor: pointer;
+    border-color: #4f46e5;
+}
+
+.blockItem > div > a {
     color: white;
 }

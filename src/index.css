@@ -16,7 +16,7 @@
   --color-bg: #fff;
   --color-bg-alt: #f2f2f2;
   --color-text: #222;
-  --color-primary: #1e90ff;
+  --color-primary: #006eff;
   --color-primary-text: #fff;
   --color-border: #ccc;
 
@@ -51,7 +51,7 @@
   --box-shadow-strong-top: 0 -0.1rem 1rem rgba(27, 27, 27, 0.4);
 
   
-  --background: #1d1d1d;
+  --background: rgba(19, 27, 46, 0.7);
   --background-solid: #090D16;
   --background-solid-2: #0d1424;
   --background-solid-3: #10B981;
@@ -59,7 +59,7 @@
   --background-dark-2: rgba(0, 0, 0, 0.8);
   --background-color: rgba(255, 255, 255, 1);
   --background-color-btn: #006eff;
-  --background-color-btn-hover: #004bad;
+  --background-color-btn-hover: #004299;
   --background-linear-gradient: linear-gradient(15deg,rgb(174, 202, 243), #cec3ff );
 
 

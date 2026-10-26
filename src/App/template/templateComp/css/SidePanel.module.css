@@ -1,27 +1,45 @@
 .sidePanel{
     position: fixed;
     top: 5rem;
-    right: 0;
+    right: -18%; /* Por defecto oculto en desktop si togglePanel es false */
     z-index: 4;
     width: 18%;
     height: 100dvh;
     padding: 1rem 2rem 1rem 1.5rem;
     border-left: 0.1rem solid #ccc;
     transition: all ease-in-out .3s;
-    background-color: #aaaaaa;
+    background-color: #333;
+}
+
+/* Clase para abrir en desktop */
+.sidePanel.panelOpen {
+    right: 0;
 }
 
 .sidePanel > .buttonPanel{
+    position: absolute;
+    width: 4.5rem;
+    height: auto;
+    top: 0;
+    left: -2.5rem;
+    padding: 0.5rem 0.5rem 0.3rem 0.5rem;
+    border-radius: 0 0 0 1rem;
     transition: all ease-in-out .3s;
-    display: none;
+    background-color: #333;
+    z-index: -1;
+    display: flex;
+    cursor: pointer;
 }
+
 .sidePanel > .buttonPanel > img{
-    padding: 0 0.2rem 0.4rem 0.2rem;
+    padding: 0.4rem 0.2rem 0.4rem 0.2rem;
+    /* En desktop, si está abierto muestra 'close' o rotamos la flecha acorde */
+    transform: rotate(0deg); 
 }
+
 .sidePanel > h2{
     display: none;
 }
-
 
 @media (max-width: 1280px){
     .sidePanel{
@@ -29,32 +47,20 @@
         width: 20%;
         top: 4rem;
         padding: 0;
-        right: -20%;
+        right: -20%; /* Oculto por defecto en tablets/móviles */
         z-index: 1000;
         background-color: #333;
     }
+
     .sidePanel > h2{
         height: 2.6rem;
         color: #fff;
         padding: 0.2rem 0.5rem;
-
-        display: flex;
-    }
-    .sidePanel > .buttonPanel{
-        position: absolute;
-        width: 4.5rem;
-        left: -4.5rem;
-        padding: 0.5rem 0.5rem 0.3rem 0.5rem;
-        border-radius: 0 0 0 1rem;
-        background-color: #333;
-
         display: flex;
     }
 
+    /* Sobrescribimos para que en mobile use right: 0 cuando esté abierto */
     .panelOpen{
         right: 0 !important;
     }
-}
-
-@media (max-width: 1080px){
 }

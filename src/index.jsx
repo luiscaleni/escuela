@@ -8,6 +8,8 @@ import TemplateCampus from './App/template/TemplateCampus'
 import './index.css'
 
 import Home                     from './App/pages/Home'
+import NotFound                 from './App/pages/NotFound'
+
 import AboutUs                  from './App/pages/AboutUs'
 
 import Register                 from './App/pages/Register'
@@ -24,7 +26,6 @@ import ProfileEdit              from './App/pages/protected/ProfileEdit'
 import Wellcome                 from './App/pages/protected/Wellcome'
 import Configuration            from './App/pages/protected/Configuration'
 import ConfigurationEdit        from './App/pages/protected/ConfigurationEdit'
-import PostEdit                 from './App/pages/protected/PostEdit'
 import Help                     from './App/pages/protected/Help'
 import PrivacyPolitic           from './App/pages/PrivacyPolitic'
 
@@ -35,7 +36,12 @@ import DisciplineDetail         from './App/pages/DisciplineDetail'
 import Campus                   from './App/pages/protected/campus/Campus'
 import MyCourseDetail           from './App/pages/protected/campus/MyCourseDetail'
 import MyCourses                from './App/pages/protected/campus/MyCourses'
+import MyCoursesId              from './App/pages/protected/campus/MyCoursesId'
 import ProfessorAssing          from './App/pages/protected/campus/ProfessorAssing'
+import MattersListProfessor     from './App/components/MattersListProfessor'
+import CourseInscriptions from './App/pages/protected/campus/CourseInscriptions'
+import ManageSports from './App/components/ManageSports'
+import ExamView from './App/components/ExamView'
 
 
 const routes = [
@@ -44,17 +50,17 @@ const routes = [
     element: <Template separator={false} />,
     children: [
       { path: CONFIG_PATHS.HOME_PATH,                                       element: <Home/>,                                                       },
-      { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                                                     },
       { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <DisciplineDetail/>,                                           },
       { path: CONFIG_PATHS.ABOUT_US_PATH,                                   element: <AboutUs/>,                                                    },
+      { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <Sports/>,                                                     },
       { path: CONFIG_PATHS.PRIVACY_PATH,                                    element: <PrivacyPolitic/>,                                             },
       { path: CONFIG_PATHS.RESET_PASSW,                                     element: <ResetPassw />                                                 },
       { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
       
-      { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>     <Login/>                   </PublicRoute>    },
-      { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>     <ForgetPassw/>             </PublicRoute>    },
+      { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>       <Login/>                 </PublicRoute>    },
+      { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>       <ForgetPassw/>           </PublicRoute>    },
       //
-      { path: "*",                                                          element: <Home/>                                                        }
+      { path: "*",                                                          element: <NotFound/>                                                    }
     ]
   },
   {
@@ -62,9 +68,12 @@ const routes = [
     element: <Template separator={true} />,
     children: [
       { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
+      // --- AGRUPAMOS TODAS LAS RUTAS PROTEGIDAS DEL USUARIO AQUÍ ---
+      { path: CONFIG_PATHS.PROFILE_PATH,                                    element: <ProtectedRoute>  <Profile/>                 </ProtectedRoute> },
       { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
       { path: CONFIG_PATHS.CONFIG_PATH,                                     element: <ProtectedRoute>  <Configuration/>           </ProtectedRoute> },
       { path: CONFIG_PATHS.CONFIG_EDIT_PATH,                                element: <ProtectedRoute>  <ConfigurationEdit/>       </ProtectedRoute> },
+      { path: CONFIG_PATHS.HELP_PATH,                                       element: <ProtectedRoute>  <Help/>                    </ProtectedRoute> },
     ]
   },
   {  
@@ -72,32 +81,45 @@ const routes = [
     element: <Template separator={false} />,
     children: [
       //Protected - ROL 1 y 2
-      { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,                              element: <ProtectedRoute>  <Wellcome/>                </ProtectedRoute> },
-      { path: CONFIG_PATHS.PROFILE_PATH,                                    element: <ProtectedRoute>  <Profile/>                 </ProtectedRoute> },
-      { path: CONFIG_PATHS.HELP_PATH,                                       element: <ProtectedRoute>  <Help/>                    </ProtectedRoute> },
       
-      //Protected - ROl 1
-      { path: CONFIG_PATHS.EDIT_POST_PATH+"/:id_course",                    element: <ProtectedRoute>  <PostEdit/>                </ProtectedRoute> },
     ]
   },
   { 
-    path: "campus",
+    path: "/campus",
     element: <TemplateCampus separator={false}/>,
     children: [
-      { path: CONFIG_PATHS.CAMPUS_PATH,                                     element: <ProtectedRoute>  <Campus/>                  </ProtectedRoute> },
+      { path: "",                                                           element: <ProtectedRoute>  <Campus/>                  </ProtectedRoute> },
+      { path: CONFIG_PATHS.YOUR_WELLCOME_PATH,                              element: <ProtectedRoute>  <Wellcome/>                </ProtectedRoute> },
       { 
-        path: CONFIG_PATHS.CAMPUS_ASSING_PROFESSORS_PATH,
-        element: <ContentCampus separator={false}/>, // <--- Este componente es el contenedor clave
+        path: "asignar-cursos-a-profesores", // O tu constante de profesores
+        element: <ContentCampus separator={false}/>,
+        children: [ { path: "",                                             element: <ProtectedRoute>  <ProfessorAssing/>         </ProtectedRoute> }]
+      },
+      { path: "exam/take/:id_exam",                                         element: <ProtectedRoute>  <ExamView/>                </ProtectedRoute> },
+      { 
+        path: "crear-un-nuevo-curso", // O tu constante de profesores
+        element: <ContentCampus separator={false}/>,
+        children: [ { path: "",                                             element: <ProtectedRoute>  <ManageSports/>            </ProtectedRoute> }]
+      },
+      { 
+        path: "profesor-cursos", // O tu constante correspondiente
+        element: <ContentCampus separator={false}/>,
+        children: [ { path: "",                                             element: <ProtectedRoute>  <MattersListProfessor/>    </ProtectedRoute> }]
+      },
+      { 
+        path: "mis-cursos", // Asegúrate de que coincida con lo que usas en el Link
+        element: <ContentCampus separator={false}/>,
         children: [
-          { path: CONFIG_PATHS.CAMPUS_ASSING_PROFESSORS_PATH,               element: <ProtectedRoute>  <ProfessorAssing/>               </ProtectedRoute> },
+          { path: "",                                                       element: <ProtectedRoute>  <MyCourses/>               </ProtectedRoute> },
+          { path: ":id",                                                    element: <ProtectedRoute>  <MyCoursesId/>             </ProtectedRoute> },
+          { path: "detalles/:id",                                           element: <ProtectedRoute>  <MyCourseDetail/>          </ProtectedRoute> },
         ]
       },
       { 
-        path: "mis-cursos",
-        element: <ContentCampus separator={false}/>, // <--- Este componente es el contenedor clave
+        path: "inscribirme-a-cursos",
+        element: <ContentCampus separator={false}/>,
         children: [
-          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_PATH+"/:id",               element: <ProtectedRoute>  <MyCourses/>               </ProtectedRoute> },
-          { path: CONFIG_PATHS.CAMPUS_MY_COURSES_DETAIL_PATH+"/:id",        element: <ProtectedRoute>  <MyCourseDetail/>          </ProtectedRoute> },
+          { path: "",                                                       element: <ProtectedRoute>  <CourseInscriptions/>     </ProtectedRoute> },
         ]
       }
     ]

@@ -1,0 +1,106 @@
+/* Contenedor principal full screen (100% de ancho) */
+.fullWidthSection {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 100vh; /* O la altura que prefieras para la sección */
+    background-color: #090D16;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 1.5rem;
+    box-sizing: border-box;
+}
+
+/* Capa que posiciona las imágenes de fondo cubriendo todo */
+.bgSliderContainer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Capa de opacidad oscura para que el contenido resalte sobre las fotos */
+.opacityOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(9, 13, 22, 0.7);
+    /*background: linear-gradient(135deg, rgba(9, 13, 22, 0.9) 20%, rgba(9, 13, 22, 0.7) 100%);*/
+    z-index: 1;
+}
+
+/* Estilos y animación de bucle para cada imagen de fondo */
+.bgSlide {
+    position: absolute;
+    top: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    filter: brightness(0.6);
+    animation-duration: 9s; /* 3 imágenes x 3 segundos cada una */
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+/* Sincronización del bucle de 3 imágenes */
+.bgSlide:nth-child(2) { /* Ojo: el primer child es .opacityOverlay, por eso las imágenes empiezan desde el 2 */
+    animation-name: fadeSlider1;
+}
+.bgSlide:nth-child(3) {
+    animation-name: fadeSlider2;
+}
+.bgSlide:nth-child(4) {
+    animation-name: fadeSlider3;
+}
+
+/* Contenedor interno para que tus tarjetas mantengan el ancho del banner superior */
+.innerContainer {
+    position: relative;
+    z-index: 2; /* Se coloca por encima del fondo y la opacidad */
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    gap: 2rem;
+    box-sizing: border-box;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeSlider1 {
+    0%, 33% { opacity: 1; }
+    36%, 100% { opacity: 0; }
+}
+
+@keyframes fadeSlider2 {
+    0%, 33% { opacity: 0; }
+    36%, 66% { opacity: 1; }
+    69%, 100% { opacity: 0; }
+}
+
+@keyframes fadeSlider3 {
+    0%, 66% { opacity: 0; }
+    69%, 96% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@media (max-width:1280px){
+    .opacityOverlay {
+        background: rgba(9, 13, 22, 0.8);
+    }
+}
+@media (max-width:690px){
+    .innerContainer {
+        gap: 0.5rem;
+    }
+}

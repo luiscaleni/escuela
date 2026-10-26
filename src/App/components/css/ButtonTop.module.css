@@ -1,9 +1,9 @@
 .buttonTop,
 .buttonTopExpand{
     cursor: pointer;
-    color: black;
+    color: white;
     border: var(--border);
-    border-radius: var(--border-radius-slim);
+    border-radius: var(--border-radius);
     transition: all ease-in-out .3s;
 
     display: flex;
@@ -17,7 +17,7 @@
 .buttonTopExpand{
     padding: 0.3rem;
     box-shadow: var(--box-shadow-inset);
-    background: var(--background-solid-3);
+    background: white;
 
     display: flex;
     justify-content: flex-start;
