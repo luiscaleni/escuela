@@ -508,6 +508,7 @@ span{
     nav, .navbar{
         height: 4em;
         transition: all .3s ease;
+        background: var(--background-solid);
 
         display: flex;
         justify-content: center;

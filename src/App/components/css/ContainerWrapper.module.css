@@ -97,6 +97,9 @@
 }
 
 @media (max-width:1280px){
+    .bgSliderContainer{
+        margin-top: 4rem;
+    }
     .opacityOverlay {
         /*background: rgba(9, 13, 22, 0.8);*/
     }
