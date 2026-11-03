@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react'
-import { Outlet, useLocation, Navigate } from 'react-router-dom'
+import { Outlet, useLocation, Navigate, useNavigate } from 'react-router-dom'
 import NavBar from './templateComp/NavBar'
 import MainCampus from './templateComp/MainCampus'
 import Footer from './templateComp/Footer'
@@ -8,10 +8,38 @@ import { UserContext } from '../components/UserProvider'
 import GoTopButton from '../components/GoTopButton'
 import SidePanel from './templateComp/SidePanel'
 import LeftPanel from '../components/LeftPanel'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
 
 function TemplateCampus({ separator = false }) {
-  const { user, loading } = useContext(UserContext)
+  const { user, loading, setUser } = useContext(UserContext)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  // 🛑 Verificación en tiempo real al cambiar de ruta por si el usuario fue inhabilitado
+  useEffect(() => {
+    const verifyUserStatus = async () => {
+      if (!user) return
+
+      try {
+        const res = await fetch(`${CONFIG_BACKEND.API_DIR}/user/session`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Accept': 'application/json' }
+        })
+        const d = await res.json()
+
+        if (!d.logueado) {
+          setUser(null)
+          // 🛑 Eliminamos el alert de aquí para evitar la duplicidad con el del proveedor/backend
+          navigate(CONFIG_PATHS.ROOT_PATH, { replace: true })
+        }
+      } catch (error) {
+        if (import.meta.env.DEV) { console.error(error) }
+      }
+    }
+
+    verifyUserStatus()
+  }, [location.pathname])
 
   // Manejo del scroll con el hash o al inicio
   useEffect(() => {

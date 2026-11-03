@@ -1,24 +1,35 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styles from './css/Home.module.css'
 import Section from '../components/Section'
 import Publication from '../components/Publication'
 import Elementor from '../components/Elementor'
 import LoadData from '../components/LoadData'
-import { CONFIG_BACKEND, CONFIG_NAMES_COUNTRYS, CONFIG_PATHS } from '../config/config'
-import { Link } from 'react-router-dom'
-import SimulatorAndSuccess from '../components/SimulatorAndSuccess'
+import { CONFIG_BACKEND, CONFIG_PATHS } from '../config/config'
+import { Link, useNavigate } from 'react-router-dom'
+import WhatsAppButton from '../components/WhatsAppButton'
+import { UserContext } from '../components/UserProvider'
 
 function Home() {
   const [configData, setConfigData]  = useState(null)
   const [cargando, setCargando] = useState(false)
-  const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+  const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/getDataConfig`
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
+  const { user } = useContext(UserContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+      if (user) {
+        navigate(CONFIG_PATHS.CAMPUS_PATH, { replace: true })
+      }
+  }, [user, navigate])
 
   useEffect(() => {
     loadConfigData()
   }, [])
 
   return (
+  <>  
+  <WhatsAppButton />
       <Publication
         type="xtreme2"
         nameAsset="banner.webp"
@@ -115,9 +126,9 @@ function Home() {
                 </div>
             </Elementor>
         </Section>
-        <SimulatorAndSuccess />
 
       </Publication>
+      </>
   )
 }
 

@@ -94,7 +94,7 @@ function FormDisciplineEdit() {
         }
 
         try {
-            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/disciplineUpdate?userRolId=${user.rolId}`, {
+            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/user/disciplineUpdate?userRolId=${user.roleId}`, {
                 method: 'POST',
                 credentials: 'include',
                 body: formData

@@ -1,0 +1,232 @@
+/* Contenedor principal con ancho máximo estable y responsive */
+.container {
+  max-width: 950px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Grilla de dos columnas responsiva que evita saltos bruscos de ancho */
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.formColumn, .listColumn {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.listColumn {
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #444;
+  font-size: 0.9rem;
+}
+
+.select, .input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color 0.2s;
+}
+
+.select:focus, .input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Caja de disciplina con altura y diseño estables */
+.disciplineBox {
+  margin-bottom: 15px;
+  padding: 12px;
+  background: #eef6fc;
+  border-radius: 6px;
+  border: 1px solid #d0e3f1;
+  transition: all 0.2s ease;
+}
+
+.disabledBox {
+  background: #f1f1f1;
+  border-color: #e2e2e2;
+  opacity: 0.8;
+}
+
+.disabledLabel {
+  color: #666;
+}
+
+/* Contenedor con altura reservada para evitar saltos al mostrar advertencias */
+.warningMessageWrapper {
+  min-height: 22px;
+  margin-top: 5px;
+}
+
+.warningText {
+  color: #856404;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.divider {
+  text-align: center;
+  margin: 15px 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.successMsg {
+  margin-top: 10px;
+  padding: 1rem;
+  border-radius: var(--border-radius-slim);
+  background-color: #28a745;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.errorMsg {
+  margin-top: 10px;
+  color: #dc3545;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Listado de deportes derecha */
+.listDescription {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.sportsListScroll {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 380px;
+  max-height: 430px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.emptyText {
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.sportCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.activeCard {
+  background: #e2f0d9;
+  border: 1px solid #c3e6cb;
+}
+
+.inactiveCard {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+}
+
+.sportName {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.statusBadge {
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.activeText {
+  color: #155724;
+}
+
+.inactiveText {
+  color: #856404;
+}
+
+.enableBtn {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.enableBtn:hover {
+  background: #218838;
+}
+
+.disableBtn{
+  background: #ff0707;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+/* Media Queries para Responsive (pantallas medianas y móviles) */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .container {
+    padding: 15px;
+    margin: 15px;
+    width: auto;
+  }
+}

@@ -14,7 +14,7 @@ function FormConfigEdit() {
     const { user } = useContext(UserContext)
     const [configData, setConfigData]  = useState(null)
     const [cargando, setCargando] = useState(false)
-    const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+    const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/getDataConfig`
     const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
     const [message, setMessage] = useState("")
     
@@ -45,7 +45,7 @@ function FormConfigEdit() {
         if (form.emailConfig) formData.append('emailConfig', form.emailConfig)     
         if (form.contentConfig) formData.append('contentConfig', form.contentConfig)
 
-        if (user.rolId === 1) {
+        if (user.roleId === 1) {
             try {
                 const response = await fetch(`${CONFIG_BACKEND.API_DIR}/config/updateData`, {
                     method: 'POST',

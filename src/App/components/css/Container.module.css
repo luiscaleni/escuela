@@ -7,13 +7,15 @@
     min-height: 20rem;
     width: 85vw;
     color: #000;
+    padding: 2rem;
     border: var(--border);
     border-radius: var(--border-radius);
-    background-color: #1d1d1d;
+    background-color: rgb(255, 255, 255);
+    margin: 1rem auto;
 
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 }
 .containerMax{padding: 1.5rem 1rem;}
@@ -26,6 +28,21 @@
 
     display: flex;
 
+}
+.container > h2{
+    width: 90%;
+    font-size: 2rem;
+    height: auto;
+    text-align: center;
+    color: #000;
+}
+.container > p{
+    width: 90%;
+    text-align: center;
+    margin: 15px 0;
+    color: #333;
+    font-size:1.4rem;
+    line-height: 2rem;
 }
 @media (max-width:650px){
     .container{

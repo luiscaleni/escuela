@@ -118,7 +118,7 @@ function PlantationsCountry() {
                             onClick={() => {fnShowContainer()}}
                         />
                     )}
-                    {user && (user.rolId === 1 || user.rolId === 2) && (    
+                    {user && (user.roleId === 1 || user.roleId === 2) && (    
                         <RightTopButton 
                             typeElm='expand' 
                             text="Nueva plantación"

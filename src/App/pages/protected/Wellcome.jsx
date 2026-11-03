@@ -20,8 +20,11 @@ function Wellcome() {
                             <p>Links de interés:</p>
                         <div className={styles.contLinks}>
                             <Link to={CONFIG_PATHS.PROFILE_PATH} className={classBtn.button}>Perfil</Link>
-                            {user && user.rolId === 1 && (
+                            {user && user.roleId === 1 && (
                                 <Link to={CONFIG_PATHS.CAMPUS_ASSING_PROFESSORS_PATH} className={classBtn.button}>Asignar cursos a profesores</Link>
+                            )}
+                            {user && user.roleId === 3 && (
+                                <Link to={CONFIG_PATHS.CAMPUS_MY_COURSES_PATH} className={classBtn.button}>Mis cursos</Link>
                             )}
                         </div>
                     </div>

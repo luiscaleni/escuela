@@ -12,8 +12,9 @@
     flex-direction: column;
 }
 .contentTextLand > .cont > img{
-    width: 17rem;
+    width: 18rem;
     height: auto;
+    margin-bottom: 1.4rem;
 }
 
 .contentTextLand > .cont > .descript{
@@ -21,12 +22,17 @@
     color: #ccc;
 }
 .contentTextLand > .cont > .contButton{
-    width:25rem;
+    width: 100%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.contentTextLand > .cont > .contButton > .buttonHome:hover{
+    transform: translateY(-0.4rem);
+    box-shadow: var(--box-shadow);
+}
+
 @media (max-width: 1280px){
     .contentTextLand{
         width: 100%;

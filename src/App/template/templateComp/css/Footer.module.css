@@ -1,20 +1,22 @@
 footer, .footer{
     width: 100%;
+    min-height: 22rem;
     padding: 3rem 0;
     color: black;
     z-index: 5;
-    background-color: #000;
+    border-top: var(--border-2);
+    background-color: var(--background-solid-2);
 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    align-content: center;
+    align-content: space-between;
 }
 
 .footer > .footerContent{
     width: 70%;
     height: auto;
+    margin: 2rem 0;
 
     display: flex;
     flex-wrap: wrap;
@@ -23,8 +25,8 @@ footer, .footer{
 }
 
 .footer > .footerContent > .group{
-    min-width: 15rem;
-    min-height: 10rem;
+    min-width: 10rem;
+    min-height: 6rem;
     height: auto;
     margin: 0 1rem 1rem 1rem;
     padding: 1rem;
@@ -48,11 +50,22 @@ footer, .footer{
     margin-left: 0.6rem;
     padding:0.6rem;
     border-left: 0.1rem solid #bbb;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .footer > .footerContent > .group > ul >li > a{
     color: white;
     font-size: 0.9rem;
     text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer > .footerContent > .group > ul >li > a > img{
+    margin: 0 0.4rem;
 }
 
 .footer > .footerContent > .group > ul > .facebook{color: #1877f2;}

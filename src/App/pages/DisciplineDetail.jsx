@@ -13,7 +13,6 @@ import TopButtons from '../components/TopButtons'
 import Modal from '../components/Modal'
 import FormDisciplineEdit from '../components/FormDisciplineEdit'
 import CenterContainer from '../components/CenterContainer'
-import FormInscriptionCourse from '../components/FormInscriptionCourse'
 
 function DisciplineDetail() {
     const { user } = useContext(UserContext)
@@ -83,7 +82,7 @@ function DisciplineDetail() {
                                 text="Volver"
                             />
 
-                        {user && user.rolId === 1 && (
+                        {user && user.roleId === 1 && (
                             <RightTopButton
                                 onClick={()=>{fnShowContainerForm()}}
                                 typeElm='expand'

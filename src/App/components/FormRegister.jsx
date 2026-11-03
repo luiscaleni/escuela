@@ -33,7 +33,7 @@ function FormRegister() {
 		sex: "",
 		birthday: "",
 		ipAddress: "",
-		hash: ""
+		token: ""
 	})
 	
 	const handleChange = (e) => {
@@ -63,7 +63,7 @@ function FormRegister() {
 			sex: event.target.sex.value,
 			birthday: event.target.birthday.value,
 			ipAddress: ipAddress,
-			hash: event.target.hash.value
+			token: event.target.token.value
 		}
 		alertContainer.style.padding="0.5em"
 
@@ -75,13 +75,13 @@ function FormRegister() {
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify(userData)
-            });
+            })
 
             // Lee la respuesta como texto primero para ver qué llega exactamente
             const rawText = await response.text();
 
             if (!rawText) {
-                throw new Error("El servidor respondió con un texto vacío.");
+                throw new Error("El servidor respondió con un texto vacío.")
             }
 
             const data = JSON.parse(rawText);
@@ -90,15 +90,15 @@ function FormRegister() {
                 alertContainer.style.backgroundColor = "#059c38";
                 alertContainer.innerHTML = "✅ " + data.message;
                 setCargando(true);
-                setTimeout(() => navigate(CONFIG_PATHS.LOGIN_PATH), 3000);
+                setTimeout(() => navigate(CONFIG_PATHS.LOGIN_PATH), 8000);
             } else {
                 alertContainer.style.backgroundColor = "#f00";
-                alertContainer.innerHTML = "❌ " + (data.error || "Error desconocido");
+                alertContainer.innerHTML = "❌ " + (data.message || "Error desconocido");
                 formRegister.reset();
                 setTimeout(() => {
                     alertContainer.innerHTML = "";
                     alertContainer.style.padding = "";
-                }, 3000);
+                }, 8000)
             }
         } catch (errorCatch) {
             if (import.meta.env.DEV) { console.error("❌ Error en api:", errorCatch); }
@@ -108,7 +108,7 @@ function FormRegister() {
                 formRegister.reset();
                 alertContainer.innerHTML = "";
                 alertContainer.style.padding = "";
-            }, 3000);
+            }, 3000)
         }
 	}
 
@@ -153,7 +153,7 @@ function FormRegister() {
 				</ContFormInput>
 
 				<ContFormInput nameElm="Código de registro :">
-					<input type='password' name='hash' value={form.hash} id='hash' placeholder="Lo proporciona administración" onChange={handleChange} autoComplete="off" required />
+					<input type='password' name='token' value={form.token} id='token' placeholder="Lo proporciona administración" onChange={handleChange} autoComplete="off" required />
 				</ContFormInput>
 
 				<ContFormInput className={styles.btn}>
@@ -161,12 +161,13 @@ function FormRegister() {
 						type='submit'
 						altName='Registrarme'
 						title="Restrarme"
+						styleBtn={1}
 						disabled={cargando}
 					>
 						{cargando ? <Loader mini={true}/> : "Registrarme"}
 					</Button>
 				</ContFormInput>
-				<p className={styles.smallText}>Ya tengo una cuenta, ir a<Link to='/login'>Inicio de sesión</Link></p>
+				<p className={styles.smallText}>Ya tengo una cuenta, ir a<Link to='/login'>inicio de sesión</Link></p>
 			</form>
 		</div>
 		</>

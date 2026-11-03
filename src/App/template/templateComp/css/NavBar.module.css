@@ -28,10 +28,6 @@ nav, .navbar{
 .contNavbarContentVisible{
     transition: all 0.3s ease;
 }
-:global(body.dark) .navVisible{
-    background-color: #1D1D1D;
-}
-
 .contNavbarContent > .navbarContent{
     position: relative;
     width: 60%;
@@ -94,7 +90,7 @@ nav, .navbar{
     padding: 0 0.5rem;
     margin: 0 0.3rem;
     transition: all ease-in-out .3s;
-    border-bottom: 0.2rem solid transparent;
+    border: 0.1rem solid transparent;
 
     display: flex;
     justify-content: center;
@@ -123,16 +119,10 @@ nav, .navbar{
     font-size: 1.5rem;
     padding-left: 0.5rem;
 }
-:global(body.dark) .navbarContent > .navbarLinks > a,
-:global(body.dark) .navbarContent > .navbarLinks > .navbarLinksGroup > a,
-:global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .linkCont > .imgProfilePanel > p {
-    color: white;
-}
-
 .navbarContent > .navbarLinks > .navbarLinksGroup > a:hover,
 .navbarContent > .navbarLinks > .elmPanel > a:hover{
-    background-color: rgba(255, 255, 255, 0.2);
-    border-bottom: 0.2rem solid var(--background-color-btn);
+    border-bottom: var(--border-3);
+    background: rgba(16, 185, 129, 0.1);
 }
 
 .navbarContent > .navbarLinks > a > .navbarLogo{
@@ -170,10 +160,6 @@ nav, .navbar{
 .navbarContent > .navbarLinks > .navbarLogoLink > .blackText{
     color: #000;
 }
-:global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > .blackText,
-:global(body.dark) .navbarContent > .navbarLinks > .navbarLogoLink > .blackText{
-    color: #fff;
-}
 
 /* ==========================================================================
    MODIFICACIÓN: Estilos base de la lista desplegable del Menú
@@ -198,9 +184,6 @@ nav, .navbar{
     border: 0.1rem solid #ccc;
     background-color: #fff;
     backdrop-filter: var(--backdrop-filter-2);
-}
-:global(body.dark) .menu.menuOpen {
-    border: 0.1rem solid #555555;
 }
 .menu > li{
     width: 100%;
@@ -238,19 +221,12 @@ nav, .navbar{
     justify-content: center;
     align-items: center;
 }
-:global(body.dark) .navbarMenu{
-    background-color: rgb(255, 255, 255);
-}
-
 
 
 span{
     color: #fff;
     font-weight: bold;
     padding-right: 0.2em;
-}
-:global(body.dark) span{
-    color: #000;
 }
 .menuIcon{
     position: absolute;
@@ -327,11 +303,6 @@ span{
     flex-direction: row;
     flex-wrap: wrap;
 }
-:global(body.dark) .menuButton > .contWellcome > .wellcomeName{
-    user-select: none;
-    cursor: pointer;
-    color: #fff;
-}
 .nameVisible {
     font-size: 0.95rem !important;
     transition: all ease-in-out .3s;
@@ -380,10 +351,7 @@ span{
     transition: all ease-in-out .3s;
 }
 
-:global(body.dark) .menuProfileActive {
-    border-radius: 2rem 2rem 0 0;
 
-}
 .menuProfile > .menuProfileButton{
     width: 100%;
     height: 4rem;
@@ -400,11 +368,7 @@ span{
     margin-top: 0.6rem;
     border-radius: 2rem 2rem 0 0;
 }
-:global(body.dark) .menuProfile > .menuProfileButton{
-    border:0.1rem solid #555555;
-    border-bottom: 0;
-    background: var(--background-dark); 
-}
+
 /* ==========================================================================
    MODIFICACIÓN: Estilos específicos adaptados de .ulMenuProfile
    ========================================================================== */
@@ -414,9 +378,6 @@ span{
     color: #fff;
     border-radius: 0 0 1rem 1rem;
     backdrop-filter: var(--backdrop-filter-2);
-}
-:global(body.dark) .ulMenuProfile{
-    background: var(--background-dark);
 }
 .ulMenuProfile > li{
     width: 100%;
@@ -429,9 +390,7 @@ span{
     justify-content: center;
     align-items: center;
 }
-:global(body.dark) .ulMenuProfile > li{
-    border-color: #3a3a3a;
-}
+
 
 .ulMenuProfile > li > a,
 .ulMenuProfile > li > div{
@@ -447,9 +406,7 @@ span{
     justify-content: flex-start;
     align-items: center;
 }
-:global(body.dark) .ulMenuProfile > li > a{
-    color: #fff;
-}
+
 
 
 
@@ -546,11 +503,11 @@ span{
     display: none;
 }
 
+
 @media (max-width: 1280px){
     nav, .navbar{
         height: 4em;
         transition: all .3s ease;
-        background-color: #1d1d1d;
 
         display: flex;
         justify-content: center;
@@ -585,18 +542,11 @@ span{
         color: #000;
         padding-left: 0.5rem;
     }
-    :global(body.dark) .contNavbarMenuPanel::after{
-        color: white;
-    }
     .contNavbarContent > .navbarContent > .contNavbarMenu::after{
         content: 'Idioma';
         padding-left: 0.5rem;
     }
-    :global(body.dark) .contNavbarContent > .navbarContent > .contNavbarMenu{
-        background-color: #000;
-    }
     .imgMobile{
-        filter: invert(0);
         padding-right: 0.5rem;
         display: flex;
     }
@@ -616,6 +566,7 @@ span{
         width: 100%;
         height: 3rem;
         padding: 0.2rem;
+        margin-bottom: 0.5rem;
 
         display: flex;
         justify-content: flex-start;
@@ -629,13 +580,17 @@ span{
     .contNavbarContent > .menuProfile{
         display: none;
     }
-    .navbarContent > .navbarLinks > .navbarLinksGroup > a:hover,
-    .navbarContent > .navbarLinks > .elmPanel > a:hover{
+
+    .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a:hover,
+    .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a:hover{
         border-radius: 0;
-        border-bottom: 0.2rem solid transparent;
         color: #fff;
-        background-color: #006eff;
+        
+        border-bottom:0.1rem solid transparent;
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: all ease-in-out .2s;
     }
+
     .navbarContent > .navbarLinks > .elmPanel > form{
         width: 100%;
         height: auto;
@@ -661,17 +616,12 @@ span{
         top: 3rem;
         right: -20rem;
         border-left:var(--border);
-        background-color: white;
         transition: all ease-in-out .3s;
 
         justify-content: flex-start;
         align-items: flex-start;
         align-content: flex-start;
         flex-direction: column;
-    }
-    :global(body.dark) .contNavbarContent{
-        border-left:var(--border-dark);
-        background:#000;
     }
     .contNavbarContent > .navbarContent{
         width: 100%;
@@ -685,9 +635,6 @@ span{
         justify-content: flex-start;
         align-items: flex-start;
         align-content: flex-start;
-    }
-    :global(body.dark) .contNavbarContent > .navbarContent{
-        background: var(--background-dark2);
     }
     
     .contNavbarContent > .navbarContent > a{
@@ -705,9 +652,6 @@ span{
         display: flex;
         justify-content: flex-start;
         align-items: center;
-    }
-    :global(body.dark) .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
-        color: white;
     }
     .contNavbarContent > .navbarContent > .navbarLinks > .imgProfilePanel{
         margin: 0.5rem;
@@ -729,9 +673,6 @@ span{
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel{
         width: 100%;
     }
-    :global(body.dark) .contNavbarContent > .navbarContent > .navbarMenu > .menuButton > span{
-        color: white;
-    }
     .contNavbarContent > .navbarContent > .navbarLinks > a,
     .contNavbarContent > .navbarContent > .navbarLinks > .navbarLinksGroup > a,
     .contNavbarContent > .navbarContent > .navbarLinks > .elmPanel > a{
@@ -739,6 +680,7 @@ span{
         margin: 0;
         padding: 0.6rem 0 0.6rem 1.5rem;
         color: #fff;
+        border-left: 0.2rem solid transparent;
 
         display: flex;
         justify-content: flex-start;
@@ -794,4 +736,55 @@ span{
   display: none !important;
   visibility: hidden;
   opacity: 0;
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Estilos actualizados para la sección de Administración en el menú lateral
+   ========================================================================== */
+.adminSectionMobile {
+    width: 100%;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.adminTitleMobile {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: #9ca3af;
+    padding-left: 1.5rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+}
+
+.adminSectionMobile > a {
+    width: 100%;
+    height: 3rem; /* Misma altura que los links superiores */
+    margin: 0;
+    padding: 0 0 0 1rem !important; /* Alineado idéntico al padding izquierdo del menú */
+    font-size: 0.9rem;
+    color: #fff !important;
+    text-decoration: none;
+    border-left: 0.2rem solid transparent;
+    transition: all ease-in-out .3s; /* Misma transición fluida */
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Efecto hover exacto al de los botones superiores de la lista */
+.adminSectionMobile > a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left: 0.2rem solid var(--color);
 }

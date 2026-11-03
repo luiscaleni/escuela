@@ -38,7 +38,7 @@ function ContentCourses() {
         <>
             <div className={styles.panelCampus}>
                 <div className={styles.panelContainer}>
-                    <h2>{cargando ? "Cargando ..." : discipline ? discipline.name_discip: "No se encontró"}</h2>
+                    <h2 style={{marginTop:'1rem'}}>{cargando ? "Cargando ..." : discipline ? 'Curso: ' + discipline.name_discip: "No se encontró"}</h2>
                         {cargando ? (
                             <p>Cargando curso...</p>
                         ) : matters?.length > 0 ? (

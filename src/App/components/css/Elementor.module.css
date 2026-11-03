@@ -1,11 +1,10 @@
 .elementor{
-    user-select: none;
     max-width: 30rem;
     min-width: 20rem;
     width: 100%;
     height: 24rem;
     margin: 0.5rem 1rem;
-    background: rgba(16, 24, 39, 0.6);
+    background: var(--background-solid);
     border: 1px solid rgba(16, 185, 129, 0.2);
     border-radius: var(--border-radius-slim);
     color: #000;

@@ -29,31 +29,20 @@ function SimulatorAndSuccess() {
             {/* Opciones */}
             <div className={styles.optionsList}>
               <label className={styles.optionItem}>
+                <input type="radio" name="playCase" className={styles.radioInput} />
                 <span className={styles.optionText}>A) Sancionar fuera de juego inmediatamente.</span>
-                <input type="radio" name="playCase" className={styles.radioInput} />
-                <span className={styles.customRadio}></span>
               </label>
 
               <label className={styles.optionItem}>
+                <input type="radio" name="playCase" className={styles.radioInput} />
                 <span className={styles.optionText}>B) Dejar seguir el juego. Al ser jugada deliberada del defensor, habilita al atacante.</span>
-                <input type="radio" name="playCase" className={styles.radioInput} />
-                <span className={styles.customRadio}></span>
               </label>
 
               <label className={styles.optionItem}>
-                <span className={styles.optionText}>C) Repetición de la jugada tras revisión de VAR.</span>
                 <input type="radio" name="playCase" className={styles.radioInput} />
-                <span className={styles.customRadio}></span>
+                <span className={styles.optionText}>C) Repetición de la jugada tras revisión de VAR.</span>
               </label>
             </div>
-          </div>
-
-          {/* Footer del Desafío */}
-          <div className={styles.simulatorFooter}>
-            <span className={styles.footerPromptText}>¿Quieres resolver más de 500 jugadas complejas?</span>
-            <a href="#campus" className={styles.footerLink}>
-              Iniciar Simulador Completo en el Campus <i className="fa-solid fa-chevron-right ml-1"></i>
-            </a>
           </div>
         </div>
       </section>

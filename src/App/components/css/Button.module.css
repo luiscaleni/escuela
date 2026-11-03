@@ -1,17 +1,19 @@
 .button,
-.button2{
+.button2,
+.button3,
+.buttonHome{
     cursor: pointer;
-    max-width: 16rem;
+    max-width: 20rem;
     min-width: 4rem;
     min-height: 3rem;
     margin: 0.2rem;
     padding: 0.6rem 1.5rem;
-    text-align:c enter;
-    color: #fff;
+    text-align:center;
     font-weight: bold;
     text-decoration: none;
-    border: 0.1rem solid transparent;
     border-radius: var(--border-radius);
+    color: #090D16;
+    border: var(--border);
     background-color: var(--background-color-btn);
     transition: ease-in-out all 0.2s;
 
@@ -20,13 +22,42 @@
     align-items: center;
 }
 .button:hover{
+    color: var(--color);
+    border: var(--border-2);
     background-color: var(--background-color-btn-hover);
 }
-.button2:hover{
-    border: 0.1rem solid var(--background-color-btn-hover);
-}
+
 .button2{
+    color: var(--color);
+    border: 0.1rem solid #10B981;
+    background-color: var(--background-solid-2);
+}
+.button2:hover{
+    color: var(--color-2);
+    border: var(--border);
+    background-color: var(--background-solid-3);
+}
+
+.button3{
     color: #10B981;
-    border: 0.1rem solid #111A2B;
-    background-color: #111A2B;
+    border: var(--border-2);
+    background-color: var(--background-solid-2);
+
+    display: flex;
+    justify-content: flex-start;
+}
+.button3 > img{
+    margin-right: 0.5rem;
+}
+.button3:hover{
+    color: var(--color-2);
+    background-color: var(--background-solid-3);
+}
+.button3:hover img{
+    filter: invert(1);
+}
+
+.buttonHome:hover{
+    transform: translateY(-0.4rem);
+    box-shadow: var(--box-shadow);
 }

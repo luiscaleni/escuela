@@ -11,7 +11,7 @@ import TopButtons from './TopButtons'
 function ShowConfigData() {
     const [configData, setConfigData]  = useState(null)
     const [cargando, setLoading] = useState(false)
-    const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+    const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/getDataConfig`
     const loadConfigData = LoadData(setLoading, setConfigData, 'GET', ROUTE)
 
     useEffect(() => {

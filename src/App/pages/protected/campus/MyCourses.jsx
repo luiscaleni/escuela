@@ -2,7 +2,8 @@ import { useEffect, useState,useContext } from "react"
 import { CONFIG_BACKEND } from "../../../config/config"
 import { UserContext } from '../../../components/UserProvider'
 import Card from '../../../components/Card'
-import { Link } from 'react-router-dom'
+import TopButtons from "../../../components/TopButtons"
+import LeftTopButton from "../../../components/LeftTopButton"
 
 function MyCourses() {
     const [cargando, setCargando] = useState(false)
@@ -74,7 +75,16 @@ function MyCourses() {
 
     return (
             <>
-            <h2>Estás inscrito en:</h2>
+            <TopButtons>
+                {user && (
+                    <LeftTopButton 
+                        locationElm={'/campus'} 
+                        text="Inicio" 
+                        typeElm="expand" />
+                )}
+            </TopButtons>
+            
+            <h2 style={{marginTop:'1rem'}}>Estás inscrito en:</h2>
                 {inscript?.length > 0 ? (
                     inscript.map(inscp => (
                         <Card 

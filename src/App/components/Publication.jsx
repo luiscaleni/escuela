@@ -38,7 +38,8 @@ function Publication({home=false, titlePub, nameAsset="", type="", typeElm="", l
           {home ===true ? (
               <div className={styles.contTotal}>
                 <div className={styles.degrade}></div>
-                <ContainerWrapper images={['/images/others/img1.jpg', '/images/others/img2.jpg', '/images/others/img3.jpg']}>
+                <ContainerWrapper images={['/images/others/img1.png']}>
+                {/*
                       <ContentTextLand />
                       <div className={styles.cont}>
                         <CardTilted 
@@ -62,6 +63,7 @@ function Publication({home=false, titlePub, nameAsset="", type="", typeElm="", l
                           imgSrc={rugby}
                         />
                       </div>
+                     */}
                 </ContainerWrapper>
               </div>                        
             ) : typeElm === "img" ? (

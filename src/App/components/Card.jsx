@@ -3,10 +3,10 @@ import styles from "./css/Card.module.css"
 import bannerDefaultCard from '/logo.png'
 import { CONFIG_BACKEND } from "../config/config"
 
-function Card({link, cardTitle, ubication="", descriptionCard, imgCard="", imgSrc=""}) {
+function Card({link, cardTitle="", ubication="", descriptionCard="", imgCard="", imgSrc=""}) {
     let imgSrcAbsolute=""
     let routeImg = CONFIG_BACKEND.API_DIR+"/src/assets/"+ubication+"/"+imgCard
-    
+
     if(imgCard){
         imgSrcAbsolute = routeImg
     }else if (imgSrc){
@@ -20,8 +20,12 @@ function Card({link, cardTitle, ubication="", descriptionCard, imgCard="", imgSr
                     <div className={styles.card}>
                         <img src={!imgCard ? bannerDefaultCard : imgSrcAbsolute}/>
                         <div className={styles.cardContent}>
-                            <h2 className={styles.cardTitle}>{cardTitle}</h2>
-                            <p className={styles.cardText}>{descriptionCard}</p>    
+                            {cardTitle && (
+                                <h2 className={styles.cardTitle}>{cardTitle}</h2>
+                            )}
+                            {descriptionCard && (
+                                <p className={styles.cardText}>{descriptionCard}</p>
+                            )}
                         </div>
                     </div>
                 </Link>

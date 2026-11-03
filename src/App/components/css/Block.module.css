@@ -37,8 +37,10 @@
 }
 
 .block > p{
-    color: var(--color);
-    font-size: 1rem;
+    color: #000;
+    margin-right: 4rem;
+    line-height: 2.5rem;
+    font-size: 1.8rem;
 }
 .block > img{
     width: auto;

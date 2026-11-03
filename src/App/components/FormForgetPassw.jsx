@@ -50,7 +50,7 @@ function FormForgetPassw() {
                 setTimeout(() => {
                     setForm({ email: ''})
                 }, 2000)
-                navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Si esta registrado se le enviará un email", path: CONFIG_PATHS.LOGIN_PATH } })
+                navigate(CONFIG_PATHS.SUCCESS_PATH, { state: { success: true, message: "Si esta registrado se te enviará un email", path: CONFIG_PATHS.LOGIN_PATH } })
             } else {
                 alertContainer.innerHTML="❌ "+data.message
                 alertContainer.classList.add("error")
@@ -90,12 +90,13 @@ function FormForgetPassw() {
                             typeBtn='submit'
                             altName='Recuperar'
                             title="Recuperar"
+                            styleBtn={1}
                             disabled={loading}
                         >
                             {loading ? <Loader mini={true}/> : "Recuperar"}
                         </Button>
                     </ContFormInput>
-                    <p className={styles.smallText}>Ya tengo una cuenta, ir a<Link to='/login'>Inicio de sesión</Link></p>
+                    <p className={styles.smallText}>Ya tengo una cuenta, ir a<Link to='/login'>inicio de sesión</Link> o <Link to='/registro'>registrarme</Link></p>
                 </form>
             </div>
         </>

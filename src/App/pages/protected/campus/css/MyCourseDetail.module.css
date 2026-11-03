@@ -1,6 +1,25 @@
+.notFoundContainer{
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.notFoundContainer > h1{
+    color: #fff;
+    font-size: 2.6rem;
+}
+.notFoundContainer > p{
+    margin: 1rem 0;
+}
+
 .routes {
     width: 100%;
     margin: 1rem 0;
+}
+.routes > span{
+    color: var(--color);
 }
 
 h2 {

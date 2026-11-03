@@ -6,11 +6,10 @@ export const CONFIG_PRODUCTION_DATA = {
 }
 
 export const CONFIG_SOCIAL_NETWORK = {
+    IG: 'https://www.instagram.com/arbitracfp/',
     FB: 'https://www.facebook.com/',
-    IG: 'https://www.instagram.com/',
-    IG: 'https://www.instagram.com/',
-    YT: 'https://www.youtube.com/',
-    EMAIL: 'mailto:contacto@gmail.com'
+    TK: 'https://www.tiktok.com/',
+    EMAIL: 'mailto: arbitracfp@gmail.com'
 }
 
 export const CONFIG_BACKEND = {
@@ -25,9 +24,11 @@ export const CONFIG_PATHS = {
     INDEX_PATH: "/index.php",
     SPORTS_PATH: "/deportes",
     ABOUT_US_PATH: "/acerca-de",
+    FORMATION_PATH: "/formacion",
     RESOURCES_PATH: "/recursos",
     CONTACT_PATH: "/contacto",
     PRIVACY_PATH: "/politica-de-privacidad",
+    TOKEN_EXPIRED_PATH:"/tiempo-expirado",
 
     REGISTER_PATH: "/registro",
     LOGIN_PATH: "/login",
@@ -46,14 +47,19 @@ export const CONFIG_PATHS = {
     
     CAMPUS_PATH: "/campus",
     YOUR_WELLCOME_PATH: "bienvenida",
-    CAMPUS_MY_COURSES_PATH: "mis-cursos",
-    CAMPUS_MY_COURSES_DETAIL_PATH: "mis-cursos/detalles",
-    CAMPUS_COURSE_INSCRIPTIONS: "inscribirme-a-cursos",
+    
+    CAMPUS_MANAGE_SPORTS_AND_DISCIPLINES_PATH: "gestion-deportes-disciplinas",
+    CAMPUS_MANAGE_COMISSIONS_PATH: "gestion-comisiones",
+    CAMPUS_MANAGE_PROFESSORS_PATH: "gestion-profesores",
+    CAMPUS_MANAGE_STUDENTS_PATH:"gestion-alumnos",
+    CAMPUS_MANAGE_MATTERS_PATH:"gestion-materias",
+    CAMPUS_MANAGE_CAMPUS_PATH:"gestion-campus",
 
     CAMPUS_COURSES_LIST_PROFESSOR_PATH: "profesor-cursos",
     
-    CAMPUS_CREATE_COURSE_PATH: "crear-un-nuevo-curso",
-    CAMPUS_ASSING_PROFESSORS_PATH: "asignar-cursos-a-profesores"
+    CAMPUS_MY_COURSES_PATH: "mis-cursos",
+    CAMPUS_MY_COURSES_DETAIL_PATH: "mis-cursos/detalles",
+    CAMPUS_COURSE_INSCRIPTIONS: "inscribirme-a-cursos",
 }
 
 export const CONFIG_NAMES_COUNTRYS = [

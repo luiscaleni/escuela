@@ -1,18 +1,15 @@
-import { useEffect, useState, useRef, useContext } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import NavBar from './templateComp/NavBar'
 import Main from './templateComp/Main'
 import Footer from './templateComp/Footer'
 import Loader from '../components/Loader'
-import { UserContext } from '../components/UserProvider'
 import GoTopButton from '../components/GoTopButton'
 
 function Template({separator=false}) {
-  const { user, loadUser } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
   const loadingRef = useRef(null)
   const location = useLocation()
-
 
   useEffect(() => {
     if (loadingRef.current) {

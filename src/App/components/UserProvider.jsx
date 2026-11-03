@@ -12,12 +12,16 @@ export function UserProvider({ children }) {
     try {
       const res = await fetch(`${CONFIG_BACKEND.API_DIR}/user/session`, {
         method: 'POST',
-        credentials: 'include'
+        credentials: 'include',
+        headers: { 'Accept': 'application/json' }
       })
       const d = await res.json()
-      /*const text = await res.text()
-      const d = text ? JSON.parse(text) : { logueado: false }*/
-      setUser(d.logueado ? d.usuario : null)
+      
+      if (d.logueado && d.usuario) {
+        setUser(d.usuario)
+      } else {
+        setUser(null)
+      }
     } catch {
       setUser(null)
     } finally {

@@ -10,7 +10,7 @@ function Configuration() {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if(user.rolId !== 1){
+        if(user.roleId !== 1){
             navigate(CONFIG_PATHS.HOME_PATH)
         }
     },[])

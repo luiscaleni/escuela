@@ -1,11 +1,11 @@
 .contCard{
     width: 16rem;
-    height: 24rem;
+    height: 17.5rem;
     margin: 2rem 1rem;
     overflow: hidden;
     border: var(--border);
     border-radius: var(--border-radius);
-    background-color: #252525;
+    background-color: var(--background-solid-2);
 
     display: flex;
     justify-content: center;
@@ -30,28 +30,34 @@
     align-items: center;
 }
 .contCard > a > .card:hover img{
-    transform: scale(1.3);
+    transform: scale(1.05);
+    transition:all ease-in-out .3s;
+}
+.contCard > a > .card:hover .cardContent > .cardTitle{
+    transform: scale(1.1);
     transition:all ease-in-out .3s;
 }
 .contCard > a > .card > img{
     position: absolute;
     top: 0;
     z-index: 1;
-    padding-top: 0.9rem;
-    width: 40%;
+    width: 100%;
     height: auto;
 }
 .contCard > a > .card > .cardContent{
     position: absolute;
     bottom: 0;
     z-index: 2;
-    width: 100%;
-    height: 65%;
-    border-top: var(--border);
-    background-color: #fff;
+    width: 94%;
+    height: 20%;
+    margin-bottom: 0.5rem;
+    backdrop-filter: var(--backdrop-filter);
+    box-shadow: 0 0 0.1rem rgba(163, 163, 163, 0.8);
+    border-radius: var(--border-radius);
+    background-color: var(--background);
 
     display: flex;
-    justify-content:flex-start;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
@@ -59,7 +65,7 @@
 .contCard > a > .card > .cardContent > .cardTitle{
     width: 90%;
     height: auto;
-    color: #000;
+    color: #FFF;
     font-size: 1.5rem;
     padding: 0.5rem;
     text-align: center;
@@ -71,7 +77,7 @@
 
 .contCard > a > .card > .cardContent > .cardText{
     width: 90%;
-    height: 72%;
+    max-height: 72%;
     overflow: hidden;
     padding: 0 1rem 1rem 1rem;
     font-size: 1rem;

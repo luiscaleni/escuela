@@ -10,7 +10,7 @@ function ContentTextLand() {
             <img src={logo} />
             <p className={styles.descript}>Capacitate en las distintas disciplinas.</p>
             <div className={styles.contButton}>
-                <Button>Explora programa</Button>
+                <Button>Explora el programa</Button>
                 <Button styleBtn={2}>Ve nuestro campus virtual</Button>
             </div>
         </div>

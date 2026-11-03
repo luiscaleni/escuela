@@ -54,27 +54,25 @@
 .modal > .groupModal > .container{
     width: auto;
     height: auto;
-    min-width: 30rem;
-    min-height: 15rem;
+    min-width: 36rem;
+    max-width: 50dvw;
+    min-height: 10rem;
     max-height: 90dvh;
-    padding-top: 0.5rem;
     border-radius: var(--border-radius);
     overflow: auto;
-    background-color: #1d1d1d;
+    background-color: white;
 
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 }
-:global(body.dark) .modal > .groupModal > .container{
-    background-color: #2B2B2B;
-}
-
 .modal > .groupModal > .container > h2{
-    color: #fff;
+    max-width: 90%;
+    color: #000;
     padding: 0.2rem 0;
-    font-size: 2.6rem;
+    font-size: 2rem;
+    text-align: center;
 }
 
 .modal > .groupModal > .container > .contChildren{
@@ -92,7 +90,7 @@
     width: auto;
     font-size: 1rem;
     margin: 0.5rem 0;
-    color: #353535;
+    color: #000;
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
     background-color: rgb(255, 239, 149);
@@ -102,3 +100,10 @@
     align-items: center;
 }
 
+@media (max-width:400px){
+    .modal > .groupModal > .container{
+        max-width: 80dvw;
+        min-width: 7rem;
+        max-height: 96%;
+    }
+}

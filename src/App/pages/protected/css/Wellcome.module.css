@@ -3,9 +3,8 @@
     height: 35rem;
     min-width: 10rem;
     padding: 2rem;
-    border: var(--border);
     border-radius: var(--border-radius);
-    background: #dce7ff;
+    background: transparent;
 
     display: flex;
     justify-content: center;

@@ -18,7 +18,7 @@ function Resources() {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if (user.rolId !== 1) {
+        if (user.roleId !== 1) {
             navigate(CONFIG_PATHS.CAMPUS_PATH)
         }
     },[])
@@ -70,7 +70,7 @@ function Resources() {
                 typeElm='img' 
                 nameAsset="banner_resources.jpg"
             >
-                {user && user.rolId === 1 && (
+                {user && user.roleId === 1 && (
                     <div className={styles.contPushButton}>
                         <ButtonTop 
                             id="pushFile"

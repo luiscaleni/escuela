@@ -6,6 +6,12 @@ import { CONFIG_BACKEND, CONFIG_PATHS } from '../../config/config'
 import { UserContext } from '../../components/UserProvider'
 import { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import imgProfessors from '/icons/links/professors.png'
+import imgCourses from '/icons/links/courses.png'
+import imgStudents from '/icons/links/students.png'
+import imgTokens from '/icons/links/tokens.png'
+import imgSports from '/icons/links/sports.png'
+import imgCommissions from '/icons/links/commissions.png'
 import classBtn from '../../components/css/Button.module.css'
 
 function SidePanel() {
@@ -19,6 +25,10 @@ function SidePanel() {
     function toggleMenuPanel(){
         setTogglePanel(!togglePanel)
     }
+    const handleVideoUploaded = ({ videoId, title }) => {
+        console.log('Video subido con éxito:', videoId, title);
+        // Aquí puedes guardar únicamente el `videoId` en tu base de datos MySQL vía PHP
+    };
 
     // Función para seleccionar dinámicamente el icono según el deporte de la BD
     // Función mejorada que evalúa tanto el deporte como el nombre del curso
@@ -102,12 +112,47 @@ function SidePanel() {
                     <img src={togglePanel ? close : arrowLeft} className={styles.imgMenuButtonPanel} alt="Menu Toggle"/>
                 </div>
                 <h2>Campus</h2>
-                {user && (user.rolId === 1) ? (
+                {user && (user.roleId === 1) ? (
                     <>
-                    <Link to={CONFIG_PATHS.CAMPUS_CREATE_COURSE_PATH} className={classBtn.button}>Gestionar deportes</Link>
-                    <Link to={CONFIG_PATHS.CAMPUS_ASSING_PROFESSORS_PATH} className={classBtn.button}>Asignar profesores</Link>
+                    <h3>Gestionar:</h3>
+                    <div className={styles.panelSection}>
+                        <Link to={CONFIG_PATHS.CAMPUS_MANAGE_SPORTS_AND_DISCIPLINES_PATH} className={classBtn.button3}>
+                            <img src={imgSports} className={styles.imgMobile}/>
+                            Deportes y disciplinas
+                        </Link>
+                    </div>
+                    <div className={styles.panelSection}>
+                        <Link to={CONFIG_PATHS.CAMPUS_MANAGE_COMISSIONS_PATH} className={classBtn.button3}>
+                            <img src={imgCommissions} className={styles.imgMobile}/>
+                            Comisiones
+                        </Link>
+                    </div>
+                    <div className={styles.panelSection}>
+                        <Link to={CONFIG_PATHS.CAMPUS_MANAGE_PROFESSORS_PATH} className={classBtn.button3}>
+                            <img src={imgProfessors} className={styles.imgMobile}/>
+                            Profesores
+                        </Link>
+                    </div>
+                    <div className={styles.panelSection}>
+                        <Link to={CONFIG_PATHS.CAMPUS_MANAGE_STUDENTS_PATH} className={classBtn.button3}>
+                            <img src={imgStudents} className={styles.imgMobile}/>
+                            Alumnos
+                        </Link>
+                    </div>
+                    <div className={styles.panelSection}>
+                        <Link to={CONFIG_PATHS.CAMPUS_MANAGE_MATTERS_PATH} className={classBtn.button3}>
+                            <img src={imgCourses} className={styles.imgMobile}/>
+                            Materias
+                        </Link>
+                    </div>
+                    <div className={styles.panelSection}>
+                        <Link to={CONFIG_PATHS.CAMPUS_MANAGE_CAMPUS_PATH} className={classBtn.button3}>
+                        <img src={imgTokens} className={styles.imgMobile}/>
+                            Tokens
+                        </Link>
+                    </div>
                     </>
-                ) : user && (user.rolId === 2) ? (
+                ) : user && (user.roleId === 2) ? (
                     <Link to={CONFIG_PATHS.CAMPUS_COURSES_LIST_PROFESSOR_PATH} className={classBtn.button}>Cursos habilitados</Link>
                 ):(
                     <GroupPanel titleElm='Cursos inscriptos'>

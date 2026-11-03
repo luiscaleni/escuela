@@ -1,17 +1,20 @@
 .contFormInput {
-  min-width: 22rem;
   width: 100%;
+  max-width: 100%; /* Evita desbordes en pantallas chicas */
   height: auto;
   margin: 0;
-  padding: 0.4rem 0rem;
+  padding: 0.5rem 0.75rem; /* Padding interno equilibrado para móvil y escritorio */
   font-size: 1rem;
-  color: black;
+  color: #000;
+  border-radius: 0.5rem;   /* Bordes ligeramente redondeados para mejor estética */
+  box-sizing: border-box;  /* Vital para que el padding no rompa el ancho del 100% */
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
 }
+
 .contFormInput > label {
   position: relative;
   width: 100%;
@@ -22,10 +25,11 @@
   align-items: center;
   flex-direction: column;
 }
-.contFormInput > label > .nameElm{
-  width: 95%;
+
+.contFormInput > label > .nameElm {
+  width: 100%;
   padding: 0.2rem 0;
-  font-size: 1rem;
+  font-size: 0.95rem; /* Ligeramente más compacto para pantallas de gama baja */
   color: #000;
   text-align: left;
   
@@ -33,7 +37,8 @@
   justify-content: flex-start;
   align-items: center;
 }
-.contFormInput > label > .nameElm > span{
+
+.contFormInput > label > .nameElm > span {
   cursor: pointer;
   width: 1.2rem;
   height: 1.2rem;
@@ -49,13 +54,14 @@
   justify-content: center;
   align-items: center;
 }
-.contFormInput > label > div > label{
-  margin: 0 2rem;
-  
+
+.contFormInput > label > div > label {
+  margin: 0 1rem; /* Reducido para evitar desbordes en móviles */
   display: flex;
   flex-direction: row;
 }
-.contFormInput > label > .radio > label{
+
+.contFormInput > label > .radio > label {
   padding: 0 0.4rem;
   
   display: flex;
@@ -63,13 +69,24 @@
   align-items: center;
   flex-direction: row;
 }
-.contFormInput > label > input[type="file"]{
-  cursor: pointer;
+
+.contFormInput > label > input[type="file"],
+.contFormInput > label > input[type="text"],
+.contFormInput > label > input[type="email"],
+.contFormInput > label > input[type="password"],
+.contFormInput > label > select,
+.contFormInput > label > textarea {
   width: 100%;
+  box-sizing: border-box;
+}
+
+
+.contFormInput > label > input[type="file"] {
+  cursor: pointer;
   height: auto;
-  margin: 0.4rem;
-  font-size: 1.2rem;
-  color: black;
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  color: #333;
   border: 0.1rem solid rgb(107, 107, 107);
   border-radius: 0.3rem;
   background-color: #fff;
@@ -77,4 +94,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* ==========================================
+   MEDIA QUERIES PARA ADAPTABILIDAD TOTAL
+   ========================================== */
+
+/* Celulares muy pequeños / gama baja (hasta 480px) */
+@media (max-width: 480px) {
+  .contFormInput {
+    padding: 0.4rem 0.5rem;
+  }
+  .contFormInput > label > .nameElm {
+    font-size: 0.9rem;
+  }
+}
+
+/* Pantallas medianas, tablets y computadoras (desde 768px en adelante) */
+@media (min-width: 768px) {
+  .contFormInput {
+    min-width: 22rem; /* Recupera el ancho mínimo cómodo solo en pantallas donde sobra espacio */
+    padding: 0.6rem 1rem;
+  }
 }

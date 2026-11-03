@@ -39,11 +39,6 @@
 .form2{
   border: var(--border);
 }
-:global(body.dark) .contForm > .form {
-  background-color: #2b2b2b;
-  border: var(--border-dark);
-  color: white;
-}
 .contForm > .form2 {
   border: 0;
 }
@@ -130,22 +125,22 @@
   width: 100%;
   min-height: 1rem;
   font-size: 0.8rem;
-  color: #272727;
   font-weight: bolder;
   padding-top: 0.5rem;
+  color: #000;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-:global(body.dark) .contForm > .form > .smallText {
-  color: #a3a3a3;
-}
 .contForm > .form > .smallText > a {
   font-size: 100%;
   padding: 0 0.5rem 0 0.5rem;
   text-decoration: underline;
-  color: #006eff;
+  color: var(--background-color-btn-2);
+}
+.contForm > .form > .smallText > a:hover {
+  text-decoration: none;
 }
 
 .contForm > .form > .contElmsForm > h1{

@@ -35,7 +35,7 @@ section > .blurCircle,
     min-height: 35rem;
     margin: 0;
     z-index: 1;
-    background-color: var(--background-solid);
+    background-color: var(--background-solid-2);
 
     display: flex;
     align-items: center;
@@ -94,17 +94,11 @@ section > .blurCircle,
     border-radius: 3rem 3rem 0 0;
     border-top: 0.1rem solid #424242;
     transform: translateY(-3rem);
-    background-color:var(--background-solid);
+    background-color:var(--background-solid-2);
 
     display: flex;
     justify-content: center;
     align-items: center;
-}
-:global(body.dark) .sectionXtreme >.topXtreme{
-    background-color: #1d1d1d;
-}
-:global(body.dark) .sectionXtreme2 >.topXtreme{
-    background-color: #1d1d1d;
 }
 .sectionXtreme,
 .sectionXtreme2{
@@ -115,7 +109,7 @@ section > .blurCircle,
     margin-top: 35rem;
     min-width: 23.4rem;
     min-height: 30rem;
-    background-color:var(--background-solid);
+    background-color: var(--background-solid-2);
     
     display: flex;
     justify-content: center;

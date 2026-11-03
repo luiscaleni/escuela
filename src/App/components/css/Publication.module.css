@@ -2,6 +2,7 @@
     width: 100vw;
     height: auto;
     position: relative;
+    background-color: var(--background-solid-2);
 
     display: flex;
     justify-content: center;
@@ -45,7 +46,7 @@
     height: 75rem;
     top: -20rem;
     left: 20%;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, #090d1677 70%);
+    /*background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, #090d1677 70%);*/
     border-radius: 50%; /* <-- ESTO HACE QUE SEA UN CÍRCULO PERFECTO */
     filter: blur(80px);  /* <-- USAR filter: blur EN LUGAR DE backdrop-filter PARA DIFUMINAR EL ELEMENTO */
     pointer-events: none;

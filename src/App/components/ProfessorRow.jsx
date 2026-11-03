@@ -1,4 +1,4 @@
-import ContProfessor from './ContProfessor'
+import FormAssignProfessor from './FormAssignProfessor'
 import styles from './css/ProfessorRow.module.css'
 
 function ProfessorRow({ professors = [] }) {
@@ -14,7 +14,7 @@ function ProfessorRow({ professors = [] }) {
             <div className={styles.contentProfessors}>
                 {professors && professors.length > 0 ? (
                     professors.map(prof => (
-                        <ContProfessor key={prof.id_professor} professor={prof} />
+                        <FormAssignProfessor key={prof.id_professor} professor={prof} />
                     ))
                 ) : (
                     <p>No hay profesores para mostrar.</p>

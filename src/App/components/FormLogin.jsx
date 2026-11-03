@@ -36,9 +36,9 @@ function FormLogin() {
                 },
                 body: JSON.stringify(form),
             })
-            if (!response.ok) {
-                throw new Error('Network response was not ok')
-            }
+
+            // Parseamos la respuesta JSON incluso si response.ok es false, 
+            // ya que el backend devuelve un JSON con el mensaje de error (ej. inhabilitado o credenciales incorrectas)
             const data = await response.json()
             
             if (data.success) {
@@ -50,7 +50,8 @@ function FormLogin() {
                 setForm(prev => ({ ...prev, passw: '' }))
                 navigate(CONFIG_PATHS.CAMPUS_PATH)
             } else {
-                alert("Credenciales incorrectas. Intenta nuevamente.")
+                // 🛑 Mostramos el mensaje exacto que viene del backend (ej: cuenta inhabilitada o credenciales incorrectas)
+                alert(data.error || "Credenciales incorrectas. Intenta nuevamente.")
             }
         } catch (error) {
             alert("Error al iniciar sesión. Intenta nuevamente.")
@@ -64,8 +65,6 @@ function FormLogin() {
         <>
             <div className={styles.contForm}>
                 <form
-                    // Quitamos el "off" general para permitir que el navegador gestione o asista con el email, 
-                    // mientras el input de contraseña se mantiene seguro.
                     id='formLogin'
                     className={styles.form}
                     onSubmit={handleSubmit}
@@ -100,6 +99,7 @@ function FormLogin() {
                             typeBtn='submit'
                             altName='IniciarSesion'
                             title="Iniciar sesión"
+                            styleBtn={2}
                             disabled={cargando}
                         >
                             {cargando ? <Loader mini={true}/> : "Iniciar sesión"}
@@ -112,6 +112,7 @@ function FormLogin() {
                     </p>
                     
                 </form>
+                
             </div>
         </>
     )

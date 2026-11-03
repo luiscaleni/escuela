@@ -10,7 +10,7 @@ function ConfigurationEdit() {
     const navigate = useNavigate()
     
     useEffect(()=>{
-        if (user.rolId !== 1) {
+        if (user.roleId !== 1) {
             navigate(CONFIG_PATHS.CAMPUS_PATH)
         }
     },[])
@@ -18,7 +18,7 @@ function ConfigurationEdit() {
     return ( 
         <>
             <Section>
-                {(user && (user.rolId === 1)) ? (
+                {(user && (user.roleId === 1)) ? (
                     <FormConfigEdit />
                 ): null}
             </Section>

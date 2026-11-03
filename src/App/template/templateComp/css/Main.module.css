@@ -1,7 +1,7 @@
 main, .main{
     width: 100%;
     height: auto;
-    background-color: var(--background-solid);
+    background-color: var(--background-solid-2);
 
     display: flex;
     justify-content: flex-start;
@@ -11,7 +11,7 @@ main, .main{
 .main > .mainContent{
     width: 100%;
     min-height: calc(70vh - 4rem);
-    background: var(--background);
+    background-color: var(--background-solid-2);
 
     display: flex;
     justify-content: center;
@@ -21,9 +21,7 @@ main, .main{
 
 .separator{
     width: 100%;
-    height: 5rem;
+    height: auto;
+    margin-bottom: 4rem;
     background-color: var(--background);
-}
-:global(body.dark) .separator{
-    background-color: transparent;
 }

@@ -2,34 +2,31 @@ import { useState } from 'react';
 import { CONFIG_BACKEND } from '../config/config';
 
 export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSaved }) {
-    // Inicializamos el estado local con los bloques que ya tiene la pestaña
-    const [blocks, setBlocks] = useState(initialBlocks)
-    // Ejemplo rápido de cómo adaptar los campos en tu FormEditClassDetail.jsx
-    const [contentType, setContentType] = useState('text'); // 'text', 'textarea', 'file'
+    const [blocks, setBlocks] = useState(initialBlocks);
+    const [contentType, setContentType] = useState('text');
     const [contentValue, setContentValue] = useState('');
-    const [fileObject, setFileObject] = useState(null); // Si vas a subir archivos físicos
+    const [fileObject, setFileObject] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
 
-    // Manejar cambios en los campos de texto
     const handleBlockChange = (index, field, value) => {
         const updated = [...blocks];
         updated[index][field] = value;
         setBlocks(updated);
-    }
+    };
 
-    // Manejar la adición de un nuevo bloque
     const handleAddNewBlock = () => {
         setBlocks([
             ...blocks,
             {
-                id_content_blocks: null, // Nuevo bloque
+                id_content_blocks: null,
                 content_type: 'text',
                 content_value: '',
                 file: null
             }
         ]);
-    }
+    };
 
-    // Funciones para reordenar los bloques en el estado local
     const handleMoveUp = (index) => {
         if (index === 0) return;
         const updated = [...blocks];
@@ -48,33 +45,96 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
         setBlocks(updated);
     };
 
-    // Enviar los cambios al backend (PHP)
-    // Enviar los cambios al backend (PHP)
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('id_tabs', idTabs); // ID de la pestaña actual
-
-        // Recorremos los bloques para agregarlos al FormData
-        blocks.forEach((block, index) => {
-            formData.append(`blocks[${index}][id_content_blocks]`, block.id_content_blocks || '');
-            formData.append(`blocks[${index}][content_type]`, block.content_type);
-            formData.append(`blocks[${index}][content_value]`, block.content_value || '');
-            formData.append(`blocks[${index}][order_block]`, index); 
-
-            // 🚀 ¡ESTO ES LO QUE FALTABA! Adjuntar el archivo físico si existe
-            if (block.content_type === 'file' && block.file) {
-                formData.append(`blocks[${index}][file]`, block.file);
-            }
+    // Función interna para subir el video directamente a Bunny
+    const uploadVideoToBunny = async (fileObject, title) => {
+        // Asegúrate de usar la ruta exacta que maneja tu enrutador (/createVideo)
+        const createRes = await fetch(`${CONFIG_BACKEND.API_DIR}/createVideo`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({ title: title || 'Clase de Video' })
         });
 
+        // Verificamos si la respuesta es válida antes de parsearla a JSON
+        const responseText = await createRes.text();
+        let videoData;
         try {
+            videoData = JSON.parse(responseText);
+        } catch (e) {
+            console.error("Respuesta del servidor no es JSON:", responseText);
+            throw new Error("El servidor no devolvió una respuesta JSON válida.");
+        }
+
+        if (!createRes.ok || !videoData.guid) {
+            throw new Error(videoData.error || 'No se pudo crear la instancia del video en Bunny');
+        }
+
+        const videoId = videoData.guid;
+        const libraryId = videoData.libraryId || '791786';
+
+        return new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('PUT', `https://video.bunnycdn.com/library/${libraryId}/videos/${videoId}`, true);
+            // Tu API Key privada se usa para subir el binario directamente
+            xhr.setRequestHeader('AccessKey', '415a56af-40f0-418d-b1b73b1b5c6c-990d-4412');
+            xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+
+            xhr.upload.onprogress = (event) => {
+                if (event.lengthComputable) {
+                    const percent = Math.round((event.loaded / event.total) * 100);
+                    setUploadProgress(percent);
+                }
+            };
+
+            xhr.onload = () => {
+                if (xhr.status === 200 || xhr.status === 201) {
+                    resolve(videoId);
+                } else {
+                    reject(new Error(`Error al subir el binario a Bunny (Status ${xhr.status})`));
+                }
+            };
+
+            xhr.onerror = () => reject(new Error('Error de red al intentar conectar con Bunny para la subida.'));
+            xhr.send(fileObject);
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setUploadProgress(0);
+
+        try {
+            const processedBlocks = [...blocks];
+
+            // Si hay bloques de tipo video nuevos con archivo, los subimos a Bunny primero
+            for (let i = 0; i < processedBlocks.length; i++) {
+                const block = processedBlocks[i];
+                if (block.content_type === 'video' && block.file && !block.id_content_blocks) {
+                    const videoGuid = await uploadVideoToBunny(block.file, `Clase - Pestaña ${idTabs}`);
+                    block.content_value = videoGuid; 
+                }
+            }
+
+            const formData = new FormData();
+            formData.append('id_tabs', idTabs);
+
+            processedBlocks.forEach((block, index) => {
+                formData.append(`blocks[${index}][id_content_blocks]`, block.id_content_blocks || '');
+                formData.append(`blocks[${index}][content_type]`, block.content_type);
+                formData.append(`blocks[${index}][content_value]`, block.content_value || '');
+                formData.append(`blocks[${index}][order_block]`, index); 
+
+                if ((block.content_type === 'file' || block.content_type === 'video') && block.file) {
+                    formData.append(`blocks[${index}][file]`, block.file);
+                }
+            });
+
             const res = await fetch(`${CONFIG_BACKEND.API_DIR}/saveClassDetails`, {
                 method: 'POST',
                 body: formData, 
                 credentials: 'include'
             });
-            // ... resto del código
 
             const responseText = await res.text();
             let data;
@@ -83,17 +143,20 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
             } catch (err) {
                 console.error("Respuesta no válida del servidor:", responseText);
                 alert("Error crítico en el servidor. Revisa la consola.");
+                setIsSubmitting(false);
                 return;
             }
 
             if (data.success) {
-                onSaved(data.blocks || []); // Actualizamos los bloques en la vista principal
+                onSaved(data.blocks || []); 
             } else {
                 alert("Error al guardar: " + (data.message || "Desconocido"));
             }
         } catch (error) {
-            console.error("Error de red:", error);
-            alert("Error de red al intentar guardar.");
+            console.error("Error en el proceso:", error);
+            alert("Ocurrió un error: " + error.message);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -111,7 +174,6 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                 return (
                     <div key={block.id_content_blocks || index} style={{ marginBottom: '20px', padding: '15px', background: '#2a2a2e', borderRadius: '6px', position: 'relative' }}>
                         
-                        {/* Botones de reordenamiento */}
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                             <span style={{ fontSize: '12px', color: '#9ca3af' }}>Bloque #{index + 1}</span>
                             <div style={{ display: 'flex', gap: '5px' }}>
@@ -134,7 +196,6 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                             </div>
                         </div>
                         
-                        {/* Si el bloque ya existe, mostramos el tipo fijo. Si es nuevo, permitimos elegirlo */}
                         {isExisting ? (
                             <label style={{ display: 'block', marginBottom: '5px' }}>
                                 Tipo de contenido: <strong>{block.content_type}</strong>
@@ -149,7 +210,7 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                                     onChange={(e) => {
                                         const updated = [...blocks];
                                         updated[index].content_type = e.target.value;
-                                        updated[index].content_value = ''; // Limpiamos al cambiar
+                                        updated[index].content_value = ''; 
                                         updated[index].file = null;
                                         setBlocks(updated);
                                     }}
@@ -157,14 +218,12 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                                 >
                                     <option value="text">Texto corto</option>
                                     <option value="textarea">Texto largo (Párrafo)</option>
-                                    <option value="file">Archivo (PDF, Video, etc.)</option>
+                                    <option value="file">Archivo (PDF, etc.)</option>
+                                    <option value="video">🎥 Video (Bunny Stream)</option>
                                 </select>
                             </div>
                         )}
 
-                        {/* --- RENDERIZADO SEGÚN EL TIPO (Sea existente o nuevo) --- */}
-
-                        {/* 1. Si es texto o textarea */}
                         {(block.content_type === 'text' || block.content_type === 'textarea') && (
                             <textarea
                                 value={block.content_value || ''}
@@ -176,7 +235,6 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                             />
                         )}
 
-                        {/* 2. Si es archivo */}
                         {block.content_type === 'file' && (
                             <div style={{ marginTop: '10px' }}>
                                 {isExisting && block.content_value ? (
@@ -190,9 +248,30 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                                         </p>
                                     </div>
                                 ) : (
-                                    /* Input para subir el archivo en un bloque NUEVO */
                                     <input
                                         type="file"
+                                        onChange={(e) => {
+                                            const updated = [...blocks];
+                                            updated[index].file = e.target.files[0];
+                                            setBlocks(updated);
+                                        }}
+                                        style={{ color: '#fff', width: '100%' }}
+                                        required
+                                    />
+                                )}
+                            </div>
+                        )}
+
+                        {block.content_type === 'video' && (
+                            <div style={{ marginTop: '10px' }}>
+                                {isExisting && block.content_value ? (
+                                    <div style={{ padding: '10px', background: '#18181b', borderLeft: '4px solid #34d399', borderRadius: '4px' }}>
+                                        <p style={{ margin: 0, fontSize: '13px', color: '#34d399' }}>✅ Video vinculado en Bunny (GUID: {block.content_value})</p>
+                                    </div>
+                                ) : (
+                                    <input
+                                        type="file"
+                                        accept="video/*"
                                         onChange={(e) => {
                                             const updated = [...blocks];
                                             updated[index].file = e.target.files[0];
@@ -208,14 +287,23 @@ export default function FormEditClassDetail({ idTabs, initialBlocks = [], onSave
                 );
             })}
 
+            {isSubmitting && (
+                <div style={{ margin: '15px 0', textAlign: 'center' }}>
+                    <p style={{ fontSize: '14px', color: '#38bdf8' }}>Subiendo video a Bunny Stream... {uploadProgress}%</p>
+                    <div style={{ width: '100%', background: '#444', height: '8px', borderRadius: '4px', overflow: 'hidden' }}>
+                        <div style={{ width: `${uploadProgress}%`, background: '#3b82f6', height: '100%', transition: 'width 0.2s' }} />
+                    </div>
+                </div>
+            )}
+
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-                <button type="button" onClick={handleAddNewBlock} style={{ padding: '10px 15px', background: '#3b82f6', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+                <button type="button" onClick={handleAddNewBlock} disabled={isSubmitting} style={{ padding: '10px 15px', background: '#3b82f6', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
                     + Agregar otro bloque
                 </button>
-                <button type="submit" style={{ padding: '10px 20px', background: '#10b981', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}>
-                    Guardar Cambios
+                <button type="submit" disabled={isSubmitting} style={{ padding: '10px 20px', background: isSubmitting ? '#555' : '#10b981', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}>
+                    {isSubmitting ? 'Guardando...' : 'Guardar Cambios'}
                 </button>
             </div>
         </form>
-    )
+    );
 }

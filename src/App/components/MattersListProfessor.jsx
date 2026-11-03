@@ -12,19 +12,20 @@ function MattersListProfessor() {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if(user.rolId !== 2){
+        if(user.roleId !== 2){
             navigate(CONFIG_PATHS.HOME_PATH)
         }
     },[])
 
     const consultProf = async () => {
         try {
-            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/consultProfessor?id=${user.id}`, {
+            const response = await fetch(`${CONFIG_BACKEND.API_DIR}/getProfessor?id=${user.id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type':'application/json',
                     'Accept':'application/json'
-                }
+                },
+                credentials: 'include'
             })
             const data = await response.json()
             if (data.success) {
@@ -42,12 +43,14 @@ function MattersListProfessor() {
     const consultMatters = async () => {
         if (!professor?.matters_assigned) return;
         try {
+            // Realizamos la petición por GET enviando los IDs en la URL
             const response = await fetch(`${CONFIG_BACKEND.API_DIR}/loadProfessorsMatters?id=${professor.matters_assigned}`, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type':'application/json',
                     'Accept':'application/json'
-                }
+                },
+                credentials: 'include'
             })
             const data = await response.json()
             if (data.success) {
@@ -88,16 +91,18 @@ function MattersListProfessor() {
         <>
             {Object.keys(groupedMatters).length > 0 ? (
                 Object.entries(groupedMatters).map(([disciplineName, disciplineMatters]) => (
-                    <div key={disciplineName} style={{ marginBottom: '2rem', backgroundColor:'#333', margin:'0 0.5rem', padding:'1rem', borderRadius:'2.5rem' }}>
+                    <div key={disciplineName} style={{ marginBottom: '2rem', width:'100%' }}>
                         <h2>
-                            Disciplina: <strong>{disciplineName}</strong>
+                            <span style={{ color: '#10B981' }}>Disciplina:</span> <strong>{disciplineName}</strong>
                         </h2>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                        <div style={{ display: 'flex', gap: '10px' }}>
                             {disciplineMatters.map(matt => (
                                 <Card
                                     key={matt.id_matter}
+                                    ubication='disciplines'
                                     cardTitle={matt.name_matter}
-                                    link={`/campus/${CONFIG_PATHS.CAMPUS_MY_COURSES_PATH}/detalles/${matt.id_matter}`}
+                                    imgCard={matt.img_discip}
+                                    link={`detalles/${matt.id_matter}`}
                                 />
                             ))}
                         </div>

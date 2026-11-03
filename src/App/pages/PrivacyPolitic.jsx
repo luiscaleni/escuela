@@ -9,7 +9,7 @@ import styles from './css/PrivacyPolitic.module.css'
 function PrivacyPolitic() {
   const [configData, setConfigData]  = useState(null)
   const [cargando, setCargando] = useState(false)
-  const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/showDataConfig`
+  const ROUTE = `${CONFIG_BACKEND.API_DIR}/config/getDataConfig`
   const loadConfigData = LoadData(setCargando, setConfigData, 'GET', ROUTE)
 
 
