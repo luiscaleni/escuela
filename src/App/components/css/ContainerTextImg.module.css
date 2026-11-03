@@ -47,9 +47,14 @@
 .containerTextImg > .contElemnt > .imgContainer{
     width: 100%;
     height: auto;
-    max-width: 30rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.containerTextImg > .contElemnt > .imgContainer > img{
+    width: 20rem;
+    height: auto;
+    border-radius: var(--border-radius);
 }

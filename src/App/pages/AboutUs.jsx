@@ -6,7 +6,9 @@ import Container from '../components/Container'
 import Section from '../components/Section'
 import ElmSelection from '../components/ElmSelection'
 import LoadData from '../components/LoadData'
-import whoWeAre from '/images/about_us.png'
+import whoWeAre from '/images/quienesSomos.jpg'
+import misionImg from '/images/nuestraMision.jpg'
+import valoresImg from '/images/nuestrosValores.jpg'
 import ContainerTextImg from '../components/ContainerTextImg'
 
 function AboutUs() {
@@ -29,22 +31,11 @@ function AboutUs() {
                   En ARBITRA® concebimos el arbitraje como una actividad que integra conocimientos técnicos, preparación física y mental, comunicación, ética, capacidad de decisión y actualización permanente.
                   Nuestro enfoque abarca diferentes disciplinas deportivas y reconoce la diversidad de funciones que intervienen en una competencia: árbitros, jueces, oficiales técnicos y otros responsables de su correcto desarrollo.
                   ARBITRA® — Todos los deportes. Una misma pasión."/>
+            
+            <ContainerTextImg imgSrc={misionImg} altText="Nuestra misión" titleText="Nuestra misión" text="Promover la formación profesional y el perfeccionamiento continuo de árbitros, jueces y oficiales deportivos mediante propuestas educativas que integren teoría, práctica, tecnología, ética y desarrollo personal" / >
 
-            <Container>
-                <h2>Nuestra misión</h2>
 
-                <p>Promover la formación profesional y el perfeccionamiento continuo de árbitros, jueces y oficiales deportivos mediante propuestas educativas que integren teoría, práctica, tecnología, ética y desarrollo personal.</p>
-            </Container>
-
-             <Container>
-                <h2>Nuestros valores</h2>
-
-                <p>Integridad. Actuar con honestidad, responsabilidad y respeto por las reglas.
-                  Imparcialidad. Desarrollar criterios de decisión basados en el reglamento y la equidad competitiva.
-                  Conocimiento. Estudiar, comprender y actualizar permanentemente los fundamentos distintas disciplinas deportivas.
-                  Profesionalismo. Promover la preparación integral y el compromiso con la función arbitral.
-                  Innovación. Incorporar herramientas pedagógicas y tecnológicas que mejoren el aprendizaje y el análisis de situaciones de juego.</p>
-            </Container>
+            <ContainerTextImg imgSrc={valoresImg} altText="Nuestros valores" titleText="Nuestros Valores" rightText={true} text="Integridad. Actuar con honestidad, responsabilidad y respeto por las reglas. Imparcialidad. Desarrollar criterios de decisión basados en el reglamento y la equidad competitiva. Conocimiento. Estudiar, comprender y actualizar permanentemente los fundamentos distintas disciplinas deportivas. Profesionalismo. Promover la preparación integral y el compromiso con la función arbitral. Innovación. Incorporar herramientas pedagógicas y tecnológicas que mejoren el aprendizaje y el análisis de situaciones de juego." / >
 
             <Container>
                 <h2>Nuestra filosofía</h2>
