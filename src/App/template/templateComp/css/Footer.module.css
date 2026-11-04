@@ -25,7 +25,7 @@ footer, .footer{
 }
 
 .footer > .footerContent > .group{
-    min-width: 10rem;
+    min-width: 15rem;
     min-height: 6rem;
     height: auto;
     margin: 0 1rem 1rem 1rem;

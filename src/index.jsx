@@ -15,6 +15,8 @@ import AboutUs                  from './App/pages/AboutUs'
 import Register                 from './App/pages/Register'
 import Login                    from './App/pages/Login'
 import Success                  from './App/pages/Success'
+import Help                     from './App/pages/Help'
+import FAQ                      from './App/pages/FAQ'
 import ForgetPassw              from './App/pages/ForgetPassw'
 import ResetPassw               from './App/pages/ResetPassw'
 
@@ -26,7 +28,6 @@ import ProfileEdit              from './App/pages/protected/ProfileEdit'
 import Wellcome                 from './App/pages/protected/Wellcome'
 import Configuration            from './App/pages/protected/Configuration'
 import ConfigurationEdit        from './App/pages/protected/ConfigurationEdit'
-import Help                     from './App/pages/protected/Help'
 import PrivacyPolitic           from './App/pages/PrivacyPolitic'
 
 import { CONFIG_PATHS }         from './App/config/config'
@@ -62,9 +63,10 @@ const routes = [
       { path: CONFIG_PATHS.HOME_PATH,                                       element: <PublicRoute>       <Home/>                 </PublicRoute>     },
       { path: CONFIG_PATHS.SPORTS_PATH,                                     element: <PublicRoute>       <Sports/>               </PublicRoute>     },
       { path: CONFIG_PATHS.SPORTS_PATH+"/disciplina/:id_discipline",        element: <PublicRoute>       <DisciplineDetail/>     </PublicRoute>     },
-      { path: CONFIG_PATHS.FORMATION_PATH,                                  element: <PublicRoute>       <Formation/>             </PublicRoute>     },
+      { path: CONFIG_PATHS.FORMATION_PATH,                                  element: <PublicRoute>       <Formation/>             </PublicRoute>    },
 
       { path: CONFIG_PATHS.SUCCESS_PATH,                                    element: <Success />                                                    },
+
       { path: CONFIG_PATHS.LOGIN_PATH,                                      element: <PublicRoute>       <Login/>                 </PublicRoute>    },
       { path: CONFIG_PATHS.FORGET_PASSW_PATH,                               element: <PublicRoute>       <ForgetPassw/>           </PublicRoute>    },
       { path: CONFIG_PATHS.RESET_PASSW,                                     element: <PublicRoute>       <ResetPassw/>            </PublicRoute>    },
@@ -81,6 +83,7 @@ const routes = [
     element: <Template separator={true} />,
     children: [
       { path: CONFIG_PATHS.REGISTER_PATH,                                   element: <PublicRoute>     <Register/>                </PublicRoute>    },
+      { path: CONFIG_PATHS.FAQ_PATH,                                        element: <FAQ/>                                                         },
     ]
   },
   {
@@ -92,7 +95,7 @@ const routes = [
       { path: CONFIG_PATHS.PROFILE_EDIT_PATH,                               element: <ProtectedRoute>  <ProfileEdit/>             </ProtectedRoute> },
       { path: CONFIG_PATHS.CONFIG_PATH,                                     element: <ProtectedRoute>  <Configuration/>           </ProtectedRoute> },
       { path: CONFIG_PATHS.CONFIG_EDIT_PATH,                                element: <ProtectedRoute>  <ConfigurationEdit/>       </ProtectedRoute> },
-      { path: CONFIG_PATHS.HELP_PATH,                                       element: <ProtectedRoute>  <Help/>                    </ProtectedRoute> },
+      { path: CONFIG_PATHS.HELP_PATH,                                       element: <Help/>                                                        },
     ]
   },
   {  

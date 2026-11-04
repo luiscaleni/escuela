@@ -31,16 +31,17 @@
 .modal > .groupModal > .closeModal{
     position: absolute;
     cursor: pointer;
-    top: 0;
-    right: 0;
+    top: 1rem;
+    right: 1rem;
     color: #000;
     font-weight: bold;
     border: none;
     border-radius: 0.5rem;
     user-select: none;
     overflow: hidden;
-    transform: translateX(2.5rem);
-    background: transparent;
+    z-index: 1000;
+    /*transform: translateX(2.5rem);*/
+    background-color:#fff;
 
     display: flex;
     justify-content: center;
@@ -49,12 +50,13 @@
 .modal > .groupModal > .closeModal > img{
     width: 2rem;
     height: 2rem;
+    filter: invert(1);
 
 }
 .modal > .groupModal > .container{
     width: auto;
     height: auto;
-    min-width: 36rem;
+    min-width: 24rem;
     max-width: 50dvw;
     min-height: 10rem;
     max-height: 90dvh;

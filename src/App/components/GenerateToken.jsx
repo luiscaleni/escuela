@@ -1,16 +1,17 @@
 import { useState, useEffect } from "react";
-import styles from '../components/css/Form.module.css';
+import styles from './css/GenerateToken.module.css';
+import stylesForm from './css/Form.module.css';
 import Button from "../components/Button";
 import { CONFIG_BACKEND } from "../config/config";
 
 export default function GenerateToken() {
-  // Estados para Profesores
+  // Estados para Profesores (por defecto ocultos: showProfToken = false)
   const [profToken, setProfToken] = useState("");
   const [profDate, setProfDate] = useState(null);
   const [copiedProf, setCopiedProf] = useState(false);
   const [showProfToken, setShowProfToken] = useState(false);
 
-  // Estados para Alumnos
+  // Estados para Alumnos (por defecto ocultos: showStudentToken = false)
   const [studentToken, setStudentToken] = useState("");
   const [studentDate, setStudentDate] = useState(null);
   const [copiedStudent, setCopiedStudent] = useState(false);
@@ -24,7 +25,7 @@ export default function GenerateToken() {
   const fetchActiveTokens = async () => {
     try {
       const res = await fetch(`${CONFIG_BACKEND.API_DIR}/getConsultActiveTokens`, {
-        method: "POST",
+        method: "GET",
         credentials: "include"
       });
       const data = await res.json();
@@ -32,11 +33,12 @@ export default function GenerateToken() {
       if (data.success) {
         if (data.professor) {
           setProfToken(data.professor.content_token);
-          setProfDate(new Date(data.professor.created_at));
+          // Reemplazamos el espacio por 'T' para asegurar compatibilidad total con el formato de fecha SQL
+          setProfDate(new Date(data.professor.created_at.replace(" ", "T")));
         }
         if (data.student) {
           setStudentToken(data.student.content_token);
-          setStudentDate(new Date(data.student.created_at));
+          setStudentDate(new Date(data.student.created_at.replace(" ", "T")));
         }
       }
     } catch (error) {
@@ -113,58 +115,60 @@ export default function GenerateToken() {
     });
   };
 
-  // Enmascarar token
+  // Enmascarar token con puntos
   const maskToken = () => {
     return "•".repeat(24);
   };
 
   return (
-    <div className={styles.contForm} style={{ maxWidth: '900px', margin: '40px auto', padding: '30px' }}>
+    <div className={`${stylesForm.contForm} ${styles.containerCustom}`}>
       <h2>Panel de Administración - Generador de Tokens</h2>
-      <p style={{ color: '#666', marginBottom: '30px' }}>
+      <p className={styles.subtitleText}>
         Visualiza y administra los códigos de registro activos para profesores y alumnos.
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+      <div className={styles.gridContainer}>
         
         {/* BLOQUE PROFESORES */}
-        <div style={{ border: '1px solid #ddd', padding: '20px', borderRadius: '8px', background: '#fdfdfd' }}>
+        <div className={styles.cardBlock}>
           <h3>👨‍🏫 Profesores</h3>
-          <p style={{ fontSize: '13px', color: '#555' }}>Token reutilizable para el cuerpo docente.</p>
+          <p className={styles.cardDesc}>Token reutilizable para el cuerpo docente.</p>
           
-          <div style={{ marginTop: '20px' }}>
+          <div className={styles.mt20}>
             <Button typeBtn="button" styleBtn={2} onClick={() => generateTokenForRole(2)}>
               Generar Nuevo Token Profesor
             </Button>
           </div>
 
-          <div style={{ marginTop: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{ background: '#eee', padding: '8px', borderRadius: '5px', wordBreak: 'break-all', fontFamily: 'monospace', flex: 1, fontSize: '12px' }}>
+          <div className={styles.mt20}>
+            <div className={styles.tokenRow}>
+              <div className={styles.tokenBox}>
                 {profToken ? (showProfToken ? profToken : maskToken()) : "No hay token generado"}
               </div>
               {profToken && (
                 <button 
+                  type="button"
                   onClick={() => setShowProfToken(!showProfToken)}
                   title={showProfToken ? "Ocultar token" : "Ver token"}
-                  style={{ background: 'none', border: '1px solid #ccc', borderRadius: '4px', padding: '6px 10px', cursor: 'pointer' }}
+                  className={styles.visibilityBtn}
                 >
                   {showProfToken ? "🙈" : "👁️"}
                 </button>
               )}
             </div>
             
-            <div style={{ marginTop: '10px', fontSize: '13px', display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-              <span style={{ fontWeight: 'bold', color: 'black' }}>{profDate ? 'Generado: ' : ''}</span>
-              <span style={{ color: isToday(profDate) ? 'green' : 'black', fontWeight: isToday(profDate) ? 'bold' : 'normal' }}>
+            <div className={styles.dateRow}>
+              <span className={styles.dateBold}>{profDate ? 'Generado: ' : ''}</span>
+              <span className={isToday(profDate) ? styles.dateGreen : styles.dateNormal}>
                 {profDate ? formatReadableDate(profDate) : ""}
               </span>
             </div>
 
             {profToken && (
               <button 
+                type="button"
                 onClick={() => handleCopy(profToken, 'prof')}
-                style={{ marginTop: '12px', padding: '6px 12px', background: '#333', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', display: 'block', width: '100%' }}
+                className={styles.copyBtn}
               >
                 {copiedProf ? "¡Copiado! ✅" : "Copiar Token 📋"}
               </button>
@@ -173,43 +177,45 @@ export default function GenerateToken() {
         </div>
 
         {/* BLOQUE ALUMNOS */}
-        <div style={{ border: '1px solid #ddd', padding: '20px', borderRadius: '8px', background: '#fdfdfd' }}>
+        <div className={styles.cardBlock}>
           <h3>🎓 Alumnos</h3>
-          <p style={{ fontSize: '13px', color: '#555' }}>Token reutilizable para ingresos de estudiantes.</p>
+          <p className={styles.cardDesc}>Token reutilizable para ingresos de estudiantes.</p>
           
-          <div style={{ marginTop: '20px' }}>
+          <div className={styles.mt20}>
             <Button typeBtn="button" styleBtn={2} onClick={() => generateTokenForRole(3)}>
               Generar Nuevo Token Alumno
             </Button>
           </div>
 
-          <div style={{ marginTop: '20px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <div style={{ background: '#eee', padding: '8px', borderRadius: '5px', wordBreak: 'break-all', fontFamily: 'monospace', flex: 1, fontSize: '12px' }}>
+          <div className={styles.mt20}>
+            <div className={styles.tokenRow}>
+              <div className={styles.tokenBox}>
                 {studentToken ? (showStudentToken ? studentToken : maskToken()) : "No hay token generado"}
               </div>
               {studentToken && (
                 <button 
+                  type="button"
                   onClick={() => setShowStudentToken(!showStudentToken)}
                   title={showStudentToken ? "Ocultar token" : "Ver token"}
-                  style={{ background: 'none', border: '1px solid #ccc', borderRadius: '4px', padding: '6px 10px', cursor: 'pointer' }}
+                  className={styles.visibilityBtn}
                 >
                   {showStudentToken ? "🙈" : "👁️"}
                 </button>
               )}
             </div>
             
-            <div style={{ marginTop: '10px', fontSize: '13px', display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-              <span style={{ fontWeight: 'bold' }}>{studentDate ? 'Generado: ' : ''}</span>
-              <span style={{ color: isToday(studentDate) ? 'green' : 'black', fontWeight: isToday(studentDate) ? 'bold' : 'normal' }}>
+            <div className={styles.dateRow}>
+              <span className={styles.dateBold}>{studentDate ? 'Generado: ' : ''}</span>
+              <span className={isToday(studentDate) ? styles.dateGreen : styles.dateNormal}>
                 {studentDate ? formatReadableDate(studentDate) : ""}
               </span>
             </div>
 
             {studentToken && (
               <button 
+                type="button"
                 onClick={() => handleCopy(studentToken, 'student')}
-                style={{ marginTop: '12px', padding: '6px 12px', background: '#333', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', display: 'block', width: '100%' }}
+                className={styles.copyBtn}
               >
                 {copiedStudent ? "¡Copiado! ✅" : "Copiar Token 📋"}
               </button>

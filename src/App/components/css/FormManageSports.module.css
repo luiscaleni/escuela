@@ -5,7 +5,7 @@
   margin: 30px auto;
   padding: 30px;
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   box-sizing: border-box;
 }
@@ -38,10 +38,10 @@
 }
 
 .listColumn {
-  background: #fdfdfd;
+  background: #ccc;
   border: 1px solid #e0e0e0;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
 .formGroup {

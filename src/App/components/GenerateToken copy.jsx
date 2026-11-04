@@ -30,12 +30,10 @@ export default function GenerateToken() {
       const data = await res.json();
 
       if (data.success) {
-        // Si el backend devuelve el token del profesor
         if (data.professor) {
           setProfToken(data.professor.content_token);
           setProfDate(new Date(data.professor.created_at));
         }
-        // Si el backend devuelve el token del alumno
         if (data.student) {
           setStudentToken(data.student.content_token);
           setStudentDate(new Date(data.student.created_at));
@@ -63,13 +61,14 @@ export default function GenerateToken() {
           setProfToken(data.token);
           setProfDate(now);
           setCopiedProf(false);
-          setShowProfToken(false); // Oculto por seguridad al generarlo nuevo
+          setShowProfToken(false);
         } else {
           setStudentToken(data.token);
           setStudentDate(now);
           setCopiedStudent(false);
-          setShowStudentToken(false); // Oculto por seguridad al generarlo nuevo
+          setShowStudentToken(false);
         }
+        alert("✅ " + data.message);
       } else {
         alert("❌ Error al generar el token: " + data.message);
       }
@@ -133,9 +132,11 @@ export default function GenerateToken() {
           <h3>👨‍🏫 Profesores</h3>
           <p style={{ fontSize: '13px', color: '#555' }}>Token reutilizable para el cuerpo docente.</p>
           
-          <Button typeBtn="button" styleBtn={2} onClick={() => generateTokenForRole(2)}>
-            Generar Nuevo Token Profesor
-          </Button>
+          <div style={{ marginTop: '20px' }}>
+            <Button typeBtn="button" styleBtn={2} onClick={() => generateTokenForRole(2)}>
+              Generar Nuevo Token Profesor
+            </Button>
+          </div>
 
           <div style={{ marginTop: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -154,15 +155,10 @@ export default function GenerateToken() {
             </div>
             
             <div style={{ marginTop: '10px', fontSize: '13px', display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-              <span style={{ fontWeight: 'bold', color: 'black' }}>Generado: </span>
+              <span style={{ fontWeight: 'bold', color: 'black' }}>{profDate ? 'Generado: ' : ''}</span>
               <span style={{ color: isToday(profDate) ? 'green' : 'black', fontWeight: isToday(profDate) ? 'bold' : 'normal' }}>
                 {profDate ? formatReadableDate(profDate) : ""}
               </span>
-              {isToday(profDate) && (
-                <span style={{ color: '#777', fontSize: '12px', fontStyle: 'italic' }}>
-                  (Este código se generó hoy)
-                </span>
-              )}
             </div>
 
             {profToken && (
@@ -181,9 +177,11 @@ export default function GenerateToken() {
           <h3>🎓 Alumnos</h3>
           <p style={{ fontSize: '13px', color: '#555' }}>Token reutilizable para ingresos de estudiantes.</p>
           
-          <Button typeBtn="button" styleBtn={2} onClick={() => generateTokenForRole(3)}>
-            Generar Nuevo Token Alumno
-          </Button>
+          <div style={{ marginTop: '20px' }}>
+            <Button typeBtn="button" styleBtn={2} onClick={() => generateTokenForRole(3)}>
+              Generar Nuevo Token Alumno
+            </Button>
+          </div>
 
           <div style={{ marginTop: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -202,15 +200,10 @@ export default function GenerateToken() {
             </div>
             
             <div style={{ marginTop: '10px', fontSize: '13px', display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-              <span style={{ fontWeight: 'bold' }}>Generado: </span>
+              <span style={{ fontWeight: 'bold' }}>{studentDate ? 'Generado: ' : ''}</span>
               <span style={{ color: isToday(studentDate) ? 'green' : 'black', fontWeight: isToday(studentDate) ? 'bold' : 'normal' }}>
                 {studentDate ? formatReadableDate(studentDate) : ""}
               </span>
-              {isToday(studentDate) && (
-                <span style={{ color: '#777', fontSize: '12px', fontStyle: 'italic' }}>
-                  (Este código se generó hoy)
-                </span>
-              )}
             </div>
 
             {studentToken && (

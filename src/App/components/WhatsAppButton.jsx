@@ -1,4 +1,4 @@
-import React from 'react';
+import styles from './css/WhatsAppButton.module.css';
 
 const WhatsAppButton = () => {
   // Reemplaza con tu número de teléfono incluyendo el código de país (sin el signo +)
@@ -16,7 +16,7 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      style={styles.button}
+      className={styles.buttonWp}
       aria-label="Chat de WhatsApp"
       title='Contáctanos'
     >
@@ -26,26 +26,6 @@ const WhatsAppButton = () => {
     </svg>
     </a>
   );
-};
-
-const styles = {
-  button: {
-    position: 'fixed',
-    bottom: '5.4rem',
-    right: '1.7rem',
-    backgroundColor: '#25D366',
-    color: '#FFF',
-    borderRadius: '50%',
-    width: '4rem',
-    height: '4rem',
-    boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
-    zIndex: 1000,
-    cursor: 'pointer',
-    transition: 'transform 0.3s ease',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 };
 
 export default function App() {

@@ -23,17 +23,13 @@
     justify-content: center;
     align-items: center;
 }
-:global(body.dark) .wellcome > h1{
-    color: black;
-}
+
 .wellcome > p{
     font-size: 1rem;
     color: var(--color-text);
     margin-bottom: 1rem;
 }
-:global(body.dark) .wellcome > p{
-    color: #000;
-}
+
 
 .wellcome > .contLinks{
     width: 80%;
@@ -70,7 +66,10 @@
     background-color: var(--background-color-btn-hover);
 }
 
-@media (max-width:900px){
+@media (max-width:1280px){
+    .wellcome {
+        height: 20rem;
+    }
     .wellcome > h1{
         font-size: 2.5rem;
     }

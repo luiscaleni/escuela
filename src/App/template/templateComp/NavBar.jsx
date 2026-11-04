@@ -18,7 +18,8 @@ import imgTokens from '/icons/links/tokens.png'
 import imgCampus from '/icons/links/campus.png'
 import imgSports from '/icons/links/sports.png'
 import imgCommissions from '/icons/links/commissions.png'
-import info from '/icons/links/info.png'
+import info24 from '/icons/links/info24.png'
+import formation from '/icons/links/formation.png'
  
 import imgHelp from '/icons/links/help.png'
 import imgProfileMen from '/icons/links/profile_men.png'
@@ -194,16 +195,20 @@ function NavBar() {
                                         Inicio
                                     </Link>
                                     <Link to={CONFIG_PATHS.ABOUT_US_PATH} onClick={toggleMenuPanel}>
-                                        <img src={info} className={styles.imgMobile}/>
+                                        <img src={info24} className={styles.imgMobile}/>
                                         Quiénes somos
                                     </Link>
                                     <Link to={CONFIG_PATHS.FORMATION_PATH} onClick={toggleMenuPanel}>
-                                        <img src={info} className={styles.imgMobile}/>
+                                        <img src={formation} className={styles.imgMobile}/>
                                         Formación
                                     </Link>
                                     <Link to={CONFIG_PATHS.SPORTS_PATH} onClick={toggleMenuPanel}>
                                         <img src={imgCourses} className={styles.imgMobile}/>
                                         Cursos
+                                    </Link>
+                                    <Link to={CONFIG_PATHS.FAQ_PATH} onClick={toggleMenuPanel}>
+                                        <img src={imgCourses} className={styles.imgMobile}/>
+                                        F.A.Q.
                                     </Link>
                                     <Link to={CONFIG_PATHS.LOGIN_PATH} onClick={toggleMenuPanel}>
                                         <img src={imgCampus} className={styles.imgMobile}/>

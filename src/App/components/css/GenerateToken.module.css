@@ -1,0 +1,107 @@
+.containerCustom {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+}
+
+.subtitleText {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardBlock {
+  min-width: 20rem;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background: #fdfdfd;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: #555;
+}
+
+.mt20 {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tokenRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tokenBox {
+  background: #eee;
+  padding: 8px;
+  border-radius: 5px;
+  word-break: break-all;
+  font-family: monospace;
+  flex: 1;
+  font-size: 12px;
+}
+
+.visibilityBtn {
+  background: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.dateRow {
+  margin-top: 10px;
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.dateBold {
+  font-weight: bold;
+  color: black;
+}
+
+.dateGreen {
+  color: green;
+  font-weight: bold;
+}
+
+.dateNormal {
+  color: black;
+  font-weight: normal;
+}
+
+.copyBtn {
+  margin-top: 12px;
+  padding: 6px 12px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  
+}

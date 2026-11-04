@@ -1,4 +1,4 @@
-import Section from '../../components/Section'
+import Section from '../components/Section'
 import styles from './css/Help.module.css'
 
 function Help() {
@@ -7,7 +7,7 @@ function Help() {
     <>
       <Section>
         <div className={styles.cont}>
-          <h2>Preguntas Frecuentes (FAQ)</h2>
+          <h2>Ayuda y soporte técnico</h2>
           <br />
           <div className={styles.contAnws}>
             <h3>¿Cómo me inscribo a los cursos?</h3>

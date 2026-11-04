@@ -128,7 +128,7 @@ function ManageCommissions() {
                     </ContFormInput>
                 )}
 
-                <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+                <div style={{ display: 'flex', gap: '10px', marginTop: '10px', justifyContent: 'center' }}>
                     <Button typeBtn="submit" styleBtn={2}>
                         {isEditing ? 'Guardar Cambios' : 'Crear Comisión y Generar Código'}
                     </Button>

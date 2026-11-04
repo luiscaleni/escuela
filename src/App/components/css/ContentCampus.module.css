@@ -13,3 +13,11 @@
 .contentCampusWrapper > h2{
     width: 100%;
 }
+
+@media (max-width: 1280px){
+    .contentCampusWrapper{
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+}

@@ -43,6 +43,7 @@ export const CONFIG_PATHS = {
     PROFILE_PATH: "/perfil",
     PROFILE_EDIT_PATH: "/editar-perfil",
     EDIT_POST_PATH: "/editar-publicacion",
+    FAQ_PATH: "/faq",
     SUCCESS_PATH: "/registro-exitoso",
     
     CAMPUS_PATH: "/campus",

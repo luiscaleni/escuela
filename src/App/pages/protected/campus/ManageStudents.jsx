@@ -3,6 +3,7 @@ import { CONFIG_BACKEND, CONFIG_PATHS } from '../../../config/config'
 import { UserContext } from '../../../components/UserProvider'
 import { useNavigate } from 'react-router-dom'
 import Modal from '../../../components/Modal'
+import styles from './css/ManageStudents.module.css'
 
 function ManageStudents() {
     const [loading, setLoading] = useState(true)
@@ -64,7 +65,6 @@ function ManageStudents() {
         const newStatus = currentStatus === 1 ? 0 : 1; 
 
         try {
-            // Reutiliza o adapta tu endpoint de cambio de estado enviando el id del usuario
             const response = await fetch(`${CONFIG_BACKEND.API_DIR}/disableStudent`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -78,7 +78,7 @@ function ManageStudents() {
             if (data.success) {
                 setShowConfirmModal(false)
                 setStudentToToggle(null)
-                consultStudents(); // Recarga la lista para actualizar los estados
+                consultStudents();
             } else {
                 alert("Error al actualizar el estado: " + (data.message || "Error desconocido"));
             }
@@ -91,61 +91,43 @@ function ManageStudents() {
     const studentFullName = `${studentToToggle?.names || ''} ${studentToToggle?.last_names || ''}`.trim();
 
     return (
-        <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto', color: '#fff' }}>
+        <div className={styles.container}>
             <h2>Gestión de Alumnos</h2>
             
             {/* Buscador local */}
-            <div style={{ margin: '20px 0' }}>
+            <div className={styles.searchContainer}>
                 <input 
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Buscar alumno por nombre, apellido o email..."
-                    style={{
-                        width: '100%',
-                        minWidth: '24rem',
-                        padding: '10px',
-                        borderRadius: '6px',
-                        border: '1px solid #4b5563',
-                        background: '#1d1d1d',
-                        color: '#fff',
-                        outline: 'none'
-                    }}
+                    className={styles.searchInput}
                 />
             </div>
 
             {loading ? (
-                <p style={{ color: '#aaa' }}>Cargando alumnos...</p>
+                <p className={styles.loadingText}>Cargando alumnos...</p>
             ) : filteredStudents.length > 0 ? (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div className={styles.studentsList}>
                     {filteredStudents.map(student => {
                         const active = student.status !== 0;
                         return (
                             <div 
                                 key={student.id} 
-                                style={{ background: '#fff', padding: '15px', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                                className={styles.studentCard}
                             >
                                 <div>
-                                    <h4 style={{ margin: 0, color: '#000' }}>
+                                    <h4 className={styles.studentName}>
                                         {student.names} {student.last_names} 
-                                        {!active && <span style={{ color: '#ef4444', fontSize: '12px', marginLeft: '8px' }}>(Inhabilitado)</span>}
+                                        {!active && <span className={styles.disabledTag}>(Inhabilitado)</span>}
                                     </h4>
-                                    <p style={{ margin: '5px 0 0 0', fontSize: '13px', color: '#505050' }}>{student.email}</p>
+                                    <p className={styles.studentEmail}>{student.email}</p>
                                 </div>
 
                                 <button 
                                     type="button"
                                     onClick={() => handleOpenConfirmModal(student)}
-                                    style={{ 
-                                        padding: '8px 14px', 
-                                        background: active ? '#dc2626' : '#16a34a', 
-                                        color: '#fff', 
-                                        border: 'none', 
-                                        borderRadius: '6px', 
-                                        cursor: 'pointer', 
-                                        fontWeight: 'bold',
-                                        fontSize: '13px'
-                                    }}
+                                    className={`${styles.actionButton} ${active ? styles.btnDanger : styles.btnSuccess}`}
                                 >
                                     {active ? 'Deshabilitar' : 'Habilitar'}
                                 </button>
@@ -154,7 +136,7 @@ function ManageStudents() {
                     })}
                 </div>
             ) : (
-                <p style={{ color: '#aaa' }}>No se encontraron alumnos.</p>
+                <p className={styles.noResultsText}>No se encontraron alumnos.</p>
             )}
 
             {/* Modal de confirmación por escritura */}
@@ -163,9 +145,9 @@ function ManageStudents() {
                     titleElm={`${isCurrentlyActive ? 'Deshabilitar' : 'Habilitar'} a: ${studentFullName}`}
                     onClickElm={() => setShowConfirmModal(false)}
                 >
-                    <div style={{ padding: '10px 0', display: 'flex', flexDirection: 'column', gap: '15px' }}>
-                        <p style={{ margin: 0, fontSize: '14px', color:'#000'}}>
-                            Para confirmar la acción, escribe el nombre exacto y completo: <strong style={{ color: 'red' }}>{studentFullName}</strong>
+                    <div className={styles.modalContent}>
+                        <p className={styles.modalInstruction}>
+                            Para confirmar la acción, escribe el nombre exacto y completo: <strong className={styles.modalTargetName}>{studentFullName}</strong>
                         </p>
                         
                         <input 
@@ -173,47 +155,27 @@ function ManageStudents() {
                             value={confirmationInput}
                             onChange={(e) => setConfirmationInput(e.target.value)}
                             placeholder="Escribe el nombre aquí..."
-                            style={{
-                                padding: '10px',
-                                borderRadius: '6px',
-                                border: '1px solid #4b5563',
-                                background: '#ccc',
-                                color: '#000',
-                                outline: 'none',
-                                fontSize: '15px'
-                            }}
+                            className={styles.modalInput}
                         />
 
-                        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
+                        <div className={styles.modalActions}>
                             <button
                                 type="button"
                                 onClick={() => setShowConfirmModal(false)}
-                                style={{
-                                    padding: '8px 16px',
-                                    background: '#4b5563',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '6px',
-                                    cursor: 'pointer'
-                                }}
+                                className={styles.btnCancel}
                             >
                                 Cancelar
                             </button>
 
                             <button
                                 type="button"
-                                // Comparamos de forma estricta (carácter por carácter, sin limpiar espacios con trim)
                                 disabled={confirmationInput !== studentFullName}
                                 onClick={handleExecuteToggleStatus}
-                                style={{
-                                    padding: '8px 16px',
-                                    background: confirmationInput === studentFullName ? (isCurrentlyActive ? '#dc2626' : '#16a34a') : '#9ca3af',
-                                    color: '#fff',
-                                    border: 'none',
-                                    borderRadius: '6px',
-                                    cursor: confirmationInput === studentFullName ? 'pointer' : 'not-allowed',
-                                    fontWeight: 'bold'
-                                }}
+                                className={`${styles.btnConfirm} ${
+                                    confirmationInput === studentFullName 
+                                        ? `${styles.btnConfirmEnabled} ${isCurrentlyActive ? styles.btnDanger : styles.btnSuccess}`
+                                        : styles.btnConfirmDisabled
+                                }`}
                             >
                                 Aceptar / Confirmar
                             </button>
