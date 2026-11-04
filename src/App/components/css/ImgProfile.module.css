@@ -1,6 +1,8 @@
 .contImgProfile{
   width: auto;
   height: 100%;
+  border-radius: 100%;
+  background: var(--background-solid);
 
   display: flex;
   justify-content: center;

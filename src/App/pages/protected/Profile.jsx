@@ -55,7 +55,7 @@ function Profile() {
                     <div className={styles.bg}>
                         <div className={styles.bannerProfile}>
                             <div className={styles.contTitleProfile}>
-                                <div className={styles.contImgProfile}>
+                                <div className={styles.contGlbImgProfile}>
                                     <ImgProfile />
                                 </div>
                                 <div className={styles.contTextProfile}>

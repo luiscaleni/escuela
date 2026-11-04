@@ -37,6 +37,7 @@
     padding:0 2rem;
     margin: 15px 0;
     color: #fff;
+    text-align: center;
     font-size:1.4rem;
     line-height: 2rem;
 }
@@ -57,4 +58,39 @@
     width: 20rem;
     height: auto;
     border-radius: var(--border-radius);
+}
+
+@media (max-width: 1280px){
+    .containerTextImg{
+        flex-direction: column;
+        border-radius: var(--border-radius);
+        background: var(--background-solid);
+    }
+    .containerTextImg > .contElemnt{
+        flex-direction: column;
+    }
+
+    .containerTextImg > .contElemnt > .textContainer{
+        width: 100%;
+        padding: 1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .containerTextImg > .contElemnt > .textContainer > h2{
+        font-size: 1.8rem;
+    }
+    .containerTextImg > .contElemnt > .textContainer > p{
+        width: 100%;
+        padding: 0;
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+
+    .containerTextImg > .contElemnt > .imgContainer > img{
+        width: 100%;
+    }
 }

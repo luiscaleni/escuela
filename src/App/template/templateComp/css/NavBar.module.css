@@ -183,7 +183,6 @@ nav, .navbar{
     display: flex !important;
     border: 0.1rem solid #ccc;
     background-color: #fff;
-    backdrop-filter: var(--backdrop-filter-2);
 }
 .menu > li{
     width: 100%;
@@ -315,8 +314,8 @@ span{
 .menuButton > .contWellcome > .contContImgProfile{
     max-width: 3rem;
     max-height: 3rem;
-    min-width: 2.8rem;
-    min-height: 2.8rem;
+    min-width: 3rem;
+    min-height: 3rem;
     border-radius: 50%;
     object-fit: cover;
 

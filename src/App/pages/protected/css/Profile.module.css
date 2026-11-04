@@ -32,12 +32,12 @@
   align-items: center;
   flex-direction: row;
 }
-.bg > .bannerProfile > .contTitleProfile > .contImgProfile{
+.bg > .bannerProfile > .contTitleProfile > .contGlbImgProfile{
   max-width: 10rem;
   max-height: 10rem;
   min-width: 8rem;
   min-height: 8rem;
-  width: 10vw;
+  width: 8vw;
   height: auto;
   border-radius: 50%;
   object-fit: cover;

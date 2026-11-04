@@ -233,6 +233,9 @@ iframe{
         width: auto;
         height: 100%;
     }
+    .sectionXtreme2{
+        margin-top: 50rem;
+    }
 }
 @media (max-width: 895px){
     .sectionXtreme2{

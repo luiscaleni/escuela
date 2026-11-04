@@ -33,10 +33,7 @@
     transform: scale(1.05);
     transition:all ease-in-out .3s;
 }
-.contCard > a > .card:hover .cardContent > .cardTitle{
-    transform: scale(1.1);
-    transition:all ease-in-out .3s;
-}
+
 .contCard > a > .card > img{
     position: absolute;
     top: 0;

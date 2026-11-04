@@ -1,0 +1,96 @@
+.containerMax{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-width: 22rem;
+    min-height: 20rem;
+    color: #000;
+    padding: 2rem;
+    margin: 1rem auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.containerMax > .contElemnt {
+    width: 100%;
+    height: auto;
+    max-width: 70rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.containerMax > .contElemnt > .textContainer > h2{
+    width: 90%;
+    font-size: 2rem;
+    height: auto;
+    text-align: center;
+    color: #fff;
+}
+.containerMax > .contElemnt > .textContainer > p{
+    width: 90%;
+    padding:0 2rem;
+    margin: 15px 0;
+    color: #fff;
+    text-align: center;
+    font-size:1.4rem;
+    line-height: 2rem;
+}
+
+
+
+
+.containerMax > .contElemnt > .imgContainer{
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerMax > .contElemnt > .imgContainer > img{
+    width: 20rem;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+@media (max-width: 1280px){
+    .containerMax{
+        flex-direction: column;
+        border-radius: var(--border-radius);
+        background: var(--background-solid);
+    }
+    .containerMax > .contElemnt{
+        flex-direction: column;
+    }
+
+    .containerMax > .contElemnt > .textContainer{
+        width: 100%;
+        padding: 1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .containerMax > .contElemnt > .textContainer > h2{
+        font-size: 1.8rem;
+    }
+    .containerMax > .contElemnt > .textContainer > p{
+        width: 100%;
+        padding: 0;
+        margin: 0.5rem 0;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+
+    .containerMax > .contElemnt > .imgContainer > img{
+        width: 100%;
+    }
+}
